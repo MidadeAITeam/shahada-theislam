@@ -41,4 +41,5 @@ export type RouteLabel =
   | "crisis"
   | "practical_need"
   | "social"
+  | "difference"
   | "unsure";

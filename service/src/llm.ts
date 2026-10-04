@@ -9,6 +9,7 @@ export interface GenOptions {
   schema?: unknown; // Gemini responseSchema (OpenAPI subset)
   temperature?: number;
   timeoutMs?: number;
+  thinking?: "minimal" | "low" | "medium" | "high";
 }
 
 export interface Usage { inputTokens: number; outputTokens: number; model: string }
@@ -44,6 +45,7 @@ async function geminiGenerate(prompt: string, o: GenOptions): Promise<{ text: st
   const gc: Record<string, unknown> = { temperature: o.temperature ?? 0.2 };
   if (o.json) gc.responseMimeType = "application/json";
   if (o.schema) gc.responseSchema = o.schema;
+  if (o.thinking) gc.thinkingConfig = { thinkingLevel: o.thinking };
   const body: Record<string, unknown> = { contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: gc };
   if (o.system) body.systemInstruction = { parts: [{ text: o.system }] };
   const d = await withRetry(() =>

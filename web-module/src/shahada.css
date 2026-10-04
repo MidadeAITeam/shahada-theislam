@@ -24,13 +24,13 @@
   text-align: start;
 }
 .shd *, .shd *::before, .shd *::after { box-sizing: border-box; }
-.shd :is(h2, h3, h4) { color: var(--shd-ink); margin: 0; line-height: 1.35; }
-.shd h2 { font-size: 1.1rem; font-weight: 700; }
-.shd h3 { font-size: 1rem; font-weight: 700; }
-.shd h4 { font-size: 0.92rem; font-weight: 700; }
-.shd p { margin: 0; }
+.shd :where(h2, h3, h4) { color: var(--shd-ink); margin: 0; line-height: 1.35; }
+.shd :where(h2) { font-size: 1.1rem; font-weight: 700; }
+.shd :where(h3) { font-size: 1rem; font-weight: 700; }
+.shd :where(h4) { font-size: 0.92rem; font-weight: 700; }
+.shd :where(p) { margin: 0; }
 .shd .shd-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.shd ul, .shd ol { margin: 0; padding-inline-start: 1.25rem; }
+.shd :where(ul, ol) { margin: 0; padding-inline-start: 1.25rem; }
 
 .shd-transparency {
   font-size: 12px;

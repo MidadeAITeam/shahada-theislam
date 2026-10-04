@@ -47,7 +47,7 @@
       <LessonIndex v-else-if="item.type === 'index'" :lang="lang" :next="progress?.next?.id || null" @open="openLesson" />
 
       <template v-else-if="item.type === 'question'">
-        <p class="shd-bubble">{{ item.text }}</p>
+        <p class="shd-bubble" dir="auto">{{ item.text }}</p>
       </template>
 
       <AnswerCard
@@ -69,7 +69,7 @@
 
       <article v-else-if="item.type === 'mentor'" class="shd-card shd-mentor">
         <p class="shd-eyebrow">{{ tr('mentorReply') }}<template v-if="item.name"> · {{ item.name }}</template></p>
-        <p style="white-space: pre-line">{{ item.text }}</p>
+        <p style="white-space: pre-line" dir="auto">{{ item.text }}</p>
         <p v-for="(s, i) in item.replies" :key="i" class="shd-bubble">{{ s }}</p>
         <form v-if="item.handoffId" class="shd-row" @submit.prevent="replyToMentor(item)">
           <label :for="`shd-reply-${item.key}`" class="shd-sr">{{ tr('writeMentor') }}</label>

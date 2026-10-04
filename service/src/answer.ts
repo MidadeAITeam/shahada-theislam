@@ -7,7 +7,7 @@ import { lessonById } from "./curriculum.ts";
 import { costUsd, generateJson, type Usage } from "./llm.ts";
 import { verses, type Verse } from "./quran.ts";
 import { route, type Route } from "./router.ts";
-import { referralText } from "./messages.ts";
+import { DIFFERENCE_NOTE, referralText } from "./messages.ts";
 import type { CheckResult, Chunk, DraftAnswer } from "./types.ts";
 
 export interface SourceRef { id: string; page: number; lang: string; lesson_id: string | null; heading: string; text: string }
@@ -20,6 +20,7 @@ export interface AnswerResult {
   sources: SourceRef[];
   lesson: { id: string; title: string } | null;
   translatedExplanation: boolean; // "machine-translated explanation, original attached"
+  difference_note?: string | null; // fixed text on matters of legitimate scholarly difference
   route: Pick<Route, "action" | "label" | "emergency">;
   trace: { retrieved: { id: string; score: number }[]; dropped: CheckResult["dropped"]; attempts: number; costUsd: number; ms: number };
 }
@@ -63,7 +64,7 @@ function passageBlock(hits: Hit[]): string {
 async function translateQuery(q: string, to: string): Promise<{ text: string; usage?: Usage }> {
   try {
     const r = await generateJson<{ text: string }>(`Translate this question into ${langName(to)}. Return {"text": "..."}.\n"""${q}"""`, {
-      model: config.routerModel, temperature: 0, timeoutMs: 15000,
+      model: config.routerModel, temperature: 0, timeoutMs: 15000, thinking: "minimal",
     });
     return { text: r.data.text, usage: r.usage };
   } catch {
@@ -103,7 +104,10 @@ export async function ask(input: AskInput): Promise<AnswerResult> {
     return base("not_in_book", r, { text: referralText("not_in_book", input.lang, false), trace: { retrieved, dropped: [], attempts: 0, costUsd: cost, ms: Date.now() - t0 } });
   }
 
-  const prompt = `${input.lessonId ? `The learner is studying the lesson "${lessonTitle(input.lessonId)}". Answer only from it.\n` : ""}${
+  const differenceHint = r.label === "difference"
+    ? "The learner mentions a different practice or opinion. Explain what the book says on this point (with its passages), without judging the other practice and without saying which person is right.\n"
+    : "";
+  const prompt = `${differenceHint}${input.lessonId ? `The learner is studying the lesson "${lessonTitle(input.lessonId)}". Answer only from it.\n` : ""}${
     input.history ? `Earlier in this conversation:\n${input.history}\n` : ""}Question (${langName(input.lang)}): """${input.question}"""\n\nPassages:\n${passageBlock(relevant)}`;
   const system = SYSTEM.replaceAll("{LANG}", langName(input.lang));
 
@@ -113,7 +117,7 @@ export async function ask(input: AskInput): Promise<AnswerResult> {
   for (const temperature of [0.2, 0]) {
     attempts++;
     try {
-      const g = await generateJson<DraftAnswer>(prompt, { system, temperature, timeoutMs: 45000 });
+      const g = await generateJson<DraftAnswer>(prompt, { system, temperature, timeoutMs: 45000, thinking: "low" });
       track(g.usage);
       draft = g.data;
       checked = check(draft, relevant.map((h) => h.chunk));
@@ -135,9 +139,11 @@ export async function ask(input: AskInput): Promise<AnswerResult> {
   [...used.values()].forEach((c) => c.lesson_id && counts.set(c.lesson_id, (counts.get(c.lesson_id) ?? 0) + 1));
   const lessonId = [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
 
+  const note = r.label === "difference" ? DIFFERENCE_NOTE[input.lang] ?? DIFFERENCE_NOTE.en : null;
   return {
     status: "answered",
-    text: checked.sentences.map((s) => s.text).join(" "),
+    text: checked.sentences.map((s) => s.text).join(" ") + (note ? `\n\n${note}` : ""),
+    difference_note: note,
     sentences: checked.sentences,
     quotes: checked.quotes.map((q) => ({ ref: q.ref, text: q.text, page: q.chunk.page })),
     verses: checked.verses.flatMap((v) => verses(v, input.lang)),

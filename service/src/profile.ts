@@ -31,7 +31,7 @@ export async function startCard(lang: string, conversation: { role: string; text
   if (!userText.trim()) return card;
   try {
     const r = await generateJson<Omit<StartCard, "language">>(`${PROMPT}\n\nUSER MESSAGES:\n"""${userText.slice(-6000)}"""`, {
-      model: config.routerModel, temperature: 0, timeoutMs: 20000,
+      model: config.routerModel, temperature: 0, timeoutMs: 20000, thinking: "minimal",
     });
     for (const k of ["previous_religion", "country", "asked_about"] as const) {
       const f = r.data[k];

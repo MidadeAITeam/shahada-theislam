@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag" class="shd-sentence">
+  <component :is="tag" class="shd-sentence" dir="auto">
     <span>{{ text }}</span>
     <button
       v-for="id in sources"

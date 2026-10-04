@@ -26,6 +26,22 @@ const T: Record<string, Record<Key, string>> = {
   },
 };
 
+// Fixed note appended (by code, never generated) to answers on matters of legitimate scholarly difference.
+export const DIFFERENCE_NOTE: Record<string, string> = {
+  en: "This is a view held by scholars, and some scholars hold another view. If you see a different way at your mosque, it may also be correct. You can ask a mentor if you would like the details.",
+  ar: "هذا قول معتبر عند أهل العلم، ولبعضهم فيه قول آخر. وإن رأيت في مسجدك صفة أخرى فقد تكون صحيحة أيضاً، ولك أن تسأل المرشد إن أردت التفصيل.",
+  fr: "C'est un avis reconnu chez les savants, et certains en ont un autre. Si vous voyez une autre manière à votre mosquée, elle peut aussi être correcte. Vous pouvez demander les détails à un mentor.",
+  es: "Es una opinión reconocida entre los sabios, y algunos tienen otra. Si ves otra forma en tu mezquita, también puede ser correcta. Puedes preguntar los detalles a un mentor.",
+  pt: "Esta é uma opinião reconhecida entre os sábios, e alguns têm outra. Se vir outra forma na sua mesquita, ela também pode estar correta. Pode perguntar os detalhes a um mentor.",
+  id: "Ini adalah pendapat yang diakui di kalangan ulama, dan sebagian ulama berpendapat lain. Jika Anda melihat cara lain di masjid Anda, itu juga bisa benar. Anda dapat menanyakan rinciannya kepada pembimbing.",
+  ru: "Это признанное мнение учёных, а у некоторых учёных есть другое мнение. Если в вашей мечети делают иначе, это тоже может быть правильно. Подробности можно спросить у наставника.",
+  bs: "Ovo je priznato mišljenje učenjaka, a neki imaju drugo mišljenje. Ako u svojoj džamiji vidiš drugačiji način, i on može biti ispravan. Detalje možeš pitati mentora.",
+  vi: "Đây là một quan điểm được các học giả công nhận, và một số học giả có quan điểm khác. Nếu bạn thấy cách làm khác ở thánh đường của mình, điều đó cũng có thể đúng. Bạn có thể hỏi người hướng dẫn để biết chi tiết.",
+  th: "นี่เป็นทัศนะที่นักวิชาการยอมรับ และนักวิชาการบางท่านมีทัศนะอื่น หากคุณเห็นวิธีอื่นที่มัสยิดของคุณ ก็อาจถูกต้องเช่นกัน คุณสามารถถามรายละเอียดจากผู้แนะนำได้",
+  tl: "Ito ay isang pananaw na kinikilala ng mga iskolar, at may ilang iskolar na may ibang pananaw. Kung makakita ka ng ibang paraan sa iyong moske, maaari rin itong tama. Maaari mong itanong sa isang mentor ang mga detalye.",
+  hi: "यह विद्वानों का एक मान्य मत है, और कुछ विद्वानों का दूसरा मत है। अगर आप अपनी मस्जिद में कोई दूसरा तरीका देखें, तो वह भी सही हो सकता है। विस्तार के लिए आप किसी मार्गदर्शक से पूछ सकते हैं।",
+};
+
 // Emergency numbers for countries users state most often (public numbers; 112 where it is the general number).
 export const EMERGENCY: Record<string, string> = {
   US: "988 (or 911)", CA: "988 (or 911)", GB: "999 (Samaritans: 116 123)", IE: "112", IN: "112 (Tele-MANAS: 14416)",

@@ -1,0 +1,187 @@
+{
+ "chats": 16653,
+ "user_msgs": 57614,
+ "assistant_msgs": 57050,
+ "long_answers": 50549,
+ "long_answers_with_quran_ref": 15225,
+ "shahada_chats": 166,
+ "first": "2024-10-17 19:38:31.000000",
+ "last": "2026-09-08 13:58:37.000000",
+ "countries": 150,
+ "languages_detected": 52,
+ "languages_20plus": 28,
+ "top_languages": [
+  [
+   "ar",
+   6458
+  ],
+  [
+   "en",
+   4913
+  ],
+  [
+   "sw",
+   692
+  ],
+  [
+   "fr",
+   490
+  ],
+  [
+   "ja",
+   380
+  ],
+  [
+   "id",
+   350
+  ],
+  [
+   "tl",
+   344
+  ],
+  [
+   "fa",
+   215
+  ],
+  [
+   "fi",
+   208
+  ],
+  [
+   "es",
+   204
+  ],
+  [
+   "ur",
+   175
+  ],
+  [
+   "so",
+   167
+  ],
+  [
+   "ko",
+   149
+  ],
+  [
+   "pt",
+   107
+  ],
+  [
+   "de",
+   96
+  ]
+ ],
+ "median_msgs": 4,
+ "chats_10plus": 2771,
+ "religion_mentions": {
+  "hindu": 287,
+  "christian": 1127,
+  "atheist/agnostic": 288,
+  "jewish": 112,
+  "buddhist": 57
+ },
+ "channel_prefixes": {
+  "none": 1273,
+  "thread": 12209,
+  "resp": 2595,
+  "voice": 576
+ },
+ "shahada_excl_SA_EG_unknown": 133,
+ "shahada_countries_excl": 29,
+ "shahada_by_country": [
+  [
+   "India",
+   36
+  ],
+  [
+   "United States",
+   32
+  ],
+  [
+   "Saudi Arabia",
+   19
+  ],
+  [
+   "Philippines",
+   12
+  ],
+  [
+   "Egypt",
+   11
+  ],
+  [
+   "United Kingdom",
+   10
+  ],
+  [
+   "Bahrain",
+   7
+  ],
+  [
+   "Sweden",
+   6
+  ],
+  [
+   null,
+   3
+  ],
+  [
+   "Australia",
+   2
+  ],
+  [
+   "DR Congo",
+   2
+  ],
+  [
+   "Nigeria",
+   2
+  ]
+ ],
+ "shahada_by_religion": {
+  "christian": 29,
+  "buddhist": 2,
+  "jewish": 2,
+  "hindu": 52,
+  "atheist/agnostic": 5
+ },
+ "shahada_langs": [
+  [
+   "en",
+   127
+  ],
+  [
+   "ar",
+   15
+  ],
+  [
+   "tl",
+   14
+  ],
+  [
+   "fr",
+   4
+  ],
+  [
+   "id",
+   2
+  ],
+  [
+   "sw",
+   1
+  ],
+  [
+   "so",
+   1
+  ],
+  [
+   "ur",
+   1
+  ],
+  [
+   "et",
+   1
+  ]
+ ]
+}

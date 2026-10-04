@@ -25,7 +25,7 @@ export const config = {
 
   // Retrieval
   minRelevance: parseFloat(env("MIN_RELEVANCE", "0.55")),
-  topK: parseInt(env("TOP_K", "6"), 10),
+  topK: parseInt(env("TOP_K", "8"), 10),
 
   // Auth and mail
   googleClientId: env("GOOGLE_CLIENT_ID"),

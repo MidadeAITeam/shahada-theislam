@@ -1,0 +1,11 @@
+{
+ "shahada_conversations": 166,
+ "bot_asked_for_contact": 36,
+ "user_shared_contact": 11,
+ "user_shared_contact_pct": 6.6,
+ "ended_within_2_user_msgs": 89,
+ "ended_within_2_pct": 53.6,
+ "median_user_msgs_after": 2.0,
+ "came_back_another_day": 13,
+ "asked_how_to_pray_or_what_next": 22
+}

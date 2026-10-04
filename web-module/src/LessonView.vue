@@ -4,7 +4,7 @@
       <p class="shd-eyebrow">
         {{ tr('unitLesson', { u: lesson.unit?.index ?? '', l: lessonNumber }) }}<template v-if="lesson.unit?.title"> · {{ lesson.unit.title }}</template>
       </p>
-      <h3 :id="titleId">{{ lesson.title }}</h3>
+      <h3 :id="titleId" dir="auto">{{ lesson.title }}</h3>
       <div v-if="lesson.position?.total" class="shd-progress">
         <div
           class="shd-progress__track"
@@ -115,7 +115,7 @@
       <h4 class="shd-eyebrow">{{ tr('askLessonTitle') }}</h4>
       <p class="shd-muted">{{ tr('askLessonHint') }}</p>
       <div v-for="(item, i) in asked" :key="`a${i}`" class="shd-ask__item">
-        <p class="shd-bubble">{{ item.question }}</p>
+        <p class="shd-bubble" dir="auto">{{ item.question }}</p>
         <AnswerCard
           :answer="item.answer"
           :question="item.question"

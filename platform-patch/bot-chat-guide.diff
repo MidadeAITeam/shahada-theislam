@@ -1,0 +1,181 @@
+diff --git a/.env.demo b/.env.demo
+new file mode 100644
+index 0000000..aca57ea
+--- /dev/null
++++ b/.env.demo
+@@ -0,0 +1,5 @@
++# shahada.theislam.chat demo build: the after-Shahada service serves this app and the platform
++# endpoints it calls, so everything is same-origin. No secrets here.
++VITE_BASE_URL=
++VITE_API_URL=/api/chat/no-auth
++VITE_GOOGLE_CLIENT_ID=
+diff --git a/package.json b/package.json
+index c1b3de5..5bb1be3 100644
+--- a/package.json
++++ b/package.json
+@@ -9,6 +9,7 @@
+     "build:dev": "vite build --mode development",
+     "build:staging": "vite build --mode staging",
+     "build:prod": "vite build --mode production",
++    "build:demo": "vite build --mode demo",
+     "preview": "vite preview",
+     "test:unit": "vitest",
+     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
+diff --git a/src/views/AiChatView.vue b/src/views/AiChatView.vue
+index d9ead08..605e42d 100644
+--- a/src/views/AiChatView.vue
++++ b/src/views/AiChatView.vue
+@@ -271,6 +271,7 @@
+         <div class="card simple-text full-page-center" v-html="sanitizedMsgDescription">
+ 
+         </div>
++        <DemoButton :lang="locale" @start="startShahadaDemo" />
+       </div>
+       <div class="mb-5 d-flex flex-column gap-2 text-center" v-if="isLoadingMessages">
+         <div class="d-flex m-auto">
+@@ -332,6 +333,11 @@
+                   {{ question }}
+                 </button>
+               </div>
++
++              <!-- After-Shahada module (web-module/), opened by the <shahada/> signal. -->
++              <ShahadaFlow v-if="message.shahada && message.isTypingComplete" ref="shahadaFlow"
++                :conversation="shahadaConversation(index)" :lang="locale"
++                :mode="message.shahadaMode || 'shahada'" :lesson-id="message.shahadaLesson || null" />
+             </div>
+           </li>
+           <li class="p-1 pb-0 rounded-pill px-3" dir="rtl" v-if="isLoadingMessage">
+@@ -489,6 +495,10 @@ import DOMPurify from 'dompurify';
+ import { useI18n } from 'vue-i18n';
+ import * as Sentry from "@sentry/vue";
+ import debounce from 'lodash/debounce';
++import ShahadaFlow from "@shahada/ShahadaFlow.vue";
++import DemoButton from "@shahada/DemoButton.vue";
++import { playDemo } from "@shahada/demo.js";
++import { t as shahadaT } from "@shahada/i18n.js";
+ 
+ 
+ export default {
+@@ -501,7 +511,7 @@ export default {
+     };
+   },
+   name: "AiChatView",
+-  components: { StreamingMarkdown, VoiceChat, AuthModal },
++  components: { StreamingMarkdown, VoiceChat, AuthModal, ShahadaFlow, DemoButton },
+   props: {
+     lang: {
+       type: String,
+@@ -787,6 +797,9 @@ export default {
+      * have already said so the operator reads the thread from its start.
+      */
+     async talkToHuman() {
++      // After the Shahada the module's referral (mentor choice, consent card) takes over.
++      const flow = this.shahadaFlow();
++      if (flow) return flow.openHandoff({ reason: "user_request" });
+       if (this.humanMode || this.isHandingOff) return;
+       this.isHandingOff = true;
+ 
+@@ -1052,6 +1065,14 @@ export default {
+         return;
+       }
+ 
++      // After the Shahada, questions go to the module's book-only tutor.
++      const flow = this.shahadaFlow();
++      if (flow && this.messageText.trim()) {
++        flow.ask(this.messageText.trim());
++        this.messageText = "";
++        return;
++      }
++
+       // The message store rejects anything shorter than four characters, so
+       // the composer says so itself rather than letting the message look sent
+       // and then throwing a server error over the conversation.
+@@ -1326,7 +1347,9 @@ export default {
+       try {
+         const parsed = JSON.parse(jsonStr);
+         const wasAtBottom = this.isScrolledToBottom();
+-        this.messages[messageIndex].text = parsed.text.replace(/<suggested_questions>[\s\S]*/, '').trimEnd();
++        this.messages[messageIndex].text = parsed.text.replace(/<suggested_questions>[\s\S]*/, '')
++          .replace(/<shahada\s*\/?>/g, '').trimEnd();
++        if (parsed.shahada || /<shahada\s*\/?>/.test(parsed.text)) this.messages[messageIndex].shahada = true;
+         if (wasAtBottom) {
+           this.$nextTick(() => this.scrollToBottom('auto'));
+         }
+@@ -1487,6 +1510,29 @@ export default {
+         this.loadingInterval = null;
+       }
+     },
++    /** The after-Shahada module on screen, if any. */
++    shahadaFlow() {
++      const flow = this.$refs.shahadaFlow;
++      return (Array.isArray(flow) ? flow[0] : flow) || null;
++    },
++    shahadaConversation(index) {
++      return this.messages.slice(0, index + 1)
++        .map((m) => ({
++          role: m.author === 'AI' ? 'assistant' : 'user',
++          text: DOMPurify.sanitize(m.text || '', { ALLOWED_TAGS: [], ALLOWED_ATTR: [] }).trim(),
++        }))
++        .filter((t) => t.text);
++    },
++    // A scripted pre-Shahada conversation, so the module can be tried without holding one.
++    async startShahadaDemo() {
++      this.messages = [];
++      await playDemo(this.locale, ({ role, text }, last) => {
++        this.messages.push(role === 'user' ? { text } : {
++          author: 'AI', text, fullText: text, isTypingComplete: true, shahada: last,
++          suggestedQuestions: [], time: new Date().toLocaleTimeString(),
++        });
++      });
++    },
+     askSuggestedQuestion(question) {
+       this.messageText = question;
+       this.$nextTick(() => this.sendMessage());
+@@ -1624,6 +1670,16 @@ export default {
+ 
+     this.resumeHumanChat();
+ 
++    // ?demo=shahada plays the scripted conversation; ?lesson=<id> (the reminder email) brings a
++    // returning learner straight back to their lesson.
++    const query = new URLSearchParams(window.location.search);
++    if (query.get('demo') === 'shahada') {
++      this.startShahadaDemo();
++    } else if (query.get('lesson')) {
++      const text = shahadaT(this.locale, 'welcomeBack');
++      this.messages.push({ author: 'AI', text, fullText: text, isTypingComplete: true, shahada: true,
++        shahadaMode: 'resume', shahadaLesson: query.get('lesson') });
++    }
+   },
+   beforeUnmount() {
+     this.stopLoadingCycle();
+diff --git a/vite.config.js b/vite.config.js
+index 03441f1..73e8f07 100644
+--- a/vite.config.js
++++ b/vite.config.js
+@@ -41,8 +41,14 @@ export default defineConfig(({ command, mode }) => {
+     plugins: [vue(), vueJsx(), VueDevTools()],
+     resolve: {
+       alias: {
+-        '@': fileURLToPath(new URL('./src', import.meta.url))
+-      }
++        '@': fileURLToPath(new URL('./src', import.meta.url)),
++        // The after-Shahada module lives outside this app; its bare imports (vue) resolve from here.
++        '@shahada': fileURLToPath(new URL('../../web-module/src', import.meta.url))
++      },
++      dedupe: ['vue']
++    },
++    server: {
++      fs: { allow: ['.', '../../web-module'] }
+     },
+     build: {
+       sourcemap: false,
+@@ -68,7 +74,8 @@ export default defineConfig(({ command, mode }) => {
+       __WIDGET_URL__: envUrls.widgetUrl,
+       __CSS_URL__: envUrls.cssUrl,
+       __EMBED_WIDGET_URL__: envUrls.embedWidgetUrl,
+-      'import.meta.env.VITE_BASE_URL': envUrls.baseUrl,
++      // The demo build talks to its own origin, set in .env.demo.
++      ...(mode === 'demo' ? {} : { 'import.meta.env.VITE_BASE_URL': envUrls.baseUrl }),
+ 
+     }
+   };

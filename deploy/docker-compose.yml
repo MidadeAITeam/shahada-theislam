@@ -10,3 +10,4 @@ services:
     volumes:
       - ./data:/data          # book build, Qur'an data, SQLite (book text stays off the repo)
       - ./web:/web:ro         # built theislam.chat frontend with the module
+      - ./runs:/app/eval/runs # evaluation outputs

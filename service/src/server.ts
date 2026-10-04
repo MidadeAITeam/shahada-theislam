@@ -207,7 +207,7 @@ app.get("/api/shahada/auth/verify", async (req, reply) => {
   attachAccount(l, acct.id);
   const from = db.prepare("SELECT * FROM learners WHERE id = ?").get(row.learner_id) as Learner | undefined;
   if (from && from.id !== l.id) attachAccount(from, acct.id);
-  return reply.redirect(`/?shahada=resume`);
+  return reply.redirect(`/${l.lang ?? "en"}?lesson=${nextLesson(l.choice, completedOf(l)) ?? "u1l3"}`);
 });
 
 app.post("/api/shahada/reminder", async (req, reply) => {
@@ -251,7 +251,7 @@ async function remind() {
     const lg = l.lang ?? "en";
     const t = mailText(lg);
     const title = lessonTitle(next, lg);
-    const link = `${config.publicUrl}/?shahada=lesson&id=${next}`;
+    const link = `${config.publicUrl}/${lg}?lesson=${next}`;
     const ok = await sendMail(String(a.email), t.remindSubject.replace("{TITLE}", title), layout(lg, t.remind.replace("{TITLE}", title), link, t.open), `${t.remind.replace("{TITLE}", title)}\n${link}`);
     if (ok) db.prepare("UPDATE accounts SET last_reminded_on = ? WHERE id = ?").run(today, a.id);
   }

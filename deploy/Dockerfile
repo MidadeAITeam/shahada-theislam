@@ -6,6 +6,8 @@ RUN cd service && npm ci --omit=dev && npm cache clean --force
 COPY service/src service/src
 COPY service/public service/public
 COPY service/tsconfig.json service/
+COPY service/tools service/tools
+COPY eval/locked.jsonl eval/dev.jsonl eval/journeys.jsonl eval/LOCK.sha256 eval/
 COPY content content
 ENV NODE_ENV=production PORT=8080 DATA_DIR=/data DB_PATH=/data/app.sqlite WEB_DIR=/web
 EXPOSE 8080
