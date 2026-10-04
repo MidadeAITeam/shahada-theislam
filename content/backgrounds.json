@@ -1,0 +1,12 @@
+{
+  "note": "Fixed table prepared by a person, not generated: which pages of Al-Wajeez suit a learner's stated former belief. Pages are printed page numbers (same in every edition). The learner can switch this off from the start card.",
+  "always_in_first_lesson": [{"page": 22, "why": "Islam wipes out the sins committed before it — reassurance for the new Muslim"}],
+  "by_background": {
+    "christian": [{"page": 46, "why": "Soorat Al-Ikhlaas: Allah is One, begets not nor was begotten"}, {"page": 41, "why": "Jesus among the prophets whose stories the Qur'an tells"}, {"page": 31, "why": "Belief in the revealed books: the Torah and the Gospel"}],
+    "jewish": [{"page": 41, "why": "Moses and the prophets in the Qur'an"}, {"page": 31, "why": "Belief in the revealed books: the Torah"}],
+    "hindu": [{"page": 46, "why": "Soorat Al-Ikhlaas: Allah alone is worshipped"}, {"page": 48, "why": "Soorat Al-Kaafiroon: worship belongs to Allah alone"}],
+    "buddhist": [{"page": 16, "why": "Who are we? Islam and the big questions"}, {"page": 46, "why": "Soorat Al-Ikhlaas"}],
+    "atheist": [{"page": 16, "why": "Who are we? Islam and the big questions"}, {"page": 17, "why": "Where did we come from, why are we here, where do we go"}],
+    "other": [{"page": 16, "why": "Islam and the big questions"}]
+  }
+}

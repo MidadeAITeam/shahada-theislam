@@ -11,3 +11,6 @@ eval/runs/
 التصور_الأولي.md
 خطة_التنفيذ.md
 رحلة_المستخدم.md
+web/platform/
+web/dist/
+secrets.local

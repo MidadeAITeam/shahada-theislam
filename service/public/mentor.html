@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mentor panel — theislam.chat</title>
+<style>
+  :root { --ink:#12183F; --violet:#6150EA; --teal:#2EF2C2; --bg:#F2F4FF; --muted:#5b6080; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: system-ui, "Segoe UI", Arial, sans-serif; background: var(--bg); color: var(--ink); }
+  header { background: var(--ink); color:#fff; padding:14px 20px; display:flex; justify-content:space-between; align-items:center; }
+  header small { color: var(--teal); }
+  main { max-width: 980px; margin: 0 auto; padding: 16px; }
+  .card { background:#fff; border-radius:14px; padding:16px; margin:12px 0; box-shadow: 0 1px 3px rgba(18,24,63,.08); }
+  .tags span { display:inline-block; font-size:12px; padding:3px 8px; border-radius:999px; background:#eceffd; margin:0 6px 6px 0; }
+  .tags .crisis { background:#ffe3e3; color:#9b1c1c; }
+  .msg { padding:8px 12px; border-radius:10px; margin:6px 0; max-width:85%; white-space:pre-wrap; }
+  .learner { background:#eef0ff; }
+  .mentor { background:#e3fbf4; margin-inline-start:auto; }
+  textarea { width:100%; min-height:70px; border:1px solid #ccd; border-radius:10px; padding:8px; font:inherit; }
+  button { background: var(--violet); color:#fff; border:0; border-radius:10px; padding:9px 16px; font:inherit; cursor:pointer; }
+  button:focus-visible, textarea:focus-visible, input:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+  .muted { color: var(--muted); font-size: 13px; }
+  #login { max-width:360px; margin:60px auto; }
+  input { width:100%; padding:10px; border-radius:10px; border:1px solid #ccd; font:inherit; margin:8px 0 12px; }
+  nav button { background:transparent; color:#fff; border:1px solid #fff4; margin-inline-start:6px; }
+</style>
+</head>
+<body>
+<header>
+  <div><strong>Mentor panel</strong> <small>· After the Shahada · demo account</small></div>
+  <nav><button id="tabH">Referrals</button><button id="tabR">Error reports</button></nav>
+</header>
+<main>
+  <section id="login" class="card" hidden>
+    <h2>Sign in</h2>
+    <label for="pw">Mentor password</label>
+    <input id="pw" type="password" autocomplete="current-password" />
+    <button id="go">Sign in</button>
+    <p id="err" class="muted" role="alert"></p>
+  </section>
+  <section id="list" aria-live="polite"></section>
+</main>
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+let view = "handoffs";
+async function api(path, opts = {}) {
+  const r = await fetch(path, { credentials: "include", headers: { "Content-Type": "application/json" }, ...opts });
+  if (r.status === 401) { $("#login").hidden = false; $("#list").innerHTML = ""; throw new Error("login"); }
+  return r.json();
+}
+$("#go").onclick = async () => {
+  const r = await fetch("/api/mentor/login", { method: "POST", credentials: "include", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password: $("#pw").value }) });
+  if (!r.ok) { $("#err").textContent = "Wrong password"; return; }
+  $("#login").hidden = true; load();
+};
+$("#tabH").onclick = () => { view = "handoffs"; load(); };
+$("#tabR").onclick = () => { view = "reports"; load(); };
+async function load() {
+  try {
+    if (view === "reports") {
+      const rs = await api("/api/mentor/reports");
+      $("#list").innerHTML = rs.length ? rs.map((r) => `<div class="card"><div class="tags"><span>${esc(r.target)}</span><span>${esc(r.lang)}</span><span>${esc(r.created_at)}</span></div><p>${esc(r.note) || '<span class="muted">(no note)</span>'}</p></div>`).join("") : '<p class="muted">No reports yet.</p>';
+      return;
+    }
+    const hs = await api("/api/mentor/handoffs");
+    $("#list").innerHTML = hs.length ? hs.map((h) => `
+      <article class="card">
+        <div class="tags">
+          <span>New Muslim</span><span class="${h.reason === "crisis" ? "crisis" : ""}">${esc(h.reason)}</span>
+          <span>Mentor: ${esc(h.mentor)}</span><span>Language: ${esc(h.lang)}</span>
+          ${h.country ? `<span>Country (stated): ${esc(h.country)}</span>` : ""}
+          ${h.lesson_title ? `<span>Lesson: ${esc(h.lesson_title)}</span>` : ""}
+          <span>${esc(h.status)}</span><span class="muted">${esc(h.created_at)} UTC</span>
+        </div>
+        <div>${h.messages.map((m) => `<div class="msg ${m.author}">${esc(m.text)}</div>`).join("")}</div>
+        <label class="muted" for="r_${h.id}">Reply (appears in the learner's chat when they return)</label>
+        <textarea id="r_${h.id}"></textarea>
+        <p><button data-id="${h.id}">Send reply</button></p>
+      </article>`).join("") : '<p class="muted">No referrals yet.</p>';
+    document.querySelectorAll("button[data-id]").forEach((b) => b.onclick = async () => {
+      const t = document.getElementById("r_" + b.dataset.id).value.trim();
+      if (!t) return;
+      await api(`/api/mentor/handoffs/${b.dataset.id}/reply`, { method: "POST", body: JSON.stringify({ text: t }) });
+      load();
+    });
+  } catch (e) { /* login shown */ }
+}
+load();
+setInterval(() => { if ($("#login").hidden && !document.activeElement?.matches("textarea")) load(); }, 15000);
+</script>
+</body>
+</html>

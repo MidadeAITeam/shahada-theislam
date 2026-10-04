@@ -1,0 +1,12 @@
+# shahada.theislam.chat — one container. Cloudflare -> host:5040 -> app:8080.
+services:
+  app:
+    build: { context: .., dockerfile: deploy/Dockerfile }
+    image: shahada-theislam:latest
+    container_name: shahada-theislam
+    restart: unless-stopped
+    env_file: .env            # deploy/.env on the server only (never committed)
+    ports: ["0.0.0.0:5040:8080"]
+    volumes:
+      - ./data:/data          # book build, Qur'an data, SQLite (book text stays off the repo)
+      - ./web:/web:ro         # built theislam.chat frontend with the module

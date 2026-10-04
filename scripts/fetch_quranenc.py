@@ -9,10 +9,12 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "data/quran/translations"
 KEYS = {
     "en": "english_saheeh", "fr": "french_montada", "es": "spanish_montada_eu", "pt": "portuguese_nasr",
-    "id": "indonesian_affairs", "ru": "russian_kuliev", "bs": "bosnian_rwwad", "vi": "vietnamese_rwwad",
+    "id": "indonesian_affairs", "bs": "bosnian_rwwad", "vi": "vietnamese_rwwad",
     "th": "thai_rwwad", "zh": "chinese_makin", "tl": "tagalog_rwwad", "ml": "malayalam_kunhi",
     "si": "sinhalese_mahir", "te": "telugu_muhammad", "bn": "bengali_zakaria", "ps": "pashto_rwwad",
-    "om": "oromo_rwwad",
+    "om": "oromo_rwwad", "hi": "hindi_omari", "ur": "urdu_junagarhi", "sw": "swahili_rwwad", "tr": "turkish_rwwad",
+    "de": "german_bubenheim", "ja": "japanese_saeedsato", "fa": "persian_ih", "ta": "tamil_omar", "so": "somali_yacob",
+    "am": "amharic_zain", "ha": "hausa_gummi",
 }
 
 def get(url):

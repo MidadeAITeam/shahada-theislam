@@ -1,0 +1,133 @@
+{
+ "name": "Islam Chat",
+ "logo_url": "https://botadmin.markoum.com/storage/chatanddecide.svg",
+ "site_title": "theislam.chat — After the Shahada",
+ "site_description": "Chat & Decide is a platform designed to provide logical, scientific, and rational evidence of the existence of God and His oneness.",
+ "site_keywords": "Chat, Decide, God, Existence, Oneness, Evidence",
+ "twitter_url": "https://twitter.com/chat_decide",
+ "facebook_url": "https://www.facebook.com/ChatAnddecide",
+ "youtube_url": "https://www.youtube.com/@chatanddecide",
+ "main_website_url": "https://chatanddecide.com",
+ "language_config": {
+  "ar": {
+   "language": "العربية",
+   "msg_title": "الدردشة واتخاذ القرار تبدأ رحلتك الاستكشافية من هنا!",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p><span class='fs-6'> 🤔 ما هو معتقدك ؟ </span><br /><span class='fs-6'>🌍 من أين أنت؟</span><br /><span class='fs-6'>🗣️ ما هي اللغة التي تتحدث بها؟</span><br /><span class='fs-6'>🚀 شارك معنا، ولنباشر رحلة مثيرة من الحوار والاستكشاف!</span></p>"
+  },
+  "de": {
+   "language": "Deutsch",
+   "msg_title": "Willkommen bei unserem Chatbot",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>Chat und Entscheidungsfindung – beginne deine Entdeckungsreise hier!</p> <ul> <li>🤔 Was ist dein Glaube?</li> <li>🌍 Woher kommst du?</li> <li>🗣️ Welche Sprache sprichst du?</li> </ul> <p>🚀 Mach mit uns mit, und lass uns gemeinsam eine spannende Reise voller Dialog und Entdeckungen starten!</p>"
+  },
+  "en": {
+   "language": "English",
+   "msg_title": "CHAT & DECIDE Your journey of discovery starts here!",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p><span class='fs-6'> 🤔 What do you believe in? </span><br /><span class='fs-6'>🌍 Where are you from?</span><br /><span class='fs-6'>🗣️ Which language do you speak?</span><br /><span class='fs-6'>🚀 Share with us, and let's embark on an exciting journey of dialogue and exploration!</span></p>"
+  },
+  "es": {
+   "language": "Spanish",
+   "msg_title": "¿Quién me creó?",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>Este camino está diseñado para proporcionar pruebas lógicas, científicas y racionales de la existencia de Dios y de Su unicidad. Encontrarás respuestas satisfactorias que, si Dios quiere, te llevarán a declarar tu Islam en la última etapa. Desde aquí.</p>"
+  },
+  "fr": {
+   "language": "French",
+   "msg_title": "Qui m'a créé?",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>Ce chemin est conçu pour fournir des preuves logiques, scientifiques et rationnelles de l'existence de Dieu et de Son unicité. Vous trouverez des réponses satisfaisantes qui, si Dieu le veut, vous amèneront à déclarer votre islam à la dernière étape. D'ici.</p>"
+  },
+  "hi": {
+   "language": "हिंदी",
+   "msg_title": "हमारे चैटबॉट में आपका स्वागत है",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>चैट और निर्णय लेना — अपनी खोज यात्रा यहाँ से शुरू करें!</p> <ul> <li>🤔 आपका विश्वास क्या है?</li> <li>🌍 आप कहाँ से हैं?</li> <li>🗣️ आप कौन सी भाषा बोलते हैं?</li> </ul> <p>🚀 हमारे साथ जुड़ें, और आइए मिलकर संवाद और खोज की एक रोमांचक यात्रा शुरू करें!</p>"
+  },
+  "ja": {
+   "language": "日本語",
+   "msg_title": "イスラーム――世界で20億人が信じる宗教。その本当の姿、知っていますか？",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>いま世界で最も広がっている宗教・イスラームを、やさしく解説します。イスラームとは何か？20億人が信じる、その理由を探ってみませんか？ 知っているようで知らない、イスラームの世界へようこそ。</p>"
+  },
+  "km": {
+   "language": "ខ្មែរ",
+   "msg_title": "អ្នកជឿអ្វី? ការធ្វើដំណើររបស់អ្នកចាប់ផ្តើមនៅទីនេះ!",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p><span class='fs-6'>🤔 តើអ្នកជឿជាក់អ្វីខ្លះ?</span><br /><span class='fs-6'>🌍 តើអ្នកមកពីណា?</span><br /><span class='fs-6'>🗣️ តើអ្នកនិយាយភាសាអ្វី?</span><br /><span class='fs-6'>🚀 ចែករំលែកជាមួយពួកយើង ហើយចាប់ផ្តើមដំណើរជជែកដ៏គួរឱ្យរំភើបនេះជាមួយគ្នា!</span></p>"
+  },
+  "ko": {
+   "language": "Korean",
+   "msg_title": "누가 나를 창조했나요?",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>이 경로는 하나님의 존재와 그의 유일성에 대한 논리적, 과학적 및 합리적 증거를 제공하기 위해 설계되었습니다. 만약 하나님의 뜻이시라면, 마지막 단계에서 이슬람을 고백하게 될 만족스러운 답변을 찾을 수 있습니다. 여기서.</p>"
+  },
+  "mg": {
+   "language": "Malagasy",
+   "msg_title": "Iza no namorona ahy?",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>Io lalana io dia natao hanomezana porofo ara-pisainana, ara-tsiantifika ary ara-pahendrena momba ny fisian’Andriamanitra sy ny maha-tokana Azy. Hahita valiny mahafa-po ianao izay, raha sitrapon’Andriamanitra, dia hitondra anao hanaiky ny finoana silamo amin’ny dingana farany. Manomboka eto.</p>"
+  },
+  "po": {
+   "language": "Portuguese",
+   "msg_title": "Quem me criou?",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>Este caminho foi concebido para fornecer provas lógicas, científicas e racionais da existência de Deus e da Sua unicidade. Encontrará respostas satisfatórias que, se Deus quiser, o levarão a declarar o seu Islão na última etapa. Daqui.</p>"
+  },
+  "ru": {
+   "language": "Русский",
+   "msg_title": "Добро пожаловать в наш чат-бот",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>Чат и принятие решений — начни своё путешествие по открытиям здесь!</p> <ul> <li>🤔 Во что ты веришь?</li> <li>🌍 Откуда ты?</li> <li>🗣️ На каком языке ты говоришь?</li> </ul> <p>🚀 Присоединяйся к нам, и давай вместе начнём увлекательное путешествие диалога и открытий!</p>"
+  },
+  "sw": {
+   "language": "Swahili",
+   "msg_title": "Nani aliniumba?",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>Njia hii imeundwa kutoa ushahidi wa mantiki, wa kisayansi, na wa kimaadili wa uwepo wa Mungu na umoja Wake. Utapata majibu mazuri ambayo, ikiwa ni mapenzi ya Mungu, yatakufikisha kutoa ushahidi wako wa Kiislamu katika hatua ya mwisho. Kutoka hapa.</p>"
+  },
+  "th": {
+   "language": "ไทย",
+   "msg_title": "CHAT & DECIDE – การเดินทางแห่งการค้นพบของคุณเริ่มต้นที่นี่!",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p><span class='fs-6'> 🤔 คุณเชื่อในสิ่งใด? </span><br /><span class='fs-6'>🌍 คุณมาจากที่ไหน?</span><br /><span class='fs-6'>🗣️ คุณพูดภาษาอะไร?</span><br /><span class='fs-6'>🚀 มาแบ่งปันกับเรา แล้วเริ่มต้นการเดินทางแห่งการสนทนาและการค้นพบที่น่าตื่นเต้นไปด้วยกัน!</span></p>"
+  },
+  "vi": {
+   "language": "Tiếng Việt",
+   "msg_title": "CHAT & DECIDE – Hành trình khám phá của bạn bắt đầu từ đây!",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p><span class='fs-6'> 🤔 Bạn tin vào điều gì? </span><br /><span class='fs-6'>🌍 Bạn đến từ đâu?</span><br /><span class='fs-6'>🗣️ Bạn nói ngôn ngữ nào?</span><br /><span class='fs-6'>🚀 Hãy chia sẻ với chúng tôi và cùng bắt đầu một hành trình đối thoại và khám phá thú vị!</span></p>"
+  },
+  "zh": {
+   "language": "中文",
+   "msg_title": "聊天与决策从这里开始你的探索之旅！",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>聊天与决策从这里开始你的探索之旅！</p> <ul> <li>🤔 你的信仰是什么？</li> <li>🌍 你来自哪里？</li> <li>🗣️ 你说什么语言？</li> </ul> <p>🚀 加入我们，让我们一起开始一段精彩的对话与探索之旅！</p>"
+  },
+  "fil": {
+   "language": "Filipino",
+   "msg_title": "Sino ang lumikha sa akin?",
+   "prompt_id": "shahada-demo",
+   "is_support": true,
+   "description": "<p>Ang daang ito ay dinisenyo upang magbigay ng mga lohikal, siyentipiko, at makatwirang katibayan ng pagkakaroon ng Diyos at ng Kanyang pagkakaisa. Makakahanap ka ng kasiya-siyang mga sagot na, kung ito ang kalooban ng Diyos, ay dadalhin ka upang ipahayag ang iyong Islam sa huling hakbang. Mula dito.</p>"
+  }
+ },
+ "footer": "إحدى مبادرات جمعية أصول - <a href=\"https://osoulcontent.org.sa/ar\" target=\"_blank\" rel=\"noopener noreferrer\">osoulcontent.org.sa</a>"
+}

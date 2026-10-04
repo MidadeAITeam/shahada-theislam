@@ -1,0 +1,196 @@
+{
+ "note": "Lessons approved for display with a generated summary and comprehension question. Unlisted lessons are shown as the book's own text with page numbers only. Critical lessons (u1l3, u3l2, u3l3, u3l4, u3l6) await the Sharia specialist's spot-check, recorded in 'specialist'.",
+ "approved": {
+  "ar:u1l1": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u1l2": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u1l3": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u1l4": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u2l1": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u2l2": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u3l1": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u3l2": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u3l3": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u3l4": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u3l5": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u3l6": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u3l7": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u3l8": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u3l9": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u4l1": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u4l2": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u4l3": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "ar:u4l4": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u1l1": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u1l2": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u1l3": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u1l4": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u2l1": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u2l2": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u3l1": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u3l2": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u3l3": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u3l4": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u3l5": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u3l6": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u3l7": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u3l8": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u3l9": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u4l1": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u4l2": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u4l3": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "en:u4l4": {
+   "by": "team content review (AI-assisted, read against the cited passages)",
+   "on": "2026-10-04",
+   "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  }
+ },
+ "specialist": {}
+}
