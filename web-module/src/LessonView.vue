@@ -77,6 +77,20 @@
 
     <VerseList :verses="lesson.verses || []" :lang="lang" />
 
+    <section v-if="lesson.audio && lesson.audio.length" class="shd-audio" :aria-label="tr('audioTitle')">
+      <h4 class="shd-audio__title">{{ tr('audioTitle') }}</h4>
+      <div v-for="a in lesson.audio" :key="a.surah" class="shd-audio__item">
+        <p class="shd-audio__name">{{ a.title }}</p>
+        <label class="shd-audio__label">{{ tr('audioTeaching') }}
+          <audio :src="a.teaching.url" controls preload="none" :title="a.teaching.label"></audio>
+        </label>
+        <label class="shd-audio__label">{{ tr('audioMurattal') }}
+          <audio :src="a.murattal.url" controls preload="none" :title="a.murattal.label"></audio>
+        </label>
+      </div>
+      <p class="shd-audio__credit">mp3quran.net</p>
+    </section>
+
     <!-- Optional: skipping is as good as answering, and nothing is graded. -->
     <section v-if="lesson.reviewed && lesson.check_question && !checkSkipped" class="shd-card shd-card--soft">
       <fieldset class="shd-options">
@@ -120,6 +134,7 @@
           :answer="item.answer"
           :question="item.question"
           :loading="item.loading"
+          :stage="item.stage"
           :error="item.error"
           :lang="lang"
           @retry="runAsk(item)"
@@ -209,7 +224,7 @@ function askLesson() {
   const q = question.value.trim();
   if (!q) return;
   question.value = '';
-  const item = reactive({ question: q, answer: null, loading: true, error: false });
+  const item = reactive({ question: q, answer: null, loading: true, error: false, stage: null });
   asked.value.push(item);
   runAsk(item);
 }
@@ -217,7 +232,8 @@ async function runAsk(item) {
   item.loading = true;
   item.error = false;
   try {
-    item.answer = await api.ask(item.question, apiLang(props.lang), props.lesson.id);
+    item.stage = null;
+    item.answer = await api.askStream(item.question, apiLang(props.lang), props.lesson.id, (st) => (item.stage = st));
   } catch {
     item.error = true;
   } finally {
@@ -227,6 +243,14 @@ async function runAsk(item) {
 </script>
 
 <style scoped>
+.shd-audio { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 12px; background: #f2f4ff; }
+.shd-audio__title { font-size: 1rem; font-weight: 700; margin: 0 0 0.5rem; }
+.shd-audio__item { padding: 0.5rem 0; border-top: 1px solid #e3e6f5; }
+.shd-audio__item:first-of-type { border-top: 0; }
+.shd-audio__name { font-weight: 600; margin: 0 0 0.25rem; }
+.shd-audio__label { display: block; font-size: 0.85rem; color: #4a5070; margin: 0.25rem 0; }
+.shd-audio__label audio { display: block; width: 100%; margin-top: 0.2rem; }
+.shd-audio__credit { font-size: 0.75rem; color: #6b7090; margin: 0.25rem 0 0; }
 .shd-lesson__head { display: flex; flex-direction: column; gap: 0.35rem; }
 .shd-ask { display: flex; flex-direction: column; gap: 0.5rem; padding-top: 0.6rem; border-top: 1px solid var(--shd-line); }
 .shd-ask__item { display: flex; flex-direction: column; gap: 0.5rem; }

@@ -55,6 +55,7 @@
         :answer="item.answer"
         :question="item.question"
         :loading="item.loading"
+          :stage="item.stage"
         :error="item.error"
         :lang="lang"
         @retry="runAsk(item)"
@@ -329,7 +330,7 @@ function submitAsk() {
 /** Ask a free question (also called by the host page's own composer). */
 function ask(question) {
   push({ type: 'question', text: question });
-  const item = push({ type: 'answer', question, answer: null, loading: true, error: false });
+  const item = push({ type: 'answer', question, answer: null, loading: true, error: false, stage: null });
   runAsk(item);
 }
 
@@ -337,7 +338,8 @@ async function runAsk(item) {
   item.loading = true;
   item.error = false;
   try {
-    item.answer = await api.ask(item.question, learnerLang.value, null);
+    item.stage = null;
+    item.answer = await api.askStream(item.question, learnerLang.value, null, (st) => (item.stage = st));
   } catch {
     item.error = true;
   } finally {

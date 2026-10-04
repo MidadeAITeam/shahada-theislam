@@ -10,6 +10,7 @@ import { verses } from "./quran.ts";
 import type { Chunk } from "./types.ts";
 import structure from "../../content/structure.json" with { type: "json" };
 import backgrounds from "../../content/backgrounds.json" with { type: "json" };
+import audio from "../../content/audio.json" with { type: "json" };
 
 interface BuiltLesson {
   summary: { text: string; sources: string[] }[];
@@ -95,6 +96,17 @@ export function getLesson(lang: string, lessonId: string, opts: { choice: Choice
     background_note,
     check_question: review && b?.check_question ? b.check_question : null,
     verses: (b?.verses ?? []).flatMap((v) => verses(v, lang)),
+    // Listen-and-repeat recitations for the surahs taught in this lesson (mp3quran.net).
+    audio: ((audio.by_lesson as Record<string, number[]>)[lessonId] ?? []).map((n) => {
+      const pad = String(n).padStart(3, "0");
+      const name = (audio.surah_names as Record<string, Record<string, string>>)[String(n)];
+      return {
+        surah: n,
+        title: name?.[lang] ?? name?.en ?? String(n),
+        teaching: { url: `${audio.sources.teaching.server}${pad}.mp3`, label: audio.sources.teaching.label },
+        murattal: { url: `${audio.sources.murattal.server}${pad}.mp3`, label: audio.sources.murattal.label },
+      };
+    }),
     sources: [...cited].map((id) => chunkById(id)).filter((c): c is Chunk => Boolean(c)).map(ref),
     next: next ? { id: next, title: lessonTitle(next, lang) } : null,
   };

@@ -4,7 +4,8 @@ import Fastify, { type FastifyReply, type FastifyRequest } from "fastify";
 import cookie from "@fastify/cookie";
 import fstatic from "@fastify/static";
 import { OAuth2Client } from "google-auth-library";
-import { ask } from "./answer.ts";
+import { ask, type AnswerResult, type Stage } from "./answer.ts";
+import { normalize } from "./text.ts";
 import { streamChat } from "./chat.ts";
 import { config, ROOT } from "./config.ts";
 import { CHOICES, nextLesson, plannedPath, progressOf, type Choice } from "./curriculum.ts";
@@ -98,16 +99,53 @@ app.post("/api/shahada/lessons/:id/complete", async (req, reply) => {
   return progress(l);
 });
 
-app.post("/api/shahada/ask", async (req, reply) => {
-  const l = learner(req, reply);
-  const b = req.body as { question?: string; lang?: string; lesson_id?: string | null };
+// Answers to the same question in the same language and lesson are reused for a day: they are
+// built only from the book, so they do not depend on who asks. Referrals are never cached.
+const answerCache = new Map<string, { at: number; r: AnswerResult }>();
+const cacheKey = (q: string, lg: string, lesson: string | null) => `${lg}|${lesson ?? ""}|${normalize(q)}`;
+
+async function answerFor(l: Learner, b: { question?: string; lang?: string; lesson_id?: string | null }, onStage?: (s: Stage) => void) {
   const question = (b.question ?? "").trim().slice(0, 2000);
-  if (!question) return reply.code(400).send({ error: "empty" });
-  const r = await ask({ question, lang: lang(b.lang, l), lessonId: b.lesson_id ?? null });
+  const lg = lang(b.lang, l);
+  const key = cacheKey(question, lg, b.lesson_id ?? null);
+  const hit = answerCache.get(key);
+  let r: AnswerResult;
+  if (hit && Date.now() - hit.at < 24 * 3600 * 1000) r = hit.r;
+  else {
+    r = await ask({ question, lang: lg, lessonId: b.lesson_id ?? null }, onStage);
+    if (r.status === "answered" || r.status === "not_in_book") {
+      if (answerCache.size > 2000) answerCache.delete(answerCache.keys().next().value!);
+      answerCache.set(key, { at: Date.now(), r });
+    }
+  }
+  r = { ...r };
   if (r.route.emergency) r.text = r.text.replace(/your local emergency number \(112 in most countries\)/, emergencyNumber(l.country));
   event(l.id, "ask", `${r.status}:${r.route.label}`);
   const { trace, ...publicPart } = r;
-  return { ...publicPart, trace: { ms: trace.ms, attempts: trace.attempts, dropped: trace.dropped.length } };
+  return { ...publicPart, trace: { ms: trace.ms, attempts: trace.attempts, dropped: trace.dropped.length, cached: Boolean(hit) } };
+}
+
+app.post("/api/shahada/ask", async (req, reply) => {
+  const l = learner(req, reply);
+  const b = req.body as { question?: string; lang?: string; lesson_id?: string | null };
+  if (!(b.question ?? "").trim()) return reply.code(400).send({ error: "empty" });
+  return answerFor(l, b);
+});
+
+// Same answer, with live stages (understanding -> found on pages -> checking) so the learner
+// sees progress while the checker works; the answer itself is still sent only once it passed.
+app.post("/api/shahada/ask/stream", async (req, reply) => {
+  const l = learner(req, reply);
+  const b = req.body as { question?: string; lang?: string; lesson_id?: string | null };
+  if (!(b.question ?? "").trim()) return reply.code(400).send({ error: "empty" });
+  reply.raw.writeHead(200, { "Content-Type": "text/event-stream; charset=utf-8", "Cache-Control": "no-cache", "X-Accel-Buffering": "no", ...(reply.getHeader("set-cookie") ? { "Set-Cookie": reply.getHeader("set-cookie") as string } : {}) });
+  const send = (o: unknown) => reply.raw.write(`data: ${JSON.stringify(o)}\n\n`);
+  try {
+    send({ type: "answer", data: await answerFor(l, b, (s) => send({ type: "stage", ...s })) });
+  } catch {
+    send({ type: "error" });
+  }
+  reply.raw.end();
 });
 
 app.post("/api/shahada/report", async (req, reply) => {

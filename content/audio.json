@@ -1,0 +1,16 @@
+{
+  "note": "Recitations from mp3quran.net (listed in the challenge's scientific package). Teaching recitation = Al-Mushaf Al-Mu'allim (Al-Minshawi): the reciter recites and leaves time for the learner to repeat.",
+  "sources": {
+    "teaching": {"label": "Mohammed Siddiq Al-Minshawi — Al-Mushaf Al-Mu'allim", "server": "https://cdn.mp3quran.net/audio/muhammad-minshawi/r3/"},
+    "murattal": {"label": "Mishary Alafasy — Hafs, Murattal", "server": "https://cdn.mp3quran.net/audio/mishary-alafasy/r1/"}
+  },
+  "surah_names": {
+    "1": {"ar": "الفاتحة", "en": "Al-Fatiha"}, "103": {"ar": "العصر", "en": "Al-Asr"}, "108": {"ar": "الكوثر", "en": "Al-Kawthar"},
+    "109": {"ar": "الكافرون", "en": "Al-Kafirun"}, "112": {"ar": "الإخلاص", "en": "Al-Ikhlas"}, "113": {"ar": "الفلق", "en": "Al-Falaq"},
+    "114": {"ar": "الناس", "en": "An-Nas"}
+  },
+  "by_lesson": {
+    "u2l2": [1, 112, 113, 114, 109, 108, 103],
+    "u3l6": [1]
+  }
+}

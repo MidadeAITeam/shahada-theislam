@@ -76,8 +76,9 @@ async function searchQueries(q: string, to: string): Promise<{ queries: string[]
 }
 
 export interface AskInput { question: string; lang: string; lessonId?: string | null; history?: string }
+export type Stage = { stage: "routing" } | { stage: "found"; pages: number[] } | { stage: "checking" };
 
-export async function ask(input: AskInput): Promise<AnswerResult> {
+export async function ask(input: AskInput, onStage: (s: Stage) => void = () => {}): Promise<AnswerResult> {
   const t0 = Date.now();
   let cost = 0;
   const track = (u?: Usage) => u && (cost += costUsd(u));
@@ -88,6 +89,7 @@ export async function ask(input: AskInput): Promise<AnswerResult> {
     trace: { retrieved: [], dropped: [], attempts: 0, costUsd: cost, ms: Date.now() - t0 }, ...extra,
   });
 
+  onStage({ stage: "routing" });
   const r = await route(input.question, input.lessonId ? lessonTitle(input.lessonId) : "");
   track(r.usage);
   if (r.action === "refer") return base("referred", r, { text: referralText(r.label, input.lang, r.emergency) });
@@ -107,6 +109,7 @@ export async function ask(input: AskInput): Promise<AnswerResult> {
   const differenceHint = r.label === "difference"
     ? "The learner mentions a different practice or opinion. Explain what the book says on this point (with its passages), without judging the other practice and without saying which person is right.\n"
     : "";
+  onStage({ stage: "found", pages: [...new Set(relevant.slice(0, 4).map((h) => h.chunk.page))].sort((a, b) => a - b) });
   const prompt = `${differenceHint}${input.lessonId ? `The learner is studying the lesson "${lessonTitle(input.lessonId)}". Answer only from it.\n` : ""}${
     input.history ? `Earlier in this conversation:\n${input.history}\n` : ""}Question (${langName(input.lang)}): """${input.question}"""\n\nPassages:\n${passageBlock(relevant)}`;
   const system = SYSTEM.replaceAll("{LANG}", langName(input.lang));
@@ -116,6 +119,7 @@ export async function ask(input: AskInput): Promise<AnswerResult> {
   let attempts = 0;
   for (const temperature of [0.2, 0]) {
     attempts++;
+    if (attempts === 1) setTimeout(() => onStage({ stage: "checking" }), 1500);
     try {
       const g = await generateJson<DraftAnswer>(prompt, { system, temperature, timeoutMs: 45000, thinking: "low" });
       track(g.usage);

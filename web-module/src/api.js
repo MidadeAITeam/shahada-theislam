@@ -44,6 +44,35 @@ export const api = {
     request('POST', `/lessons/${encodeURIComponent(id)}/complete`, { lang, check_answer: checkAnswer ?? null }),
   progress: () => request('GET', '/progress'),
   ask: (question, lang, lessonId) => request('POST', '/ask', { question, lang, lesson_id: lessonId ?? null }),
+  // Same as ask, but reports live stages (understanding → found on pages → checking) through onStage.
+  askStream: async (question, lang, lessonId, onStage) => {
+    const res = await fetch(`${BASE}/ask/stream`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
+      body: JSON.stringify({ question, lang, lesson_id: lessonId ?? null }),
+    });
+    if (!res.ok || !res.body) throw new ApiError(res.status, null);
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    let buf = '';
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      let i;
+      while ((i = buf.indexOf('\n\n')) >= 0) {
+        const line = buf.slice(0, i).split('\n').find((l) => l.startsWith('data:'));
+        buf = buf.slice(i + 2);
+        if (!line) continue;
+        const evt = JSON.parse(line.slice(5));
+        if (evt.type === 'stage') onStage?.(evt);
+        else if (evt.type === 'answer') return evt.data;
+        else if (evt.type === 'error') throw new ApiError(500, null);
+      }
+    }
+    throw new ApiError(500, null);
+  },
   handoff: (body) => request('POST', '/handoff', body),
   handoffMessages: (since) => request('GET', `/handoff/messages${q({ since })}`),
   handoffSend: (id, text) => request('POST', `/handoff/${encodeURIComponent(id)}/messages`, { text }),

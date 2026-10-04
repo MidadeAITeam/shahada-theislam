@@ -1,7 +1,7 @@
 <template>
   <article class="shd-card shd-answer" :aria-busy="loading ? 'true' : 'false'">
     <div v-if="loading" class="shd-loading" role="status">
-      <span class="shd-spinner" aria-hidden="true"></span>{{ tr('thinking') }}
+      <span class="shd-spinner" aria-hidden="true"></span>{{ stageText }}
     </div>
 
     <template v-else-if="error">
@@ -79,11 +79,21 @@ const props = defineProps({
   question: { type: String, default: '' },
   lang: { type: String, default: 'en' },
   loading: { type: Boolean, default: false },
+  stage: { type: Object, default: null },
   error: { type: Boolean, default: false },
 });
 defineEmits(['handoff', 'open-lesson', 'retry']);
 
 const tr = useT(() => props.lang);
+
+// Live progress while the service routes, retrieves and checks (the answer itself waits for the checker).
+const stageText = computed(() => {
+  const st = props.stage;
+  if (!st) return tr('thinking');
+  if (st.stage === 'routing') return tr('stageRouting');
+  if (st.stage === 'found') return tr('stageFound', { pages: (st.pages || []).join('، ') });
+  return tr('stageChecking');
+});
 const arrow = computed(() => (isRtl(props.lang) ? '←' : '→'));
 
 const sourceMap = computed(() => Object.fromEntries((props.answer?.sources || []).map((s) => [s.id, s])));
