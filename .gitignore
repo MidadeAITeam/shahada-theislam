@@ -14,3 +14,4 @@ eval/runs/
 web/platform/
 web/dist/
 secrets.local
+!eval/results/

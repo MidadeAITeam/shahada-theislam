@@ -1,0 +1,120 @@
+{"id":"P01-V1","lang":"en","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question":"Could you please explain what it really means when we say Muhammad is the Messenger of Allah, and what that actually asks of us in daily life?","answer_status":"answered","answer_lesson":"u1l3","reasked":false,"question_ok":true,"ok":true}
+{"id":"P01-V2","lang":"en","day":3,"expected":["u3l3","u3l6"],"opened":["u3l3","u3l6"],"order_ok":true,"question":"I am a bit confused, does taking a deep nap or eating some camel meat mean I have to redo my wudu?","answer_status":"answered","answer_lesson":"u3l3","reasked":false,"question_ok":true,"ok":true}
+{"id":"P01-V3","lang":"en","day":7,"expected":["u1l1","u1l2"],"opened":["u1l1","u1l2"],"order_ok":true,"question":"Coming from my rational background, I keep wondering: what mental faculties and tools did God give us so that we are truly accountable for our actions?","answer_status":"answered","answer_lesson":"u1l1","reasked":false,"question_ok":true,"ok":true}
+{"id":"P01-V4","lang":"en","day":14,"expected":["u1l4","u2l1"],"opened":["u1l4","u2l1"],"order_ok":true,"question":"Coming from an atheist background, I'm still trying to understand the basics—could you explain what having faith really means in Islam?","answer_status":"answered","answer_lesson":"u1l4","reasked":false,"question_ok":true,"ok":true}
+{"id":"P02-V1","lang":"en","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question":"Teacher, if my heart is sincere, can I just pray and worship God in my own way, or must it be done strictly as taught?","answer_status":"answered","answer_lesson":"u3l1","reasked":false,"question_ok":false,"ok":false}
+{"id":"P02-V2","lang":"en","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question":"Habari teacher, could you please tell me which three acts I must do Wudoo' for before performing them?","answer_status":"answered","answer_lesson":"u3l3","reasked":false,"question_ok":false,"ok":false}
+{"id":"P02-V3","lang":"en","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question":"Teacher, could you explain to me what everyday things or natural bodily functions break my wudu and mean I have to wash again before I can pray?","answer_status":"answered","answer_lesson":"u3l3","reasked":false,"question_ok":true,"ok":true}
+{"id":"P02-V4","lang":"en","day":14,"expected":["u1l1"],"opened":["u1l1"],"order_ok":true,"question":"Could you please tell me which three other creations humans share traits with according to our faith, and what are those similarities?","answer_status":"answered","answer_lesson":"u1l1","reasked":false,"question_ok":true,"ok":true}
+{"id":"P03-V1","lang":"en","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question":"Teacher, could you explain to me simply how true Eemaan connects what is deep in our hearts with the daily actions we do as Muslims?","answer_status":"answered","answer_lesson":"u1l4","reasked":false,"question_ok":false,"ok":false}
+{"id":"P03-V2","lang":"en","day":3,"expected":["u3l3","u1l1"],"opened":["u3l3","u1l1"],"order_ok":true,"question":"Habari teacher, could you please explain to me what ghusl actually means, and what are the three main situations where I am required to do this full body wash?","answer_status":"answered","answer_lesson":"u3l4","reasked":false,"question_ok":false,"ok":false}
+{"id":"P03-V3","lang":"en","day":7,"expected":["u1l2","u1l4"],"opened":["u1l2","u1l4"],"order_ok":true,"question":"Teacher, could you explain to me the true meaning of saying 'La ilaha illa Allah', and what are the two main parts it contains?","answer_status":"answered","answer_lesson":"u1l3","reasked":false,"question_ok":false,"ok":false}
+{"id":"P03-V4","lang":"en","day":14,"expected":["u2l1","u2l2"],"opened":["u2l1","u2l2"],"order_ok":true,"question":"Teacher, could you explain why the Quran shares so many stories about the earlier prophets, and what lessons we are supposed to learn from their lives?","answer_status":"answered","answer_lesson":"u2l1","reasked":false,"question_ok":true,"ok":true}
+{"id":"P04-V1","lang":"en","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P04-V2","lang":"en","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question":"Teacher, could you explain to me again what the two types of purification are in Islam, and what does each one mean?","answer_status":"answered","answer_lesson":"u3l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P04-V3","lang":"en","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question":"Teacher, if I am at work and want to just wipe wet hands over my socks to save time instead of washing my feet, what are the three rules I need to follow for that to be allowed?","answer_status":"answered","answer_lesson":"u3l3","reasked":false,"question_ok":true,"ok":true}
+{"id":"P04-V4","lang":"en","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question":"Kuya, in a 4-rak'ah prayer like Isha, what should I do and say right after the second prostration of the second rak'ah?","answer_status":"answered","answer_lesson":"u3l6","reasked":false,"question_ok":true,"ok":true}
+{"id":"P05-V1","lang":"en","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P05-V2","lang":"en","day":3,"expected":["u3l3","u3l6"],"opened":["u3l3","u3l6"],"order_ok":true,"question":"Could you please tell me the three conditions that need to be met so I'm allowed to wipe over my socks for wudu?","answer_status":"answered","answer_lesson":"u3l3","reasked":false,"question_ok":true,"ok":true}
+{"id":"P05-V3","lang":"en","day":7,"expected":["u1l1","u1l2"],"opened":["u1l1","u1l2"],"order_ok":true,"question":"Coming from a Christian background, what are the two main reasons someone should actually become a Muslim?","answer_status":"answered","answer_lesson":"u1l2","reasked":false,"question_ok":false,"ok":false}
+{"id":"P05-V4","lang":"en","day":14,"expected":["u1l4","u2l1"],"opened":["u1l4","u2l1"],"order_ok":true,"question":"Could you please explain what the six pillars of faith are in Islam?","answer_status":"answered","answer_lesson":"u1l4","reasked":false,"question_ok":true,"ok":true}
+{"id":"P06-V1","lang":"en","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P06-V2","lang":"en","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question":"When I'm washing up to get ready for prayer, what kinds of water are actually okay for me to use?","answer_status":"answered","answer_lesson":"u3l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P06-V3","lang":"en","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P06-V4","lang":"en","day":14,"expected":["u1l1"],"opened":["u1l1"],"order_ok":true,"question":"I was talking to someone about finding the right direction in life, so could you tell me what the greatest blessing a person can receive is, and how do we Muslims keep asking for it?","answer_status":"answered","answer_lesson":"u1l1","reasked":false,"question_ok":true,"ok":true}
+{"id":"P07-V1","lang":"en","day":1,"expected":["u1l3","u2l2"],"opened":["u1l3","u2l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P07-V2","lang":"en","day":3,"expected":["u3l2","u3l3"],"opened":["u3l2","u3l3"],"order_ok":true,"question":"Teacher, if I suddenly find some strange stain on my clothes and I don't know what it is, does Islam consider it clean by default or do I have to wash it?","answer_status":"answered","answer_lesson":"u3l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P07-V3","lang":"en","day":7,"expected":["u3l6","u1l1"],"opened":["u3l6","u1l1"],"order_ok":true,"question":"Teacher, when a man is about to pray, which parts of his body does he need to make sure are covered properly?","answer_status":"answered","answer_lesson":"u3l6","reasked":false,"question_ok":true,"ok":true}
+{"id":"P07-V4","lang":"en","day":14,"expected":["u1l2","u1l4"],"opened":["u1l2","u1l4"],"order_ok":true,"question":"My friend asked me why I can still wear my Filipino clothes and eat my favorite traditional food as a Muslim, so how does Islam really view our local culture and customs?","answer_status":"answered","answer_lesson":"u1l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P08-V1","lang":"en","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P08-V2","lang":"en","day":3,"expected":["u3l3","u3l6"],"opened":["u3l3","u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P08-V3","lang":"en","day":7,"expected":["u1l1","u1l2"],"opened":["u1l1","u1l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P08-V4","lang":"en","day":14,"expected":["u1l4","u2l1"],"opened":["u1l4","u2l1"],"order_ok":true,"question":"My friend believes God made everything, but he also prays to a holy person to bring him good luck. Why is doing this considered such a big sin in Islam?","answer_status":"answered","answer_lesson":"u1l4","reasked":false,"question_ok":true,"ok":true}
+{"id":"P09-V1","lang":"en","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P09-V2","lang":"en","day":3,"expected":["u3l3","u3l6"],"opened":["u3l3","u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P09-V3","lang":"en","day":7,"expected":["u1l1","u1l2"],"opened":["u1l1","u1l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P09-V4","lang":"en","day":14,"expected":["u1l4","u2l1"],"opened":["u1l4","u2l1"],"order_ok":true,"question":"Teacher, could you please remind me what the six pillars of faith are that every Muslim must believe in?","answer_status":"answered","answer_lesson":"u1l4","reasked":false,"question_ok":true,"ok":true}
+{"id":"P10-V1","lang":"ar","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P10-V2","lang":"ar","day":3,"expected":["u3l3","u3l6"],"opened":["u3l3","u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P10-V3","lang":"ar","day":7,"expected":["u1l1","u1l2"],"opened":["u1l1","u1l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P10-V4","lang":"ar","day":14,"expected":["u1l4","u2l1"],"opened":["u1l4","u2l1"],"order_ok":true,"question":"يا أستاذي، ما هو معنى الإيمان في الإسلام بالضبط؟","answer_status":"answered","answer_lesson":"u1l4","reasked":false,"question_ok":true,"ok":true}
+{"id":"P11-V1","lang":"ar","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P11-V2","lang":"ar","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question":"يا أستاذ، ما هو الفرق بين الوضوء والغُسل في الطهارة؟","answer_status":"answered","answer_lesson":"u3l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P11-V3","lang":"ar","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P11-V4","lang":"ar","day":14,"expected":["u1l1"],"opened":["u1l1"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P12-V1","lang":"ar","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P12-V2","lang":"ar","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question":"لو تلوثت ملابسي بشيء وأنا غير متأكد هل هو نجس في الإسلام أم لا، فما هو الأصل في ذلك وكيف أنظفها؟","answer_status":"answered","answer_lesson":"u3l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P12-V3","lang":"ar","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P12-V4","lang":"ar","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question":"السلام عليكم يا أستاذي، متى يبدأ وقت صلاة الفجر والمغرب بالضبط ومتى ينتهي كل منهما؟","answer_status":"answered","answer_lesson":"u3l6","reasked":false,"question_ok":true,"ok":true}
+{"id":"P13-V1","lang":"ar","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P13-V2","lang":"ar","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question":"أستاذي، ما هي الأشياء الثلاثة التي تجعلني أحتاج أن أتوضأ للصلاة؟","answer_status":"answered","answer_lesson":"u3l3","reasked":false,"question_ok":false,"ok":false}
+{"id":"P13-V3","lang":"ar","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P13-V4","lang":"ar","day":14,"expected":["u1l1"],"opened":["u1l1"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P14-V1","lang":"ar","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P14-V2","lang":"ar","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question":"مَا هُوَ مَعْنَى الطَّهَارَةِ فِي الإِسْلَامِ، وَمَا هُمَا نَوْعَا النَّجَاسَةِ اللَّذَانِ تُزِيلُهُمَا؟","answer_status":"answered","answer_lesson":"u3l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P14-V3","lang":"ar","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P14-V4","lang":"ar","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question":"مَا هِيَ الشُّرُوطُ الأَرْبَعَةُ الَّتِي يَجِبُ أَنْ أَفْعَلَهَا قَبْلَ أَنْ أَبْدَأَ الصَّلَاةَ؟","answer_status":"answered","answer_lesson":"u3l6","reasked":false,"question_ok":true,"ok":true}
+{"id":"P15-V1","lang":"ar","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P15-V2","lang":"ar","day":3,"expected":["u2l2"],"opened":["u2l2"],"order_ok":true,"question":"يا أستاذ، لماذا من المهم جداً أن أحفظ سورة الفاتحة غيباً لكل صلاة؟","answer_status":"answered","answer_lesson":"u2l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P15-V3","lang":"ar","day":7,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P15-V4","lang":"ar","day":14,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P16-V1","lang":"ar","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P16-V2","lang":"ar","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P16-V3","lang":"ar","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P16-V4","lang":"ar","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question":"مرحباً أستاذي، إذا كنتُ مسافراً يوم الجمعة، فهل يجب أن أذهب إلى المسجد لصلاة الجمعة؟ وماذا أفعل إذا لم أذهب؟","answer_status":"answered","answer_lesson":"u3l6","reasked":false,"question_ok":true,"ok":true}
+{"id":"P17-V1","lang":"fr","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P17-V2","lang":"fr","day":3,"expected":["u3l3","u3l6"],"opened":["u3l3","u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P17-V3","lang":"fr","day":7,"expected":["u1l1","u1l2"],"opened":["u1l1","u1l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P17-V4","lang":"fr","day":14,"expected":["u1l4","u2l1"],"opened":["u1l4","u2l1"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P18-V1","lang":"es","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P18-V2","lang":"es","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P18-V3","lang":"es","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P18-V4","lang":"es","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P19-V1","lang":"id","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P19-V2","lang":"id","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P19-V3","lang":"id","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P19-V4","lang":"id","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P20-V1","lang":"pt","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P20-V2","lang":"pt","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P20-V3","lang":"pt","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P20-V4","lang":"pt","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P21-V1","lang":"ru","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P21-V2","lang":"ru","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P21-V3","lang":"ru","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P21-V4","lang":"ru","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P22-V1","lang":"bs","day":1,"expected":["u1l3","u2l2"],"opened":["u1l3","u2l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P22-V2","lang":"bs","day":3,"expected":["u3l2","u3l3"],"opened":["u3l2","u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P22-V3","lang":"bs","day":7,"expected":["u3l6","u1l1"],"opened":["u3l6","u1l1"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P22-V4","lang":"bs","day":14,"expected":["u1l2","u1l4"],"opened":["u1l2","u1l4"],"order_ok":true,"question":"Učitelju, šta je to jedino po čemu je jedan čovjek bolji od drugog u islamu, a koje stvari poput bogatstva ili porijekla tu uopće nisu važne?","answer_status":"answered","answer_lesson":"u1l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P23-V1","lang":"vi","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P23-V2","lang":"vi","day":3,"expected":["u3l3","u3l6"],"opened":["u3l3","u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P23-V3","lang":"vi","day":7,"expected":["u1l1","u1l2"],"opened":["u1l1","u1l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P23-V4","lang":"vi","day":14,"expected":["u1l4","u2l1"],"opened":["u1l4","u2l1"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P24-V1","lang":"th","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P24-V2","lang":"th","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P24-V3","lang":"th","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P24-V4","lang":"th","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P25-V1","lang":"tl","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P25-V2","lang":"tl","day":3,"expected":["u2l2"],"opened":["u2l2"],"order_ok":true,"question":"Guro, kapag binabanggit po natin sa Surah Al-Fatiha ang mga pangalan ni Allah na 'Ar-Rahman' at 'Ar-Rahim', ano po ba ang pinagkaiba ng dalawang ito sa paglalarawan ng Kanyang awa?","answer_status":"answered","answer_lesson":"u2l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P25-V3","lang":"tl","day":7,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P25-V4","lang":"tl","day":14,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P26-V1","lang":"tl","day":1,"expected":["u1l3","u2l2"],"opened":["u1l3","u2l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P26-V2","lang":"tl","day":3,"expected":["u3l2","u3l3"],"opened":["u3l2","u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P26-V3","lang":"tl","day":7,"expected":["u3l6","u1l1"],"opened":["u3l6","u1l1"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P26-V4","lang":"tl","day":14,"expected":["u1l2","u1l4"],"opened":["u1l2","u1l4"],"order_ok":true,"question":"Gusto ko lang pong maliwanagan, ano po ba talaga ang eksaktong ibig sabihin noong unang bahagi ng Shahada na 'Walang ibang Diyos maliban kay Allah'?","answer_status":"answered","answer_lesson":"u1l3","reasked":false,"question_ok":false,"ok":false}
+{"id":"P27-V1","lang":"hi","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P27-V2","lang":"hi","day":3,"expected":["u3l3","u1l1"],"opened":["u3l3","u1l1"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P27-V3","lang":"hi","day":7,"expected":["u1l2","u1l4"],"opened":["u1l2","u1l4"],"order_ok":true,"question":"अस्सलाम वालेकुम, एक इंसान के लिए इस्लाम को अपनाना क्यों ज़रूरी है, और इसके पीछे मुख्य कारण क्या हैं?","answer_status":"answered","answer_lesson":"u1l2","reasked":false,"question_ok":true,"ok":true}
+{"id":"P27-V4","lang":"hi","day":14,"expected":["u2l1","u2l2"],"opened":["u2l1","u2l2"],"order_ok":true,"question":"मैं नया मुसलमान हूँ और नमाज़ पढ़ना सीख रहा हूँ, तो मुझे रोज़ की नमाज़ के लिए क़ुरआन की कौन सी सूरह सबसे पहले याद करनी चाहिए और क्यों?","answer_status":"answered","answer_lesson":"u2l2","reasked":false,"question_ok":false,"ok":false}
+{"id":"P28-V1","lang":"hi","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P28-V2","lang":"hi","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P28-V3","lang":"hi","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P28-V4","lang":"hi","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P29-V1","lang":"zh","day":1,"expected":["u1l3"],"opened":["u1l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P29-V2","lang":"zh","day":3,"expected":["u3l2"],"opened":["u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P29-V3","lang":"zh","day":7,"expected":["u3l3"],"opened":["u3l3"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P29-V4","lang":"zh","day":14,"expected":["u3l6"],"opened":["u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P30-V1","lang":"sw","day":1,"expected":["u1l3","u3l2"],"opened":["u1l3","u3l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P30-V2","lang":"sw","day":3,"expected":["u3l3","u3l6"],"opened":["u3l3","u3l6"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P30-V3","lang":"sw","day":7,"expected":["u1l1","u1l2"],"opened":["u1l1","u1l2"],"order_ok":true,"question_ok":true,"ok":true}
+{"id":"P30-V4","lang":"sw","day":14,"expected":["u1l4","u2l1"],"opened":["u1l4","u2l1"],"order_ok":true,"question_ok":true,"ok":true}
