@@ -1,0 +1,22 @@
+{
+ "voice": "Charon",
+ "style": "You are a keynote presenter on a world stage, like a legendary product launch. Speak Arabic slowly, with confidence, warmth and dramatic pauses between short sentences. Read exactly:",
+ "beats": [
+  {"id": "b01", "visual": "chat", "ar": "", "en": "", "silence": 7.0},
+  {"id": "b02", "visual": "words", "words": ["هذه أعظم لحظة", "في حياة إنسان."], "ar": "هذه… أعظم لحظة في حياة إنسان.", "en": "This is the greatest moment of a person's life."},
+  {"id": "b03", "visual": "words", "words": ["ثم…", "صمت."], "ar": "ثم… صمت.", "en": "And then… silence."},
+  {"id": "b04", "visual": "number", "num": "166", "label": "إنساناً أعلنوا إسلامهم في محادثة معنا", "ar": "مئة وستة وستون إنساناً أعلنوا إسلامهم في محادثة معنا.", "en": "166 people declared Islam in a conversation with us."},
+  {"id": "b05", "visual": "number", "num": "89", "label": "لم يكتبوا بعدها إلا رسالتين أو أقل", "ar": "تسعة وثمانون… توقفوا بعد رسالتين.", "en": "89 stopped after two messages."},
+  {"id": "b06", "visual": "number", "num": "11", "label": "فقط… تركوا طريقاً للوصول إليهم", "ar": "وأحد عشر فقط… تركوا طريقاً للوصول إليهم.", "en": "Only 11 left any way to reach them."},
+  {"id": "b07", "visual": "words", "words": ["الليلة يريد أن يصلي.", "لا يعرف كيف.", "ولا يعرف أحداً يسأله."], "ar": "الليلة… يريد أن يصلي. لا يعرف كيف. ولا يعرف أحداً يسأله.", "en": "Tonight, he wants to pray. He doesn't know how. And no one to ask."},
+  {"id": "b08", "visual": "words", "words": ["والذكاء الاصطناعي؟", "ممنوع أن يعلّمه من ذاكرته."], "ar": "والذكاء الاصطناعي؟ ممنوع أن يعلّمه من ذاكرته. فالخطأ في صفة الصلاة… لا يحتمل.", "en": "And the AI? Forbidden to teach him from memory. A mistake in how to pray is not acceptable."},
+  {"id": "b09", "visual": "reveal", "ar": "لذلك بنينا… ما بعد الشهادة.", "en": "So we built: After the Shahada."},
+  {"id": "b10", "visual": "screen", "scene": "s2", "caption": "في اللحظة نفسها. في المحادثة نفسها.", "ar": "في اللحظة نفسها، وفي المحادثة نفسها، يبدأ التعليم.", "en": "The same moment. The same conversation. Learning begins."},
+  {"id": "b11", "visual": "screen", "scene": "s3", "caption": "كل جملة تعرف صفحتها.", "ar": "من كتاب الوجيز، بلغته. كل جملة تعرف صفحتها في الكتاب، وكل آية يُدرجها المصحف… لا الآلة.", "en": "From the book Al-Wajeez, in his language. Every sentence knows its page. Every verse comes from the Mushaf, not the machine."},
+  {"id": "b12", "visual": "screen", "scene": "s4", "caption": "خطوات الكتاب. كاملة.", "ar": "يختار ما يحتاجه أولاً… فيتعلم الوضوء بخطوات الكتاب كاملة.", "en": "He chooses what he needs first, and learns wudu with the book's full steps."},
+  {"id": "b13", "visual": "screen", "scene": "s5", "caption": "لا مصدر؟ لا جواب.", "ar": "يسأل ما يشاء. وإن لم يكن الجواب في الكتاب… يقولها بصراحة.", "en": "He asks anything. If the answer isn't in the book, it says so."},
+  {"id": "b14", "visual": "screen", "scene": "s6", "caption": "وحين يحتاج إنساناً… يجد إنساناً.", "ar": "وحين يحتاج إنساناً… يجد إنساناً.", "en": "And when he needs a person, he finds one."},
+  {"id": "b15", "visual": "proof", "ar": "اختبرناه على مئتي سؤال، ثبّتنا بصمتها قبل أن نكتب سطراً واحداً. كل اقتباس طابق الكتاب… مئة في المئة.", "en": "Tested on 200 questions, sealed before we wrote a single line. Every quote matched the book: 100%."},
+  {"id": "b16", "visual": "close", "ar": "الشهادة ليست نهاية المحادثة… إنها بدايتها.", "en": "The Shahada is not the end of the conversation. It is the beginning."}
+ ]
+}
