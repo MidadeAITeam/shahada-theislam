@@ -369,3 +369,6 @@
   .shd-spinner { animation-duration: 2s; }
   .shd-progress__bar { transition: none; }
 }
+
+/* Submit buttons beside a text field keep their label on one line (Arabic labels wrapped in RTL). */
+.shd form .shd-btn { white-space: nowrap; flex: 0 0 auto; min-width: 4.5rem; aspect-ratio: auto; }

@@ -1,0 +1,54 @@
+{
+ "voice": "Charon",
+ "style": "Read in Arabic, in a calm, warm and clear documentary voice, at a natural pace:",
+ "scenes": [
+  {
+   "id": "s1",
+   "kind": "card",
+   "ar": "أعلن مئةٌ وستةٌ وستون شخصاً إسلامَهم في محادثات ذا إسلام شات، ثم انتهت الرحلة عند التهنئة. أحد عشر فقط تركوا وسيلة تواصل.",
+   "en": "166 people declared Islam in theislam.chat conversations, and the journey ended at the congratulations. Only 11 left any contact."
+  },
+  {
+   "id": "s2",
+   "kind": "screen",
+   "ar": "اليوم تبدأ من لحظة الشهادة رحلةٌ تعليمية في المحادثة نفسها، ببطاقةٍ فيها ما قاله المستخدم عن نفسه فقط، ولا يُحفظ شيء قبل موافقته.",
+   "en": "Now a learning journey starts at the Shahada, in the same chat, with a card of only what the user said. Nothing is saved without consent."
+  },
+  {
+   "id": "s3",
+   "kind": "screen",
+   "ar": "الدرس الأول من كتاب الوجيز: معنى الشهادتين. كل جملة مربوطة بصفحتها، والآية يُدرجها الكود من المصحف لا النموذج.",
+   "en": "Lesson one from Al-Wajeez: the meaning of the Shahada. Every sentence links to its page; verses are inserted from the Qur'an by code."
+  },
+  {
+   "id": "s4",
+   "kind": "screen",
+   "ar": "ثم يختار ما يحتاجه أولاً، كالوضوء، فيبدأ بالطهارة ثم الوضوء بخطوات الكتاب كاملة، مع تمارين من أسئلة الكتاب نفسه.",
+   "en": "They choose what comes first, like wudu: purification, then wudu with the book's full steps, and exercises from the book's own questions."
+  },
+  {
+   "id": "s5",
+   "kind": "screen",
+   "ar": "ويسأل بلغته، فيأتيه الجواب من الكتاب وحده بعد أن يحذف الفاحص كل جملة بلا سند. وما ليس في الكتاب لا يُجاب عنه.",
+   "en": "They ask in their language; the answer comes only from the book after a checker removes unsupported sentences. What isn't in the book isn't answered."
+  },
+  {
+   "id": "s6",
+   "kind": "screen",
+   "ar": "والفتوى الشخصية والأزمات تذهب إلى إنسان: مرشدٍ أو مرشدة، بعد موافقة المستخدم، ويصله الرد في المحادثة.",
+   "en": "Personal fatwas and crises go to a person — a male or female mentor — with consent, and the reply arrives in the chat."
+  },
+  {
+   "id": "s7",
+   "kind": "card",
+   "ar": "اختبرناه على مئتي سؤال ثبّتنا بصمتها قبل البناء: الاقتباسات مطابقة للكتاب مئة في المئة، وأسئلة الخلاف بصيغة السعة في سبعة وثمانين في المئة.",
+   "en": "Tested on 200 questions frozen before building: quotes match the book 100%; scholarly-difference questions handled with room 87%."
+  },
+  {
+   "id": "s8",
+   "kind": "card",
+   "ar": "ذا إسلام شات: الشهادة بدايةُ الطريق.",
+   "en": "theislam.chat: the Shahada is where the journey begins."
+  }
+ ]
+}

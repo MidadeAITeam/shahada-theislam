@@ -55,7 +55,7 @@
           v-for="(st, i) in lesson.steps"
           :key="`st${i}`"
           tag="li"
-          :text="st.text"
+          :text="plainSteps(st.text)"
           :sources="st.source ? [st.source] : []"
           :source-map="sourceMap"
           :numbers="numbers"
@@ -172,6 +172,9 @@ import { computed, reactive, ref } from 'vue';
 import SourcedSentence from './SourcedSentence.vue';
 import VerseList from './VerseList.vue';
 import ExerciseList from './ExerciseList.vue';
+
+// The steps are the book's passages verbatim; drop Markdown emphasis marks, keep line breaks.
+const plainSteps = (t) => (t || '').replace(/\*\*?|__/g, '').replace(/^>\s?/gm, '').replace(/\n{2,}/g, '\n').trim();
 import AnswerCard from './AnswerCard.vue';
 import ReportMistake from './ReportMistake.vue';
 import { api } from './api.js';
@@ -246,6 +249,7 @@ async function runAsk(item) {
 </script>
 
 <style scoped>
+.shd-steps :deep(li) { white-space: pre-line; line-height: 1.9; margin-bottom: 0.6rem; }
 .shd-audio { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 12px; background: #f2f4ff; }
 .shd-audio__title { font-size: 1rem; font-weight: 700; margin: 0 0 0.5rem; }
 .shd-audio__item { padding: 0.5rem 0; border-top: 1px solid #e3e6f5; }
