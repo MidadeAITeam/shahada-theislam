@@ -12,9 +12,15 @@ function loadArabic() {
   if (arabic) return arabic;
   arabic = new Map();
   const f = path.join(config.dataDir, "quran/quran-uthmani.txt");
-  for (const line of fs.readFileSync(f, "utf8").split("\n")) {
+  const lines = fs.readFileSync(f, "utf8").split("\n");
+  const BASMALA = lines[0].split("|")[2].trim(); // 1:1 is the basmala itself
+  for (const line of lines) {
     const [s, a, t] = line.split("|");
-    if (s && a && t && /^\d+$/.test(s)) arabic.set(`${s}:${a}`, t.trim());
+    if (!(s && a && t && /^\d+$/.test(s))) continue;
+    let text = t.trim();
+    // Tanzil prefixes the basmala to the first verse of every surah except 1 and 9; it is not part of that verse.
+    if (a === "1" && s !== "1" && text.startsWith(BASMALA)) text = text.slice(BASMALA.length).trim();
+    arabic.set(`${s}:${a}`, text);
   }
   return arabic;
 }

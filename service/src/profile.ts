@@ -21,7 +21,7 @@ Extract ONLY what the user explicitly said about themselves. For each field copy
 that states it as "evidence". If the user did not say it explicitly, return null for that field. Do not guess from
 names, language, writing style or topics.
 Return JSON:
-{"previous_religion": {"value": one of ${JSON.stringify(RELIGIONS)}, "evidence": "..."} | null,
+{"previous_religion": {"value": one of ${JSON.stringify(RELIGIONS)}, "label": "<that religion's name in the user's language, capitalised>", "evidence": "..."} | null,
  "country": {"value": "<ISO 3166-1 alpha-2>", "label": "<country name in the user's language>", "evidence": "..."} | null,
  "asked_about": {"value": "<the main topic they asked about, 1-4 words, in the user's language>", "evidence": "..."} | null}`;
 

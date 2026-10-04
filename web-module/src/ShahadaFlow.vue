@@ -236,7 +236,8 @@ async function confirmCard({ card, background_passages }) {
     confirmedCard.value = card;
     backgroundPassages.value = background_passages;
     items.value = items.value.filter((i) => i.type !== 'card');
-    if (firstLesson) push({ type: 'lesson', lesson: firstLesson, first: true });
+    // The first lesson is fetched again so it can carry the passages chosen for the stated former belief.
+    if (firstLesson && !(background_passages && card.previous_religion)) push({ type: 'lesson', lesson: firstLesson, first: true });
     else await loadLesson('u1l3', true);
   } catch {
     fail(() => confirmCard({ card, background_passages }));
@@ -247,7 +248,8 @@ async function confirmCard({ card, background_passages }) {
 
 async function loadLesson(id, first = false) {
   await step(tr('loading'), async () => {
-    const lesson = await api.lesson(id, learnerLang.value);
+    const background = backgroundPassages.value ? confirmedCard.value?.previous_religion?.value ?? null : null;
+    const lesson = await api.lesson(id, learnerLang.value, background);
     push({ type: 'lesson', lesson, first });
   });
 }

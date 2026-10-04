@@ -108,10 +108,8 @@ export async function search(lang: string, queries: string[], opts: { lessonId?:
   const pool = e.chunks.map((c, i) => ({ c, i })).filter(({ c }) => c.lesson_id && (!opts.lessonId || c.lesson_id === opts.lessonId));
   const sem = new Array(e.chunks.length).fill(0);
   if (e.vectors.length) {
-    for (const q of queries) {
-      const v = await embedQuery(q);
-      pool.forEach(({ i }) => (sem[i] = Math.max(sem[i], cosine(v, e.vectors[i]))));
-    }
+    const vs = await Promise.all(queries.map((q) => embedQuery(q)));
+    for (const v of vs) pool.forEach(({ i }) => (sem[i] = Math.max(sem[i], cosine(v, e.vectors[i]))));
   }
   const lex = new Array(e.chunks.length).fill(0);
   for (const q of queries) bm25(e, tokens(q)).forEach((s, i) => (lex[i] = Math.max(lex[i], s)));
@@ -119,4 +117,25 @@ export async function search(lang: string, queries: string[], opts: { lessonId?:
   const hits = pool.map(({ c, i }) => ({ chunk: c, semantic: sem[i], lexical: lex[i] / maxLex, score: 0.75 * sem[i] + 0.25 * (lex[i] / maxLex) }));
   hits.sort((a, b) => b.score - a.score);
   return hits.slice(0, k);
+}
+
+/**
+ * Passages next to a hit on the same page (and the first of the next page), so a list split under
+ * short headings ("First", "Second"...) reaches the generator whole.
+ */
+export function withNeighbours(lang: string, hits: Hit[], top = 3, span = 3): Hit[] {
+  const e = edition(lang);
+  if (!e) return hits;
+  const out = [...hits];
+  const have = new Set(hits.map((h) => h.chunk.id));
+  for (const h of hits.slice(0, top)) {
+    const i = e.chunks.findIndex((c) => c.id === h.chunk.id);
+    for (let j = Math.max(0, i - 1); j <= Math.min(e.chunks.length - 1, i + span); j++) {
+      const c = e.chunks[j];
+      if (have.has(c.id) || !c.lesson_id || c.lesson_id !== h.chunk.lesson_id || Math.abs(c.page - h.chunk.page) > 1) continue;
+      have.add(c.id);
+      out.push({ chunk: c, score: h.score * 0.9, semantic: h.semantic, lexical: 0 });
+    }
+  }
+  return out;
 }

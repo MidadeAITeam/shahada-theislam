@@ -190,6 +190,536 @@
    "by": "team content review (AI-assisted, read against the cited passages)",
    "on": "2026-10-04",
    "method": "every summary sentence checked against its cited passage; worship steps shown verbatim from the book"
+  },
+  "es:u3l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "es:u4l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "es:u3l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "es:u4l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "es:u4l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "es:u1l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "es:u4l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "es:u3l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "es:u3l8": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "es:u2l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u3l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u3l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u2l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u4l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u1l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u3l9": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u1l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u3l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u3l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u3l5": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u3l6": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u4l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u3l7": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "id:u3l8": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u3l7": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u3l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u1l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u3l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u4l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u2l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u3l5": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u1l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u1l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u3l9": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u4l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u4l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "pt:u3l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u3l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u1l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u3l7": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u4l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u1l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u3l6": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u1l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u2l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u4l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u3l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u3l8": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u3l9": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u3l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u3l5": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u1l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u3l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u3l8": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u2l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u3l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u4l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u1l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u3l5": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u3l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u4l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u3l7": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u1l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u4l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u3l9": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u1l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u3l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u1l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u2l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u3l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u1l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u4l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u3l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u3l6": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u4l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u3l7": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u3l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u2l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u1l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u3l7": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u1l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u3l5": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u3l6": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u3l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u4l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u3l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u3l8": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u4l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u1l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u1l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u3l6": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u3l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u2l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u4l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u2l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u4l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u1l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u1l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u3l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u3l7": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u4l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u3l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u3l9": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u3l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u4l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "tl:u3l8": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
   }
  },
  "specialist": {}

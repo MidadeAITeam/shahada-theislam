@@ -38,7 +38,8 @@ export const api = {
   start: (lang, conversation) => request('POST', '/start', { lang, conversation }),
   profile: (body) => request('POST', '/profile', body),
   lessons: (lang) => request('GET', `/lessons${q({ lang })}`),
-  lesson: (id, lang) => request('GET', `/lessons/${encodeURIComponent(id)}${q({ lang })}`),
+  // `background` (the stated former belief) is sent per request and never stored by the service.
+  lesson: (id, lang, background) => request('GET', `/lessons/${encodeURIComponent(id)}${q({ lang, background })}`),
   complete: (id, lang, checkAnswer) =>
     request('POST', `/lessons/${encodeURIComponent(id)}/complete`, { lang, check_answer: checkAnswer ?? null }),
   progress: () => request('GET', '/progress'),

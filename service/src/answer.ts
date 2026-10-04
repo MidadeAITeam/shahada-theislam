@@ -1,6 +1,6 @@
 // Question path: route -> retrieve -> constrained generation -> checker -> render.
 // Nothing reaches the user before the checker has passed it.
-import { search, sourceLang, type Hit } from "./book.ts";
+import { search, sourceLang, withNeighbours, type Hit } from "./book.ts";
 import { acceptable, check } from "./checker.ts";
 import { config } from "./config.ts";
 import { lessonById } from "./curriculum.ts";
@@ -61,14 +61,17 @@ function passageBlock(hits: Hit[]): string {
     .join("\n\n");
 }
 
-async function translateQuery(q: string, to: string): Promise<{ text: string; usage?: Usage }> {
+async function searchQueries(q: string, to: string): Promise<{ queries: string[]; usage?: Usage }> {
+  // Two search phrasings in the edition's language: a faithful translation (or the question itself) and
+  // one in the terms a beginner's fiqh/aqeedah textbook would use (e.g. "conditions of wiping over socks").
   try {
-    const r = await generateJson<{ text: string }>(`Translate this question into ${langName(to)}. Return {"text": "..."}.\n"""${q}"""`, {
-      model: config.routerModel, temperature: 0, timeoutMs: 15000, thinking: "minimal",
-    });
-    return { text: r.data.text, usage: r.usage };
+    const r = await generateJson<{ queries: string[] }>(
+      `Write 2 short search queries in ${langName(to)} to find the answer to this question in a beginner's Islamic textbook: (1) the question translated/kept faithfully, (2) the same need phrased with the textbook's own terms (chapter-style wording). Return {"queries": ["...", "..."]}.\nQuestion: """${q}"""`,
+      { model: config.routerModel, temperature: 0, timeoutMs: 15000, thinking: "minimal" },
+    );
+    return { queries: (r.data.queries ?? []).filter((x) => typeof x === "string" && x.trim()).slice(0, 2), usage: r.usage };
   } catch {
-    return { text: q };
+    return { queries: [] };
   }
 }
 
@@ -91,15 +94,12 @@ export async function ask(input: AskInput): Promise<AnswerResult> {
   if (r.action === "social") return base("social", r, { text: referralText("social", input.lang, false) });
 
   const src = sourceLang(input.lang);
-  const queries = [input.question];
-  if (src.lang !== input.lang) {
-    const t = await translateQuery(input.question, src.lang);
-    track(t.usage);
-    queries.push(t.text);
-  }
+  const sq = await searchQueries(input.question, src.lang);
+  track(sq.usage);
+  const queries = [input.question, ...sq.queries];
   const hits = await search(src.lang, queries, { lessonId: input.lessonId ?? undefined });
   const retrieved = hits.map((h) => ({ id: h.chunk.id, score: +h.score.toFixed(3) }));
-  const relevant = hits.filter((h) => h.semantic >= config.minRelevance);
+  const relevant = withNeighbours(src.lang, hits.filter((h) => h.semantic >= config.minRelevance));
   if (relevant.length === 0) {
     return base("not_in_book", r, { text: referralText("not_in_book", input.lang, false), trace: { retrieved, dropped: [], attempts: 0, costUsd: cost, ms: Date.now() - t0 } });
   }
@@ -139,7 +139,10 @@ export async function ask(input: AskInput): Promise<AnswerResult> {
   [...used.values()].forEach((c) => c.lesson_id && counts.set(c.lesson_id, (counts.get(c.lesson_id) ?? 0) + 1));
   const lessonId = [...counts.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
 
-  const note = r.label === "difference" ? DIFFERENCE_NOTE[input.lang] ?? DIFFERENCE_NOTE.en : null;
+  // Fixed (never generated) notes: room on matters of scholarly difference, and an offer of a
+  // mentor when the question goes beyond what the book covers.
+  const note = r.label === "difference" ? DIFFERENCE_NOTE[input.lang] ?? DIFFERENCE_NOTE.en
+    : r.label === "out_of_book" ? referralText("partial", input.lang, false) : null;
   return {
     status: "answered",
     text: checked.sentences.map((s) => s.text).join(" ") + (note ? `\n\n${note}` : ""),

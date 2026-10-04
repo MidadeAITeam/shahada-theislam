@@ -1,7 +1,7 @@
 // Fixed texts (not generated). The emergency message is shown before anything else when a
 // message signals danger to the person's life; it carries the emergency number of the country
 // the user stated (never inferred from IP).
-type Key = "fatwa_personal" | "crisis" | "practical_need" | "unsure" | "not_in_book" | "failed" | "social" | "emergency";
+type Key = "partial" | "fatwa_personal" | "crisis" | "practical_need" | "unsure" | "not_in_book" | "failed" | "social" | "emergency";
 
 const T: Record<string, Record<Key, string>> = {
   en: {
@@ -9,6 +9,7 @@ const T: Record<string, Record<Key, string>> = {
     crisis: "I'm sorry you are going through this. Your safety comes first. A mentor from our team can talk with you — would you like me to connect you now?",
     practical_need: "A mentor from our team can help you with this directly. Would you like me to connect you?",
     unsure: "I want to be sure you get a right answer, so a mentor from our team is better placed to help with this. Would you like to talk to one?",
+    partial: "This is what the book Al-Wajeez says on this. For more detail, a mentor from our team can help — would you like to talk to one?",
     not_in_book: "I could not find the answer to this in the book Al-Wajeez, and I will not answer from outside it. A mentor from our team can help — would you like to talk to one?",
     failed: "I'm sorry, I could not prepare an answer I can fully trace to the book. A mentor from our team can help — would you like to talk to one?",
     social: "Wa alaykum as-salam and welcome. Ask me anything about your lesson, or continue to the next one when you are ready.",
@@ -19,6 +20,7 @@ const T: Record<string, Record<Key, string>> = {
     crisis: "يؤسفني ما تمر به، وسلامتك أولاً. يستطيع مرشد من فريقنا أن يتحدث معك، هل تريد أن أصلك به الآن؟",
     practical_need: "يستطيع مرشد من فريقنا أن يساعدك في هذا مباشرة. هل تريد أن أصلك به؟",
     unsure: "أريد أن تصلك إجابة صحيحة، والأنسب في هذا أن يساعدك مرشد من فريقنا. هل تريد التحدث إليه؟",
+    partial: "هذا ما ذكره كتاب «الوجيز» في هذه المسألة. وللتفصيل يستطيع مرشد من فريقنا أن يساعدك، هل تريد التحدث إليه؟",
     not_in_book: "لم أجد جواب هذا السؤال في كتاب «الوجيز»، ولا أجيب من خارجه. يستطيع مرشد من فريقنا أن يساعدك، هل تريد التحدث إليه؟",
     failed: "عذراً، لم أستطع إعداد جواب أستطيع إسناده كله إلى الكتاب. يستطيع مرشد من فريقنا أن يساعدك، هل تريد التحدث إليه؟",
     social: "وعليكم السلام ومرحباً بك. اسألني عما تشاء في درسك، أو انتقل إلى الدرس التالي متى شئت.",

@@ -79,7 +79,10 @@ async function runCase(c: Case, run: number) {
   if (only !== "baseline") {
     const t = Date.now();
     const a = await ask({ question: c.question, lang: c.lang });
-    const shown = [a.text, ...a.quotes.map((q) => `“${q.text}”`)].join("\n");
+    // The fixed notes (scholarly room, mentor offer) are code text, not claims from the book: shown to the
+    // judge separately so they are not counted as unsupported sentences.
+    const body = a.difference_note ? a.text.replace(a.difference_note, "").trim() : a.text;
+    const shown = [body, ...a.quotes.map((q) => `“${q.text}”`), a.difference_note ? `\n[FIXED NOTE added by code, not a book claim — do not count it as a sentence]: ${a.difference_note}` : ""].join("\n");
     const chunks = a.sources.map((s) => ({ ...s, sentences: [], quran_refs: [], sha256: "" })) as unknown as Chunk[];
     const v = a.status === "answered" ? await judge(c, shown, chunks) : null;
     out.ours = {
