@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+secrets/
+data/
+node_modules/
+eval/drafts/
+eval/runs/
+*.log
+.DS_Store
+التصور_الأولي.md
+خطة_التنفيذ.md
+رحلة_المستخدم.md

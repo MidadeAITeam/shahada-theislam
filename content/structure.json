@@ -1,0 +1,47 @@
+{
+  "book_id": "wajeez",
+  "title": {"ar": "الوجيز: منهج تعليم صفي للمسلم الجديد", "en": "Al-Wajeez: A Classroom Curriculum for New Muslims"},
+  "publisher": "Osoul Center (مركز أصول)",
+  "source_url": "https://islamicfiqh.net/wageez/",
+  "note": "Page numbers are the printed pages of the Arabic edition (PDF page index == printed page). Other editions are mapped by scripts/build_structure.py.",
+  "units": [
+    {"id": "u1", "title": {"ar": "دين الإسلام", "en": "The Religion of Islam"}, "lessons": [
+      {"id": "u1l1", "title": {"ar": "الإسلام والأسئلة الكبرى", "en": "Islam and the Big Questions"}, "pages_ar": [16, 19]},
+      {"id": "u1l2", "title": {"ar": "دين الإسلام", "en": "The Religion of Islam"}, "pages_ar": [20, 25]},
+      {"id": "u1l3", "title": {"ar": "كيف أسلم؟ (معنى الشهادتين)", "en": "How Do I Become Muslim? (The Two Testimonies)"}, "pages_ar": [26, 29]},
+      {"id": "u1l4", "title": {"ar": "الإيمان", "en": "Faith (Iman)"}, "pages_ar": [30, 35]}
+    ]},
+    {"id": "u2", "title": {"ar": "القرآن الكريم", "en": "The Noble Qur'an"}, "lessons": [
+      {"id": "u2l1", "title": {"ar": "القرآن الكريم", "en": "The Noble Qur'an"}, "pages_ar": [38, 43]},
+      {"id": "u2l2", "title": {"ar": "تفسير قصار السور (ومنها الفاتحة)", "en": "Short Surahs Explained (incl. Al-Fatiha)"}, "pages_ar": [44, 51]}
+    ]},
+    {"id": "u3", "title": {"ar": "العبادات", "en": "Acts of Worship"}, "lessons": [
+      {"id": "u3l1", "title": {"ar": "العبادة", "en": "Worship"}, "pages_ar": [54, 57]},
+      {"id": "u3l2", "title": {"ar": "الطهارة", "en": "Purification"}, "pages_ar": [58, 61], "critical": true},
+      {"id": "u3l3", "title": {"ar": "الوضوء", "en": "Ablution (Wudu)"}, "pages_ar": [62, 67], "critical": true},
+      {"id": "u3l4", "title": {"ar": "الغسل", "en": "Ritual Bath (Ghusl)"}, "pages_ar": [68, 71], "critical": true},
+      {"id": "u3l5", "title": {"ar": "أحكام تخص المرأة المسلمة", "en": "Rulings Specific to Muslim Women"}, "pages_ar": [72, 75]},
+      {"id": "u3l6", "title": {"ar": "الصلاة", "en": "Prayer (Salah)"}, "pages_ar": [76, 83], "critical": true},
+      {"id": "u3l7", "title": {"ar": "الزكاة", "en": "Zakat"}, "pages_ar": [84, 87]},
+      {"id": "u3l8", "title": {"ar": "الصوم", "en": "Fasting"}, "pages_ar": [88, 91]},
+      {"id": "u3l9", "title": {"ar": "الحج", "en": "Hajj"}, "pages_ar": [92, 97]}
+    ]},
+    {"id": "u4", "title": {"ar": "أحكام إسلامية", "en": "Islamic Rulings"}, "lessons": [
+      {"id": "u4l1", "title": {"ar": "اللباس", "en": "Clothing"}, "pages_ar": [100, 103]},
+      {"id": "u4l2", "title": {"ar": "الطعام والشراب", "en": "Food and Drink"}, "pages_ar": [104, 107]},
+      {"id": "u4l3", "title": {"ar": "المعاملات المالية", "en": "Financial Dealings"}, "pages_ar": [108, 111]},
+      {"id": "u4l4", "title": {"ar": "الأخلاق", "en": "Character and Manners"}, "pages_ar": [112, 121]}
+    ]}
+  ],
+  "path_rules": {
+    "first": "u1l3",
+    "choices": {
+      "wudu": ["u3l2", "u3l3"],
+      "prayer": ["u3l2", "u3l3", "u3l6"],
+      "fatiha": ["u2l2", "u3l2", "u3l3", "u3l6"],
+      "unsure": ["u3l2", "u3l3", "u3l6"]
+    },
+    "then": "remaining lessons in book order, one per day",
+    "prerequisites": {"u3l6": ["u3l2", "u3l3"], "u3l3": ["u3l2"], "u3l4": ["u3l2"]}
+  }
+}

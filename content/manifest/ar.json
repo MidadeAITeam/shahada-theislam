@@ -1,0 +1,1477 @@
+{
+ "lang": "ar",
+ "page_offset": 0,
+ "chunks": 245,
+ "items": [
+  {
+   "id": "wajeez:ar:p5:c1",
+   "page": 5,
+   "lesson_id": null,
+   "sha256": "36eb3bdac865233ce7e3442b444763fe9275a70b4e393cc306dffc13abab64be"
+  },
+  {
+   "id": "wajeez:ar:p6:c1",
+   "page": 6,
+   "lesson_id": null,
+   "sha256": "fffcd4ce14a03d5ffa23ab17230fd26cd8fd1b1913e6aaeb11f5ef9ae505ff9b"
+  },
+  {
+   "id": "wajeez:ar:p7:c1",
+   "page": 7,
+   "lesson_id": null,
+   "sha256": "1eec3810d37d00b29269de4b5ae1769d1354d19fc5696c383e8690312db48bcd"
+  },
+  {
+   "id": "wajeez:ar:p8:c1",
+   "page": 8,
+   "lesson_id": null,
+   "sha256": "4950340f0e1d282981d6c2eb28e8aa0d913402bceaf23a4d846ddbeda9339694"
+  },
+  {
+   "id": "wajeez:ar:p9:c1",
+   "page": 9,
+   "lesson_id": null,
+   "sha256": "2fc61755397db65b52f440f9580d2d2f6943a6ec93c502038848a5aeb465f496"
+  },
+  {
+   "id": "wajeez:ar:p10:c1",
+   "page": 10,
+   "lesson_id": null,
+   "sha256": "884beec25092cb3281b45bcd650698007081275e386db9e0494bfc4f72ede055"
+  },
+  {
+   "id": "wajeez:ar:p11:c1",
+   "page": 11,
+   "lesson_id": null,
+   "sha256": "5ab2eba24ec097b3748912275a9607ebdc8bb0c055ddf2b8b5f5e93778534d3a"
+  },
+  {
+   "id": "wajeez:ar:p12:c1",
+   "page": 12,
+   "lesson_id": null,
+   "sha256": "b32f71f9c1130dd5c12d591967aca7b0d99bc148a5b4182e2b2de0c0f1da08f8"
+  },
+  {
+   "id": "wajeez:ar:p12:c2",
+   "page": 12,
+   "lesson_id": null,
+   "sha256": "5af3325ce9d2bd71b20191a34af2a110aa1b94aec4a3568b04154b1af9cca9b2"
+  },
+  {
+   "id": "wajeez:ar:p13:c1",
+   "page": 13,
+   "lesson_id": null,
+   "sha256": "192b90c1c3b77fbf7f6ddd44a4c87a4b001f3dc0b8ab6937a5cf86ee5fca8a9f"
+  },
+  {
+   "id": "wajeez:ar:p13:c2",
+   "page": 13,
+   "lesson_id": null,
+   "sha256": "19ef20e3ca40b499a61e657bc7ebe818f9a52bc9f40ebbc227be59ae462d3d6f"
+  },
+  {
+   "id": "wajeez:ar:p15:c1",
+   "page": 15,
+   "lesson_id": null,
+   "sha256": "b98da4a4a53a8cf2e22c88c027b1405cd68327cbd97a5baeecbeb4fa50c35005"
+  },
+  {
+   "id": "wajeez:ar:p16:c1",
+   "page": 16,
+   "lesson_id": "u1l1",
+   "sha256": "64367c60cebd53e1c0973f892ba2be2ae53c2a46d7dfd35089b0511e249f1a60"
+  },
+  {
+   "id": "wajeez:ar:p16:c2",
+   "page": 16,
+   "lesson_id": "u1l1",
+   "sha256": "4bed1bcd71b9e1f0f7770f1b782d2ee56ce04e6e98487443ef77218a49570688"
+  },
+  {
+   "id": "wajeez:ar:p16:c3",
+   "page": 16,
+   "lesson_id": "u1l1",
+   "sha256": "0feb2d1ef24b691bf8bb82111b2c6949cf2cb1f1276dff0b2761790a73c6c74b"
+  },
+  {
+   "id": "wajeez:ar:p17:c1",
+   "page": 17,
+   "lesson_id": "u1l1",
+   "sha256": "36628ef0815a86592837e11000985f3d7305be1c60db9c74c9ce67fbccf09159"
+  },
+  {
+   "id": "wajeez:ar:p17:c2",
+   "page": 17,
+   "lesson_id": "u1l1",
+   "sha256": "f9f07b6724c0938ac7d4da05c8c59a9269a3246dfc6d78da3824bae9d95429da"
+  },
+  {
+   "id": "wajeez:ar:p17:c3",
+   "page": 17,
+   "lesson_id": "u1l1",
+   "sha256": "e6142fe6c8f8138d1b65bbf6c6134ed9a3905b539b804e633752d22474407b8f"
+  },
+  {
+   "id": "wajeez:ar:p18:c1",
+   "page": 18,
+   "lesson_id": "u1l1",
+   "sha256": "fdabb1b3e28d2236c394b6c11ee0504b62027ddebd7e469cebe87d389fd80b87"
+  },
+  {
+   "id": "wajeez:ar:p18:c2",
+   "page": 18,
+   "lesson_id": "u1l1",
+   "sha256": "d99d6d6cd0ad2e8cf5576a38159d36feeef8ff92fe15764c2f8cb1312df91d63"
+  },
+  {
+   "id": "wajeez:ar:p19:c1",
+   "page": 19,
+   "lesson_id": "u1l1",
+   "sha256": "98bed50d61993212d2256faf26e6346694b294202f13849622996dc4ee766248"
+  },
+  {
+   "id": "wajeez:ar:p20:c1",
+   "page": 20,
+   "lesson_id": "u1l2",
+   "sha256": "93a1dda70608cc06cd8614634ad8c596130f26a742bd537a318ffe6740ef9f41"
+  },
+  {
+   "id": "wajeez:ar:p20:c2",
+   "page": 20,
+   "lesson_id": "u1l2",
+   "sha256": "b130804e4aafd8c4f3d70fcc17d31e125f7f7625188786346b1995e0207e5896"
+  },
+  {
+   "id": "wajeez:ar:p21:c1",
+   "page": 21,
+   "lesson_id": "u1l2",
+   "sha256": "138055f7340cbe8188c6f06cddb7a420ffa1254d08b6da592e0014bddb2d97e8"
+  },
+  {
+   "id": "wajeez:ar:p21:c2",
+   "page": 21,
+   "lesson_id": "u1l2",
+   "sha256": "07dbfe4883caf267c3292e326755fb21413607a1e4ebdd6939d83102e3ae3309"
+  },
+  {
+   "id": "wajeez:ar:p21:c3",
+   "page": 21,
+   "lesson_id": "u1l2",
+   "sha256": "a0f730028dfbc04445f9a0040d955d377e8e10196cf6ec0f758497fb7b890ec9"
+  },
+  {
+   "id": "wajeez:ar:p21:c4",
+   "page": 21,
+   "lesson_id": "u1l2",
+   "sha256": "eaaae247a63f7440fef7673f8a748d346e96db66132419253b206f32017a38dd"
+  },
+  {
+   "id": "wajeez:ar:p21:c5",
+   "page": 21,
+   "lesson_id": "u1l2",
+   "sha256": "c80b2245cd637e36a1f26753257c4e588debc3af9c525001a4e57a3ecc398eb2"
+  },
+  {
+   "id": "wajeez:ar:p22:c1",
+   "page": 22,
+   "lesson_id": "u1l2",
+   "sha256": "069c86d8f91c64393b645a2dcb9d009beb2262d22e6ce28b73748818f6ba8246"
+  },
+  {
+   "id": "wajeez:ar:p22:c2",
+   "page": 22,
+   "lesson_id": "u1l2",
+   "sha256": "e4d3be1dac2579ae548e4bb1fa9a029a8b0360def67b0d23ee8bb456099698c2"
+  },
+  {
+   "id": "wajeez:ar:p22:c3",
+   "page": 22,
+   "lesson_id": "u1l2",
+   "sha256": "85bb633bc7c0d51a729426e707cb9fba6e8b277061a1c14d9ffa23b35a521278"
+  },
+  {
+   "id": "wajeez:ar:p23:c1",
+   "page": 23,
+   "lesson_id": "u1l2",
+   "sha256": "fce3312021959e9ac9180d50836179ba13db32979ba70709e1780b8f6d42327b"
+  },
+  {
+   "id": "wajeez:ar:p23:c2",
+   "page": 23,
+   "lesson_id": "u1l2",
+   "sha256": "ec879f90b036bb090059785273c323ae494b59ac506070a0297219609c185252"
+  },
+  {
+   "id": "wajeez:ar:p23:c3",
+   "page": 23,
+   "lesson_id": "u1l2",
+   "sha256": "cc6092f4ee35ac9b7ff1cd77362bcfcb5cbd14c97dfbc54911dca3a41da5ca93"
+  },
+  {
+   "id": "wajeez:ar:p24:c1",
+   "page": 24,
+   "lesson_id": "u1l2",
+   "sha256": "5e185dc63a000a8d069f0afdee9f2a47fbb6174654ea0cabdd4ea82092de4a5f"
+  },
+  {
+   "id": "wajeez:ar:p24:c2",
+   "page": 24,
+   "lesson_id": "u1l2",
+   "sha256": "313536f61300136fe0adcee4b82c825e30fab4b98ecc44840c65cb95c6b9e5a1"
+  },
+  {
+   "id": "wajeez:ar:p24:c3",
+   "page": 24,
+   "lesson_id": "u1l2",
+   "sha256": "34a6f7fed3cdc5a3b2b18b36f1d7ebf61c0ed124d0b613ec8eb226930dfc7611"
+  },
+  {
+   "id": "wajeez:ar:p25:c1",
+   "page": 25,
+   "lesson_id": "u1l2",
+   "sha256": "cf0b54ffeecd57fec491518e1d2169ba88b1bcf18c6ef2732453d0123e265a37"
+  },
+  {
+   "id": "wajeez:ar:p26:c1",
+   "page": 26,
+   "lesson_id": "u1l3",
+   "sha256": "ee202529d0bcfe88357410fab215a796f2fab13dce9de211b671d99dc4a7df74"
+  },
+  {
+   "id": "wajeez:ar:p26:c2",
+   "page": 26,
+   "lesson_id": "u1l3",
+   "sha256": "c8629283c781634ffb536de03ac48a5e88aa026f64cdd95b47fd505aa9b76990"
+  },
+  {
+   "id": "wajeez:ar:p26:c3",
+   "page": 26,
+   "lesson_id": "u1l3",
+   "sha256": "83c2d49dab22c53e5c4ca2472f9f2111a26fd7bca02f015c173c6cd5345dbb08"
+  },
+  {
+   "id": "wajeez:ar:p27:c1",
+   "page": 27,
+   "lesson_id": "u1l3",
+   "sha256": "44bb4557ff9b45fa5b27e3a86e6351316ac94c6650217eba675f5c5440fba574"
+  },
+  {
+   "id": "wajeez:ar:p27:c2",
+   "page": 27,
+   "lesson_id": "u1l3",
+   "sha256": "bd58752d11b9779d5c0b02cb8221b53813e9df7af3f305102bd213998e41b767"
+  },
+  {
+   "id": "wajeez:ar:p27:c3",
+   "page": 27,
+   "lesson_id": "u1l3",
+   "sha256": "8c638d3d0e408b46fb1c6485e3525cee83078dd5c54a691bc39bac3580c19633"
+  },
+  {
+   "id": "wajeez:ar:p28:c1",
+   "page": 28,
+   "lesson_id": "u1l3",
+   "sha256": "d24a2acc2d7598208d21776069ae61f899855ecf2a9123a99c6e269a4ad04de0"
+  },
+  {
+   "id": "wajeez:ar:p28:c2",
+   "page": 28,
+   "lesson_id": "u1l3",
+   "sha256": "a354b73968ab1fa59b32c849cf1346bb5ca271d54aca7bbd124fb0278fb9097b"
+  },
+  {
+   "id": "wajeez:ar:p29:c1",
+   "page": 29,
+   "lesson_id": "u1l3",
+   "sha256": "de5fe382c1209555cd43b4f4e4fb97721a275a833170415371b647c35e9b8c31"
+  },
+  {
+   "id": "wajeez:ar:p30:c1",
+   "page": 30,
+   "lesson_id": "u1l4",
+   "sha256": "ce16995c302b0769f8e4de19894cb9f59e375640d1c3f38daf8f1da254d3b51a"
+  },
+  {
+   "id": "wajeez:ar:p30:c2",
+   "page": 30,
+   "lesson_id": "u1l4",
+   "sha256": "1a81f085cdf25acdf0f7f323f111d47212b343cb99fc0df5731798b35ad3eb33"
+  },
+  {
+   "id": "wajeez:ar:p30:c3",
+   "page": 30,
+   "lesson_id": "u1l4",
+   "sha256": "6ed8750ae439ce312fed610dd33112451c596efb81cc3d90cd7ebedca961c5d6"
+  },
+  {
+   "id": "wajeez:ar:p31:c1",
+   "page": 31,
+   "lesson_id": "u1l4",
+   "sha256": "c55b771438176ec337f0c4441b004ef8fb906869edd05af4a04846d8503ab78a"
+  },
+  {
+   "id": "wajeez:ar:p31:c2",
+   "page": 31,
+   "lesson_id": "u1l4",
+   "sha256": "8911d19b39b679972b730d92ed8e54b4ea0124de6add80998283ad380f8b98b0"
+  },
+  {
+   "id": "wajeez:ar:p31:c3",
+   "page": 31,
+   "lesson_id": "u1l4",
+   "sha256": "6cc1c53daabdc12bb684258529c484610e2a10219c61c477c6049633d83aea6d"
+  },
+  {
+   "id": "wajeez:ar:p32:c1",
+   "page": 32,
+   "lesson_id": "u1l4",
+   "sha256": "61c620623194783004d098bb8240f19713a459882b1c0bd661e775b39b1c6ac2"
+  },
+  {
+   "id": "wajeez:ar:p32:c2",
+   "page": 32,
+   "lesson_id": "u1l4",
+   "sha256": "8cb16dcd8d19e72ac187862dcfa50d2af3b82a67088632abc7d51a9954cc0359"
+  },
+  {
+   "id": "wajeez:ar:p32:c3",
+   "page": 32,
+   "lesson_id": "u1l4",
+   "sha256": "cbed5529cd2af9abe321388cbf14da3999603b72c9be5c1c59027656b1a3ece0"
+  },
+  {
+   "id": "wajeez:ar:p33:c1",
+   "page": 33,
+   "lesson_id": "u1l4",
+   "sha256": "21ae0bc5ad6c3020a44f263434decc378104d1ef12882149f79b2b743c48ca8c"
+  },
+  {
+   "id": "wajeez:ar:p35:c1",
+   "page": 35,
+   "lesson_id": "u1l4",
+   "sha256": "ce51a810a9d828ce728c3ef936d4a8c51fcd533f1e01ea4288db77c7f422502c"
+  },
+  {
+   "id": "wajeez:ar:p37:c1",
+   "page": 37,
+   "lesson_id": null,
+   "sha256": "93c147f209eec75e99f880d92b9328b47adba42ae9b2f157860abd8f703fbcea"
+  },
+  {
+   "id": "wajeez:ar:p38:c1",
+   "page": 38,
+   "lesson_id": "u2l1",
+   "sha256": "b130300d9abe5ddd10fb83a6bebe0604b5cc4c4cd29f3841e217b5d045f006f2"
+  },
+  {
+   "id": "wajeez:ar:p38:c2",
+   "page": 38,
+   "lesson_id": "u2l1",
+   "sha256": "25c0e683e44226dde73681715a5863f86a6c2d6d95e62e0377cbb8ec235b8b36"
+  },
+  {
+   "id": "wajeez:ar:p38:c3",
+   "page": 38,
+   "lesson_id": "u2l1",
+   "sha256": "b57094f39af267c61b30d1cd265605018d682b63b6db692538d5c318a9ef3702"
+  },
+  {
+   "id": "wajeez:ar:p39:c1",
+   "page": 39,
+   "lesson_id": "u2l1",
+   "sha256": "d4a97b1bb5152f045e28b1dba5ef59fe0389045c973ae7782eee30f11022b208"
+  },
+  {
+   "id": "wajeez:ar:p39:c2",
+   "page": 39,
+   "lesson_id": "u2l1",
+   "sha256": "451649dd3985b8f9cc8e61e6ad584ea93e38b76216eaca6600bfc039b76dbfec"
+  },
+  {
+   "id": "wajeez:ar:p40:c1",
+   "page": 40,
+   "lesson_id": "u2l1",
+   "sha256": "c80d131055fa5c5af23990f1ad975b075064e2f47cac924c3ad4461be566e6ce"
+  },
+  {
+   "id": "wajeez:ar:p41:c1",
+   "page": 41,
+   "lesson_id": "u2l1",
+   "sha256": "73e41a18e2892f49a1b3d762be63302d88902fb4eb077b9cecbc8be0b88952eb"
+  },
+  {
+   "id": "wajeez:ar:p41:c2",
+   "page": 41,
+   "lesson_id": "u2l1",
+   "sha256": "36d449da4812414355e1e8d0fd0372e359644c806490f17418d3af508c54a3c9"
+  },
+  {
+   "id": "wajeez:ar:p42:c1",
+   "page": 42,
+   "lesson_id": "u2l1",
+   "sha256": "f33cad92d6d63b7fd377e023fb7ddf0a6e9a3a6d72e75f86408de54c40daddba"
+  },
+  {
+   "id": "wajeez:ar:p42:c2",
+   "page": 42,
+   "lesson_id": "u2l1",
+   "sha256": "6d03b50a42767a6e6998278c3e1875c893d94f19b1ed5695e5141ac3d350f4cd"
+  },
+  {
+   "id": "wajeez:ar:p42:c3",
+   "page": 42,
+   "lesson_id": "u2l1",
+   "sha256": "082eb37317936a78fc08987f46657da00ff13716484350b49fb779da8cd1673f"
+  },
+  {
+   "id": "wajeez:ar:p42:c4",
+   "page": 42,
+   "lesson_id": "u2l1",
+   "sha256": "ba501e0f6061043eff9da236b2f7b4309fabd823ab67511765e213cf0883d640"
+  },
+  {
+   "id": "wajeez:ar:p42:c5",
+   "page": 42,
+   "lesson_id": "u2l1",
+   "sha256": "1b3ad984784e68b7aec23f308914ce808ffb94c8cc9a871634a85942533eadab"
+  },
+  {
+   "id": "wajeez:ar:p42:c6",
+   "page": 42,
+   "lesson_id": "u2l1",
+   "sha256": "02af80766c07093e843feca12e1d8f10d8261d611ce2cbefaa76a27124055e09"
+  },
+  {
+   "id": "wajeez:ar:p43:c1",
+   "page": 43,
+   "lesson_id": "u2l1",
+   "sha256": "0e4759999ac2f594e0d60618a7502743e934022f9077e5e772276c17099c1fb0"
+  },
+  {
+   "id": "wajeez:ar:p44:c1",
+   "page": 44,
+   "lesson_id": "u2l2",
+   "sha256": "060505a9cf8a84c5b5fd73f072ecbd7cc69df9c88c9902bbe0364852e675553c"
+  },
+  {
+   "id": "wajeez:ar:p44:c2",
+   "page": 44,
+   "lesson_id": "u2l2",
+   "sha256": "cfb54b27c7d3c03a948641828af2795f6b7bec9225fcf8d1cd4e9847b0df5ade"
+  },
+  {
+   "id": "wajeez:ar:p45:c1",
+   "page": 45,
+   "lesson_id": "u2l2",
+   "sha256": "2938df6dc87ba7008c8a35f6ffc4ac349b0e045967ffe325145c05c06975ff44"
+  },
+  {
+   "id": "wajeez:ar:p45:c2",
+   "page": 45,
+   "lesson_id": "u2l2",
+   "sha256": "c658df0cba9080cfbc213f26a9d02c93b1e2160aaee706c24f7f87de118b1650"
+  },
+  {
+   "id": "wajeez:ar:p46:c1",
+   "page": 46,
+   "lesson_id": "u2l2",
+   "sha256": "24d3e8a6f51d2d51b9b4ae5c3c70103b69c38b8274de848279931a11369d94ea"
+  },
+  {
+   "id": "wajeez:ar:p46:c2",
+   "page": 46,
+   "lesson_id": "u2l2",
+   "sha256": "98a931118c3fd1054219cb7eb77b485956e48456e462e5a1cc31e1780ebc674f"
+  },
+  {
+   "id": "wajeez:ar:p47:c1",
+   "page": 47,
+   "lesson_id": "u2l2",
+   "sha256": "19145226068a3c5fd9c0287559d2bd1fc7e2e16aec2584e66dcba29ee8dbe77c"
+  },
+  {
+   "id": "wajeez:ar:p47:c2",
+   "page": 47,
+   "lesson_id": "u2l2",
+   "sha256": "27d2feee2af25936b7d1f2a5e0c550d89ffac50b8a7c107886dcf5e0f26180af"
+  },
+  {
+   "id": "wajeez:ar:p48:c1",
+   "page": 48,
+   "lesson_id": "u2l2",
+   "sha256": "9215bde9944d2f8e82dca53328fa038bddd0e068b0ab3f46b0f23df37caa62e9"
+  },
+  {
+   "id": "wajeez:ar:p48:c2",
+   "page": 48,
+   "lesson_id": "u2l2",
+   "sha256": "1352d343b04684f17dfc6faff657acf08cfb123c601c99e85d949b9038aa964a"
+  },
+  {
+   "id": "wajeez:ar:p49:c1",
+   "page": 49,
+   "lesson_id": "u2l2",
+   "sha256": "fe00d84fce139c4a5d426605b9dac7fd6912d3e2fe68f88164db031d1b2f68f0"
+  },
+  {
+   "id": "wajeez:ar:p49:c2",
+   "page": 49,
+   "lesson_id": "u2l2",
+   "sha256": "003d7c4fb579b6aa73e477d8b2de6dd28c75ba7d860c4a0a7ded7b884dd8cad8"
+  },
+  {
+   "id": "wajeez:ar:p50:c1",
+   "page": 50,
+   "lesson_id": "u2l2",
+   "sha256": "e58a23dc2465b1598b55a9b14d2b9787ca7b2238411af484c0a5c259c3b913aa"
+  },
+  {
+   "id": "wajeez:ar:p51:c1",
+   "page": 51,
+   "lesson_id": "u2l2",
+   "sha256": "44212f12aae5b94356c731a6c45c61aaf21fb81a0af5988f25793de0ecdda52e"
+  },
+  {
+   "id": "wajeez:ar:p53:c1",
+   "page": 53,
+   "lesson_id": null,
+   "sha256": "591c86d2522656a6b7442e8a0891edde80dfee5f34c2314a4a83ad8683c2481a"
+  },
+  {
+   "id": "wajeez:ar:p54:c1",
+   "page": 54,
+   "lesson_id": "u3l1",
+   "sha256": "e5c1e1bda1e61f8af806b99780406756444121fa087652b1b9af319234c72d8b"
+  },
+  {
+   "id": "wajeez:ar:p54:c2",
+   "page": 54,
+   "lesson_id": "u3l1",
+   "sha256": "3344dba9c89331ece641bcbcc3a70138ca58798aec55945c961ab22c4b38da59"
+  },
+  {
+   "id": "wajeez:ar:p55:c1",
+   "page": 55,
+   "lesson_id": "u3l1",
+   "sha256": "aaa762ad6870411eb3ac4137a4e63f6d7ba8ea0aedb7bf79fd67027fe6aae216"
+  },
+  {
+   "id": "wajeez:ar:p55:c2",
+   "page": 55,
+   "lesson_id": "u3l1",
+   "sha256": "0cff6f9999c5becf44d1248460aae8cb0fc5a51b842fdd4d1f0df3849b1379a1"
+  },
+  {
+   "id": "wajeez:ar:p55:c3",
+   "page": 55,
+   "lesson_id": "u3l1",
+   "sha256": "b3738e4e4b741b8364d63faa121e200e63087ceafcb69cb44fcc423613995f31"
+  },
+  {
+   "id": "wajeez:ar:p55:c4",
+   "page": 55,
+   "lesson_id": "u3l1",
+   "sha256": "f99e5f28b10a3e56a10d01d28cdfad811e62e21e8654df0a8b9e70279dde6910"
+  },
+  {
+   "id": "wajeez:ar:p55:c5",
+   "page": 55,
+   "lesson_id": "u3l1",
+   "sha256": "436a36fffb6e179076b776f80a2d95275043e07a83a207c6541dddaf8303fecf"
+  },
+  {
+   "id": "wajeez:ar:p55:c6",
+   "page": 55,
+   "lesson_id": "u3l1",
+   "sha256": "57575fdaca5057ee473282f01b29a3d2b31d3a62c1226fdd09785e5875c093fb"
+  },
+  {
+   "id": "wajeez:ar:p56:c1",
+   "page": 56,
+   "lesson_id": "u3l1",
+   "sha256": "ab40237ac86d1b2548fc1277fb8b140206e817a1eb2ffa87d046696504d685ac"
+  },
+  {
+   "id": "wajeez:ar:p56:c2",
+   "page": 56,
+   "lesson_id": "u3l1",
+   "sha256": "a394a747a4d6cb3c4a1361e91ee5be2fb3a0f939a4c624547a801c205d1a3eee"
+  },
+  {
+   "id": "wajeez:ar:p57:c1",
+   "page": 57,
+   "lesson_id": "u3l1",
+   "sha256": "b7cf063d657c51bf482e3f2c50ce20a419f4ca8dd750894e5818e19892c9a7a3"
+  },
+  {
+   "id": "wajeez:ar:p58:c1",
+   "page": 58,
+   "lesson_id": "u3l2",
+   "sha256": "c92308f97fd1e5a8fda2aff3c4497272602f6c1d9dce86bb3d6caf873eccaee3"
+  },
+  {
+   "id": "wajeez:ar:p58:c2",
+   "page": 58,
+   "lesson_id": "u3l2",
+   "sha256": "4bdaabf8d4549f18bdaab5964a74967ce24c5ef0ddcc6443dbab01ee45f33afb"
+  },
+  {
+   "id": "wajeez:ar:p58:c3",
+   "page": 58,
+   "lesson_id": "u3l2",
+   "sha256": "f808fd575237fc640aa60b949435182330e5814e5ebb416cd3e04ebb4546af51"
+  },
+  {
+   "id": "wajeez:ar:p59:c1",
+   "page": 59,
+   "lesson_id": "u3l2",
+   "sha256": "223b33a678ad889c94bc30b811e7661f1c66e9b0099da60a6a360fda718548f8"
+  },
+  {
+   "id": "wajeez:ar:p59:c2",
+   "page": 59,
+   "lesson_id": "u3l2",
+   "sha256": "15bf9ec9126f97ab955377ed10676f05f535d2a0c7b03aa8b0b4735de73b6981"
+  },
+  {
+   "id": "wajeez:ar:p60:c1",
+   "page": 60,
+   "lesson_id": "u3l2",
+   "sha256": "fba651aa45a793c6b89ceb420cd7cd2fc88d4b0cfe0e8186576bed50526a35f8"
+  },
+  {
+   "id": "wajeez:ar:p60:c2",
+   "page": 60,
+   "lesson_id": "u3l2",
+   "sha256": "07ec2af838c014a1c6581d1c266d8617c0e59af758fe60c70c6e09cf2273f30e"
+  },
+  {
+   "id": "wajeez:ar:p61:c1",
+   "page": 61,
+   "lesson_id": "u3l2",
+   "sha256": "aee83a5ac03871aee460bb9df42b0a66c8e46940b52e8fa5aa79825f3c44da5e"
+  },
+  {
+   "id": "wajeez:ar:p62:c1",
+   "page": 62,
+   "lesson_id": "u3l3",
+   "sha256": "941c4128aff029663491c579282c44a031a673149995ebd2b6af0d021efd4089"
+  },
+  {
+   "id": "wajeez:ar:p62:c2",
+   "page": 62,
+   "lesson_id": "u3l3",
+   "sha256": "795d39a2904edd52da5f1e8e26abc42ef229457f3102cd5d60696981a2167146"
+  },
+  {
+   "id": "wajeez:ar:p62:c3",
+   "page": 62,
+   "lesson_id": "u3l3",
+   "sha256": "ea8d283bd47f7d9561bd275a8fe6b317377ad85e09531d3698eedf629d6edda2"
+  },
+  {
+   "id": "wajeez:ar:p63:c1",
+   "page": 63,
+   "lesson_id": "u3l3",
+   "sha256": "221cda363430c9abd61d817f800eb9853650ef31589de0997c73fbc61b8ca49b"
+  },
+  {
+   "id": "wajeez:ar:p64:c1",
+   "page": 64,
+   "lesson_id": "u3l3",
+   "sha256": "26ac97fc6cf427f6b07632068276e2420755acbff20bff40143e71e9f8307e7e"
+  },
+  {
+   "id": "wajeez:ar:p64:c2",
+   "page": 64,
+   "lesson_id": "u3l3",
+   "sha256": "99ac0bb4546b19fffa88c5c0140f936463410472df785fb69ec61309feb6c4ae"
+  },
+  {
+   "id": "wajeez:ar:p64:c3",
+   "page": 64,
+   "lesson_id": "u3l3",
+   "sha256": "1f2699a810f9e3d7701120fb21db955a76200ed1ea2f9d3cfa41cfdff748ceff"
+  },
+  {
+   "id": "wajeez:ar:p64:c4",
+   "page": 64,
+   "lesson_id": "u3l3",
+   "sha256": "73e63dc1bf45865d307e28306db9782b827d26499cb3d15d20497bd587d947ec"
+  },
+  {
+   "id": "wajeez:ar:p65:c1",
+   "page": 65,
+   "lesson_id": "u3l3",
+   "sha256": "d6e786b2e01b9c5619a861b126840e53fa2fc198ed96a1352a14c357b123e435"
+  },
+  {
+   "id": "wajeez:ar:p65:c2",
+   "page": 65,
+   "lesson_id": "u3l3",
+   "sha256": "f8d2d17d863757819153a5bb227ba91fcc7d22a9910b5ebd92340a0746804f1f"
+  },
+  {
+   "id": "wajeez:ar:p66:c1",
+   "page": 66,
+   "lesson_id": "u3l3",
+   "sha256": "ded89ef514bb7568dade496b9fb1107f1afa67884d73d2f9849ae6cdc487e312"
+  },
+  {
+   "id": "wajeez:ar:p66:c2",
+   "page": 66,
+   "lesson_id": "u3l3",
+   "sha256": "6ab32b7f139641b6086a4a04879e8674ff398fd6df7848c9132aac358164018f"
+  },
+  {
+   "id": "wajeez:ar:p66:c3",
+   "page": 66,
+   "lesson_id": "u3l3",
+   "sha256": "d7ce79f243897c3fab4d5d4b5c168f7ff8a21d986c91359adb051568b9e7d024"
+  },
+  {
+   "id": "wajeez:ar:p66:c4",
+   "page": 66,
+   "lesson_id": "u3l3",
+   "sha256": "5e2ab20f1b4ef40a89bc124fb97dde09c05a97ac9d5756fecc42bb80d0b421ff"
+  },
+  {
+   "id": "wajeez:ar:p67:c1",
+   "page": 67,
+   "lesson_id": "u3l3",
+   "sha256": "1d22d97d869da6c6757d0082dcc3edfa41cd3981c26231afe696093dfc67b4d6"
+  },
+  {
+   "id": "wajeez:ar:p68:c1",
+   "page": 68,
+   "lesson_id": "u3l4",
+   "sha256": "f5ca7806374d2a809d822cebfc311cb53a3260904169c07d9f2beed418ed63aa"
+  },
+  {
+   "id": "wajeez:ar:p68:c2",
+   "page": 68,
+   "lesson_id": "u3l4",
+   "sha256": "e66bdeed61fa4131d67f89aa1f16247b0a8e4c0a18618ab2d30d8fd55d1d8dee"
+  },
+  {
+   "id": "wajeez:ar:p68:c3",
+   "page": 68,
+   "lesson_id": "u3l4",
+   "sha256": "902f0e344a76fa00396a6d0b530b4a46390235c61eceebef38c1be1e6bd487a5"
+  },
+  {
+   "id": "wajeez:ar:p69:c1",
+   "page": 69,
+   "lesson_id": "u3l4",
+   "sha256": "1365c2b3500ad5c69cae4aa65b3c2b27a68bed71e0ca660deb95d27e7f93c2d1"
+  },
+  {
+   "id": "wajeez:ar:p69:c2",
+   "page": 69,
+   "lesson_id": "u3l4",
+   "sha256": "137aa1ea3b5ea4b44344d464eb15b7f1b50010e6b6a1e6785fc8a7a38648b24d"
+  },
+  {
+   "id": "wajeez:ar:p69:c3",
+   "page": 69,
+   "lesson_id": "u3l4",
+   "sha256": "76acfd30df2f5e34b1b280625e8d0e4b8fcf5ae23fc9c1ade3a56728af0977b8"
+  },
+  {
+   "id": "wajeez:ar:p69:c4",
+   "page": 69,
+   "lesson_id": "u3l4",
+   "sha256": "5c042b55b5e9ce424000c61681c7ce736162bbca746f6478ed9ee6d42c0dab44"
+  },
+  {
+   "id": "wajeez:ar:p69:c5",
+   "page": 69,
+   "lesson_id": "u3l4",
+   "sha256": "01b675fe8ad45820887cca0975e563681d3dfb1945762d65acb80d2eb0b0a2b7"
+  },
+  {
+   "id": "wajeez:ar:p69:c6",
+   "page": 69,
+   "lesson_id": "u3l4",
+   "sha256": "4d9636ed749de6eb9dad9ec2cc4d75050b928d10ee09e97505bc185fc6dd766e"
+  },
+  {
+   "id": "wajeez:ar:p70:c1",
+   "page": 70,
+   "lesson_id": "u3l4",
+   "sha256": "b48c5a6bcc949854a76975d8e588861f76cb761d3dc33af12b61e9a8b934bcaa"
+  },
+  {
+   "id": "wajeez:ar:p70:c2",
+   "page": 70,
+   "lesson_id": "u3l4",
+   "sha256": "12817532cde660abd2774bdecdce20d85bd8500ef0131c27807f71f6bb1330d1"
+  },
+  {
+   "id": "wajeez:ar:p70:c3",
+   "page": 70,
+   "lesson_id": "u3l4",
+   "sha256": "f1af2378539e904b6c1bbb1f16768cd1323c3273bb5bcb9275e3f861518798b9"
+  },
+  {
+   "id": "wajeez:ar:p71:c1",
+   "page": 71,
+   "lesson_id": "u3l4",
+   "sha256": "315a14f452905ec351be6c48768d2bd5c879b513a0375f2f0d25b60781ec3f66"
+  },
+  {
+   "id": "wajeez:ar:p71:c2",
+   "page": 71,
+   "lesson_id": "u3l4",
+   "sha256": "4f6dd2171e674c2cf5d4359f5990846539f943c89c042b422292902982086e0d"
+  },
+  {
+   "id": "wajeez:ar:p72:c1",
+   "page": 72,
+   "lesson_id": "u3l5",
+   "sha256": "8884848efad340ac80d150fec615a7defbac5c41b4943064a543ab4e1fdbe11e"
+  },
+  {
+   "id": "wajeez:ar:p72:c2",
+   "page": 72,
+   "lesson_id": "u3l5",
+   "sha256": "2b0ae289ef04b64acef06cfbafea595ccaed55f820bf6504f045cc481063a47b"
+  },
+  {
+   "id": "wajeez:ar:p72:c3",
+   "page": 72,
+   "lesson_id": "u3l5",
+   "sha256": "d86ec2c06f3ac0dd9c92fad86172b10c53bbc5fd90e975ecc6160c0530a58a0d"
+  },
+  {
+   "id": "wajeez:ar:p72:c4",
+   "page": 72,
+   "lesson_id": "u3l5",
+   "sha256": "b994cb7a91f3ebe52d8bf37047fcdc96069e9f4a3ee992d7033953318be24b62"
+  },
+  {
+   "id": "wajeez:ar:p73:c1",
+   "page": 73,
+   "lesson_id": "u3l5",
+   "sha256": "8884848efad340ac80d150fec615a7defbac5c41b4943064a543ab4e1fdbe11e"
+  },
+  {
+   "id": "wajeez:ar:p73:c2",
+   "page": 73,
+   "lesson_id": "u3l5",
+   "sha256": "a9f9f8fd16d24e5cf7a27b1add6506a48c8e88b4c230206aac201ebd3f92e099"
+  },
+  {
+   "id": "wajeez:ar:p73:c3",
+   "page": 73,
+   "lesson_id": "u3l5",
+   "sha256": "05bfacef315fe156415c84c6cd80fccd21fe3c30d1c82dd6a08fae4968960fcb"
+  },
+  {
+   "id": "wajeez:ar:p73:c4",
+   "page": 73,
+   "lesson_id": "u3l5",
+   "sha256": "2e12285998dea3db1c70cf74824583b1e84ee58ae1ee7f2c2e61d3007468f35f"
+  },
+  {
+   "id": "wajeez:ar:p73:c5",
+   "page": 73,
+   "lesson_id": "u3l5",
+   "sha256": "8badc6127c23438b4232a4a8af5581636cdcf0f71639fd9e6866c6b259bfb40a"
+  },
+  {
+   "id": "wajeez:ar:p73:c6",
+   "page": 73,
+   "lesson_id": "u3l5",
+   "sha256": "93557c80821415fe69ff0a91943c2741f35352cc291bd8d19a8ab0e9df494aa5"
+  },
+  {
+   "id": "wajeez:ar:p73:c7",
+   "page": 73,
+   "lesson_id": "u3l5",
+   "sha256": "d71c423d0e9f26a5d4aeb88981bbe9fdd89216b7c3516a443c2e3753f6cba1dd"
+  },
+  {
+   "id": "wajeez:ar:p73:c8",
+   "page": 73,
+   "lesson_id": "u3l5",
+   "sha256": "b186d83ee10f61b0230622b1777f10273e38fdae14c4bb3ce0bb26166f107798"
+  },
+  {
+   "id": "wajeez:ar:p73:c9",
+   "page": 73,
+   "lesson_id": "u3l5",
+   "sha256": "b69bd9fb48ec4bf38c9dd799660bc5b5c4752da3c4466e6046689fbaecb41eb2"
+  },
+  {
+   "id": "wajeez:ar:p74:c1",
+   "page": 74,
+   "lesson_id": "u3l5",
+   "sha256": "98a9fed24fd9d07c0a076cf436c0b615ad45c4f34e2f08b0cdc4e153be94153a"
+  },
+  {
+   "id": "wajeez:ar:p74:c2",
+   "page": 74,
+   "lesson_id": "u3l5",
+   "sha256": "c68c0f01412758bd219624f8211e553131a1e69d603c76b7b026edf5c8506d8a"
+  },
+  {
+   "id": "wajeez:ar:p74:c3",
+   "page": 74,
+   "lesson_id": "u3l5",
+   "sha256": "14c5735e68697641161f8ec3c9f261b544143c817293bf62baecccc2e46575ee"
+  },
+  {
+   "id": "wajeez:ar:p74:c4",
+   "page": 74,
+   "lesson_id": "u3l5",
+   "sha256": "2c257fe8bf5faa584bbc82e7d4131cd45d0ff09f3f3b59764386a4343e020e4f"
+  },
+  {
+   "id": "wajeez:ar:p74:c5",
+   "page": 74,
+   "lesson_id": "u3l5",
+   "sha256": "057fb6f5bdbc8b939928ab25147e52bf04f71d948ffafc1b3d5796f325780fe8"
+  },
+  {
+   "id": "wajeez:ar:p74:c6",
+   "page": 74,
+   "lesson_id": "u3l5",
+   "sha256": "99388b385704435475e47ec99d5dbc179de1784236212df44b3d9b56791995eb"
+  },
+  {
+   "id": "wajeez:ar:p75:c1",
+   "page": 75,
+   "lesson_id": "u3l5",
+   "sha256": "7260b014deaa9e9f37a0fe9a6f063b0666f73f34937adfd038e72eb4e3918434"
+  },
+  {
+   "id": "wajeez:ar:p75:c2",
+   "page": 75,
+   "lesson_id": "u3l5",
+   "sha256": "e7cb66c36e7e46cc5afd6ed930a4a14f61f38b4b60ac15b09ec19538be86a317"
+  },
+  {
+   "id": "wajeez:ar:p76:c1",
+   "page": 76,
+   "lesson_id": "u3l6",
+   "sha256": "b1d590dd0346fbff7628b66a3f85a0ba1c0954b8abf205fd567253b2823b6727"
+  },
+  {
+   "id": "wajeez:ar:p76:c2",
+   "page": 76,
+   "lesson_id": "u3l6",
+   "sha256": "e7255757f3da225124655a209b97845d117839c2bd127e9ad62bbb4ed091243e"
+  },
+  {
+   "id": "wajeez:ar:p76:c3",
+   "page": 76,
+   "lesson_id": "u3l6",
+   "sha256": "5a131f15cd5b4bd686982a1a105614059fcdea57b4beb9e4d00600843637a57e"
+  },
+  {
+   "id": "wajeez:ar:p77:c1",
+   "page": 77,
+   "lesson_id": "u3l6",
+   "sha256": "9298d4b551f077969ad20bb8ac78b25dab55109664efb91f8832aace5a1ed7bb"
+  },
+  {
+   "id": "wajeez:ar:p77:c2",
+   "page": 77,
+   "lesson_id": "u3l6",
+   "sha256": "b546fa33c7454ff201dae752e95e504f94c2bd5e4a2f882d036f4682663a69e6"
+  },
+  {
+   "id": "wajeez:ar:p77:c3",
+   "page": 77,
+   "lesson_id": "u3l6",
+   "sha256": "aeb3db56b3142c5a95a7fdffc108d25526f50ad0c17a71e4f344c8641367ecde"
+  },
+  {
+   "id": "wajeez:ar:p77:c4",
+   "page": 77,
+   "lesson_id": "u3l6",
+   "sha256": "22d7df9041823268abd7a6264fd0fe44184c68f3525dfc5a73e6a2aaf3e08400"
+  },
+  {
+   "id": "wajeez:ar:p78:c1",
+   "page": 78,
+   "lesson_id": "u3l6",
+   "sha256": "8cad9313ec9cf9ce4b021adff505870a10645e0657340dc3da62ab1aa1b9e0cc"
+  },
+  {
+   "id": "wajeez:ar:p79:c1",
+   "page": 79,
+   "lesson_id": "u3l6",
+   "sha256": "3d52e4194283962a2a966ec1875a67adb8edf232ab2c84db5e37d9fcd33ea8d0"
+  },
+  {
+   "id": "wajeez:ar:p80:c1",
+   "page": 80,
+   "lesson_id": "u3l6",
+   "sha256": "393dd212d470c0ebad66e736a3442c0352292f85388429aafe487d797182e585"
+  },
+  {
+   "id": "wajeez:ar:p81:c1",
+   "page": 81,
+   "lesson_id": "u3l6",
+   "sha256": "41554ad070069d44b8682255487e921f88143f5be963edeed9a0bc5a0c0c6bda"
+  },
+  {
+   "id": "wajeez:ar:p82:c1",
+   "page": 82,
+   "lesson_id": "u3l6",
+   "sha256": "d3b459cd053753ed8bbde7171397b9044758cbc694f6c2b8b3e20c16d055b9f8"
+  },
+  {
+   "id": "wajeez:ar:p82:c2",
+   "page": 82,
+   "lesson_id": "u3l6",
+   "sha256": "57bdbb90801ccc88d1b3360be03ec263b482537437f806bd04e36e6839b12c77"
+  },
+  {
+   "id": "wajeez:ar:p83:c1",
+   "page": 83,
+   "lesson_id": "u3l6",
+   "sha256": "3182cff184ab58f5010f2dd2888f3544c09619d7a22aa81d96782df305849826"
+  },
+  {
+   "id": "wajeez:ar:p83:c2",
+   "page": 83,
+   "lesson_id": "u3l6",
+   "sha256": "4abccbd826f8d5845cfd502f9665d388d36598cfcd41225ce51dc1ce73bf6465"
+  },
+  {
+   "id": "wajeez:ar:p83:c3",
+   "page": 83,
+   "lesson_id": "u3l6",
+   "sha256": "6524b6e35915fcf09fb076056c03e9e4b151b3c71ede7a5ee5abb3e8064cf2cc"
+  },
+  {
+   "id": "wajeez:ar:p84:c1",
+   "page": 84,
+   "lesson_id": "u3l7",
+   "sha256": "93f64ef7083f0a63a908a0c3f6d4458ca764f2fdb09fdf5bdb24a1e26197dcc1"
+  },
+  {
+   "id": "wajeez:ar:p84:c2",
+   "page": 84,
+   "lesson_id": "u3l7",
+   "sha256": "b5633f1355822305b6e7767164067d0954600dc27426bf87bb8070339f2c207c"
+  },
+  {
+   "id": "wajeez:ar:p84:c3",
+   "page": 84,
+   "lesson_id": "u3l7",
+   "sha256": "ada100a832b47e3e2bb5370efc2dd52ac3de8b5acf079d8355b2dcaacc610c58"
+  },
+  {
+   "id": "wajeez:ar:p85:c1",
+   "page": 85,
+   "lesson_id": "u3l7",
+   "sha256": "aea2ba851fecd3c298c5fabdf7a2524cccb656f5dcd11fd3860617883c113fb5"
+  },
+  {
+   "id": "wajeez:ar:p85:c2",
+   "page": 85,
+   "lesson_id": "u3l7",
+   "sha256": "46568dcd9a14e65b3939924deb7c1b57dba01cf2e1466e2f9d385456ff66a274"
+  },
+  {
+   "id": "wajeez:ar:p85:c3",
+   "page": 85,
+   "lesson_id": "u3l7",
+   "sha256": "cdc5471827b2ad2542a0fa200239484fbca8ae343436986a031ac6eab86db08b"
+  },
+  {
+   "id": "wajeez:ar:p85:c4",
+   "page": 85,
+   "lesson_id": "u3l7",
+   "sha256": "d2af08e171aec3c1042df1161c7be512dc09e6727a6e49a5f01b1cd940e81b56"
+  },
+  {
+   "id": "wajeez:ar:p85:c5",
+   "page": 85,
+   "lesson_id": "u3l7",
+   "sha256": "6f54d27e9e67cb1a7f57795ced0a3e9463fbd04c3e2c292efdaeb024228d45e1"
+  },
+  {
+   "id": "wajeez:ar:p86:c1",
+   "page": 86,
+   "lesson_id": "u3l7",
+   "sha256": "4f6dfc9b2fcace845f57f7a809d43cb73e313e3d54a2709e54cce5fd3b53186a"
+  },
+  {
+   "id": "wajeez:ar:p86:c2",
+   "page": 86,
+   "lesson_id": "u3l7",
+   "sha256": "50b49ddd966fbf67ee9d57b126d16a48cdbec6e255be456425487b610fad7229"
+  },
+  {
+   "id": "wajeez:ar:p86:c3",
+   "page": 86,
+   "lesson_id": "u3l7",
+   "sha256": "66a810343fea470b2c37c3cbf5db679d52d42159dd016ae55470249e2f3ca321"
+  },
+  {
+   "id": "wajeez:ar:p87:c1",
+   "page": 87,
+   "lesson_id": "u3l7",
+   "sha256": "d3f35774f1856e4a1bc295a5fc15b36d61977e4a94ef258361eac29a101219a6"
+  },
+  {
+   "id": "wajeez:ar:p88:c1",
+   "page": 88,
+   "lesson_id": "u3l8",
+   "sha256": "ab961c9e16fbf241e188705da1c40b335332e691a92d8c661ae13a3374524c8b"
+  },
+  {
+   "id": "wajeez:ar:p88:c2",
+   "page": 88,
+   "lesson_id": "u3l8",
+   "sha256": "09c4395cccca03ec8fb77396f7334b1e119aa006feee8bca6b08d6128930aef2"
+  },
+  {
+   "id": "wajeez:ar:p88:c3",
+   "page": 88,
+   "lesson_id": "u3l8",
+   "sha256": "bb283c17a566ed6557926c195266e50639c44dd097dc043f9142bf190e430ed0"
+  },
+  {
+   "id": "wajeez:ar:p89:c1",
+   "page": 89,
+   "lesson_id": "u3l8",
+   "sha256": "48b85cbf8d558bbe50b13258ac8b5a398589595b7855935035945e0d23c54783"
+  },
+  {
+   "id": "wajeez:ar:p89:c2",
+   "page": 89,
+   "lesson_id": "u3l8",
+   "sha256": "3a5b873d7e490b11c97e7433fca5250640f223f46e73bf6b085d8cc16c01841e"
+  },
+  {
+   "id": "wajeez:ar:p90:c1",
+   "page": 90,
+   "lesson_id": "u3l8",
+   "sha256": "a44bd8de42045a1115dda8099795ce3564e2156bf87321d52622cb411164d62b"
+  },
+  {
+   "id": "wajeez:ar:p90:c2",
+   "page": 90,
+   "lesson_id": "u3l8",
+   "sha256": "577e376be2615396a344948ac5541426bddb1eaad34a0c558fee36a9866d76d6"
+  },
+  {
+   "id": "wajeez:ar:p91:c1",
+   "page": 91,
+   "lesson_id": "u3l8",
+   "sha256": "2e8496ada4f32fd788c415a0da053686119abe3a35e28c97e8dccc45b3fe78b3"
+  },
+  {
+   "id": "wajeez:ar:p92:c1",
+   "page": 92,
+   "lesson_id": "u3l9",
+   "sha256": "9ee452ff15ff41f2aa5110aa10de6cb0ed7d87fb7b67d4cc69b0837376c8fce0"
+  },
+  {
+   "id": "wajeez:ar:p92:c2",
+   "page": 92,
+   "lesson_id": "u3l9",
+   "sha256": "0907e9656374918c8cb831a67c0b0effb231650cc33cc1b53871e233557951f1"
+  },
+  {
+   "id": "wajeez:ar:p93:c1",
+   "page": 93,
+   "lesson_id": "u3l9",
+   "sha256": "cc482ba38cd947ccd71f8502d308afbd458068d771874ae6490ccb0c67c25d23"
+  },
+  {
+   "id": "wajeez:ar:p93:c2",
+   "page": 93,
+   "lesson_id": "u3l9",
+   "sha256": "1bd63f9997c11f397390bba9591a9192c47040d163733373f4cd25c42f4dd793"
+  },
+  {
+   "id": "wajeez:ar:p94:c1",
+   "page": 94,
+   "lesson_id": "u3l9",
+   "sha256": "db8af66014728452edc3feed9cd24d7f61793f6c5ab14455c97dfebf65eeb13d"
+  },
+  {
+   "id": "wajeez:ar:p94:c2",
+   "page": 94,
+   "lesson_id": "u3l9",
+   "sha256": "7fef57ac9f3713162a3b730497897b9dac3e42bc2a469f41b267635686a5b425"
+  },
+  {
+   "id": "wajeez:ar:p95:c1",
+   "page": 95,
+   "lesson_id": "u3l9",
+   "sha256": "68ed79bd1e02bca0eb050b206400d5b98710b34148784d06f8e17eac15ac1958"
+  },
+  {
+   "id": "wajeez:ar:p96:c1",
+   "page": 96,
+   "lesson_id": "u3l9",
+   "sha256": "2e142c4f6f6052ddcc37f5111aa20499f2a3948c8ac4da3b5af940233671e528"
+  },
+  {
+   "id": "wajeez:ar:p97:c1",
+   "page": 97,
+   "lesson_id": "u3l9",
+   "sha256": "ddde82260b96a8f8899c07bd4aa5e598b9671922546e9992fe277f77dc615244"
+  },
+  {
+   "id": "wajeez:ar:p99:c1",
+   "page": 99,
+   "lesson_id": null,
+   "sha256": "bc4110ba3859969607561cff4a197c255d2ab5d132c78eadfb21d4fd00e2e1a2"
+  },
+  {
+   "id": "wajeez:ar:p100:c1",
+   "page": 100,
+   "lesson_id": "u4l1",
+   "sha256": "dfe1e0f8ec1f0aa7429efe2a8487db5f430260ccd7d0546e30c63c187dd8e903"
+  },
+  {
+   "id": "wajeez:ar:p100:c2",
+   "page": 100,
+   "lesson_id": "u4l1",
+   "sha256": "8d4e8cf84c79c05d89c99f9f03b0f68b69c2b6c02d3ee300d0caf0ed25708bcd"
+  },
+  {
+   "id": "wajeez:ar:p100:c3",
+   "page": 100,
+   "lesson_id": "u4l1",
+   "sha256": "2b3a18a2f9edddbac156addc6ae49fb0745901550b11f64a640bd0d7bab8fa3f"
+  },
+  {
+   "id": "wajeez:ar:p101:c1",
+   "page": 101,
+   "lesson_id": "u4l1",
+   "sha256": "6031a8c8e0564dc2877551c95f92267f2dcea27f7a54ceadb239298730fc895f"
+  },
+  {
+   "id": "wajeez:ar:p102:c1",
+   "page": 102,
+   "lesson_id": "u4l1",
+   "sha256": "887335daf0d2593800f165e60bfac970682c61750f2bc37f88708e7e472c2128"
+  },
+  {
+   "id": "wajeez:ar:p102:c2",
+   "page": 102,
+   "lesson_id": "u4l1",
+   "sha256": "d61282e06317b1f9298fefb6f9375024efabd157c45e4428526532cad98548e2"
+  },
+  {
+   "id": "wajeez:ar:p103:c1",
+   "page": 103,
+   "lesson_id": "u4l1",
+   "sha256": "eaea5d554eac48a035444846430913ef234a227041aa3925d2430aaa429d4a86"
+  },
+  {
+   "id": "wajeez:ar:p104:c1",
+   "page": 104,
+   "lesson_id": "u4l2",
+   "sha256": "113edab7227d3064eb9c443bae5277f8da216747159e9399fc886031af0e412e"
+  },
+  {
+   "id": "wajeez:ar:p104:c2",
+   "page": 104,
+   "lesson_id": "u4l2",
+   "sha256": "1b2cf52cdbc6508c34baa6ca71e55ea77f76505b45c4c80906aaf9f30e8c238b"
+  },
+  {
+   "id": "wajeez:ar:p104:c3",
+   "page": 104,
+   "lesson_id": "u4l2",
+   "sha256": "5c7522be57e7bcaca726a6ccb3897ed6102834b4bcc9f7293a9ee0987a5885d3"
+  },
+  {
+   "id": "wajeez:ar:p105:c1",
+   "page": 105,
+   "lesson_id": "u4l2",
+   "sha256": "4184437353420067ea31cdd811fa651c168ad890b0e634f2947aca0e29910c9a"
+  },
+  {
+   "id": "wajeez:ar:p105:c2",
+   "page": 105,
+   "lesson_id": "u4l2",
+   "sha256": "553572d4af9ba67882f940b1c9c7a8eeb023732ea15238b11ccf02ddd205fde4"
+  },
+  {
+   "id": "wajeez:ar:p106:c1",
+   "page": 106,
+   "lesson_id": "u4l2",
+   "sha256": "847383a3260cb14d3093cc283e899209e4df4e9e07fb4ab2f0bfe143cbc54954"
+  },
+  {
+   "id": "wajeez:ar:p106:c2",
+   "page": 106,
+   "lesson_id": "u4l2",
+   "sha256": "1e87b52425ee35e253bb6bcf26b16f9fa0d049344dd774d6c33a04f910a7f9a6"
+  },
+  {
+   "id": "wajeez:ar:p107:c1",
+   "page": 107,
+   "lesson_id": "u4l2",
+   "sha256": "6c876f655b10105c71c100e3e6934747f0f852af799209334a7ff3a6f8f30cc9"
+  },
+  {
+   "id": "wajeez:ar:p108:c1",
+   "page": 108,
+   "lesson_id": "u4l3",
+   "sha256": "9a4474c1ff19ff4dd3c6a2c64f9335ec1e457bb1bd6b0261261e6e8d6e5026ca"
+  },
+  {
+   "id": "wajeez:ar:p108:c2",
+   "page": 108,
+   "lesson_id": "u4l3",
+   "sha256": "9da7f9dcd89f3b44093019ea61905df5e064361b88bc38cd0ab6246676ee310b"
+  },
+  {
+   "id": "wajeez:ar:p108:c3",
+   "page": 108,
+   "lesson_id": "u4l3",
+   "sha256": "6ac11e309a18139a9994c5d4f17cef506e649ca6c977191ea765afdf2b801b06"
+  },
+  {
+   "id": "wajeez:ar:p109:c1",
+   "page": 109,
+   "lesson_id": "u4l3",
+   "sha256": "34f2f2a85ebe13226d3ced56dfa3d85adb020145fd46bb4a9dbf010c71bd67a1"
+  },
+  {
+   "id": "wajeez:ar:p109:c2",
+   "page": 109,
+   "lesson_id": "u4l3",
+   "sha256": "42b7992ad96823b1c4fc0df0fa89467252546e26135a179d5b4a970540338cb1"
+  },
+  {
+   "id": "wajeez:ar:p109:c3",
+   "page": 109,
+   "lesson_id": "u4l3",
+   "sha256": "6656d6efd865b63b2f371b16a54f07b4d18b562532674eec89a39f94ca9eec3d"
+  },
+  {
+   "id": "wajeez:ar:p110:c1",
+   "page": 110,
+   "lesson_id": "u4l3",
+   "sha256": "d201f78144bb0410f23492f2c423b6a3ce57141c1567a3911d346607d728d1a8"
+  },
+  {
+   "id": "wajeez:ar:p111:c1",
+   "page": 111,
+   "lesson_id": "u4l3",
+   "sha256": "a3e9cdb4fcc4a47a1221a156ebe570bd38bdcaa0fd301f565543f037e996c1bf"
+  },
+  {
+   "id": "wajeez:ar:p112:c1",
+   "page": 112,
+   "lesson_id": "u4l4",
+   "sha256": "f4b3cc491579113478e43f2bf559608924b616b691143168f462c3e669df800e"
+  },
+  {
+   "id": "wajeez:ar:p112:c2",
+   "page": 112,
+   "lesson_id": "u4l4",
+   "sha256": "f4ac63ee055c64f5b78b931af87ebde9bd8b86ca3d104823c2680ef299b299b2"
+  },
+  {
+   "id": "wajeez:ar:p112:c3",
+   "page": 112,
+   "lesson_id": "u4l4",
+   "sha256": "bacf9b621f7fdf28544386da219ac4be4ef975723f752ee0aea42c15d25603d8"
+  },
+  {
+   "id": "wajeez:ar:p113:c1",
+   "page": 113,
+   "lesson_id": "u4l4",
+   "sha256": "01b6ab21760999f08457ce7185ce9c63ddcb4c23217b2a214b6bc1929a34e5b2"
+  },
+  {
+   "id": "wajeez:ar:p113:c2",
+   "page": 113,
+   "lesson_id": "u4l4",
+   "sha256": "9ce58f3954f0d9b25527aa9eac5dbb231af96cd964938b134eb2bc835bcdadfe"
+  },
+  {
+   "id": "wajeez:ar:p114:c1",
+   "page": 114,
+   "lesson_id": "u4l4",
+   "sha256": "445cccab0021912624bdc7263b38440f682a5143320fa2080196aa839342c000"
+  },
+  {
+   "id": "wajeez:ar:p114:c2",
+   "page": 114,
+   "lesson_id": "u4l4",
+   "sha256": "0045ea5e309c7386409c87d3b418ab562410d821e3463eba36a2943fb612d71b"
+  },
+  {
+   "id": "wajeez:ar:p115:c1",
+   "page": 115,
+   "lesson_id": "u4l4",
+   "sha256": "7a31379941dbbc588653494879d78e2b0ca6fd2dabe65ddc0066147cb32b0678"
+  },
+  {
+   "id": "wajeez:ar:p116:c1",
+   "page": 116,
+   "lesson_id": "u4l4",
+   "sha256": "fd8749a258bfc1626880965bc9e576f9149b2bb09d90b2ca35a9d0dacf245b4b"
+  },
+  {
+   "id": "wajeez:ar:p117:c1",
+   "page": 117,
+   "lesson_id": "u4l4",
+   "sha256": "91e885ec23394d3bc726121226956bfb1847005bfbe69d3ff0cd04d9d2600926"
+  },
+  {
+   "id": "wajeez:ar:p118:c1",
+   "page": 118,
+   "lesson_id": "u4l4",
+   "sha256": "d110dc7bc0d704a69aa69d81c7b5372c3bc9a26c18c457719470b50a196b7974"
+  },
+  {
+   "id": "wajeez:ar:p118:c2",
+   "page": 118,
+   "lesson_id": "u4l4",
+   "sha256": "e842982df58c0436bf3dc066b5296c6b1620a94d5288776a0b5a5523bd64f313"
+  },
+  {
+   "id": "wajeez:ar:p119:c1",
+   "page": 119,
+   "lesson_id": "u4l4",
+   "sha256": "5afa8d787171b01bf631a1e373f7c835a9f969b83068555748729e91a40c5ff4"
+  },
+  {
+   "id": "wajeez:ar:p120:c1",
+   "page": 120,
+   "lesson_id": "u4l4",
+   "sha256": "b1b7361c1d33ea94638a6b88b89502419763c733780fc447266a6e5f45c32871"
+  },
+  {
+   "id": "wajeez:ar:p121:c1",
+   "page": 121,
+   "lesson_id": "u4l4",
+   "sha256": "8a0b92cfa4136274d6a7ebdc64ac10e3690b968a52bbdd923bff8b7f168042b3"
+  },
+  {
+   "id": "wajeez:ar:p121:c2",
+   "page": 121,
+   "lesson_id": "u4l4",
+   "sha256": "453ee7ed644ee11ed0c79f8328618fad3dfc7d4e124103eda54f8cf8ccd581a1"
+  },
+  {
+   "id": "wajeez:ar:p121:c3",
+   "page": 121,
+   "lesson_id": "u4l4",
+   "sha256": "d6a0b436ad45a5e5ea0586f0e60da45012a71cff912d8728c7b46af8d89d9423"
+  },
+  {
+   "id": "wajeez:ar:p123:c1",
+   "page": 123,
+   "lesson_id": null,
+   "sha256": "33f8f9a4732f6fc3ebf7d80cf418293d8d8a8077b747b788fa51cd415feb332e"
+  }
+ ]
+}
