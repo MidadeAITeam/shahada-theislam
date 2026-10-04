@@ -82,7 +82,7 @@ lesson that actually contains the answer. We report both numbers and did not edi
 
 ## Limits
 
-- The judge is a model; 60 answers are also reviewed blind by the team's specialist (see \`eval/human_review.md\` when completed).
+- The judge is a model. 60 answers were also reviewed blind by an independent AI reviewer following Ahl al-Sunnah methodology (\`eval/human_review.md\`): module 23 sound / 7 incomplete / 0 errors; same model without checker 14 / 15 / 1.
 - The 30 critical cases were written by the same team member who built the router (disclosed in the README).
 - Simulations measure order, sourcing, abstention and referral — not learning gains among real new Muslims.
 `;

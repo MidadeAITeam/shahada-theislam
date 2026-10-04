@@ -1,0 +1,305 @@
+{
+ "reviewer": "independent AI reviewer instance (blind)",
+ "items": [
+  {
+   "id": "R01",
+   "verdict": "ok",
+   "note": "Sound: purpose is worship; Allah is free of need."
+  },
+  {
+   "id": "R02",
+   "verdict": "ok",
+   "note": "Both hadiths (Tirmidhi; Muslim) quoted correctly."
+  },
+  {
+   "id": "R03",
+   "verdict": "ok",
+   "note": "Majority view given, difference acknowledged without judging the person."
+  },
+  {
+   "id": "R04",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R05",
+   "verdict": "warn",
+   "note": "Imprecise: Umar chose the YEAR of the Hijrah as the start (counted from Muharram), not the day of the Hijrah itself (which was in Rabi' al-Awwal)."
+  },
+  {
+   "id": "R06",
+   "verdict": "ok",
+   "note": "Hadiths quoted correctly; leaving the haram for Allah's sake is rewarded."
+  },
+  {
+   "id": "R07",
+   "verdict": "warn",
+   "note": "Does not say plainly that this pooled-stakes contest is gambling (maysir) and that mutual consent does not make it lawful; answer is indirect."
+  },
+  {
+   "id": "R08",
+   "verdict": "warn",
+   "note": "Disputed matter given as settled: majority (Shafi'i, Hanbali, Maliki) require water to remove najasah; removal by other agents is the Hanafi view (also Ibn Taymiyyah). Telling the user 'you are right' and the friend wrong is one-sided."
+  },
+  {
+   "id": "R09",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R10",
+   "verdict": "warn",
+   "note": "Wiping the whole head is the Sunnah description and the Maliki/Hanbali position, but the Shafi'i view that wiping part suffices is a recognised view; presenting one way as 'the correct' one may lead a new Muslim to think others' wudoo' is invalid."
+  },
+  {
+   "id": "R11",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R12",
+   "verdict": "warn",
+   "note": "States as the only view that wudoo' does not permit a junub to stay in the mosque; the Hanbali position (Ahmad, Ishaq, reported practice of Companions) permits it with wudoo'. Recognised difference not mentioned."
+  },
+  {
+   "id": "R13",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R14",
+   "verdict": "ok",
+   "note": "Correct on Allah's knowledge and the four levels implied."
+  },
+  {
+   "id": "R15",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R16",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R17",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R18",
+   "verdict": "ok",
+   "note": "Sea water is purifying (hadith 'its water is pure')."
+  },
+  {
+   "id": "R19",
+   "verdict": "warn",
+   "note": "Ambiguous: after saying camel meat breaks wudoo', the sentence 'the default is that wudoo' remains...' could be read as his wudoo' remains; does not clearly tell him what to do (renew wudoo' per the book's view, which is backed by a hadith in Muslim)."
+  },
+  {
+   "id": "R20",
+   "verdict": "warn",
+   "note": "Majority view (the four madhhabs) stated as the only ruling 'it is not permissible for you' while the questioner explicitly raised the scholarly difference; also phrased as a direct personal ruling."
+  },
+  {
+   "id": "R21",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R22",
+   "verdict": "warn",
+   "note": "Fails to answer: raising hands at ruku' is Sunnah (not a pillar) per those who hold it, and its omission does not invalidate the prayer (Hanafis do not raise); leaving it unanswered may cause a new Muslim needless worry. Irrelevant citation."
+  },
+  {
+   "id": "R23",
+   "verdict": "warn",
+   "note": "Correct that prayer is not dropped, but omits the essential point that the sick person prays according to ability (standing, else sitting, else lying on the side)."
+  },
+  {
+   "id": "R24",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R25",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R26",
+   "verdict": "warn",
+   "note": "Content sound but the answer is truncated mid-sentence ('Prophet M...'); the link to Prophet Muhammad, the core of the question, is missing."
+  },
+  {
+   "id": "R27",
+   "verdict": "ok",
+   "note": "Hadith of Ammar view given, difference acknowledged."
+  },
+  {
+   "id": "R28",
+   "verdict": "warn",
+   "note": "Truncated mid-sentence; 'cover her entire body' leaves the face/hands question (a recognised difference) unexplained; and the clothing rules list is cut off."
+  },
+  {
+   "id": "R29",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R30",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R31",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R32",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R33",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R34",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R35",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R36",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R37",
+   "verdict": "warn",
+   "note": "Terminology garbled: it defines 'raf' al-hadath' as the legal state itself (the hadath is the state; raf' is its removal); also repeats the disputed 'water or any purifier' claim as settled."
+  },
+  {
+   "id": "R38",
+   "verdict": "warn",
+   "note": "Does not tell the user that other authentic tashahhud wordings exist (Ibn Abbas, Umar, Abu Musa) and are valid; silence may lead a new Muslim to think the friend is wrong."
+  },
+  {
+   "id": "R39",
+   "verdict": "ok",
+   "note": "Includes belief, speech and action of the limbs, consistent with Ahl al-Sunnah; could add that iman increases and decreases."
+  },
+  {
+   "id": "R40",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R41",
+   "verdict": "ok",
+   "note": "Dhuhr four units is correct; minor: traveller shortens, and catching one rak'ah with the imam counts as Jumu'ah."
+  },
+  {
+   "id": "R42",
+   "verdict": "warn",
+   "note": "Sound guidance but truncated mid-sentence."
+  },
+  {
+   "id": "R43",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R44",
+   "verdict": "warn",
+   "note": "The user asked how to understand the difference; the answer only restates the book and does not explain that permitting a junub with wudoo' to sit is a recognised (Hanbali) view."
+  },
+  {
+   "id": "R45",
+   "verdict": "warn",
+   "note": "Lists four prohibitions but omits tawaf around the Ka'bah, which is also forbidden to the junub; reciting Qur'an is stated without noting the difference."
+  },
+  {
+   "id": "R46",
+   "verdict": "error",
+   "note": "Misleading generalisation: says men are forbidden silver jewellery without exception, but a silver ring is permissible (Sunnah) for men by consensus; the Prophet wore a silver ring."
+  },
+  {
+   "id": "R47",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R48",
+   "verdict": "ok",
+   "note": "Verse 5:48 quoted correctly."
+  },
+  {
+   "id": "R49",
+   "verdict": "warn",
+   "note": "Invalidating the fast by deliberate emission is the position of the four madhhabs; boilerplate 'a different way at your mosque may also be correct' gives an outlier view equal weight and may mislead."
+  },
+  {
+   "id": "R50",
+   "verdict": "warn",
+   "note": "Omits flowing blood (explicitly forbidden in Qur'an 2:173, 5:3) and does not note that dead sea creatures are lawful; list incomplete for a question asking what is forbidden."
+  },
+  {
+   "id": "R51",
+   "verdict": "ok",
+   "note": "Could cite 33:40 (Seal of the Prophets) but correct."
+  },
+  {
+   "id": "R52",
+   "verdict": "warn",
+   "note": "Does not mention that letting the arms hang (sadl) is the known Maliki practice, so the user may wrongly judge his Moroccan friend; question 'who is right' left unaddressed."
+  },
+  {
+   "id": "R53",
+   "verdict": "ok",
+   "note": "Majority view; adequate for a direct question."
+  },
+  {
+   "id": "R54",
+   "verdict": "warn",
+   "note": "Same imprecision as R05: Umar chose the year of the Hijrah, not its day, as the start; Hajj in Dhul-Hijjah is correct."
+  },
+  {
+   "id": "R55",
+   "verdict": "ok",
+   "note": "Difference on fidyah acknowledged; no personal ruling."
+  },
+  {
+   "id": "R56",
+   "verdict": "warn",
+   "note": "Uncovering the feet is a recognised difference (Hanafi view, also Ibn Taymiyyah, permit it); answer implies feet must be covered as the only view and leaves validity unanswered."
+  },
+  {
+   "id": "R57",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R58",
+   "verdict": "ok",
+   "note": "Seven limbs correctly listed."
+  },
+  {
+   "id": "R59",
+   "verdict": "ok",
+   "note": ""
+  },
+  {
+   "id": "R60",
+   "verdict": "warn",
+   "note": "Shirk is unforgivable only if one dies upon it without repentance; without that qualifier a new Muslim who previously committed shirk could think it is not forgiven, contradicting 'Islam erases what came before'."
+  }
+ ]
+}

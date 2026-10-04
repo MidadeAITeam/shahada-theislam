@@ -15,4 +15,3 @@ web/platform/
 web/dist/
 secrets.local
 !eval/results/
-eval/human_review_key.json
