@@ -34,6 +34,10 @@ export const config = {
   resendKey: env("RESEND_API_KEY"),
   cfAccountId: env("CF_ACCOUNT_ID"),
   cfEmailToken: env("CF_EMAIL_TOKEN"),
+  smtpHost: env("SMTP_HOST"),
+  smtpPort: parseInt(env("SMTP_PORT", "587"), 10),
+  smtpUser: env("SMTP_USER"),
+  smtpPass: env("SMTP_PASS"),
 
   // Mentor panel (demo account)
   mentorPassword: env("MENTOR_PASSWORD", "mentor-demo"),

@@ -1,9 +1,18 @@
-// Sign-in links and next-lesson reminders. Provider by configuration: Resend, Cloudflare Email
-// Sending, or (development) the server log.
+// Sign-in links and next-lesson reminders. Provider by configuration: an existing SMTP server,
+// Resend, Cloudflare Email Sending, or (development) the server log.
+import nodemailer from "nodemailer";
 import { config } from "./config.ts";
+
+const smtp = config.smtpHost
+  ? nodemailer.createTransport({ host: config.smtpHost, port: config.smtpPort, secure: config.smtpPort === 465, auth: { user: config.smtpUser, pass: config.smtpPass } })
+  : null;
 
 export async function sendMail(to: string, subject: string, html: string, text: string): Promise<boolean> {
   try {
+    if (smtp) {
+      await smtp.sendMail({ from: config.mailFrom, to, subject, html, text });
+      return true;
+    }
     if (config.resendKey) {
       const r = await fetch("https://api.resend.com/emails", {
         method: "POST",
