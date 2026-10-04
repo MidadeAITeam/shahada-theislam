@@ -24,7 +24,21 @@ In the platform's export of 8 Sept 2026, the assistant congratulated a user on e
 | Languages | 10 editions converted to text (ar, en, fr, es, id, pt, ru, bs, vi, th); other languages get a "machine-translated explanation — original attached" answer from the English/Arabic text | `scripts/extract_book.py`, `scripts/build_chunks.py` |
 | Evaluation | 200 locked questions + 100 dev + 120 simulated journeys, hashed before building; two systems (ours vs. the same model and passages without checker/router); independent judge | `eval/`, `service/tools/run_eval.ts`, `service/tools/run_journeys.ts`, `service/tools/score.ts` |
 
-Results: see [`docs/evaluation.md`](docs/evaluation.md).
+Results: see [`docs/evaluation.md`](docs/evaluation.md) and the blind review in [`eval/human_review.md`](eval/human_review.md).
+
+Since the locked run, also built (disclosed in the report): live answer stages, a 24-hour answer cache, listen-and-repeat recitation (Al-Minshawi's teaching Mushaf and Alafasy, mp3quran.net) for Al-Fatiha, the short surahs and prayer, interactive exercises from the book's own assessment questions, and a fallback that shows the book's verbatim steps for "how do I perform…" questions on wudu, ghusl and prayer.
+
+## Submission materials
+
+| Deliverable | Where |
+|---|---|
+| Live demo | https://shahada.theislam.chat (`/ar?demo=shahada`, `/en?demo=shahada`); mentor panel at `/mentor` (demo account) |
+| Presentation (challenge template) | [`docs/deck/`](docs/deck/) — PPTX + PDF, rebuilt by `docs/deck/build_deck.py` |
+| Video (≤ 2 min) | built by the pipeline in [`video/`](video/), documented in [`docs/video.md`](docs/video.md) |
+| Evaluation | [`docs/evaluation.md`](docs/evaluation.md), raw rows in `eval/results/` |
+| Sources and licences | [`SOURCES.md`](SOURCES.md) |
+| Sharia review of lessons | `content/review.json` (who approved what, and how) |
+| API | [`docs/api.md`](docs/api.md) |
 
 ## Run it
 
