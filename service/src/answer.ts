@@ -7,7 +7,8 @@ import { lessonById } from "./curriculum.ts";
 import { costUsd, generateJson, type Usage } from "./llm.ts";
 import { verses, type Verse } from "./quran.ts";
 import { route, type Route } from "./router.ts";
-import { DIFFERENCE_NOTE, referralText } from "./messages.ts";
+import { DIFFERENCE_NOTE, STEPS_INTRO, referralText } from "./messages.ts";
+import { getLesson } from "./lessons.ts";
 import type { CheckResult, Chunk, DraftAnswer } from "./types.ts";
 
 export interface SourceRef { id: string; page: number; lang: string; lesson_id: string | null; heading: string; text: string }
@@ -131,6 +132,22 @@ export async function ask(input: AskInput, onStage: (s: Stage) => void = () => {
     }
   }
   const trace = { retrieved, dropped: checked?.dropped ?? [], attempts, costUsd: cost, ms: Date.now() - t0 };
+  // "How do I perform X?" about wudu, ghusl or prayer: if the model found nothing to say but the best
+  // passage belongs to a worship lesson, show that lesson's steps verbatim from the book (code text only).
+  if (checked && (draft?.sentences ?? []).length === 0) {
+    const top = relevant[0]?.chunk;
+    const lesson = top?.lesson_id && ["u3l3", "u3l4", "u3l6"].includes(top.lesson_id) && relevant[0].semantic >= 0.75
+      ? getLesson(input.lang, top.lesson_id, { choice: null, completed: [] }) : null;
+    if (lesson?.steps?.length) {
+      const intro = (STEPS_INTRO[input.lang] ?? STEPS_INTRO.en).replace("{TITLE}", lesson.title);
+      return {
+        status: "answered", text: intro, sentences: [{ text: intro, sources: lesson.steps.map((x) => x.source) }],
+        quotes: lesson.steps.map((x) => ({ ref: x.source, text: x.text, page: Number(x.source.split(":p")[1].split(":")[0]) })),
+        verses: [], sources: lesson.sources, lesson: { id: lesson.id, title: lesson.title }, translatedExplanation: src.translated,
+        route: { action: r.action, label: r.label, emergency: r.emergency }, trace,
+      };
+    }
+  }
   if (!checked || (draft?.sentences ?? []).length === 0) {
     return base(checked ? "not_in_book" : "failed", r, { text: referralText(checked ? "not_in_book" : "failed", input.lang, false), trace });
   }

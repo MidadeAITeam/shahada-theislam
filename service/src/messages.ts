@@ -44,6 +44,15 @@ export const DIFFERENCE_NOTE: Record<string, string> = {
   hi: "यह विद्वानों का एक मान्य मत है, और कुछ विद्वानों का दूसरा मत है। अगर आप अपनी मस्जिद में कोई दूसरा तरीका देखें, तो वह भी सही हो सकता है। विस्तार के लिए आप किसी मार्गदर्शक से पूछ सकते हैं।",
 };
 
+// Fixed lead-in when the answer is the book's own steps for an act of worship.
+export const STEPS_INTRO: Record<string, string> = {
+  en: "Here are the steps exactly as the book Al-Wajeez gives them, from the lesson \"{TITLE}\":",
+  ar: "هذه الخطوات كما وردت في كتاب «الوجيز»، من درس «{TITLE}»:",
+  fr: "Voici les étapes telles que les donne le livre Al-Wajeez, leçon « {TITLE} » :",
+  es: "Estos son los pasos tal como los da el libro Al-Wajeez, lección «{TITLE}»:",
+  id: "Berikut langkah-langkahnya sebagaimana dalam buku Al-Wajeez, pelajaran \"{TITLE}\":",
+};
+
 // Emergency numbers for countries users state most often (public numbers; 112 where it is the general number).
 export const EMERGENCY: Record<string, string> = {
   US: "988 (or 911)", CA: "988 (or 911)", GB: "999 (Samaritans: 116 123)", IE: "112", IN: "112 (Tele-MANAS: 14416)",

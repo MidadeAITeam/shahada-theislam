@@ -77,6 +77,8 @@
 
     <VerseList :verses="lesson.verses || []" :lang="lang" />
 
+    <ExerciseList :exercises="lesson.exercises || []" :lang="lang" />
+
     <section v-if="lesson.audio && lesson.audio.length" class="shd-audio" :aria-label="tr('audioTitle')">
       <h4 class="shd-audio__title">{{ tr('audioTitle') }}</h4>
       <div v-for="a in lesson.audio" :key="a.surah" class="shd-audio__item">
@@ -169,6 +171,7 @@
 import { computed, reactive, ref } from 'vue';
 import SourcedSentence from './SourcedSentence.vue';
 import VerseList from './VerseList.vue';
+import ExerciseList from './ExerciseList.vue';
 import AnswerCard from './AnswerCard.vue';
 import ReportMistake from './ReportMistake.vue';
 import { api } from './api.js';

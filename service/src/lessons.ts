@@ -22,6 +22,14 @@ interface BuiltLesson {
 }
 
 const built = new Map<string, Record<string, BuiltLesson> | null>();
+const exercisesCache = new Map<string, Record<string, unknown[]> | null>();
+function exercisesFor(lang: string): Record<string, unknown[]> | null {
+  if (exercisesCache.has(lang)) return exercisesCache.get(lang)!;
+  const f = path.join(config.dataDir, "build", lang, "exercises.json");
+  const v = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : null;
+  exercisesCache.set(lang, v);
+  return v;
+}
 function builtFor(lang: string): Record<string, BuiltLesson> | null {
   if (built.has(lang)) return built.get(lang)!;
   const f = path.join(config.dataDir, "build", lang, "lessons.json");
@@ -95,6 +103,8 @@ export function getLesson(lang: string, lessonId: string, opts: { choice: Choice
     book_text: review && b ? null : passages.map(ref), // unreviewed: the book itself, with pages
     background_note,
     check_question: review && b?.check_question ? b.check_question : null,
+    // The book's own assessment questions, made interactive; answer keys cite the lesson passages.
+    exercises: review ? exercisesFor(lang)?.[lessonId] ?? [] : [],
     verses: (b?.verses ?? []).flatMap((v) => verses(v, lang)),
     // Listen-and-repeat recitations for the surahs taught in this lesson (mp3quran.net).
     audio: ((audio.by_lesson as Record<string, number[]>)[lessonId] ?? []).map((n) => {

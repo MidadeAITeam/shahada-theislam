@@ -850,7 +850,103 @@
    "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
    "on": "2026-10-04",
    "method": "back-translation to Arabic"
+  },
+  "es:u1l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "bs:u4l2": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "vi:u3l6": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u3l9": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u4l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u2l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u1l1": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "ru:u3l4": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
+  },
+  "th:u4l3": {
+   "by": "automated back-translation check (gemini-3.1-pro), every sentence against its cited passage",
+   "on": "2026-10-04",
+   "method": "back-translation to Arabic"
   }
  },
- "specialist": {}
+ "specialist": {
+  "ar:u1l3": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  },
+  "ar:u3l2": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  },
+  "ar:u3l3": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  },
+  "ar:u3l4": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  },
+  "ar:u3l6": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  },
+  "en:u1l3": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  },
+  "en:u3l2": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  },
+  "en:u3l3": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  },
+  "en:u3l4": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  },
+  "en:u3l6": {
+   "by": "Claude, at the request of Muhammad (Osoul), following the methodology of Ahl al-Sunnah wal-Jama'ah; awaiting his final sign-off",
+   "on": "2026-10-04",
+   "changes": "u3l2 s3 and u3l6 Friday sentence reworded (same source pages); see review notes"
+  }
+ }
 }
