@@ -13,6 +13,7 @@ import { db, event, id } from "./db.ts";
 import { getLesson, lessonIndex, lessonTitle } from "./lessons.ts";
 import { layout, mailText, sendMail } from "./mail.ts";
 import { startCard } from "./profile.ts";
+import { caseEvent, registerMentorRoutes } from "./mentor.ts";
 
 const app = Fastify({ logger: { level: "info" }, trustProxy: true, bodyLimit: 512 * 1024 });
 await app.register(cookie, { secret: config.sessionSecret });
@@ -165,8 +166,10 @@ app.post("/api/shahada/handoff", async (req, reply) => {
     lang(b.lang, l), l.country, b.lesson_id ?? null, String(b.question ?? "").slice(0, 2000),
   );
   if (b.question) db.prepare("INSERT INTO handoff_messages (handoff_id, author, text) VALUES (?, 'learner', ?)").run(hid, String(b.question).slice(0, 2000));
+  db.prepare("UPDATE handoffs SET status = 'new' WHERE id = ?").run(hid);
+  caseEvent(hid, null, "created", b.reason);
   event(l.id, "handoff", b.reason);
-  return { id: hid, status: "queued" };
+  return { id: hid, status: "new" };
 });
 
 app.get("/api/shahada/handoff/messages", async (req, reply) => {
@@ -185,6 +188,8 @@ app.post("/api/shahada/handoff/:id/messages", async (req, reply) => {
   const h = db.prepare("SELECT id FROM handoffs WHERE id = ? AND learner_id = ?").get(hid, l.id);
   if (!h) return reply.code(404).send({ error: "not_found" });
   db.prepare("INSERT INTO handoff_messages (handoff_id, author, text) VALUES (?, 'learner', ?)").run(hid, String((req.body as { text?: string }).text ?? "").slice(0, 2000));
+  db.prepare("UPDATE handoffs SET status = 'in_progress' WHERE id = ? AND status IN ('waiting_user', 'closed')").run(hid);
+  caseEvent(hid, null, "learner_message");
   return { ok: true };
 });
 
@@ -294,33 +299,9 @@ async function remind() {
 }
 setInterval(() => remind().catch((e) => app.log.error(e)), 5 * 60 * 1000);
 
-// ---------------------------------------------------------------- mentor panel (demo account)
-function mentorOk(req: FastifyRequest) {
-  const c = req.cookies.mentor ? req.unsignCookie(req.cookies.mentor) : null;
-  return Boolean(c?.valid && c.value === "ok");
-}
-app.post("/api/mentor/login", async (req, reply) => {
-  if ((req.body as { password?: string }).password !== config.mentorPassword) return reply.code(401).send({ error: "wrong_password" });
-  reply.setCookie("mentor", "ok", { path: "/", httpOnly: true, sameSite: "lax", signed: true, maxAge: 60 * 60 * 12 });
-  return { ok: true };
-});
-app.get("/api/mentor/handoffs", async (req, reply) => {
-  if (!mentorOk(req)) return reply.code(401).send({ error: "login" });
-  const hs = db.prepare("SELECT * FROM handoffs ORDER BY created_at DESC LIMIT 200").all() as Record<string, unknown>[];
-  const msgs = db.prepare("SELECT * FROM handoff_messages ORDER BY id").all() as { handoff_id: string }[];
-  return hs.map((h) => ({ ...h, lesson_title: h.lesson_id ? lessonTitle(String(h.lesson_id), "en") : null, messages: msgs.filter((m) => m.handoff_id === h.id) }));
-});
-app.post("/api/mentor/handoffs/:id/reply", async (req, reply) => {
-  if (!mentorOk(req)) return reply.code(401).send({ error: "login" });
-  const hid = (req.params as { id: string }).id;
-  db.prepare("INSERT INTO handoff_messages (handoff_id, author, text) VALUES (?, 'mentor', ?)").run(hid, String((req.body as { text?: string }).text ?? "").slice(0, 4000));
-  db.prepare("UPDATE handoffs SET status = 'answered' WHERE id = ?").run(hid);
-  return { ok: true };
-});
-app.get("/api/mentor/reports", async (req, reply) => {
-  if (!mentorOk(req)) return reply.code(401).send({ error: "login" });
-  return db.prepare("SELECT * FROM reports ORDER BY id DESC LIMIT 200").all();
-});
+// ---------------------------------------------------------------- follow-up platform (mentors)
+registerMentorRoutes(app);
+
 app.get("/api/stats", async () => ({
   // Aggregated counts only (no content), as committed in the idea file.
   learners: (db.prepare("SELECT count(*) n FROM learners WHERE choice IS NOT NULL OR id IN (SELECT learner_id FROM events WHERE type='lesson_open')").get() as { n: number }).n,
@@ -345,6 +326,8 @@ app.post("/general/site-chat/handoff", async (req, reply) => {
   const b = req.body as { locale?: string; history?: { role: string; text: string }[] };
   const hid = id("h");
   db.prepare("INSERT INTO handoffs (id, learner_id, mentor, reason, lang, country, question) VALUES (?, ?, 'brother', 'user_request', ?, ?, ?)").run(hid, l.id, b.locale ?? "en", l.country, (b.history ?? []).filter((m) => m.role === "visitor").slice(-1)[0]?.text ?? "");
+  db.prepare("UPDATE handoffs SET status = 'new' WHERE id = ?").run(hid);
+  caseEvent(hid, null, "created", "user_request");
   return { message_id: 0, handoff_id: hid };
 });
 app.post("/general/site-chat/send", async (req, reply) => {
@@ -364,8 +347,9 @@ app.get("/general/site-chat/poll", async (req, reply) => {
 app.get("/health", async () => ({ ok: true }));
 
 // ---------------------------------------------------------------- static web (built frontend + mentor page)
-const mentorPage = path.join(ROOT, "service/public/mentor.html");
-app.get("/mentor", async (_req, reply) => reply.type("text/html").send(fs.readFileSync(mentorPage, "utf8")));
+// The follow-up platform is a separate small app built into <webDir>/mentor (base path /mentor/).
+const mentorIndex = () => path.join(config.webDir, "mentor/index.html");
+app.get("/mentor", async (_req, reply) => reply.type("text/html").send(fs.readFileSync(fs.existsSync(mentorIndex()) ? mentorIndex() : path.join(ROOT, "service/public/mentor.html"), "utf8")));
 if (fs.existsSync(config.webDir)) {
   await app.register(fstatic, { root: config.webDir, wildcard: false });
   app.setNotFoundHandler((req, reply) => {
