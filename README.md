@@ -19,7 +19,9 @@ In the platform's export of 8 Sept 2026, the assistant congratulated a user on e
 | Lessons | Summary sentences each linked to their passage and page; the steps of wudu, ghusl and prayer shown **verbatim** from the book; verses from Tanzil with QuranEnc meanings; a comprehension question; lessons not yet reviewed show only the book text | `service/tools/build_lessons.ts`, `service/src/lessons.ts`, `content/review.json` |
 | Questions | Hybrid retrieval (BM25 + gemini-embedding-2) → constrained generation where **every sentence must name a retrieved passage** → a **code-only checker** that drops unsupported sentences, rejects text quoted from nowhere, inserts quotes and verses from the sources, regenerates once if more than a third is dropped, otherwise apologises and offers a mentor | `service/src/answer.ts`, `service/src/checker.ts`, `service/src/book.ts` |
 | Router | Two independent signals — a fixed multilingual list of crisis/self-harm phrases and a model label (curriculum, beyond the book, personal fatwa, crisis, practical need, scholarly difference, unsure). Either one refers. Self-harm shows the country's emergency number first. Labels are never stored on the user | `service/src/router.ts`, `service/src/messages.ts` |
-| Human referral | Brother or sister mentor, a short card the user sees and consents to (language, stated country, lesson, reason, question), queue + mentor panel, reply delivered in the chat when the user returns | `service/src/server.ts`, `service/public/mentor.html`, `web-module/src/HandoffDialog.vue` |
+| Human referral | Brother or sister mentor, a short card the user sees and consents to (language, stated country, lesson, reason, question); the reply is delivered in the chat when the user returns | `service/src/server.ts`, `web-module/src/HandoffDialog.vue` |
+| Follow-up platform | The mentors' app at `/mentor`: accounts and roles (mentor, supervisor), case inbox with filters, crisis alerts and overdue highlights, a case page (referral card, conversation with canned replies, assignment, status, internal notes, timeline), error-report review and aggregate numbers | `service/src/mentor.ts`, `mentor-app/` |
+| Learning space | After the Shahada the chat shows one journey card that opens a full-screen space: the learner's path with progress, a lesson reader, and an ask panel with live answer stages; one screen with a bottom tab bar on phones | `web-module/src/space/` |
 | Account | Google sign-in or e-mail link; the next lesson by e-mail at the hour the user picks; "delete my data" | `service/src/server.ts`, `service/src/mail.ts` |
 | Languages | 10 editions converted to text (ar, en, fr, es, id, pt, ru, bs, vi, th); other languages get a "machine-translated explanation — original attached" answer from the English/Arabic text | `scripts/extract_book.py`, `scripts/build_chunks.py` |
 | Evaluation | 200 locked questions + 100 dev + 120 simulated journeys, hashed before building; two systems (ours vs. the same model and passages without checker/router); independent judge | `eval/`, `service/tools/run_eval.ts`, `service/tools/run_journeys.ts`, `service/tools/score.ts` |
@@ -32,7 +34,7 @@ Since the locked run, also built (disclosed in the report): live answer stages, 
 
 | Deliverable | Where |
 |---|---|
-| Live demo | https://shahada.theislam.chat (`/ar?demo=shahada`, `/en?demo=shahada`); mentor panel at `/mentor` (demo account) |
+| Live demo | https://shahada.theislam.chat (`/ar?demo=shahada`, `/en?demo=shahada`); follow-up platform at `/mentor` (demo accounts: supervisor@, brother@, sister@demo.theislam.chat) |
 | Presentation (challenge template) | [`docs/deck/`](docs/deck/) — PPTX + PDF, rebuilt by `docs/deck/build_deck.py` |
 | Video (≤ 2 min) | built by the pipeline in [`video/`](video/), documented in [`docs/video.md`](docs/video.md) |
 | Evaluation | [`docs/evaluation.md`](docs/evaluation.md), raw rows in `eval/results/` |
