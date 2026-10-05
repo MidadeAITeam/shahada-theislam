@@ -1,14 +1,15 @@
 diff --git a/.env.demo b/.env.demo
 new file mode 100644
-index 0000000..aca57ea
+index 0000000..b26e6b5
 --- /dev/null
 +++ b/.env.demo
-@@ -0,0 +1,5 @@
+@@ -0,0 +1,6 @@
 +# shahada.theislam.chat demo build: the after-Shahada service serves this app and the platform
 +# endpoints it calls, so everything is same-origin. No secrets here.
 +VITE_BASE_URL=
 +VITE_API_URL=/api/chat/no-auth
 +VITE_GOOGLE_CLIENT_ID=
++VITE_DEMO_SHAHADA=1
 diff --git a/package.json b/package.json
 index c1b3de5..5bb1be3 100644
 --- a/package.json
@@ -22,9 +23,27 @@ index c1b3de5..5bb1be3 100644
      "test:unit": "vitest",
      "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
 diff --git a/src/views/AiChatView.vue b/src/views/AiChatView.vue
-index d9ead08..605e42d 100644
+index d9ead08..58c5ecb 100644
 --- a/src/views/AiChatView.vue
 +++ b/src/views/AiChatView.vue
+@@ -123,7 +123,7 @@
+                 </li>
+               </ul>
+             </div>
+-            <button v-else class="btn btn-auth-mobile ms-1" @click="openAuthModal('login')"
++            <button v-else-if="!demoShahada" class="btn btn-auth-mobile ms-1" @click="openAuthModal('login')"
+               :aria-label="authTranslations.login">
+               <i class="fa-solid fa-user"></i>
+             </button>
+@@ -252,7 +252,7 @@
+                 </ul>
+               </div>
+ 
+-              <button v-else class="btn btn-auth" @click="openAuthModal('login')">
++              <button v-else-if="!demoShahada" class="btn btn-auth" @click="openAuthModal('login')">
+                 <i class="fa-solid fa-user"></i>
+                 <span>{{ authTranslations.login }}</span>
+               </button>
 @@ -271,6 +271,7 @@
          <div class="card simple-text full-page-center" v-html="sanitizedMsgDescription">
  
@@ -65,7 +84,16 @@ index d9ead08..605e42d 100644
    props: {
      lang: {
        type: String,
-@@ -787,6 +797,9 @@ export default {
+@@ -515,6 +525,8 @@ export default {
+   },
+   data() {
+     return {
++      // The shahada.theislam.chat demo build has no platform accounts (.env.demo).
++      demoShahada: import.meta.env.VITE_DEMO_SHAHADA === '1',
+       localGeneralId: this.general_id,
+       msg_title: "",
+       msg_lang: "",
+@@ -787,6 +799,9 @@ export default {
       * have already said so the operator reads the thread from its start.
       */
      async talkToHuman() {
@@ -75,7 +103,7 @@ index d9ead08..605e42d 100644
        if (this.humanMode || this.isHandingOff) return;
        this.isHandingOff = true;
  
-@@ -1052,6 +1065,14 @@ export default {
+@@ -1052,6 +1067,14 @@ export default {
          return;
        }
  
@@ -90,7 +118,7 @@ index d9ead08..605e42d 100644
        // The message store rejects anything shorter than four characters, so
        // the composer says so itself rather than letting the message look sent
        // and then throwing a server error over the conversation.
-@@ -1326,7 +1347,9 @@ export default {
+@@ -1326,7 +1349,9 @@ export default {
        try {
          const parsed = JSON.parse(jsonStr);
          const wasAtBottom = this.isScrolledToBottom();
@@ -101,7 +129,7 @@ index d9ead08..605e42d 100644
          if (wasAtBottom) {
            this.$nextTick(() => this.scrollToBottom('auto'));
          }
-@@ -1487,6 +1510,29 @@ export default {
+@@ -1487,6 +1512,29 @@ export default {
          this.loadingInterval = null;
        }
      },
@@ -131,7 +159,7 @@ index d9ead08..605e42d 100644
      askSuggestedQuestion(question) {
        this.messageText = question;
        this.$nextTick(() => this.sendMessage());
-@@ -1624,6 +1670,16 @@ export default {
+@@ -1624,6 +1672,16 @@ export default {
  
      this.resumeHumanChat();
  

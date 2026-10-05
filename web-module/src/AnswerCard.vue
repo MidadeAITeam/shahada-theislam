@@ -36,7 +36,7 @@
         </div>
 
         <figure v-for="(qt, i) in answer.quotes || []" :key="`q${i}`" class="shd-quote">
-          <blockquote style="margin: 0">“{{ qt.text }}”</blockquote>
+          <blockquote style="margin: 0; white-space: pre-line">“{{ plain(qt.text) }}”</blockquote>
           <cite>{{ tr('sourceRef', { book: tr('bookName'), page: qt.page }) }}</cite>
         </figure>
 
@@ -94,6 +94,8 @@ const stageText = computed(() => {
   if (st.stage === 'found') return tr('stageFound', { pages: (st.pages || []).join(isRtl(props.lang) ? '، ' : ', ') });
   return tr('stageChecking');
 });
+// Quotes are the book's words; only Markdown emphasis marks are dropped for display.
+const plain = (t) => (t || '').replace(/\*\*?|__/g, '');
 const arrow = computed(() => (isRtl(props.lang) ? '←' : '→'));
 
 const sourceMap = computed(() => Object.fromEntries((props.answer?.sources || []).map((s) => [s.id, s])));

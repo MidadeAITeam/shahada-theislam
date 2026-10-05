@@ -6,9 +6,10 @@
       :key="id"
       type="button"
       class="shd-marker"
-      :aria-expanded="open.has(id) ? 'true' : 'false'"
+      :aria-expanded="sheet ? undefined : open.has(id) ? 'true' : 'false'"
+      :aria-haspopup="sheet ? 'dialog' : undefined"
       :aria-label="tr('showSource', { n: numberOf(id) })"
-      @click="toggle(id)"
+      @click="toggle(id, $event)"
     >{{ numberOf(id) }}</button>
     <div v-for="id in openIds" :key="`src-${id}`" class="shd-source">
       <blockquote v-if="sourceOf(id)?.text" :lang="sourceOf(id).lang" :dir="isRtl(sourceOf(id).lang) ? 'rtl' : 'ltr'">{{ sourceOf(id).text }}</blockquote>
@@ -20,7 +21,7 @@
 <script setup>
 // One sentence of a summary, step or answer with its numbered source markers. A marker opens the
 // original passage from the book with its page, so every claim can be checked where it is made.
-import { computed, reactive } from 'vue';
+import { computed, inject, reactive } from 'vue';
 import { isRtl, useT } from './i18n.js';
 
 const props = defineProps({
@@ -38,7 +39,12 @@ const tr = useT(() => props.lang);
 const open = reactive(new Set());
 const openIds = computed(() => props.sources.filter((id) => open.has(id)));
 
-const toggle = (id) => (open.has(id) ? open.delete(id) : open.add(id));
+// Inside the learning space the original text opens in a side sheet instead of beneath the sentence.
+const sheet = inject('shdOpenSource', null);
+function toggle(id, event) {
+  if (sheet) return sheet({ id, number: numberOf(id), page: pageOf(id), source: sourceOf(id), trigger: event?.currentTarget });
+  return open.has(id) ? open.delete(id) : open.add(id);
+}
 const sourceOf = (id) => props.sourceMap[id] || null;
 const numberOf = (id) => props.numbers[id] ?? props.sources.indexOf(id) + 1;
 // Passage ids encode the page (wajeez:en:p63:c3), which still gives a page when the passage

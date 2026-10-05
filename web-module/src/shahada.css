@@ -1,18 +1,25 @@
-/* After-Shahada module. Everything is under .shd so nothing leaks into the host page; colours
-   reuse the platform's tokens (--accent-300 teal, --text-100 ink) with fallbacks so the module
-   also renders on its own. The teal is too light for small text on white (2.9:1), so text and
-   focus rings use a darker shade of it (#00756e, 5.6:1). */
+/* After-Shahada module. Everything is under .shd so nothing leaks into the host page. The palette
+   is the follow-up platform's (mentor-app/src/style.css): navy ink, violet for actions, teal for
+   progress. Violet text on white uses the darker shade (#4f3fd6, 6.4:1). */
 .shd {
-  --shd-accent: var(--accent-300, #00a79d);
-  --shd-accent-ink: #00756e;
-  --shd-accent-soft: #e6f6f5;
-  --shd-ink: var(--text-100, #423a47);
-  --shd-muted: #5f5866;
-  --shd-line: #dfe7e6;
+  --shd-accent: #6150ea;
+  --shd-accent-ink: #4f3fd6;
+  --shd-accent-soft: #efedfe;
+  --shd-teal: #2ef2c2;
+  --shd-teal-ink: #08694f;
+  --shd-teal-soft: #dcfcf3;
+  --shd-navy: #12183f;
+  --shd-ink: #12183f;
+  --shd-muted: #5a6082;
+  --shd-line: #e7e9f3;
   --shd-paper: #ffffff;
-  --shd-sand: var(--bg-200, #fbfaf7);
-  --shd-danger: #b42318;
-  --shd-danger-soft: #fdf1f0;
+  --shd-sand: #f7f8ff;
+  --shd-danger: #d42a3a;
+  --shd-danger-soft: #fdecee;
+  --shd-shadow-sm: 0 1px 2px rgba(18, 24, 63, 0.05), 0 1px 3px rgba(18, 24, 63, 0.06);
+  --shd-shadow: 0 1px 2px rgba(18, 24, 63, 0.04), 0 6px 20px rgba(18, 24, 63, 0.07);
+  font-family: 'Readex Pro', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+  -webkit-font-smoothing: antialiased;
   color: var(--shd-ink);
   font-size: 15px;
   line-height: 1.6;
@@ -24,10 +31,10 @@
   text-align: start;
 }
 .shd *, .shd *::before, .shd *::after { box-sizing: border-box; }
-.shd :where(h2, h3, h4) { color: var(--shd-ink); margin: 0; line-height: 1.35; }
-.shd :where(h2) { font-size: 1.1rem; font-weight: 700; }
-.shd :where(h3) { font-size: 1rem; font-weight: 700; }
-.shd :where(h4) { font-size: 0.92rem; font-weight: 700; }
+.shd :where(h1, h2, h3, h4) { color: var(--shd-ink); margin: 0; line-height: 1.35; font-family: inherit; }
+.shd :where(h2) { font-size: 1.1rem; font-weight: 600; }
+.shd :where(h3) { font-size: 1rem; font-weight: 600; }
+.shd :where(h4) { font-size: 0.92rem; font-weight: 600; }
 .shd :where(p) { margin: 0; }
 .shd .shd-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .shd :where(ul, ol) { margin: 0; padding-inline-start: 1.25rem; }
@@ -43,49 +50,50 @@
 
 .shd-card {
   background: var(--shd-paper);
-  border: 1px solid var(--shd-line);
-  border-radius: 14px;
+  border: 0;
+  border-radius: 16px;
   padding: 1rem 1.1rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  box-shadow: 0 1px 2px rgba(66, 58, 71, 0.04);
+  box-shadow: var(--shd-shadow-sm);
 }
 .shd-card--soft { background: var(--shd-sand); }
 .shd-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: var(--shd-accent-ink); }
+.shd-card--soft { box-shadow: none; }
 .shd-muted { color: var(--shd-muted); font-size: 13px; }
 
 /* Buttons: real <button>s, at least 40px tall so they are easy to hit on a phone. */
 .shd-btn {
   appearance: none;
-  min-height: 40px;
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--shd-accent-ink);
-  background: transparent;
+  min-height: 42px;
+  padding: 0.45rem 1.1rem;
+  border-radius: 12px;
+  border: 0;
+  background: var(--shd-accent-soft);
   color: var(--shd-accent-ink);
   font: inherit;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
   text-align: center;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
 }
-.shd-btn:hover { background: var(--shd-accent-soft); }
-.shd-btn--primary { background: var(--shd-accent-ink); color: #fff; }
-.shd-btn--primary:hover { background: #005f59; }
-.shd-btn--quiet { border-color: transparent; color: var(--shd-muted); font-weight: 500; }
-.shd-btn--quiet:hover { background: #f1f1ef; }
-.shd-btn--danger { border-color: var(--shd-danger); color: var(--shd-danger); }
-.shd-btn--danger:hover { background: var(--shd-danger-soft); }
-.shd-btn--small { min-height: 32px; padding: 0.2rem 0.7rem; font-size: 13px; }
+.shd-btn:hover { background: #e1ddfd; }
+.shd-btn--primary { background: var(--shd-accent); color: #fff; box-shadow: 0 2px 8px rgba(97, 80, 234, 0.25); }
+.shd-btn--primary:hover { background: var(--shd-accent-ink); }
+.shd-btn--quiet { background: transparent; color: var(--shd-muted); }
+.shd-btn--quiet:hover { background: #eef0f6; color: var(--shd-ink); }
+.shd-btn--danger { background: var(--shd-danger-soft); color: #a1121f; }
+.shd-btn--danger:hover { background: #fbdde1; }
+.shd-btn--small { min-height: 34px; padding: 0.2rem 0.8rem; font-size: 13px; border-radius: 10px; }
 .shd-btn:disabled { opacity: 0.55; cursor: not-allowed; }
 .shd :is(button, a, input, select, textarea, summary):focus-visible {
-  outline: 3px solid var(--shd-accent-ink);
+  outline: 3px solid var(--shd-accent);
   outline-offset: 2px;
 }
 .shd-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -95,8 +103,8 @@
   font: inherit;
   font-size: 15px;
   color: var(--shd-ink);
-  background: #fff;
-  border: 1px solid #c9d3d2;
+  background: #fbfbfe;
+  border: 1px solid #d9dcea;
   border-radius: 10px;
   padding: 0.5rem 0.75rem;
   min-height: 42px;
@@ -158,8 +166,8 @@
 }
 
 .shd-progress { display: flex; align-items: center; gap: 0.6rem; font-size: 12px; color: var(--shd-muted); }
-.shd-progress__track { flex: 1 1 auto; height: 6px; background: #e8eeed; border-radius: 999px; overflow: hidden; }
-.shd-progress__bar { height: 100%; background: var(--shd-accent); border-radius: 999px; transition: width 0.4s ease; }
+.shd-progress__track { flex: 1 1 auto; height: 6px; background: #eef0f6; border-radius: 999px; overflow: hidden; }
+.shd-progress__bar { height: 100%; background: var(--shd-teal); border-radius: 999px; transition: width 0.4s ease; }
 
 .shd-verse { display: flex; flex-direction: column; gap: 0.35rem; padding: 0.75rem 0.9rem; border-radius: 10px; background: var(--shd-sand); }
 .shd-verse__ar {
@@ -184,7 +192,7 @@
   cursor: pointer;
 }
 .shd-option input { margin-top: 0.3rem; accent-color: var(--shd-accent-ink); }
-.shd-option--right { border-color: var(--shd-accent-ink); background: var(--shd-accent-soft); }
+.shd-option--right { border-color: var(--shd-teal-ink); background: var(--shd-teal-soft); }
 .shd-option--wrong { border-color: var(--shd-danger); background: var(--shd-danger-soft); }
 
 .shd-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
@@ -221,16 +229,17 @@
 .shd-bubble {
   align-self: flex-end;
   max-width: 85%;
-  background: #dbe9e8;
+  background: var(--shd-accent); color: #fff;
   border-radius: 16px;
   padding: 0.45rem 0.9rem;
 }
 [dir='rtl'] .shd-bubble { align-self: flex-start; }
 
 .shd-emergency {
-  border: 2px solid var(--shd-danger);
-  background: var(--shd-danger-soft);
-  color: #7a1810;
+  border: 0;
+  background: var(--shd-danger);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(212, 42, 58, 0.25);
   border-radius: 12px;
   padding: 0.75rem 0.9rem;
   font-weight: 700;
@@ -244,7 +253,7 @@
 .shd-quote cite { display: block; font-style: normal; font-size: 12px; color: var(--shd-muted); margin-top: 0.2rem; }
 
 .shd-mentor { border-inline-start: 3px solid #7a5af8; }
-.shd-success { color: var(--shd-accent-ink); font-weight: 600; }
+.shd-success { color: var(--shd-teal-ink); font-weight: 600; }
 .shd-error { color: var(--shd-danger); font-size: 14px; }
 
 .shd-spinner {
@@ -285,7 +294,8 @@
 .shd-dialog-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(30, 26, 33, 0.45);
+  background: rgba(18, 24, 63, 0.5);
+  backdrop-filter: blur(2px);
   z-index: 1080;
   display: flex;
   flex-direction: row;
@@ -326,7 +336,7 @@
   align-items: center;
   justify-content: center;
 }
-.shd-icon-btn:hover { background: #f1f1ef; }
+.shd-icon-btn:hover { background: #eef0f6; color: var(--shd-ink); }
 .shd-mentors { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
 .shd-referral { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 0.3rem 0.8rem; font-size: 14px; }
 .shd-referral dt { color: var(--shd-muted); font-weight: 600; }
@@ -346,17 +356,17 @@
   padding: 0.7rem 1.4rem;
   border-radius: 16px;
   border: 0;
-  background: #00756e;
+  background: #6150ea;
   color: #fff;
-  font: inherit;
-  font-weight: 700;
+  font-family: 'Readex Pro', system-ui, sans-serif;
+  font-weight: 600;
   font-size: 15px;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0, 117, 110, 0.25);
+  box-shadow: 0 6px 18px rgba(97, 80, 234, 0.3);
   max-width: 100%;
 }
-.shd-demo-btn:hover { background: #005f59; }
-.shd-demo-btn:focus-visible { outline: 3px solid #00756e; outline-offset: 3px; }
+.shd-demo-btn:hover { background: #4f3fd6; }
+.shd-demo-btn:focus-visible { outline: 3px solid #6150ea; outline-offset: 3px; }
 .shd-demo-btn small { font-weight: 400; font-size: 12px; opacity: 0.9; }
 
 @media (max-width: 420px) {
