@@ -91,7 +91,7 @@ const stageText = computed(() => {
   const st = props.stage;
   if (!st) return tr('thinking');
   if (st.stage === 'routing') return tr('stageRouting');
-  if (st.stage === 'found') return tr('stageFound', { pages: (st.pages || []).join('، ') });
+  if (st.stage === 'found') return tr('stageFound', { pages: (st.pages || []).join(isRtl(props.lang) ? '، ' : ', ') });
   return tr('stageChecking');
 });
 const arrow = computed(() => (isRtl(props.lang) ? '←' : '→'));

@@ -38,7 +38,7 @@
 // Interactive version of the assessment questions printed in Al-Wajeez. Nothing is stored:
 // the learner tries, then sees the answer from the lesson with its page numbers.
 import { reactive } from 'vue';
-import { useT } from './i18n.js';
+import { isRtl, useT } from './i18n.js';
 
 const props = defineProps({
   exercises: { type: Array, default: () => [] },
@@ -57,7 +57,7 @@ function optClass(i, k, ex) {
 }
 function pagesOf(ids) {
   const pages = [...new Set((ids || []).map((id) => id.split(':p')[1]?.split(':')[0]).filter(Boolean))];
-  return `${tr('bookShort')} ${pages.join('، ')}`;
+  return `${tr('bookShort')} ${pages.join(isRtl(props.lang) ? '، ' : ', ')}`;
 }
 </script>
 

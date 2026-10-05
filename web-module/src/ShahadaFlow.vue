@@ -22,6 +22,7 @@
         v-else-if="item.type === 'lesson'"
         :lesson="item.lesson"
         :lang="lang"
+        :learner-lang="learnerLang"
         :first="item.first"
         :active="item.key === activeLessonKey"
         :busy="busy"
@@ -116,6 +117,7 @@
       :question="handoff.question"
       :lesson="currentLesson ? { id: currentLesson.id, title: currentLesson.title } : null"
       :country="confirmedCard?.country || null"
+      :learner-lang="learnerLang"
       @close="handoff.open = false"
       @sent="onHandoffSent"
     />
@@ -370,6 +372,8 @@ async function pollMentor() {
       if (seenMentor.has(id)) continue;
       seenMentor.add(id);
       if (m.created_at && (!lastMentorAt || m.created_at > lastMentorAt)) lastMentorAt = m.created_at;
+      // The thread also holds the learner's own words (the referral question, their replies).
+      if (m.author && m.author !== 'mentor') continue;
       push({ type: 'mentor', text: m.text, name: m.mentor_name || '', handoffId: m.handoff_id || null, replies: [], draft: '' });
     }
     if (list.length) startPolling();

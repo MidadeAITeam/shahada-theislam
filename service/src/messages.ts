@@ -3,6 +3,8 @@
 // the user stated (never inferred from IP).
 type Key = "partial" | "fatwa_personal" | "crisis" | "practical_need" | "unsure" | "not_in_book" | "failed" | "social" | "emergency";
 
+import translated from "../../content/messages.json" with { type: "json" };
+
 const T: Record<string, Record<Key, string>> = {
   en: {
     fatwa_personal: "This is a question about your own situation, and it deserves a real person who can understand all of its details. Would you like to talk to a mentor? You can choose a brother or a sister.",
@@ -13,7 +15,7 @@ const T: Record<string, Record<Key, string>> = {
     not_in_book: "I could not find the answer to this in the book Al-Wajeez, and I will not answer from outside it. A mentor from our team can help — would you like to talk to one?",
     failed: "I'm sorry, I could not prepare an answer I can fully trace to the book. A mentor from our team can help — would you like to talk to one?",
     social: "Wa alaykum as-salam and welcome. Ask me anything about your lesson, or continue to the next one when you are ready.",
-    emergency: "If you are thinking about hurting yourself or you are in danger, please call {NUMBER} now, or go to the nearest emergency service. You are not alone, and your life is precious.",
+    emergency: "If you are thinking about hurting yourself or you are in danger, please call {NUMBER} (or your local emergency number) now, or go to the nearest emergency service. You are not alone, and your life is precious.",
   },
   ar: {
     fatwa_personal: "هذه مسألة تخص حالتك أنت، ويحسن أن يجيبك عنها إنسان يفهم تفاصيلها كلها. هل تريد التحدث إلى مرشد؟ يمكنك أن تختار مرشداً أو مرشدة.",
@@ -24,7 +26,7 @@ const T: Record<string, Record<Key, string>> = {
     not_in_book: "لم أجد جواب هذا السؤال في كتاب «الوجيز»، ولا أجيب من خارجه. يستطيع مرشد من فريقنا أن يساعدك، هل تريد التحدث إليه؟",
     failed: "عذراً، لم أستطع إعداد جواب أستطيع إسناده كله إلى الكتاب. يستطيع مرشد من فريقنا أن يساعدك، هل تريد التحدث إليه؟",
     social: "وعليكم السلام ومرحباً بك. اسألني عما تشاء في درسك، أو انتقل إلى الدرس التالي متى شئت.",
-    emergency: "إن كنت تفكر في إيذاء نفسك أو كنت في خطر، فاتصل الآن بالرقم {NUMBER}، أو توجّه إلى أقرب جهة طوارئ. لست وحدك، وحياتك غالية.",
+    emergency: "إن كنت تفكر في إيذاء نفسك أو كنت في خطر، فاتصل الآن بالرقم {NUMBER} (أو برقم الطوارئ في بلدك)، أو توجّه إلى أقرب جهة طوارئ. لست وحدك، وحياتك غالية.",
   },
 };
 
@@ -63,13 +65,16 @@ export const EMERGENCY: Record<string, string> = {
   KW: "112", QA: "999", JO: "911", MA: "15", DZ: "14", TN: "190", TR: "112",
 };
 
+export const EMERGENCY_FALLBACK = "112";
 export function emergencyNumber(country?: string | null): string {
-  return (country && EMERGENCY[country.toUpperCase()]) || "your local emergency number (112 in most countries)";
+  return (country && EMERGENCY[country.toUpperCase()]) || EMERGENCY_FALLBACK;
 }
 
 export function referralText(key: Key | string, lang: string, emergency: boolean, country?: string | null): string {
-  const t = T[lang] ?? T.en;
+  const t = (T[lang] ?? (translated as Record<string, Record<Key, string>>)[lang] ?? T.en) as Record<Key, string>;
   const main = (t[key as Key] ?? t.unsure);
   if (!emergency) return main;
   return `${t.emergency.replace("{NUMBER}", emergencyNumber(country))}\n\n${main}`;
 }
+
+export const MESSAGES_EN = T.en;

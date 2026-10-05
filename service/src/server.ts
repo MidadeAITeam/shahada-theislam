@@ -12,7 +12,6 @@ import { CHOICES, nextLesson, plannedPath, progressOf, type Choice } from "./cur
 import { db, event, id } from "./db.ts";
 import { getLesson, lessonIndex, lessonTitle } from "./lessons.ts";
 import { layout, mailText, sendMail } from "./mail.ts";
-import { emergencyNumber } from "./messages.ts";
 import { startCard } from "./profile.ts";
 
 const app = Fastify({ logger: { level: "info" }, trustProxy: true, bodyLimit: 512 * 1024 });
@@ -112,14 +111,13 @@ async function answerFor(l: Learner, b: { question?: string; lang?: string; less
   let r: AnswerResult;
   if (hit && Date.now() - hit.at < 24 * 3600 * 1000) r = hit.r;
   else {
-    r = await ask({ question, lang: lg, lessonId: b.lesson_id ?? null }, onStage);
+    r = await ask({ question, lang: lg, lessonId: b.lesson_id ?? null, country: l.country }, onStage);
     if (r.status === "answered" || r.status === "not_in_book") {
       if (answerCache.size > 2000) answerCache.delete(answerCache.keys().next().value!);
       answerCache.set(key, { at: Date.now(), r });
     }
   }
   r = { ...r };
-  if (r.route.emergency) r.text = r.text.replace(/your local emergency number \(112 in most countries\)/, emergencyNumber(l.country));
   event(l.id, "ask", `${r.status}:${r.route.label}`);
   const { trace, ...publicPart } = r;
   return { ...publicPart, trace: { ms: trace.ms, attempts: trace.attempts, dropped: trace.dropped.length, cached: Boolean(hit) } };

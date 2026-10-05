@@ -76,7 +76,7 @@ async function searchQueries(q: string, to: string): Promise<{ queries: string[]
   }
 }
 
-export interface AskInput { question: string; lang: string; lessonId?: string | null; history?: string }
+export interface AskInput { question: string; lang: string; lessonId?: string | null; history?: string; country?: string | null }
 export type Stage = { stage: "routing" } | { stage: "found"; pages: number[] } | { stage: "checking" };
 
 export async function ask(input: AskInput, onStage: (s: Stage) => void = () => {}): Promise<AnswerResult> {
@@ -93,7 +93,7 @@ export async function ask(input: AskInput, onStage: (s: Stage) => void = () => {
   onStage({ stage: "routing" });
   const r = await route(input.question, input.lessonId ? lessonTitle(input.lessonId) : "");
   track(r.usage);
-  if (r.action === "refer") return base("referred", r, { text: referralText(r.label, input.lang, r.emergency) });
+  if (r.action === "refer") return base("referred", r, { text: referralText(r.label, input.lang, r.emergency, input.country) });
   if (r.action === "social") return base("social", r, { text: referralText("social", input.lang, false) });
 
   const src = sourceLang(input.lang);

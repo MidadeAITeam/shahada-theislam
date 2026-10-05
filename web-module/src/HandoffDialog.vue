@@ -86,6 +86,7 @@ const props = defineProps({
   question: { type: String, default: '' },
   lesson: { type: Object, default: null }, // { id, title }
   country: { type: Object, default: null }, // the card's country, only if the user kept it
+  learnerLang: { type: String, default: null }, // the language confirmed on the start card
 });
 const emit = defineEmits(['close', 'sent']);
 
@@ -102,9 +103,9 @@ let returnFocus = null;
 
 const languageName = computed(() => {
   try {
-    return new Intl.DisplayNames([props.lang], { type: 'language' }).of(apiLang(props.lang));
+    return new Intl.DisplayNames([props.lang], { type: 'language' }).of(props.learnerLang || apiLang(props.lang));
   } catch {
-    return apiLang(props.lang);
+    return props.learnerLang || apiLang(props.lang);
   }
 });
 
@@ -154,7 +155,7 @@ async function send() {
       mentor: mentor.value,
       question: text.value.trim(),
       lesson_id: props.lesson?.id ?? null,
-      lang: apiLang(props.lang),
+      lang: props.learnerLang || apiLang(props.lang),
       consent: true,
     });
     sent.value = res || { status: 'queued' };

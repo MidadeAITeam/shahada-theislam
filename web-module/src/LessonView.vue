@@ -41,8 +41,8 @@
     <!-- Not yet reviewed: the book's own words and page, nothing generated around them. -->
     <template v-if="!lesson.reviewed">
       <p class="shd-muted">{{ tr('unreviewed') }}</p>
-      <figure v-for="src in lesson.sources || []" :key="src.id" class="shd-quote">
-        <blockquote style="margin: 0; white-space: pre-line" :lang="src.lang" :dir="isRtl(src.lang) ? 'rtl' : 'ltr'">{{ src.text }}</blockquote>
+      <figure v-for="src in bookText" :key="src.id" class="shd-quote">
+        <blockquote style="margin: 0; white-space: pre-line" :lang="src.lang" :dir="isRtl(src.lang) ? 'rtl' : 'ltr'">{{ plainSteps(src.text) }}</blockquote>
         <cite>{{ tr('sourceRef', { book: tr('bookName'), page: src.page }) }}</cite>
       </figure>
     </template>
@@ -64,7 +64,15 @@
       </ol>
     </section>
 
-    <section v-if="lesson.background_note" class="shd-card shd-card--soft">
+    <section v-if="backgroundPassages.length" class="shd-card shd-card--soft">
+      <h4 class="shd-eyebrow">{{ tr('backgroundNote') }}</h4>
+      <!-- The service sends the passages themselves (the book's words with their page). -->
+      <figure v-for="src in backgroundPassages" :key="src.id" class="shd-quote">
+        <blockquote style="margin: 0; white-space: pre-line" :lang="src.lang" :dir="isRtl(src.lang) ? 'rtl' : 'ltr'">{{ plainSteps(src.text) }}</blockquote>
+        <cite>{{ tr('sourceRef', { book: tr('bookName'), page: src.page }) }}</cite>
+      </figure>
+    </section>
+    <section v-else-if="lesson.background_note?.text" class="shd-card shd-card--soft">
       <h4 class="shd-eyebrow">{{ tr('backgroundNote') }}</h4>
       <SourcedSentence
         :text="lesson.background_note.text"
@@ -188,6 +196,8 @@ const props = defineProps({
   // The Shahada lesson ends in "continue the curriculum / I have a question" instead.
   first: { type: Boolean, default: false },
   busy: { type: Boolean, default: false },
+  // The language the learner confirmed on the start card, which may differ from the page.
+  learnerLang: { type: String, default: null },
 });
 defineEmits(['next', 'index', 'handoff', 'ask-general', 'open-lesson']);
 
@@ -200,6 +210,10 @@ const progressPct = computed(() => {
   const p = props.lesson.position;
   return p?.total ? Math.round((100 * p.done) / p.total) : 0;
 });
+
+// Unreviewed lessons: the whole lesson text from the book (`sources` holds only cited passages).
+const bookText = computed(() => (props.lesson.book_text?.length ? props.lesson.book_text : props.lesson.sources || []));
+const backgroundPassages = computed(() => (Array.isArray(props.lesson.background_note) ? props.lesson.background_note : []));
 
 const sourceMap = computed(() => Object.fromEntries((props.lesson.sources || []).map((s) => [s.id, s])));
 // Number passages in reading order so the same passage keeps its number across the card.
@@ -239,7 +253,7 @@ async function runAsk(item) {
   item.error = false;
   try {
     item.stage = null;
-    item.answer = await api.askStream(item.question, apiLang(props.lang), props.lesson.id, (st) => (item.stage = st));
+    item.answer = await api.askStream(item.question, props.learnerLang || apiLang(props.lang), props.lesson.id, (st) => (item.stage = st));
   } catch {
     item.error = true;
   } finally {
