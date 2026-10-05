@@ -36,6 +36,7 @@ addCol("handoffs", "closed_reason", "TEXT");
 addCol("handoffs", "first_reply_at", "TEXT");
 addCol("handoffs", "closed_at", "TEXT");
 addCol("handoffs", "emergency", "INTEGER NOT NULL DEFAULT 0");
+addCol("handoff_messages", "mentor_id", "TEXT");
 addCol("reports", "status", "TEXT NOT NULL DEFAULT 'new'");
 addCol("reports", "reviewer", "TEXT");
 // Older rows used 'queued' / 'answered'.
@@ -165,7 +166,7 @@ export function registerMentorRoutes(app: FastifyInstance) {
     const r = load(req, reply); if (!r) return;
     return {
       case: shape(r.h),
-      messages: db.prepare("SELECT id, author, text, created_at FROM handoff_messages WHERE handoff_id = ? ORDER BY id").all(r.h.id),
+      messages: db.prepare("SELECT hm.id, hm.author, hm.text, hm.created_at, mt.name AS mentor_name FROM handoff_messages hm LEFT JOIN mentors mt ON mt.id = hm.mentor_id WHERE hm.handoff_id = ? ORDER BY hm.id").all(r.h.id),
       notes: db.prepare("SELECT n.id, n.text, n.created_at, m.name FROM handoff_notes n JOIN mentors m ON m.id = n.mentor_id WHERE handoff_id = ? ORDER BY n.id").all(r.h.id),
       events: db.prepare("SELECT e.type, e.detail, e.created_at, m.name AS actor FROM handoff_events e LEFT JOIN mentors m ON m.id = e.actor WHERE handoff_id = ? ORDER BY e.id").all(r.h.id),
     };
@@ -175,7 +176,7 @@ export function registerMentorRoutes(app: FastifyInstance) {
     const r = load(req, reply); if (!r) return;
     const text = String((req.body as { text?: string }).text ?? "").trim().slice(0, 4000);
     if (!text) return reply.code(400).send({ error: "empty" });
-    db.prepare("INSERT INTO handoff_messages (handoff_id, author, text) VALUES (?, 'mentor', ?)").run(r.h.id, text);
+    db.prepare("INSERT INTO handoff_messages (handoff_id, author, text, mentor_id) VALUES (?, 'mentor', ?, ?)").run(r.h.id, text, r.m.id);
     if (!r.h.first_reply_at) db.prepare("UPDATE handoffs SET first_reply_at = datetime('now') WHERE id = ?").run(r.h.id);
     if (!r.h.assigned_to) { db.prepare("UPDATE handoffs SET assigned_to = ? WHERE id = ?").run(r.m.id, r.h.id); caseEvent(r.h.id, r.m.id, "assigned", r.m.name); }
     if (r.h.status === "new") db.prepare("UPDATE handoffs SET status = 'in_progress' WHERE id = ?").run(r.h.id);
@@ -234,6 +235,7 @@ export function registerMentorRoutes(app: FastifyInstance) {
   // Aggregate numbers only (no content).
   app.get("/api/mentor/stats", async (req, reply) => {
     const m = guard(req, reply); if (!m) return;
+    if (m.role !== "supervisor") return reply.code(403).send({ error: "supervisor_only" });
     const one = (sql: string) => (db.prepare(sql).get() as { n: number }).n ?? 0;
     return {
       cases_total: one("SELECT count(*) n FROM handoffs"),
