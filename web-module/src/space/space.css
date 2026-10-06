@@ -167,7 +167,12 @@ html.lsp-locked, html.lsp-locked body { overflow: hidden !important; }
 .lsp-tag { flex: none; padding: 1px 8px; border-radius: 999px; font-size: 0.7rem; font-weight: 600; background: rgba(46, 242, 194, 0.14); color: var(--teal); }
 .lsp-tag--now { background: rgba(255, 255, 255, 0.2); color: #fff; }
 
-.lsp-path__foot { margin-top: auto; display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+/* The book, the account and "talk to a human" stay in view at the foot of the column while the lessons scroll. */
+.lsp-path__foot {
+  margin: auto -16px -20px; position: sticky; bottom: 0; z-index: 1; display: flex; flex-direction: column; gap: 8px;
+  padding: 14px 16px 16px; background: var(--navy); border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -12px 18px rgba(18, 24, 63, 0.55);
+}
 .lsp-tool {
   display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; border: 0; border-radius: 12px;
   background: rgba(255, 255, 255, 0.07); color: #e5e7f7; cursor: pointer; font-size: 0.9rem; text-align: start;
@@ -563,6 +568,7 @@ html.lsp-locked, html.lsp-locked body { overflow: hidden !important; }
   .lsp-col--ask { box-shadow: none; }
   .lsp-ask__head { display: none; }
   .lsp-path { padding: 18px 14px 20px; }
+  .lsp-path__foot { margin-inline: -14px; padding-inline: 14px; }
   .lsp-path__brand { display: none; }
   .lsp-main { padding: 14px 16px 36px; }
   .lsp-card { padding: 18px; border-radius: 14px; }

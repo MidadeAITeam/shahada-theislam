@@ -386,7 +386,7 @@ watch(() => props.id, () => load());
             <li v-for="(e, i) in [...data.events].reverse()" :key="i" :class="`ev-${e.type}`">
               <span class="tl-dot" aria-hidden="true"></span>
               <span class="tl-text">{{ eventText(e) }}</span>
-              <span class="muted small"><bdi>{{ e.actor ? t("by", { a: e.actor }) : ["created", "learner_message", "reopened"].includes(e.type) ? t("learner") : t("system") }}</bdi> · <time :datetime="e.created_at" :title="dateTime(e.created_at)">{{ ageShort(ageSince(e.created_at)) }}</time></span>
+              <span class="muted small"><bdi>{{ e.actor ? t("by", { a: e.actor }) : ["created", "learner_message", "reopened"].includes(e.type) ? t("learner") : t("system") }}</bdi> · <time :datetime="e.created_at">{{ dateTime(e.created_at) }}</time> <span class="muted">({{ ageShort(ageSince(e.created_at)) }})</span></span>
             </li>
           </ol>
         </section>

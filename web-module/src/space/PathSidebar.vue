@@ -62,7 +62,7 @@
         <SpaceIcon name="book" :size="18" /><span>{{ tr('bookBrowse') }}</span>
       </button>
       <button type="button" class="lsp-tool" :disabled="disabled" @click="$emit('save')">
-        <SpaceIcon name="save" :size="18" /><span>{{ account ? tr('signedIn', { who: account }) : tr('saveProgress') }}</span>
+        <SpaceIcon :name="account ? 'user' : 'save'" :size="18" /><span>{{ account ? tr('signedIn', { who: account }) : tr('saveProgress') }}</span>
       </button>
       <button type="button" class="lsp-tool lsp-tool--accent" @click="$emit('handoff')">
         <SpaceIcon name="users" :size="18" /><span>{{ tr('talkHuman') }}</span>

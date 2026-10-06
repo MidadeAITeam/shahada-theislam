@@ -6,7 +6,7 @@ import StatusPill from "../components/StatusPill.vue";
 import EmptyState from "../components/EmptyState.vue";
 import ErrorBox from "../components/ErrorBox.vue";
 import { t } from "../i18n.js";
-import { langName, countryName, flag, ageShort, firstLine, clock } from "../format.js";
+import { langName, countryName, flag, ageShort, firstLine, clock, dateTime } from "../format.js";
 import { inbox, refreshInbox, session } from "../store.js";
 import { api } from "../api.js";
 
@@ -176,7 +176,7 @@ async function closePicked() {
           </div>
           <div class="case-side">
             <span class="age" :class="{ late: c.overdue }">
-              <Icon name="clock" :size="15" />{{ ageShort(c.age_minutes) }}
+              <Icon name="clock" :size="15" /><time :datetime="c.created_at">{{ dateTime(c.created_at) }}</time> · {{ ageShort(c.age_minutes) }}
               <span v-if="c.overdue" class="late-tag">{{ t("overdue") }}</span>
             </span>
             <span class="assignee" :class="{ none: !c.assigned_name }">
