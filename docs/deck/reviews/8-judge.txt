@@ -1,0 +1,33 @@
+JUDGE REVIEW (skeptical, busy) - 27 slides
+
+FIRST IMPRESSION (3 lines)
+1. Strong, honest problem framing (166 shahadas, 89 dropped, no lesson to give) and a rare, genuinely candid evaluation; a real product on a real platform, grounded in the book "Al-Wajiz".
+2. But it is dense: slides 13-20 read like a technical report, and the key claim (it helps new Muslims) is unmeasured, which the deck itself admits.
+3. Credible and safe-by-design (checker, referral to humans); risk is that I leave remembering numbers and architecture, not the learner's experience.
+
+5 QUESTIONS THE DECK DOES NOT ANSWER
+1. Who is the Shariah reviewer, and how many of the 19 lessons are actually signed off today? Slides say "pending" but never give a count (e.g. 5/19). That is the core trust claim.
+2. Who staffs the mentors after the challenge? Slide 23 says "Asul team takes over" - how many mentors, in which languages, with what response time? A bot that sends users to an empty inbox is worse than none.
+3. Why does the product depend on a single source (Al-Wajiz)? What happens with madhhab differences, or a question the book is silent on, beyond "sorry"? Slide 19 shows 91% apology vs 100% needed on sensitive referral (81%): what do the 19% of sensitive questions get that is not referral, concretely?
+4. Is there any evidence that the 11 who left contact details / the 13 who returned would increase? What is the target retention metric, and how will you measure it ethically without reading chats?
+5. Gemini/OpenAI dependency and data: user disclosures about religion go to third-party model providers. What is the retention/consent/legal position (GDPR, users in restrictive countries where conversion is dangerous)?
+
+3 SLIDES THAT WOULD LOWER MY SCORE
+- Slide 19/20: too many numbers (20+ rows), mixed metrics, with 81% on the most sensitive category and "improved after peeking" caveats; a judge cannot tell what is the headline. The honesty is good but the density hides it. Needs one headline row and 3 supporting.
+- Slide 16: model/tool inventory table with version strings (gemini-3.5-flash-lite etc.) is unreadable on screen and adds little; sounds like name-dropping; unexplained fallbacks.
+- Slide 26: shows a plaintext demo password on a slide that will be public/recorded; also the 3-minute path is crammed in a footer. Move credentials to the submission form/README; show a QR code.
+(Honourable mention: slide 25 team slide has placeholder labels "الاسم", "عضو" and no real names for Mohamed/others in roles beyond one line - looks unfinished.)
+
+CONCRETE EDITS
+1. Slide 26: «supervisor@demo.theislam.chat / 6c014c6af52e» → «بيانات الدخول التجريبية في نموذج التقديم وملف README» (or a QR code); never a password on a public slide.
+2. Slide 25: «الاسم» labels on all three cards → delete the label; show name large, role beneath, and a one-line contribution each.
+3. Slide 19: 15-row table → keep 5 rows (citations match 100%, sensitive no-fatwa 98.9%, emergency first 12/12, wrongly refused 1.9%, sensitive-to-human 81% in red) and move the rest to docs/evaluation.md; headline above: «لا فتوى، ولا اقتباس مختلق».
+4. Slide 20: 5 rows x 6 columns → 3 rows (closed set, unseen set M, review set) and 3 columns (حسّنّا عليها؟ / تصرف صحيح / أحكام مخترعة); keep the honesty paragraph.
+5. Slide 16: «gemini-3.5-flash-lite» repeated 4 times → group by role (فهم وفرز / بحث / كتابة / تقييم) with one model name each; drop SHA-256 and poppler from the visible table.
+6. Slide 23: «بعد التحدي: يراجع المختص الشرعي بقية الدروس» → «اليوم: N من 19 درساً راجعها المختص الشرعي؛ الباقي بنص الكتاب فقط. بعد التحدي: يراجع الباقي خلال X أسابيع» (fill real N and X).
+7. Slide 23: «يتسلّم فريق أصول منصة المرشدين» → «فريق أصول: N مرشداً ومرشدة، يردّون خلال X ساعة (العدّاد يذكّرهم)» with real numbers.
+8. Slide 6: «11 تركوا طريقاً إليهم فقط (6.6%)؛ والباقون لا نعرف كيف نكمل معهم» → «11 فقط تركوا وسيلة تواصل (6.6%): 155 شخصاً انقطع الخيط معهم» - stronger, no hedging; make 89/166 the hero number.
+9. Slide 9: «30 متعلماً افتراضياً» (appears in 3 places) → add once «(محاكاة بالذكاء الاصطناعي، لا بشر)» so no judge mistakes them for real users; slide 9 and 19 say it differently.
+10. Slide 14: remove the model name rows under steps 01-03 (keep on slide 16); add on step 04 «أول ما يراه الحكم: تجربة سؤال بلا مصدر تُحذف».
+11. Slide 24: «والأسئلة الحساسة الثلاثون كتبها من بنى الفرز نفسه» → move this caveat to slide 19 under the 81% row, where the reader reads the number; keep slide 24 for the pre/post split only.
+12. Slide 5: «لكن… أين المشكلة؟» → «ثم؟ ماذا حدث بعد أن نطقوا؟» (the pivot is the best story beat; make it a full-screen question and cut the extra gloss on slide 5).

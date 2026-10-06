@@ -1,0 +1,22 @@
+Numbers / fact check, 27 slides (checked against db_stats.json, post_shahada_stats.json, docs/evaluation.md, README.md, SOURCES.md, eval/qa-audit/runs/*/judged.jsonl and results.jsonl, video/script3/brief.md)
+
+ERRORS / UNSUPPORTED (2)
+
+slide 23: «6.2 ث زمن الجواب المعتاد على الموقع الحي (284 سؤالاً)، و7.9 ث لـ90% منها» → the figure is stated in docs/evaluation.md, but the raw run files do not reproduce it: eval/qa-audit/runs/audit-284-live/results.jsonl client_ms gives median 1.9 s, p90 4.2 s (probably a cached re-run); heldoutM-150-live gives 5.7 s / 8.1 s. Either keep it and say "6.2 ث" is from the first live run, or soften to "نحو 6 ث" — source: runs/audit-284-live/results.jsonl vs docs/evaluation.md line 89
+slide 24: «تعديل من 430 سطراً لربطه بالمنصة» → README.md line 18 says "410 lines" for the same patch (platform-patch/bot-chat-guide.diff is 430 lines in total: 192 added, 30 removed). Make the deck and README agree (fix README to 430, or say "نحو 200 سطر مضاف") — source: README.md:18, platform-patch/bot-chat-guide.diff
+
+NOTES (not errors, no change required)
+- slide 20: «470 تجربة (284 سؤالاً، ونحو 125 ... و68)» sums to about 477; "تقريباً" covers it. Matches evaluation.md and brief ("~470").
+- slide 20: the "0 أحكام مخترَعة" for the closed-set re-run is not in evaluation.md's table; for the 284, K and M runs the judged files do show 0 hallucinated rulings (verified).
+
+VERIFIED OK
+- slides 3, 5, 6, 7: 16,653 chats, 150 countries, 52 languages, since Oct 2024, 166 Shahada chats, 89 (53.6% -> 54%), 22, 11 (6.6%), 13 returned, data date 8 Sep 2026 (db_stats.json, post_shahada_stats.json).
+- slides 8, 9, 22: 19 lessons in 4 units (content/structure.json), 10 editions and their language list (SOURCES.md), 120/120, 30 learners x 4 days, 84/84 in 20 kinds, 15/15 and 6/6.
+- slide 19: every row of the table (444/444, 760/825, 89/90, 73/90, 12/12, 82/90, 77/90, 7/360, 15/360, 326/360, 99.2/99.5, 96.8/99.0, 52/60, 0/60, 95.2%, 111/120 = 92.5%, 119/120, 8.3 s, $0.0013) matches docs/evaluation.md.
+- slide 20: re-run table (90.0% 108/120, 138/138, 174/174, 25/30 = 83.3%, 91.1% before, 18/20, 30/30, 4/4); 258/284 = 90.8% and 161/162 (recomputed from audit-284-live judged.jsonl); K 83.3% (125/150, recomputed) -> 89.3%, 91/91; M 132/150 = 88.0%, 87/87, 18 misses with 10 wrong declines (recomputed), 51/51; 60/84 -> 84/84, 28/28 live; 64 findings = 35 + 29.
+- slide 21: 100% vs 92.1%.
+- slide 18: 60 reviewed answers, 23 sound / 7 incomplete / 0 errors (eval/human_review.md).
+- slides 14, 16: models and dims (gemini-3.5-flash-lite, gemini-3.8-flash, gemini-embedding-2 768, gemini-3.1-pro-preview, gpt-5.4-mini, poppler), "more than a third -> rewrite once" (SOURCES.md, README.md).
+- slide 24: build window 4-6 Oct (first commit 2026-10-04), tag pre-challenge-2026-10-03 (README.md).
+- slide 4: quotes match the brief's transcript; Laurence Brown testimonial.
+- slide 26: demo account details match docs/submission-pack.md.
