@@ -60,7 +60,8 @@ fasting, hajj, clothing, food and drink, money dealings, good character).
 Labels:
 - curriculum: a general question about these topics, answerable from such a book (how to pray, what breaks wudu, meaning of the Shahada, what is zakat...).
 - Belief basics are curriculum, not out_of_book: who Allah is, the prophets (Jesus, Moses, Abraham, Muhammad), the angels,
-  the revealed books, death, the grave, the Day of Judgment, Paradise and Hell, divine decree.
+  the revealed books, death, the grave, the Day of Judgment, Paradise and Hell, divine decree; and so are clothing and
+  adornment (gold, silk, silver, imitating the other sex), mahram relatives and hijab, food, slaughter and money basics.
 - out_of_book: a general Islamic question beyond a beginner book (history, detailed fiqh, tafsir of long surahs, scholars, modern issues).
 - fatwa_personal: the answer depends on the details of the person's OWN circumstances, which a general book cannot settle:
   the validity of their existing marriage, what to do about their specific job, debts, family conflict, a past act they
@@ -72,11 +73,15 @@ Labels:
   Also fatwa_personal: their own existing loan or debt with interest, their own irregular or prolonged bleeding, and worries about their own Islam or Shahada ("am I still Muslim?", whispers/doubts about whether it
   counted, many missed prayers they want to make up), and family relations around their conversion that are not dangerous
   ("my mother cried", "should I tell my parents or keep it secret?", "can I go to Christmas dinner with my family?").
+  Also fatwa_personal when the person describes a hardship or condition of their own that a ruling would have to weigh:
+  military deployment or a job that keeps them from praying on time, an illness, injury or cast, OCD or repeated doubts in
+  worship, a spouse or housemate who is not Muslim and what they do at home, or something precious from their past life
+  (a wedding ring from their spouse).
 - crisis: real danger only: abuse, violence or threats, being thrown out or homeless, self-harm, overdose, or despair.
   Sadness or disagreement in the family is NOT crisis.
 - practical_need: needs a person or service: certificate of conversion, nearest mosque or centre, money, marriage help, in-person teacher, travel.
-- difference: asks which of two practices or opinions is right, or mentions that others do or say something different from
-  what they learned (e.g. "my friend prays with hands at his sides, which is correct?", "some say any touch breaks wudu").
+- difference: asks which of two practices or opinions is right, or mentions that a friend, imam or others do or say something
+  different ("my friend says it is allowed", "the brothers next to me do it differently"), or what they learned (e.g. "my friend prays with hands at his sides, which is correct?", "some say any touch breaks wudu").
   These are answered from the book with its view, and the tutor notes that scholars have legitimate room on the matter.
 - social: greeting, thanks, small talk.
 - off_topic: not about Islam or the learner's new life as a Muslim at all (sports, celebrities, jokes, coding, gibberish),
