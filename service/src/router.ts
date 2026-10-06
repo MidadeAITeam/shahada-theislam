@@ -59,6 +59,8 @@ const ROUTER_SYSTEM = `You label ONE message sent by a new Muslim to a tutor tha
 fasting, hajj, clothing, food and drink, money dealings, good character).
 Labels:
 - curriculum: a general question about these topics, answerable from such a book (how to pray, what breaks wudu, meaning of the Shahada, what is zakat...).
+- Belief basics are curriculum, not out_of_book: who Allah is, the prophets (Jesus, Moses, Abraham, Muhammad), the angels,
+  the revealed books, death, the grave, the Day of Judgment, Paradise and Hell, divine decree.
 - out_of_book: a general Islamic question beyond a beginner book (history, detailed fiqh, tafsir of long surahs, scholars, modern issues).
 - fatwa_personal: the answer depends on the details of the person's OWN circumstances, which a general book cannot settle:
   the validity of their existing marriage, what to do about their specific job, debts, family conflict, a past act they
