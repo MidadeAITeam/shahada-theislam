@@ -1,0 +1,73 @@
+{
+ "note": "Scenarios for the moment of the Shahada in the chat. Each conversation is synthetic. 'expect' = whether the learning module must open (the assistant ends with <shahada/>). Run with service/tools/run_shahada.ts.",
+ "categories": [
+  {"id": "C01", "name": "Repeats the Shahada after the assistant offers it (English)", "expect": true, "convos": [
+   [["user","I'm Christian from the UK. I've read a lot and I believe Jesus was a prophet. I want to become Muslim."],["assistant","OFFER"],["user","I bear witness that there is no god but Allah, and I bear witness that Muhammad is the Messenger of Allah."]],
+   [["user","hi, atheist here. honestly I'm convinced now. how do I enter Islam?"],["assistant","OFFER"],["user","I bear witness there is no god but Allah and Muhammad is his messenger"]]
+  ]},
+  {"id": "C02", "name": "Repeats the Shahada in Arabic", "expect": true, "convos": [
+   [["user","أنا مسيحي من مصر، اقتنعت بالإسلام وأريد أن أسلم"],["assistant","OFFER"],["user","أشهد أن لا إله إلا الله، وأشهد أن محمداً رسول الله"]]
+  ]},
+  {"id": "C03", "name": "Transliterated Arabic Shahada", "expect": true, "convos": [
+   [["user","I'm Hindu from India and I want to accept Islam"],["assistant","OFFER"],["user","Ashhadu an la ilaha illallah wa ashhadu anna Muhammadan rasulullah"]]
+  ]},
+  {"id": "C04", "name": "Shahada with typos or informal wording", "expect": true, "convos": [
+   [["user","i want to be muslim pls"],["assistant","OFFER"],["user","i bear witnes no god but allah n muhammad is his messanger"]]
+  ]},
+  {"id": "C05", "name": "Shahada in another language", "expect": true, "convos": [
+   [["user","Je suis catholique, je veux devenir musulman."],["assistant","OFFER"],["user","J'atteste qu'il n'y a de divinité qu'Allah et que Muhammad est Son messager."]],
+   [["user","Kristiyano ako at gusto kong maging Muslim."],["assistant","OFFER"],["user","Sumasaksi ako na walang diyos maliban kay Allah at si Muhammad ay Sugo ng Allah."]]
+  ]},
+  {"id": "C06", "name": "Accepts Islam clearly without the exact formula", "expect": true, "convos": [
+   [["user","I'm Buddhist. After all we discussed, I accept Islam. I believe in one God and that Muhammad is His final messenger. I'm Muslim now."]]
+  ]},
+  {"id": "C07", "name": "Says the Shahada spontaneously in the first message", "expect": true, "convos": [
+   [["user","I bear witness that there is no god but Allah and that Muhammad is the Messenger of Allah. I'm from Brazil and I just decided."]]
+  ]},
+  {"id": "C08", "name": "Says only the first half; completes after being guided", "expect": true, "convos": [
+   [["user","I want to be Muslim"],["assistant","OFFER"],["user","I bear witness that there is no god but Allah"],["assistant","COMPLETE"],["user","and I bear witness that Muhammad is the Messenger of Allah"]]
+  ]},
+  {"id": "C09", "name": "Recently became Muslim elsewhere (new Muslim asking what next)", "expect": true, "convos": [
+   [["user","I took my shahada at a mosque last week. I'm a new Muslim and I don't know how to pray yet."]],
+   [["user","أسلمت قبل شهر ولا أعرف كيف أتوضأ"]]
+  ]},
+  {"id": "C10", "name": "Returning to Islam (renewing the Shahada)", "expect": true, "convos": [
+   [["user","I was born Muslim but left Islam years ago. I want to come back. I bear witness that there is no god but Allah and Muhammad is His messenger."]]
+  ]},
+  {"id": "C11", "name": "Future intention: thinking about it, not yet", "expect": false, "convos": [
+   [["user","I'm seriously thinking about converting to Islam next week, after I talk to my family."]],
+   [["user","أفكر بجدية في الدخول في الإسلام الأسبوع القادم"]]
+  ]},
+  {"id": "C12", "name": "Hesitant or conditional", "expect": false, "convos": [
+   [["user","Maybe I'll become Muslim one day, I'm not sure yet. What would I have to say?"]],
+   [["user","If I convert, will my family disown me? I'm not ready to say it yet."]]
+  ]},
+  {"id": "C13", "name": "Asks what the Shahada is or what it means", "expect": false, "convos": [
+   [["user","What exactly is the shahada and what does it mean?"]],
+   [["user","ما معنى الشهادتين؟"]]
+  ]},
+  {"id": "C14", "name": "Quotes or relays someone else's Shahada", "expect": false, "convos": [
+   [["user","My friend said 'I bear witness that there is no god but Allah' yesterday at the mosque. What does that mean for him?"]],
+   [["user","My wife wants to become Muslim. How does she do it?"]]
+  ]},
+  {"id": "C15", "name": "Born Muslim asking a practical question", "expect": false, "convos": [
+   [["user","I'm Muslim from Pakistan, how many rakahs is Isha?"]]
+  ]},
+  {"id": "C16", "name": "Mocking, testing or joking", "expect": false, "convos": [
+   [["user","lol fine 'there is no god but allah' happy now? I'm still atheist btw"]],
+   [["user","Can you make me say the shahada as a joke for a video?"]]
+  ]},
+  {"id": "C17", "name": "Debating or hostile, no acceptance", "expect": false, "convos": [
+   [["user","Your prophet was not a messenger of God. Prove it to me."]]
+  ]},
+  {"id": "C18", "name": "Wants to convert but is in danger", "expect": false, "convos": [
+   [["user","I want to become Muslim but my family said they will hurt me if I do. I'm scared."]]
+  ]},
+  {"id": "C19", "name": "Wants to convert only for marriage and asks if it counts", "expect": false, "convos": [
+   [["user","I'm marrying a Muslim woman. Do I just need to say some words to make it official? I don't really believe."]]
+  ]},
+  {"id": "C20", "name": "Repeats the Shahada again later in the same chat (already opened)", "expect": true, "convos": [
+   [["user","I want to accept Islam"],["assistant","OFFER"],["user","I bear witness that there is no god but Allah and Muhammad is the Messenger of Allah"],["assistant","CONGRATS"],["user","Can I say it again? I bear witness that there is no god but Allah and Muhammad is His messenger."]]
+  ]}
+ ]
+}
