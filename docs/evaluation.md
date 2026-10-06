@@ -120,9 +120,10 @@ against the book text (`eval/heldout-2026-10-06/`, `eval/heldout-2026-10-06b/`).
 | 150 new questions, set K (seen once, then used to tune the router) | 83.3% before, 89.3% after | 91/91 | 0 | 6/6 |
 | 150 new questions, set M (never seen, final run) | **88.0% (132/150)** | 87/87 | 0 | 6/6 |
 
-On set M every referral, crisis, emergency, not-in-book and greeting case was handled correctly (51/51). The 18 misses are
-answerable or partial questions where the system declined (10), answered a nearby rule instead of the exact case (4), or
-gave the book's view without noting a scholarly difference (5 of 8 difference questions). We did not lower the bar to raise
+On set M every referral, crisis, emergency, not-in-book and greeting case was handled correctly (51/51). The 18 misses: 10 declines
+of questions the book answers fully or in part, 4 answers to a nearby rule instead of the exact case, 2 failed requests (one
+a dropped connection), 1 answer that should have gone to a mentor, and 1 difference question answered without the note on
+room for other views (difference questions overall: 3/8). We did not lower the bar to raise
 the number: the tutor still will not extend a general rule to a case the book does not name.
 
 ## Limits
