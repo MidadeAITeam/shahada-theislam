@@ -5,6 +5,8 @@
 
 > **عربي باختصار:** حين يعلن المستخدم إسلامه في محادثة theislam.chat، تبدأ في المحادثة نفسها رحلة تعليمية من كتاب «الوجيز: منهج تعليم صفي للمسلم الجديد» (مركز أصول) بلغته: درس أول عن معنى الشهادتين، ثم منهج يحفظ تقدمه، وجواب عن كل سؤال تُسند كل جملة فيه إلى صفحة من الكتاب، ويُدرج الكود الاقتباسات والآيات ولا يكتبها النموذج، ويُحال إلى مرشد أو مرشدة عند الفتوى الشخصية أو الأزمة أو الحاجة العملية.
 
+> **Testimonial:** the da'i Laurence Brown praised the quality of the dialogue in theislam.chat and the level its AI voice dialogue has reached — [watch the recording](https://shahada.theislam.chat/testimonial) (filmed, 2 min).
+
 ## The problem
 
 In the platform's export of 8 Sept 2026, the assistant congratulated a user on entering Islam in **166** conversations; only **11** users left any way to be contacted, **89** conversations ended within two messages, and **22** users asked how to make wudu, how to pray, or what to do now — which the platform is deliberately forbidden to teach from model memory. (`stats/` recomputes these numbers from the export; no conversation text is included.)

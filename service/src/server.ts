@@ -444,6 +444,7 @@ app.get("/health", async () => ({ ok: true }));
 const mentorIndex = () => path.join(config.webDir, "mentor/index.html");
 // The challenge film: a plain page that plays /video.mp4 (served from the web dir).
 app.get("/video", async (_req, reply) => reply.type("text/html").send(`<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>theislam.chat | ما بعد الشهادة</title><style>html,body{margin:0;height:100%;background:#12183F}video{width:100%;height:100%;object-fit:contain;background:#000}</style></head><body><video src="/video.mp4" controls autoplay playsinline preload="metadata"></video></body></html>`));
+app.get("/testimonial", async (_req, reply) => reply.type("text/html").send(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laurence Brown on theislam.chat</title><style>html,body{margin:0;height:100%;background:#12183F}video{width:100%;height:100%;object-fit:contain;background:#000}</style></head><body><video src="/testimonial.mp4" controls playsinline preload="metadata"></video></body></html>`));
 app.get("/mentor", async (_req, reply) => reply.type("text/html").send(fs.readFileSync(fs.existsSync(mentorIndex()) ? mentorIndex() : path.join(ROOT, "service/public/mentor.html"), "utf8")));
 if (fs.existsSync(config.webDir)) {
   await app.register(fstatic, { root: config.webDir, wildcard: false });

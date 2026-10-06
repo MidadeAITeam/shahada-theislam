@@ -103,6 +103,7 @@ DATA = {
 }
 
 # Team: names are filled in by the team lead (the roles are those of the idea file).
+TEAM_NAMES = ["Mohamed Ashour", "باسل الفوزان", "محمد يمان غيبه"]
 TEAM = [
     ("", "قائد الفريق", "العرض والتنسيق والتسليم"),
     ("", "مهندس الذكاء الاصطناعي", "الاسترجاع والتوليد المقيّد والفاحص والتقييم"),
@@ -604,6 +605,26 @@ def build(template):
                                      run("أن تكون الشهادة بداية رحلة تعليم موثّقة ومستمرة في المكان نفسه، لا نهاية المحادثة.", 21, L_TEXT)], dark=False)
     s.notes = "(15 ث) المستفيد مسلم جديد في لحظة حساسة. الممارسة الحالية تهنئة ثم طلب رقم هاتف، ومن لا يترك رقمه تنقطع رحلته."
 
+    # Testimonial: Laurence Brown -----------------------------------------------------------------------
+    s = deck.slide(28)
+    header(s, 883, 884, 885, "شهادة", "داعيةٌ يثني على جودة الحوار",
+           "الداعية الدكتور لورانس براون عن الحوار الصوتي في theislam.chat · تسجيل مصوّر")
+    s.drop(887, 888, 889, 890, 891, 892)
+    from PIL import Image as _Im
+    import io as _io
+    _thumb = _Im.open(ROOT / "docs/screenshots/08-brown-testimonial.jpg").convert("RGB")
+    _buf = _io.BytesIO(); _thumb.save(_buf, "PNG")
+    tw = 330; th = tw * _thumb.height / _thumb.width
+    s.add(picture(s.ids(), s.image(_buf.getvalue()), 180, 360, tw, th, line=TURQ, name="testimonial", descr="Laurence Brown"))
+    dark_card(s, 560, 360, 1208, th, [
+        para(run("«Subhanallah brother, Mashallah tabarakallah, it is really amazing. And it's kind of blown my mind, actually.»", 25, LIGHT, True, raw=True), algn="l", rtl=False, ln=120),
+        para(run("«سبحان الله يا أخي، ما شاء الله تبارك الله، إنه مذهل حقاً… لقد أذهلني فعلاً.»", 22, TURQ, True), before=18, ln=125),
+        para(run("«…an incredible tool, not just for your website, but to be made available to the Muslims in general.»", 19, SOFT, raw=True), algn="l", rtl=False, before=22, ln=120),
+        para(run("أثنى على جودة الحوار في theislam.chat، وعلى المستوى الذي وصلت إليه تقنية الحوار الصوتي بالذكاء الاصطناعي.", 19, SOFT), before=22, ln=125),
+        para(run("شاهد التسجيل: " + D["link"] + "/testimonial", 19, TURQ, True), before=18),
+    ], inset=34)
+    s.notes = "(15 ث) الداعية لورانس براون جرّب الحوار الصوتي في المنصة وأثنى عليه. التسجيل كاملاً على الرابط."
+
     # 4 Solution: six-step journey ----------------------------------------------------------------
     s = deck.slide(24)
     header(s, 818, 819, 820, "الحل", "المحادثة نفسها تصبح الفصل الدراسي",
@@ -1041,7 +1062,11 @@ def build(template):
     header(s, 688, 689, 690, "الفريق", "فريق العمل", "جمعية أصول · theislam.chat")
     s.drop(692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703)
     w, gap = 300, 30
-    for i, (name, role, does) in enumerate(TEAM):
+    team = [(TEAM_NAMES[0], "قائد الفريق", "مدير الفريق"),
+            (TEAM_NAMES[1], "عضو", "فريق التأسيس"),
+            (TEAM_NAMES[2], "عضو", "مبرمج")]
+    w, gap = 480, 90
+    for i, (name, role, does) in enumerate(team):
         x = 1768 - w - i * (w + gap)
         dark_card(s, x, 395, w, 460, None)
         s.add(shape(s.ids(), x + (w - 150) / 2, 425, 150, 150, [para(run(f"0{i + 1}", 34, TURQ, True), algn="ctr")],
@@ -1051,7 +1076,7 @@ def build(template):
             para(run(role, 23 if not name else 19, TURQ, True), algn="ctr", before=16 if name else 4, ln=110),
             para(run(does, 16, SOFT), algn="ctr", before=8, ln=120),
         ]))
-    s.notes = "(10 ث) الفريق: قائد، ومهندس ذكاء اصطناعي، ومطوّر خلفية، ومطوّر واجهات، ومختص شرعي."
+    s.notes = "(10 ث) الفريق: محمد عاشور (قائد الفريق)، وباسل الفوزان (فريق التأسيس)، ومحمد يمان غيبه (مبرمج)."
 
     # Links ----------------------------------------------------------------------------------------
     s = deck.slide(28)
