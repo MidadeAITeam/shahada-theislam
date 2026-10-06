@@ -66,6 +66,48 @@ lesson that actually contains the answer. We report both numbers and did not edi
 - 4 Oct 2026, ~17:30–19:00 UTC: this locked run (the results above), after tuning on the dev set only.
 - Changes deployed after this run, not reflected above: worship "how do I…" questions fall back to the book's verbatim steps when the model returns nothing; live answer stages; listen-and-repeat recitation; interactive book exercises; two lesson sentences reworded after the Sharia review. None of them was tuned on the locked questions.
 
+## After the full audit (6 October 2026)
+
+On the last day we tested the whole experience as end users and changed the system where it fell short. The locked
+set above is unchanged and was re-run on the changed system (one run, our system only):
+
+| Metric | Locked run, 4 Oct (3 runs) | Re-run after the audit, 6 Oct (1 run) |
+|---|---|---|
+| Answers fully supported by the cited book passages | 96.8% | 100.0% (138/138) |
+| Quotes that match the book text | 100.0% | 100.0% (174/174) |
+| Critical cases referred to a human | 81.1% | 86.7% (26/30) |
+| Critical cases: no ruling given and a mentor offered | 98.9% | 100.0% (30/30) |
+| Self-harm cases with the emergency message first | 100.0% | 100.0% (4/4) |
+| Not-in-book questions: abstained / referred | 91.1% | 83.3% (25/30) |
+| Answerable questions wrongly declined | 1.9% | 1.7% (2/120) |
+| Answerable questions answered correctly | 90.6% | 90.0% (108/120) |
+| Scholarly-difference questions handled with room | 86.7% | 90.0% (18/20) |
+
+Raw rows: `eval/results/locked-2026-10-06T06-17-40-819Z.jsonl`. The drop in abstention comes from questions on
+history and jihad where the book says something related: the system now answers that part and shows the fixed
+"for more detail, a mentor" note instead of declining. Median latency in this run was 19.3 s, measured from a laptop
+under parallel load; on the live site the 284-question audit below measured 6.2 s median and 7.9 s at p90.
+
+**What the audit covered** (scripts and verdicts in `eval/results/audit-2026-10-06/`, `eval/shahada_scenarios.json`):
+
+- **The moment of the Shahada:** 20 kinds of conversation, 10 that must open the module (the Shahada in several
+  languages, transliterated, with typos, in two halves, a new Muslim from a mosque, a returning Muslim…) and 10 that must
+  not ("thinking about it next week", someone else's Shahada, a joke, a debate, a person in danger, marriage only).
+  First run: 60/84. The model congratulated people who had only said they wanted to convert. After the prompt change:
+  84/84, and 28/28 on the live site.
+- **284 new questions** a new Muslim would ask, in 10 languages, judged by `gemini-3.1-pro-preview` against the book
+  passages. Correct behaviour went from 83% (237) to 88% (250); serious errors from 17 to 9; answers faithful to their
+  passages 160/160; self-harm messages with the emergency number first 15/15 (one overdose message was missed before).
+- **Learner interface:** about 125 use cases on desktop and phone in Arabic, English and French (35 findings).
+- **Mentor platform and the message flow between learner and mentor:** 68 use cases (29 findings, including two
+  security issues in mentor sessions and missing rate limits).
+
+**Main changes:** the book's own steps for "how do I make wudu / pray / do ghusl" every time; exercises and tests kept
+out of retrieval; follow-up questions understood; a partial answer with a mentor offer when part of a question is
+outside the book; a structured danger flag (overdose, threats to life); verse markers shown as verse text; readable
+tables in the chat; server-side mentor sessions, rate limits, one thread per case that survives a reload, and a notice
+for a returning learner when a mentor has replied.
+
 ## Limits
 
 - The judge is a model. 60 answers were also reviewed blind by an independent AI reviewer following Ahl al-Sunnah methodology (`eval/human_review.md`): module 23 sound / 7 incomplete / 0 errors; same model without checker 14 / 15 / 1.
