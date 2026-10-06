@@ -8,6 +8,7 @@ import ErrorBox from "../components/ErrorBox.vue";
 import { t } from "../i18n.js";
 import { langName, countryName, flag, ageShort, firstLine, clock } from "../format.js";
 import { inbox, refreshInbox, session } from "../store.js";
+import { api } from "../api.js";
 
 const STATUSES = ["new", "in_progress", "waiting_user", "closed"];
 const REASONS = ["crisis", "fatwa_personal", "practical_need", "not_in_book", "user_request", "unsure", "failed"];
@@ -43,6 +44,24 @@ function clear() {
   Object.assign(f, defaults);
 }
 const isCrisis = (c) => c.reason === "crisis" && c.status !== "closed";
+
+// Supervisors can tick several open cases and close them together (for example test cases), with one reason.
+const isSupervisor = computed(() => session.me?.role === "supervisor");
+const picked = reactive(new Set());
+const bulk = reactive({ reason: "", busy: false, error: "" });
+async function closePicked() {
+  if (!picked.size || !bulk.reason.trim()) return;
+  bulk.busy = true; bulk.error = "";
+  try {
+    await api.bulkClose([...picked], bulk.reason.trim());
+    picked.clear(); bulk.reason = "";
+    await refreshInbox();
+  } catch (e) {
+    bulk.error = e?.code || "network";
+  } finally {
+    bulk.busy = false;
+  }
+}
 </script>
 
 <template>
@@ -121,12 +140,24 @@ const isCrisis = (c) => c.reason === "crisis" && c.status !== "closed";
 
   <template v-else-if="inbox.data">
     <p class="list-meta" aria-live="polite">{{ t("shown", { n: cases.length, total: all.length }) }}</p>
+    <form v-if="isSupervisor && picked.size" class="bulk-bar card" @submit.prevent="closePicked">
+      <strong>{{ t("bulkPicked", { n: picked.size }) }}</strong>
+      <label class="sr-only" for="bulk-reason">{{ t("bulkReason") }}</label>
+      <input id="bulk-reason" v-model="bulk.reason" type="text" maxlength="300" :placeholder="t('bulkReason')" required />
+      <button type="submit" class="btn btn-primary btn-sm" :disabled="bulk.busy || !bulk.reason.trim()">{{ t("bulkClose") }}</button>
+      <button type="button" class="btn btn-link btn-sm" @click="picked.clear()">{{ t("bulkCancel") }}</button>
+      <span v-if="bulk.error" class="error" role="alert">{{ t("bulkFailed") }}</span>
+    </form>
     <EmptyState v-if="!all.length" icon="inbox" :title="t('emptyInbox')" :lead="t('emptyInboxLead')" />
     <EmptyState v-else-if="!cases.length" icon="filter" :title="t('emptyFiltered')" :lead="t('emptyFilteredLead')">
       <button type="button" class="btn btn-ghost btn-sm" @click="clear">{{ t("clearFilters") }}</button>
     </EmptyState>
     <ul v-else class="case-list">
-      <li v-for="c in cases" :key="c.id">
+      <li v-for="c in cases" :key="c.id" :class="{ pickable: isSupervisor && c.status !== 'closed' }">
+        <label v-if="isSupervisor && c.status !== 'closed'" class="pick">
+          <input type="checkbox" :checked="picked.has(c.id)" @change="picked.has(c.id) ? picked.delete(c.id) : picked.add(c.id)" />
+          <span class="sr-only">{{ t("bulkSelect") }}</span>
+        </label>
         <a :href="`#/cases/${c.id}`" class="case-row" :class="{ crisis: isCrisis(c), closed: c.status === 'closed', overdue: c.overdue }">
           <div class="case-main">
             <div class="case-tags">
@@ -157,3 +188,12 @@ const isCrisis = (c) => c.reason === "crisis" && c.status !== "closed";
     </ul>
   </template>
 </template>
+
+<style scoped>
+.pickable { display: flex; align-items: stretch; gap: 0.5rem; }
+.pickable > .case-row { flex: 1; min-width: 0; }
+.pick { display: flex; align-items: center; padding-inline: 0.25rem; cursor: pointer; }
+.pick input { width: 18px; height: 18px; }
+.bulk-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; margin-bottom: 0.75rem; position: sticky; top: 0.5rem; z-index: 2; }
+.bulk-bar input[type="text"] { flex: 1; min-width: 12rem; }
+</style>

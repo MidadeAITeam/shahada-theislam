@@ -46,6 +46,7 @@ export const api = {
   reply: (id, text) => request("POST", `/cases/${enc(id)}/reply`, { text }),
   assign: (id, mentorId) => request("POST", `/cases/${enc(id)}/assign`, { mentor_id: mentorId }),
   setStatus: (id, status, reason) => request("POST", `/cases/${enc(id)}/status`, { status, reason }),
+  bulkClose: (ids, reason) => request("POST", "/cases/bulk-close", { ids, reason }),
   addNote: (id, text) => request("POST", `/cases/${enc(id)}/notes`, { text }),
   canned: (lang) => request("GET", `/canned?lang=${enc(lang)}`),
   reports: () => request("GET", "/reports"),

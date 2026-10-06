@@ -369,6 +369,22 @@ export function registerMentorRoutes(app: FastifyInstance) {
     return { ok: true };
   });
 
+  // Supervisor housekeeping: close several cases at once (e.g. test cases), each with its own timeline event.
+  app.post("/api/mentor/cases/bulk-close", async (req, reply) => {
+    const m = guard(req, reply); if (!m) return;
+    if (m.role !== "supervisor") return reply.code(403).send({ error: "supervisor_only" });
+    const b = (req.body ?? {}) as { ids?: unknown; reason?: string };
+    const ids = Array.isArray(b.ids) ? [...new Set(b.ids.filter((x): x is string => typeof x === "string"))].slice(0, 200) : [];
+    const reason = String(b.reason ?? "").trim().slice(0, 300);
+    if (!ids.length || !reason) return reply.code(400).send({ error: "ids_and_reason_required" });
+    const close = db.prepare("UPDATE handoffs SET status = 'closed', closed_reason = ?, closed_at = datetime('now') WHERE id = ? AND status != 'closed'");
+    let closed = 0;
+    db.transaction(() => {
+      for (const id of ids) if (close.run(reason, id).changes) { closed++; caseEvent(id, m.id, "status", `closed: ${reason}`); }
+    })();
+    return { ok: true, closed };
+  });
+
   app.post("/api/mentor/cases/:id/status", async (req, reply) => {
     const r = load(req, reply); if (!r) return;
     const b = (req.body ?? {}) as { status?: string; reason?: string };
