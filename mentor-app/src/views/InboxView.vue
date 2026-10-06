@@ -15,7 +15,7 @@ const REASONS = ["crisis", "fatwa_personal", "practical_need", "not_in_book", "u
 
 // Filters are kept for the visit (sessionStorage) so going into a case and back keeps the view.
 const KEY = "mentor.inboxFilters";
-const defaults = { status: "open", reason: "", gender: "", lang: "", mine: false };
+const defaults = { status: "open", reason: "", gender: "", lang: "", mine: false, q: "" };
 const f = reactive({ ...defaults, ...(() => { try { return JSON.parse(sessionStorage.getItem(KEY) ?? "{}"); } catch { return {}; } })() });
 watch(f, () => { try { sessionStorage.setItem(KEY, JSON.stringify(f)); } catch { /* ignore */ } });
 
@@ -26,9 +26,10 @@ const cases = computed(() => all.value.filter((c) =>
   && (!f.reason || c.reason === f.reason)
   && (!f.gender || c.mentor === f.gender)
   && (!f.lang || c.lang === f.lang)
-  && (!f.mine || c.assigned_to === session.me?.id)));
-const filtered = computed(() => f.status !== "open" || f.reason || f.gender || f.lang || f.mine);
-const activeFilters = computed(() => [f.status !== "open", f.reason, f.gender, f.lang, f.mine].filter(Boolean).length);
+  && (!f.mine || c.assigned_to === session.me?.id)
+  && (!f.q.trim() || [c.question, c.last_message, c.id].some((x) => String(x ?? "").toLowerCase().includes(f.q.trim().toLowerCase())))));
+const filtered = computed(() => f.status !== "open" || f.reason || f.gender || f.lang || f.mine || f.q.trim());
+const activeFilters = computed(() => [f.status !== "open", f.reason, f.gender, f.lang, f.mine, f.q.trim()].filter(Boolean).length);
 // On a phone the filters fold away so the first case is visible without scrolling.
 const filtersOpen = ref(false);
 const counts = computed(() => inbox.data?.counts ?? {});
@@ -94,6 +95,10 @@ async function closePicked() {
   <button type="button" class="btn btn-ghost btn-sm filters-toggle" :aria-expanded="filtersOpen" aria-controls="inbox-filters" @click="filtersOpen = !filtersOpen">
     <Icon name="filter" :size="16" />{{ t("filters") }}<template v-if="activeFilters"> ({{ activeFilters }})</template>
   </button>
+  <div class="inbox-search">
+    <label class="sr-only" for="f-q">{{ t("searchCases") }}</label>
+    <input id="f-q" v-model="f.q" type="search" :placeholder="t('searchCases')" />
+  </div>
   <section id="inbox-filters" class="filters card" :class="{ open: filtersOpen }" :aria-label="t('filters')">
     <div class="field">
       <label for="f-status">{{ t("fStatus") }}</label>
@@ -196,4 +201,6 @@ async function closePicked() {
 .pick input { width: 18px; height: 18px; }
 .bulk-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; margin-bottom: 0.75rem; position: sticky; top: 0.5rem; z-index: 2; }
 .bulk-bar input[type="text"] { flex: 1; min-width: 12rem; }
+.inbox-search { margin-bottom: 0.75rem; }
+.inbox-search input { width: 100%; }
 </style>

@@ -55,6 +55,7 @@ const M = {
     // inbox
     inboxTitle: "صندوق الحالات",
     bulkPicked: "{n} محددة",
+    searchCases: "ابحث في نص السؤال أو الرسائل",
     bulkReason: "سبب الإغلاق (مثلاً: حالة اختبار)",
     bulkClose: "إغلاق المحددة",
     bulkCancel: "إلغاء التحديد",
@@ -268,6 +269,7 @@ const M = {
     reportStatus: { new: "New", reviewing: "Reviewing", fixed: "Fixed", not_an_error: "Not an error" },
     inboxTitle: "Case inbox",
     bulkPicked: "{n} selected",
+    searchCases: "Search the question or messages",
     bulkReason: "Reason for closing (e.g. test case)",
     bulkClose: "Close selected",
     bulkCancel: "Clear selection",
