@@ -67,7 +67,7 @@ The frontend is the theislam.chat interface (`bot-chat-guide`, private) at tag `
 
 ## Disclosure (terms §8 and §9)
 
-- **Existing before the challenge, not submitted for evaluation:** the theislam.chat platform (Osoul Association, live since October 2024): its interface, voice chat, "talk to a human" button, and its da'wah prompt. The versions are tagged `pre-challenge-2026-10-03` in the platform repositories.
+- **Existing before the challenge, not submitted for evaluation:** the theislam.chat platform (Osoul Association, live since October 2024): its interface, voice chat, "talk to a human" button, and its da'wah prompt. Promo of the original platform: [«اكتشف الإسلام من خلال الحوار | Chat & Decide»](https://youtu.be/ceo9dsxPZrI). The versions are tagged `pre-challenge-2026-10-03` in the platform repositories.
 - **Built during 4–6 October 2026:** everything in this repository (see the commit history) and the integration patch.
 - **Prepared on 4 October before writing code:** the book's conversion to text and the frozen evaluation sets (`eval/LOCK.sha256`, first commit). The 30 critical test cases were written by the team member who also built the router, which we state openly; they were frozen in the first commit and not changed after.
 - **Sources, models, tools and licences:** [`SOURCES.md`](SOURCES.md). No real user conversation is used in the code, tests, demo or repository.

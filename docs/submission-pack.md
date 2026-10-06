@@ -9,6 +9,8 @@
 | رابط التجربة الحية (Live Demo) | https://shahada.theislam.chat/ar?demo=shahada |
 | النسخة الإنجليزية | https://shahada.theislam.chat/en?demo=shahada |
 | منصة فريق المتابعة | https://shahada.theislam.chat/mentor (حساب المشرف التجريبي: `supervisor@demo.theislam.chat`، وكلمة المرور `6c014c6af52e`. وحسابا المرشدين التجريبيين `brother@demo.theislam.chat` و`sister@demo.theislam.chat` بكلمة المرور نفسها) |
+| فيديو تعريفي بالمنصة الأصلية (قبل التحدي) | https://youtu.be/ceo9dsxPZrI |
+| شهادة الداعية لورانس براون | https://shahada.theislam.chat/testimonial |
 | مستودع GitHub (عام) | https://github.com/MidadeAITeam/shahada-theislam |
 | العرض التقديمي (PDF / PPTX) | `docs/deck/theislam-chat-after-shahada.pdf` و`.pptx` في المستودع |
 | الفيديو (دقيقتان) | `video/out/after-the-shahada-v3.mp4` (يُرفع ملفاً) |
