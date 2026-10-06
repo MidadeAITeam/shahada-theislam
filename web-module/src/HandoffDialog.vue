@@ -63,7 +63,7 @@
         <!-- Sent: when and where the answer will come, and how to get it on another device. -->
         <template v-else>
           <p role="status">{{ tr(sentTo === 'sister' ? 'queuedWhenSister' : 'queuedWhenBrother') }}</p>
-          <p class="shd-muted">{{ tr('queuedWhere') }}<template v-if="!signedIn"> {{ tr('queuedSaveNote') }}</template></p>
+          <p class="shd-muted">{{ tr('queuedWhere') }}<template v-if="!signedIn">{{ ' ' + tr('queuedSaveNote') }}</template></p>
           <div class="shd-actions">
             <button type="button" class="shd-btn shd-btn--primary" @click="close">{{ tr('close') }}</button>
             <button v-if="!signedIn" type="button" class="shd-btn shd-btn--quiet" @click="emit('save')">{{ tr('queuedSave') }}</button>

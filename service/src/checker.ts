@@ -63,7 +63,10 @@ export function check(draft: DraftAnswer, retrieved: Chunk[]): CheckResult {
     const chunk = byId.get(id);
     const idx = parseInt(sPart, 10) - 1;
     if (!chunk || Number.isNaN(idx) || !chunk.sentences[idx]) continue;
-    quotes.push({ ref, chunk, text: chunk.sentences[idx] });
+    // A citation like "(Reported by Muslim; No. 121)" can be split after "No."; keep it whole.
+    let text = chunk.sentences[idx];
+    if (/\b(No|Nos|no|p|pp|vol)\.[”"’']?$/.test(text.trim()) && chunk.sentences[idx + 1]) text = `${text} ${chunk.sentences[idx + 1]}`;
+    quotes.push({ ref, chunk, text });
   }
 
   const citedChunks = [...new Set(kept.flatMap((s) => s.sources))].map((id) => byId.get(id)!);

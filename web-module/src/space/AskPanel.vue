@@ -148,7 +148,8 @@ const scroller = ref(null);
 // Sent (waiting for the team) -> Replied; a closed conversation still takes a new message.
 function caseState(c) {
   if (c.status === 'closed') return 'closed';
-  return c.messages.some((m) => m.author === 'mentor') ? 'replied' : 'sent';
+  // Replied only while the last word is the mentor's; after the learner writes back it is waiting again.
+  return c.messages[c.messages.length - 1]?.author === 'mentor' ? 'replied' : 'sent';
 }
 
 function grow() {

@@ -57,7 +57,7 @@ index c460f2b..53d02d0 100644
 +}
 \ No newline at end of file
 diff --git a/src/utils/StreamingMarkdown.vue b/src/utils/StreamingMarkdown.vue
-index 5b810b8..67080f3 100644
+index 5b810b8..d79763e 100644
 --- a/src/utils/StreamingMarkdown.vue
 +++ b/src/utils/StreamingMarkdown.vue
 @@ -41,8 +41,9 @@ export default {
@@ -72,7 +72,7 @@ index 5b810b8..67080f3 100644
                  this.$refs.container.textContent = ''
                  this.lastContent = ''
                  this.ended = false
-@@ -104,5 +105,54 @@ export default {
+@@ -104,5 +105,53 @@ export default {
  </script>
  
  <template>
@@ -104,8 +104,7 @@ index 5b810b8..67080f3 100644
 +    overflow-wrap: normal;
 +    hyphens: none;
 +}
-+.smd th,
-+.smd table tr:first-child td {
++.smd th {
 +    background: #f3f5fa;
 +    font-weight: 600;
 +    white-space: nowrap;
@@ -129,7 +128,7 @@ index 5b810b8..67080f3 100644
 +.smd code { background: #f3f5fa; padding: 0.1em 0.35em; border-radius: 4px; }
 +</style>
 diff --git a/src/views/AiChatView.vue b/src/views/AiChatView.vue
-index d9ead08..3031997 100644
+index d9ead08..1db5c8f 100644
 --- a/src/views/AiChatView.vue
 +++ b/src/views/AiChatView.vue
 @@ -17,7 +17,7 @@
@@ -296,7 +295,7 @@ index d9ead08..3031997 100644
          this.showShortMessageHint();
          return;
        }
-@@ -1137,6 +1162,15 @@ export default {
+@@ -1137,6 +1162,18 @@ export default {
              // Handle the abort error
            } else {
              Sentry.captureException(error);
@@ -306,13 +305,16 @@ index d9ead08..3031997 100644
 +            if (last && last.author !== 'AI') this.messages.pop();
 +            else if (last && last.author === 'AI' && !last.text) this.messages.splice(-2, 2);
 +            if (!this.messageText) this.messageText = payload.text;
-+            toastMsg.errorToast(this.locale === 'ar'
++            const notify = Date.now() - (this.lastSendErrorAt || 0) > 3000;
++            this.lastSendErrorAt = Date.now();
++            // (One notice per failure, even if two handlers report the same failed send.)
++            if (notify) toastMsg.errorToast(this.locale === 'ar'
 +              ? 'تعذّر إرسال رسالتك. تحقّق من الاتصال ثم أعد المحاولة.'
 +              : 'Your message could not be sent. Check your connection and try again.');
            }
          } finally {
            this.isLoading = false;
-@@ -1326,7 +1360,9 @@ export default {
+@@ -1326,7 +1363,9 @@ export default {
        try {
          const parsed = JSON.parse(jsonStr);
          const wasAtBottom = this.isScrolledToBottom();
@@ -323,7 +325,7 @@ index d9ead08..3031997 100644
          if (wasAtBottom) {
            this.$nextTick(() => this.scrollToBottom('auto'));
          }
-@@ -1487,6 +1523,29 @@ export default {
+@@ -1487,6 +1526,29 @@ export default {
          this.loadingInterval = null;
        }
      },
@@ -353,7 +355,7 @@ index d9ead08..3031997 100644
      askSuggestedQuestion(question) {
        this.messageText = question;
        this.$nextTick(() => this.sendMessage());
-@@ -1624,6 +1683,23 @@ export default {
+@@ -1624,6 +1686,23 @@ export default {
  
      this.resumeHumanChat();
  

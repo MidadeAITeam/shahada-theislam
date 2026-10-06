@@ -52,7 +52,7 @@ export function verses(ref: string, lang: string): Verse[] {
     const key = `${parseInt(s, 10)}:${a}`;
     const text = ar.get(key);
     if (!text) continue;
-    out.push({ ref: key, arabic: text, meaning: tr?.get(key) ?? null, meaningLang: tLang, source: "Tanzil (Hafs) · QuranEnc" });
+    out.push({ ref: key, arabic: text, meaning: tr?.get(key)?.replace(/^\s*\d{1,3}\s*[.)-]\s*/, "") ?? null, meaningLang: tLang, source: "Tanzil (Hafs) · QuranEnc" });
   }
   return out;
 }

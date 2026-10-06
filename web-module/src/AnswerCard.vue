@@ -123,6 +123,7 @@ const plain = (t) => (t || '')
   .replace(/<\/?(u|b|i|em|strong|sup|sub)>/gi, '')
   .replace(/^\s{0,3}#{1,6}\s+/gm, '')
   .replace(/^\s*[-*]\s+\[[ xX]?\]\s*/gm, '')
+  .replace(/^\s*[-*•]\s+/gm, '')
   .replace(/\{\{Q:[^}]*\}\}/g, '');
 const stepPages = computed(() => {
   const ps = [...new Set((props.answer?.quotes || []).map((q) => q.page))].sort((a, b) => a - b);
