@@ -1,3 +1,0 @@
-import { ask } from "../src/answer.ts";
-const qs = ["What do I say in ruku and sujood?", "Three questions: 1) what breaks wudu, 2) how many rakat is Isha, 3) can I pray in jeans?", "what is ghusl and also what breaks a fast and is zakat required for students?", "If I fall asleep on the couch for a bit do I need to redo wudu before praying?", "What do I recite after Al-Fatiha in prayer?", "what do I say when I sit at the end of the prayer?"];
-await Promise.all(qs.map(async (q) => { const r = await ask({ question: q + "  ", lang: "en" }); console.log("#", q.slice(0, 60), "=>", r.status, r.partial_note ? "P" : "", "|", r.text.slice(0, 160).replace(/\n/g, " ")); }));

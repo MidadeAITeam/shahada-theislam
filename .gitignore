@@ -19,3 +19,4 @@ secrets.local
 # book passages (never committed: the book text stays off the repo)
 eval/qa-audit/runs/*/retrieval.jsonl
 video/frames/
+video/assets/

@@ -38,7 +38,7 @@ Return JSON:
 def call(rid):
     r = R[rid]; p = P[rid]
     resp = r.get("resp", {})
-    view = {k: resp.get(k) for k in ["status","text","sentences","quotes","verses","lesson","difference_note","route","translatedExplanation"]}
+    view = {k: resp.get(k) for k in ["status","text","sentences","quotes","verses","lesson","difference_note","partial_note","steps","route","translatedExplanation"]}
     view["sources"] = [{"id": s["id"], "text": s["text"][:1500]} for s in resp.get("sources", [])]
     passages = "\n\n".join(f"[{x['id']} lesson={x['lesson']} sem={x['sem']}] {x['heading']}\n{x['text'][:1400]}" for x in p["passages"][:12])
     prompt = f"""question id {rid}
