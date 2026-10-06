@@ -1,0 +1,16 @@
+import { session, BASE } from "./lib.mjs";
+const { page, mark, sleep, done } = await session("probe6");
+const dump = async (t) => console.log("==", t, "\n", (await page.$$eval("button,input,textarea,select,label", (e) => e.filter(x=>x.offsetParent).map((x) => x.tagName+":"+(x.getAttribute("aria-label")||x.getAttribute("placeholder")||x.innerText||x.type||"").trim().replace(/\s+/g," ").slice(0,50)))).join(" | "));
+await page.goto(`${BASE}/ar?demo=shahada`, { waitUntil: "load", timeout: 90000 });
+await page.getByRole("button", { name: /ابدأ رحلتك/ }).first().click({ timeout: 60000 });
+await sleep(2000);
+await page.getByRole("button", { name: "متابعة" }).first().click(); await sleep(1500);
+await page.getByRole("button", { name: /^الفاتحة/ }).last().click();
+await page.getByText("الدرس باختصار").first().waitFor({ timeout: 60000 }); await sleep(2000);
+await page.screenshot({ path: "probe/f1.png" });
+console.log((await page.evaluate(() => document.querySelector('[role=dialog]')?.innerText)).slice(0, 2500));
+await dump("fatiha");
+await page.getByRole("button", { name: "تحدث إلى إنسان" }).last().click(); await sleep(2000);
+await page.screenshot({ path: "probe/h1.png" });
+await dump("handoff");
+await done();

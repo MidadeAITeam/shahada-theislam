@@ -1,0 +1,161 @@
+{
+ "note": "Narration exactly as in script3/v2.txt. Each beat's 'ar' is a list of sentences (one TTS call each); 'pause' = seconds of silence after each sentence. Cuts applied for runtime per the script's cut order: 1) «كتابةً وصوتًا» (B3), 2) end card 2.7 s, 3) cursor hold 1.0 s, 4) «بلغته» (B15).",
+ "beats": [
+  {
+   "id": "b02",
+   "ar": [
+    "رسالةٌ كهذه كتبها إنسانٌ لم نرَه قَطّ، بلغته، ثم أرسلها."
+   ],
+   "en": [
+    "A message like this was written by someone we have never seen, in their own language. Then they sent it."
+   ]
+  },
+  {
+   "id": "b03",
+   "ar": [
+    "وصلت إلى ذي إسلام دوت تشات، موقعٍ يحاور غيرَ المسلمين."
+   ],
+   "en": [
+    "It reached theislam.chat, a site that talks with non-Muslims."
+   ]
+  },
+  {
+   "id": "b04",
+   "ar": [
+    "ستةَ عشرَ ألفًا وستُّمئةٍ وثلاثٌ وخمسون محادثةً، من مئةٍ وخمسين دولة، باثنتين وخمسين لغة."
+   ],
+   "en": [
+    "16,653 conversations, from 150 countries, in 52 languages."
+   ]
+  },
+  {
+   "id": "b06",
+   "ar": [
+    "وفي مئةٍ وستٍّ وستين محادثة، نطق صاحبُها بالشهادتين.",
+    "هذا من فضل الله وحده."
+   ],
+   "en": [
+    "In 166 conversations, the person declared the Shahada.",
+    "That is from the grace of Allah alone."
+   ]
+  },
+  {
+   "id": "b07",
+   "ar": [
+    "ثمّ ماذا؟"
+   ],
+   "en": [
+    "And then?"
+   ]
+  },
+  {
+   "id": "b08",
+   "ar": [
+    "تسعٌ وثمانون محادثةً انتهت برسالتين أو أقلّ بعد الشهادتين."
+   ],
+   "en": [
+    "89 conversations ended within two messages of the Shahada."
+   ]
+  },
+  {
+   "id": "b09",
+   "ar": [
+    "واثنان وعشرون سألوا في الحال: كيف أتوضّأ؟ كيف أصلّي؟ ماذا أفعل الآن؟"
+   ],
+   "en": [
+    "22 asked right away: How do I make wudu? How do I pray? What do I do now?"
+   ]
+  },
+  {
+   "id": "b10",
+   "ar": [
+    "ولم نكن نسمح لآلةٍ أن تعلّمهم العبادة من ذاكرتها؛ فبقي السؤال بلا درس."
+   ],
+   "en": [
+    "And we would not let a machine teach them worship from its memory. So the question stayed without a lesson."
+   ]
+  },
+  {
+   "id": "b11",
+   "ar": [
+    "ومن المئةِ والستّةِ والستّين، أحدَ عشرَ فقط تركوا لنا طريقًا نصل به إليهم."
+   ],
+   "en": [
+    "Of the 166, only 11 left us any way to reach them."
+   ]
+  },
+  {
+   "id": "b12",
+   "ar": [
+    "والباقون لا نعرف أسماءهم، ولا من علّمهم الوضوء في اليوم التالي.",
+    "والأمانةُ علينا نحن."
+   ],
+   "en": [
+    "The rest, we do not know their names, or who taught them wudu the next day.",
+    "And the trust is ours."
+   ]
+  },
+  {
+   "id": "b13",
+   "ar": [
+    "لهذا… بنينا «ما بعدَ الشهادة»."
+   ],
+   "en": [
+    "That is why we built After the Shahada."
+   ]
+  },
+  {
+   "id": "b14",
+   "ar": [
+    "حين ينطق بالشهادتين، تظهر بطاقةٌ في المحادثة نفسها، تفتح مكانًا يتعلّم فيه."
+   ],
+   "en": [
+    "The moment they declare the Shahada, a card appears in the same conversation and opens a place to learn."
+   ]
+  },
+  {
+   "id": "b15",
+   "ar": [
+    "يقرأ فيه كتابَ «الوجيز».",
+    "يبدأ بمعنى الشهادتين، ثم يختار: الوضوء، أو الصلاة، أو الفاتحة."
+   ],
+   "en": [
+    "There they read the book Al-Wajeez.",
+    "They begin with the meaning of the two testimonies, then choose: wudu, prayer, or Al-Fatiha."
+   ]
+  },
+  {
+   "id": "b16",
+   "ar": [
+    "كلُّ جملةٍ في الجواب لها صفحةٌ في الكتاب، وما لا صفحةَ له يُحذف.",
+    "والآياتُ تُنقل من مصادرها."
+   ],
+   "en": [
+    "Every sentence of an answer has a page in the book. Anything without a page is deleted,",
+    "and verses are taken from their sources."
+   ]
+  },
+  {
+   "id": "b17",
+   "ar": [
+    "وإن كان السؤالُ شخصيًّا، أجابه مرشدٌ: أخٌ للإِخْوة، وأختٌ للأخوات.",
+    "وإن كانت حياتُه في خطر، فرقمُ الطوارئ في بلده أولًا."
+   ],
+   "en": [
+    "If the question is personal, a mentor answers: a brother for brothers, a sister for sisters.",
+    "If a life is in danger, their country's emergency number comes first."
+   ]
+  },
+  {
+   "id": "b18",
+   "ar": [
+    "وبإذن الله، لا تكون الشهادتان آخرَ رسالة…",
+    "بل أوّلَ درس."
+   ],
+   "en": [
+    "God willing, the Shahada is not the last message…",
+    "…but the first lesson."
+   ]
+  }
+ ]
+}

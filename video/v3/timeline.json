@@ -1,0 +1,274 @@
+{
+ "tempo": 1.03,
+ "total": 118.83,
+ "beats": [
+  {
+   "id": "b01",
+   "start": 0.0,
+   "end": 3.0,
+   "sent": []
+  },
+  {
+   "id": "b02",
+   "start": 3.0,
+   "end": 8.3,
+   "sent": [
+    {
+     "file": "vo/b02_0.wav",
+     "start": 3.15,
+     "dur": 4.8,
+     "en": "A message like this was written by someone we have never seen, in their own language. Then they sent it."
+    }
+   ]
+  },
+  {
+   "id": "b03",
+   "start": 8.3,
+   "end": 12.96,
+   "sent": [
+    {
+     "file": "vo/b03_0.wav",
+     "start": 8.4,
+     "dur": 4.21,
+     "en": "It reached theislam.chat, a site that talks with non-Muslims."
+    }
+   ]
+  },
+  {
+   "id": "b04",
+   "start": 12.96,
+   "end": 21.59,
+   "sent": [
+    {
+     "file": "vo/b04_0.wav",
+     "start": 13.06,
+     "dur": 8.08,
+     "en": "16,653 conversations, from 150 countries, in 52 languages."
+    }
+   ]
+  },
+  {
+   "id": "b05",
+   "start": 21.59,
+   "end": 29.89,
+   "sent": []
+  },
+  {
+   "id": "b06",
+   "start": 29.89,
+   "end": 36.72,
+   "sent": [
+    {
+     "file": "vo/b06_0.wav",
+     "start": 30.04,
+     "dur": 4.41,
+     "en": "In 166 conversations, the person declared the Shahada."
+    },
+    {
+     "file": "vo/b06_1.wav",
+     "start": 34.85,
+     "dur": 1.57,
+     "en": "That is from the grace of Allah alone."
+    }
+   ]
+  },
+  {
+   "id": "b06q",
+   "start": 36.72,
+   "end": 38.72,
+   "sent": []
+  },
+  {
+   "id": "b07",
+   "start": 38.72,
+   "end": 40.59,
+   "sent": [
+    {
+     "file": "vo/b07_0.wav",
+     "start": 38.82,
+     "dur": 0.77,
+     "en": "And then?"
+    }
+   ]
+  },
+  {
+   "id": "b08",
+   "start": 40.59,
+   "end": 47.41,
+   "sent": [
+    {
+     "file": "vo/b08_0.wav",
+     "start": 40.69,
+     "dur": 5.22,
+     "en": "89 conversations ended within two messages of the Shahada."
+    }
+   ]
+  },
+  {
+   "id": "b09",
+   "start": 47.41,
+   "end": 53.67,
+   "sent": [
+    {
+     "file": "vo/b09_0.wav",
+     "start": 47.56,
+     "dur": 5.81,
+     "en": "22 asked right away: How do I make wudu? How do I pray? What do I do now?"
+    }
+   ]
+  },
+  {
+   "id": "b10",
+   "start": 53.67,
+   "end": 59.6,
+   "sent": [
+    {
+     "file": "vo/b10_0.wav",
+     "start": 53.72,
+     "dur": 5.53,
+     "en": "And we would not let a machine teach them worship from its memory. So the question stayed without a lesson."
+    }
+   ]
+  },
+  {
+   "id": "b11",
+   "start": 59.6,
+   "end": 66.09,
+   "sent": [
+    {
+     "file": "vo/b11_0.wav",
+     "start": 59.65,
+     "dur": 6.04,
+     "en": "Of the 166, only 11 left us any way to reach them."
+    }
+   ]
+  },
+  {
+   "id": "b12",
+   "start": 66.09,
+   "end": 73.61,
+   "sent": [
+    {
+     "file": "vo/b12_0.wav",
+     "start": 66.14,
+     "dur": 4.53,
+     "en": "The rest, we do not know their names, or who taught them wudu the next day."
+    },
+    {
+     "file": "vo/b12_1.wav",
+     "start": 71.17,
+     "dur": 1.44,
+     "en": "And the trust is ours."
+    }
+   ]
+  },
+  {
+   "id": "b13",
+   "start": 73.61,
+   "end": 76.71,
+   "sent": [
+    {
+     "file": "vo/b13_0.wav",
+     "start": 73.71,
+     "dur": 2.7,
+     "en": "That is why we built After the Shahada."
+    }
+   ]
+  },
+  {
+   "id": "b14",
+   "start": 76.71,
+   "end": 83.15,
+   "sent": [
+    {
+     "file": "vo/b14_0.wav",
+     "start": 76.76,
+     "dur": 6.09,
+     "en": "The moment they declare the Shahada, a card appears in the same conversation and opens a place to learn."
+    }
+   ]
+  },
+  {
+   "id": "b15",
+   "start": 83.15,
+   "end": 91.83,
+   "sent": [
+    {
+     "file": "vo/b15_0.wav",
+     "start": 83.2,
+     "dur": 1.92,
+     "en": "There they read the book Al-Wajeez."
+    },
+    {
+     "file": "vo/b15_1.wav",
+     "start": 85.42,
+     "dur": 5.51,
+     "en": "They begin with the meaning of the two testimonies, then choose: wudu, prayer, or Al-Fatiha."
+    }
+   ]
+  },
+  {
+   "id": "b16",
+   "start": 91.83,
+   "end": 99.4,
+   "sent": [
+    {
+     "file": "vo/b16_0.wav",
+     "start": 91.88,
+     "dur": 4.86,
+     "en": "Every sentence of an answer has a page in the book. Anything without a page is deleted,"
+    },
+    {
+     "file": "vo/b16_1.wav",
+     "start": 97.09,
+     "dur": 1.96,
+     "en": "and verses are taken from their sources."
+    }
+   ]
+  },
+  {
+   "id": "b17",
+   "start": 99.4,
+   "end": 110.02,
+   "sent": [
+    {
+     "file": "vo/b17_0.wav",
+     "start": 99.45,
+     "dur": 5.62,
+     "en": "If the question is personal, a mentor answers: a brother for brothers, a sister for sisters."
+    },
+    {
+     "file": "vo/b17_1.wav",
+     "start": 105.52,
+     "dur": 4.2,
+     "en": "If a life is in danger, their country's emergency number comes first."
+    }
+   ]
+  },
+  {
+   "id": "b18",
+   "start": 110.02,
+   "end": 115.63,
+   "sent": [
+    {
+     "file": "vo/b18_0.wav",
+     "start": 110.12,
+     "dur": 3.15,
+     "en": "God willing, the Shahada is not the last message…"
+    },
+    {
+     "file": "vo/b18_1.wav",
+     "start": 114.07,
+     "dur": 0.96,
+     "en": "…but the first lesson."
+    }
+   ]
+  },
+  {
+   "id": "b19",
+   "start": 115.63,
+   "end": 118.83,
+   "sent": []
+  }
+ ]
+}

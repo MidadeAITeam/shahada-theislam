@@ -10,3 +10,10 @@ raw2/
 frames/
 frames2/
 *.log
+v3/raw/
+v3/seg/
+v3/gfx/
+v3/vo/
+v3/audio_gemini/
+v3/voicetest/
+v3/*.log

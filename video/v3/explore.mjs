@@ -1,0 +1,11 @@
+import { chromium } from "playwright";
+const EXE = `${process.env.HOME}/Library/Caches/ms-playwright/chromium-1234/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing`;
+const b = await chromium.launch({ executablePath: EXE });
+const [url, w, h, out, wait] = process.argv.slice(2);
+const p = await (await b.newContext({ viewport: { width: +w, height: +h }, locale: url.includes("/ar") ? "ar" : "en" })).newPage();
+await p.goto(url, { waitUntil: "load", timeout: 90000 });
+await p.waitForTimeout(+(wait||8000));
+await p.screenshot({ path: out });
+console.log((await p.evaluate(() => document.body.innerText)).slice(0, 3000));
+console.log("BUTTONS:", (await p.$$eval("button,a", (e) => e.map((x) => (x.innerText||x.getAttribute("aria-label")||"").trim()).filter(Boolean))).join(" | "));
+await b.close();

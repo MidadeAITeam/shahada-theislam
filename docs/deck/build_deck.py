@@ -558,11 +558,11 @@ def build(template):
     s.drop(887, 888, 889, 890, 891, 892)
     s.add(shape(s.ids(), 260, 400, 1400, 300, [
         para(run("«إنسانٌ، في مكانٍ ما، يريد أن يعرف الإسلام.»", 40, LIGHT, True), algn="ctr", ln=120),
-        para(run("غير مسلم. لا يعرف مسلماً قريباً منه، ولا يدري من أين يبدأ. فيفتح محادثة، ويكتب سؤاله بلغته.", 26, SOFT), algn="ctr", before=30, ln=125),
+        para(run("لا يعرف مسلماً قريباً منه، ولا يدري من أين يبدأ. فيفتح محادثة، ويكتب سؤاله بلغته.", 26, SOFT), algn="ctr", before=30, ln=125),
     ], fill="FFFFFF", alpha=4, line=TURQ, line_alpha=25, geom="roundRect", adj=8000, inset=40, anchor="ctr"))
-    callout(s, 148, 800, 1620, 90, [run("بعضهم كتب إلى هنا: ", 26, TURQ, True), run("theislam.chat", 26, LIGHT, True, raw=True)])
+    callout(s, 148, 800, 1620, 90, [run("ومنذ أكتوبر 2024، وجد آلافٌ منهم من يحاورهم في ", 26, TURQ, True), run("theislam.chat", 26, LIGHT, True, raw=True)])
     s.notes = ("(15 ث) هل سألتَ نفسك: إنسان غير مسلم، يريد أن يعرف الإسلام، بلغته… إلى من يكتب؟ "
-               "بعضهم كتب إلى هنا: theislam.chat.")
+               "ومنذ أكتوبر 2024، وجد آلاف منهم من يحاورهم في theislam.chat.")
 
     # 3 theislam.chat in numbers -----------------------------------------------------------------------
     s = deck.slide(15)
