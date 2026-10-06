@@ -174,13 +174,14 @@ export async function ask(input: AskInput, onStage: (s: Stage) => void = () => {
   for (const temperature of [0.2, 0]) {
     attempts++;
     if (attempts === 1) setTimeout(() => onStage({ stage: "checking" }), 1500);
-    const emptyBefore: boolean = attempts === 2 && draft !== null && (draft.sentences ?? []).length === 0;
+    // (Not for questions the router already judged beyond a beginner book: there an empty draft is the right answer.)
+    const emptyBefore: boolean = attempts === 2 && draft !== null && (draft.sentences ?? []).length === 0 && r.label !== "out_of_book";
     try {
       const g: { data: DraftAnswer; usage?: Usage } = await generateJson<DraftAnswer>(emptyBefore ? retryPrompt : prompt, { system, temperature, timeoutMs: 45000, thinking: "low" });
       track(g.usage);
       draft = g.data;
       checked = check(g.data, relevant.map((h) => h.chunk));
-      if (acceptable(checked)) break;
+      if (acceptable(checked) || (checked.sentences.length === 0 && r.label === "out_of_book")) break;
     } catch {
       checked = null;
     }
