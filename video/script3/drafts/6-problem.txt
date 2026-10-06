@@ -1,0 +1,227 @@
+SCRIPT 6 — "THE PROBLEM" LENS
+theislam.chat | After the Shahada (ما بعد الشهادة) — 2-minute film, ≤ 120 s
+Working title: «لا يُترك وحده» / "Not Left Alone"
+
+Lens: the problem is the emotional core (≈ 0:32–1:19, ~47 s). The opening earns the joy,
+the problem breaks it honestly, the solution lands as relief.
+All numbers are exactly from the brief. The "imagine one of them" passage is clearly framed as
+an illustration (تخيّل / قد يكون), never presented as a documented case; the on-screen label
+"مشهد تمثيلي / Dramatization" appears over it.
+
+Voice: one warm male documentary narrator (MSA), slow, unhurried; real silences are part of the script.
+Sound: soft ambient pads / human-voice nasheed hum, no instruments. Keyboard taps and the chat
+notification are the film's only "instruments".
+
+====================================================================================================
+SECTION 1 — THE GIFT (theislam.chat)            0:00 – 0:32
+====================================================================================================
+
+BEAT 1 | 0:00 – 0:04
+  Narration (AR): — (silence)
+  Subtitle (EN): —
+  On-screen text: —
+  Visual: Black. A single chat bubble fades in (real footage, anonymized): the user types the Shahada.
+          The assistant's congratulation message appears.
+  Sound: Three soft keyboard taps. One notification chime. Room tone.
+
+BEAT 2 | 0:04 – 0:11
+  Narration (AR): منذ أكتوبر ألفين وأربعة وعشرين، وهذه النافذة مفتوحة لكل من يسأل عن الإسلام، بالكتابة وبالصوت.
+  Subtitle (EN): Since October 2024, this window has been open to anyone who asks about Islam, by text and by voice.
+  On-screen text: theislam.chat  ·  جمعية أصول / Osoul Association
+  Visual: Real theislam.chat footage: typed chat, then the voice-dialogue view with waveform.
+  Sound: Ambient pad enters, very low.
+
+BEAT 3 | 0:11 – 0:24
+  Narration (AR): ستة عشر ألفًا وستمئة وثلاث وخمسون محادثة، من مئة وخمسين دولة، باثنتين وخمسين لغة.
+                  وفي مئة وستٍّ وستين منها، كتب إنسانٌ الشهادة. بفضل الله وحده.
+  Subtitle (EN): 16,653 conversations, from 150 countries, in 52 languages.
+                 And in 166 of them, a person wrote the Shahada. By the grace of Allah alone.
+  On-screen text: 16,653 محادثة  ·  150 دولة  ·  52 لغة   →   then alone, larger:  166
+  Visual: World map with soft points of light; quick cuts of real conversations in Arabic, English,
+          Swahili, Japanese, Indonesian, Tagalog scripts. On "166" the map dims; the number holds.
+  Sound: Pad swells gently on "الشهادة", then settles.
+
+BEAT 4 | 0:24 – 0:32   (TESTIMONIAL, 8 s)
+  Narration (AR): — (Lawrence Brown, original English audio)
+  Clip: [00:44–00:52] "Subhanallah brother, Mashallah tabarakallah, it is really amazing.
+        And it's kind of blown my mind, actually."
+  Subtitle (AR): سبحان الله يا أخي، ما شاء الله تبارك الله، إنه مدهش حقًا. لقد أذهلني في الحقيقة.
+  On-screen text: د. لورنس براون — طبيب ومؤلف وداعية / Laurence B. Brown, MD — author and da'i
+  Visual: Vertical 480x720 clip centred on a blurred, colour-matched background.
+  Sound: Pad ducks under his voice.
+
+====================================================================================================
+SECTION 2 — THE PROBLEM (emotional core)          0:32 – 1:19
+====================================================================================================
+
+BEAT 5 | 0:32 – 0:35
+  Narration (AR): ثم عدنا إلى هذه المحادثات… واحدةً واحدة.
+  Subtitle (EN): Then we went back to those conversations… one by one.
+  On-screen text: —
+  Visual: The joyful map collapses into a plain list of 166 rows (the export, anonymized),
+          scrolling slowly.
+  Sound: The pad cuts out completely. Only room tone.
+
+BEAT 6 | 0:35 – 0:42
+  Narration (AR): مئةٌ وستٌّ وستون شهادة… أحد عشر فقط تركوا وسيلةً نصل بها إليهم.
+                  والباقون… لا نعرف أسماءهم، ولا نعرف أين هم.
+  Subtitle (EN): 166 Shahadas… only 11 left any way for us to reach them.
+                 The rest… we don't know their names, or where they are.
+  On-screen text: 166  →  11
+  Visual: 166 small lights on black. 11 stay lit; the others fade, one row at a time, not all at once.
+  Sound: A faint, low sustained hum (voice only).
+
+BEAT 7 | 0:42 – 0:48
+  Narration (AR): تسعٌ وثمانون محادثة انتهت بعد الشهادة برسالتين أو أقل.
+  Subtitle (EN): 89 conversations ended within two messages of the Shahada.
+  On-screen text: 89
+  Visual: Real chat footage: the Shahada, the congratulation, one more line… then the input field
+          greys out. "Conversation ended."
+  Sound: The notification chime from Beat 1, now muffled, then nothing. One full second of silence.
+
+BEAT 8 | 0:48 – 0:56   (label: مشهد تمثيلي / Dramatization)
+  Narration (AR): تخيّل واحدًا منهم. قد يكون في بلدٍ لا يُرفع فيه أذان، لا يعرف مسلمًا واحدًا يسأله.
+  Subtitle (EN): Imagine one of them. He may live where no adhan is ever heard,
+                 not knowing a single Muslim he could ask.
+  On-screen text: مشهد تمثيلي / Dramatization
+  Visual: Night. A small rented room, a phone's light on a man's hands (face not shown).
+          Outside the window: an ordinary foreign street, no minaret. He lowers the phone.
+  Sound: Distant city noise, a clock. No voice but the narrator.
+
+BEAT 9 | 0:56 – 1:00
+  Narration (AR): يكتب: كيف أتوضأ؟ كيف أصلّي؟ ماذا أفعل الآن؟
+  Subtitle (EN): He types: How do I make wudu? How do I pray? What do I do now?
+  On-screen text: (typed live in the chat, English) "what do I do now?"
+  Visual: Close-up of his thumbs typing; cut to the real chat UI with the message sent.
+  Sound: Keyboard taps, slower than in Beat 1.
+
+BEAT 10 | 1:00 – 1:04
+  Narration (AR): اثنان وعشرون سألوا هذا السؤال في اللحظة نفسها.
+  Subtitle (EN): 22 people asked exactly this, in that very moment.
+  On-screen text: 22
+  Visual: The same question appears in many real bubbles (anonymized), in several languages, stacking.
+  Sound: Room tone.
+
+BEAT 11 | 1:04 – 1:09
+  Narration (AR): ولم يكن لنا أن نعلّمهم العبادة من ذاكرة آلة.
+  Subtitle (EN): And it was not our place to teach them worship from a machine's memory.
+  On-screen text: —
+  Visual: The assistant's honest reply in the chat (real footage): it cannot teach the steps of worship
+          from memory.
+  Sound: Silence under the line.
+
+BEAT 12 | 1:09 – 1:12
+  Narration (AR): فأُغلقت المحادثة… وبقي السؤال.
+  Subtitle (EN): The conversation closed… and the question remained.
+  On-screen text: —
+  Visual: Back in the dramatized room: the phone screen times out and goes dark in his hand.
+  Sound: Silence.
+
+BEAT 13 | 1:12 – 1:19
+  Narration (AR): أوّلُ صلاةٍ في حياته… لم يجد من يعلّمه إياها.
+  Subtitle (EN): The first prayer of his life… and no one there to teach it to him.
+  On-screen text: —
+  Visual: He stands alone, unsure which way to face, in the dim room. Hold. Fade almost to black.
+  Sound: Two full seconds of silence after the line (1:17–1:19). This silence is the hinge of the film.
+
+====================================================================================================
+SECTION 3 — THE RELIEF (After the Shahada)        1:19 – 2:00
+====================================================================================================
+
+BEAT 14 | 1:19 – 1:22
+  Narration (AR): من هنا بدأ «ما بعد الشهادة».
+  Subtitle (EN): This is where "After the Shahada" began.
+  On-screen text: ما بعد الشهادة / After the Shahada
+  Visual: From black, the same chat. The Shahada is written again — and this time the journey card
+          slides in beneath it.
+  Sound: The notification chime, clear this time. Pad returns, warmer.
+
+BEAT 15 | 1:22 – 1:30
+  Narration (AR): في اللحظة التي يكتب فيها الشهادة، تظهر له بطاقة في المحادثة نفسها، تفتح له مساحة تعلّم كاملة، بلغته.
+  Subtitle (EN): The moment he writes the Shahada, a card appears in the same conversation,
+                 opening a full learning space, in his own language.
+  On-screen text: —
+  Visual: Real footage: card tapped → learning space opens; phone views in Arabic and English side by side.
+  Sound: Pad.
+
+BEAT 16 | 1:30 – 1:39
+  Narration (AR): منهجه كتاب «الوجيز» من مركز أصول: تسعة عشر درسًا. يبدأ بمعنى الشهادتين، ثم يختار: الوضوء، أو الصلاة، أو الفاتحة.
+  Subtitle (EN): Its curriculum is Osoul Center's book "Al-Wajeez": 19 lessons. It begins with the meaning
+                 of the two testimonies; then he chooses: wudu, prayer, or Al-Fatiha.
+  On-screen text: 4 وحدات · 19 درسًا · 10 لغات للكتاب
+  Visual: The path column; lesson 1; the three choices; the steps of prayer in the book's exact words;
+          a verse rendered in Amiri.
+  Sound: Pad.
+
+BEAT 17 | 1:39 – 1:46
+  Narration (AR): كل جملة مربوطة بصفحة من الكتاب، والآيات تُنقل من مصادرها، لا يكتبها الذكاء الاصطناعي.
+  Subtitle (EN): Every sentence is tied to a page of the book, and verses are taken from their sources,
+                 never typed by the AI.
+  On-screen text: فهم ← وُجد في الصفحات ← تحقّق
+  Visual: The ask panel with its live stages "understanding → found on pages → checking"; page citations
+          highlighted; the book reader turning to the cited page.
+  Sound: Pad.
+
+BEAT 18 | 1:46 – 1:55
+  Narration (AR): يسمع الفاتحة ويردّدها. وإن سأل عن شأنٍ خاص، أو كان في خطر، وصله أخٌ أو أختٌ من فريق أصول.
+  Subtitle (EN): He listens to Al-Fatiha and repeats it. And if he asks about something personal,
+                 or is in danger, a brother or a sister from the Osoul team reaches him.
+  On-screen text: عند الخطر: رقم الطوارئ في بلده أولًا / If life is at risk: his country's emergency number first
+  Visual: Listen-and-repeat of Al-Fatiha (Al-Minshawi teaching recitation, his recitation audible);
+          then the mentor platform: a case opens, a mentor's reply arrives in the learner's space.
+  Sound: The recitation briefly carries the soundtrack (Qur'an, not music); pad under the narrator after.
+
+BEAT 19 | 1:55 – 2:00
+  Narration (AR): واليوم… من يقول الشهادة لا يُترك وحده.
+  Subtitle (EN): Today… whoever says the Shahada is not left alone.
+  On-screen text (end card, 1:57–2:00): theislam.chat  ·  shahada.theislam.chat
+                 جمعية أصول / Osoul Association
+  Visual: Callback to Beat 13: the same man (dramatization), phone glowing, standing for prayer,
+          the lesson open beside him. Cut to end card.
+  Sound: Pad resolves; final soft chime.
+
+----------------------------------------------------------------------------------------------------
+NARRATION WORD COUNT (Arabic, as written above)
+  Section 1 (Beats 2–3): 40 words
+  Section 2 (Beats 5–13): 85 words
+  Section 3 (Beats 14–19): 83 words
+  TOTAL: ≈ 208 Arabic words
+ESTIMATED DURATION
+  208 words ÷ 2.2 w/s ≈ 95 s of speech
+  + 8 s testimonial + ≈ 4 s cold open + ≈ 7 s of designed silences (Beat 7, Beat 12, 1:17–1:19)
+  ≈ 114–118 s total. Under 120 s; the 2–6 s margin absorbs ElevenLabs pacing.
+  If the voice runs long, cut first: "بفضل الله وحده" is NOT to be cut; cut instead
+  "ولا نعرف أين هم" (Beat 6) and "أو الفاتحة" → keep two choices only (Beat 16).
+
+FACT CHECK (every number used)
+  October 2024 · 16,653 conversations · 150 countries · 52 languages · 166 Shahadas · 11 reachable ·
+  89 ended within two messages · 22 asked how to do wudu / pray / "what now" · 19 lessons · 4 units ·
+  10 book editions. Nothing else is quantified. No figure is derived (e.g. no "155").
+  Beat 11 states the design restraint honestly: the platform was deliberately not allowed to teach
+  worship from a model's memory — the gap is presented as integrity, not as negligence.
+  The man in Beats 8–13 and 19 is a labelled dramatization ("قد يكون" — may be), not a reported case.
+
+====================================================================================================
+THE 5 STRONGEST PROBLEM LINES (alternatives, drop-in replacements for Section 2)
+====================================================================================================
+
+1. قالها… ثم انطفأت الشاشة.
+   He said it… and then the screen went dark.
+   (Use in place of Beat 12, over the phone timing out.)
+
+2. مئةٌ وستٌّ وستون شهادة… وأحدَ عشرَ بابًا فقط بقي مفتوحًا.
+   166 Shahadas… and only eleven doors left open.
+   (Alternative to Beat 6; pairs with the 166 → 11 lights.)
+
+3. الشهادة سطرٌ واحد. أمّا الصلاة، فتحتاج من يعلّمها.
+   The Shahada is a single line. Prayer needs someone to teach it.
+   (Alternative to Beat 13, or a bridge into Beat 14.)
+
+4. سأل: ماذا أفعل الآن؟ وكان أصدقُ جوابٍ عندنا: لا نعلّمك عبادتك من ذاكرة آلة.
+   He asked: What do I do now? Our most honest answer was: we won't teach you your worship
+   from a machine's memory.
+   (Merges Beats 9 and 11 if time must be saved.)
+
+5. دخل الإسلام في دقيقة… ثم وقف وحده أمام أول صلاة.
+   He entered Islam in a minute… and then stood alone before his first prayer.
+   (Alternative to Beat 13; keep the dramatization label on screen.)

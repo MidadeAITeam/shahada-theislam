@@ -1,0 +1,79 @@
+REVIEW OF v1 — LENS 2: AMPLIFY (magnify the work, truthfully)
+
+VERDICT: MUST-FIX (two items: the crisis protection is never spoken, and the closing line over-claims)
+SCORE: 8/10
+
+WHAT ALREADY WORKS
+The 166 in silence, «هذا من فضل الله وحده», the spoken 16,653 / 150 / 52 and "every sentence has a page" in
+the voice are the right things to make big, said at the right size. The loop is stronger than my draft.
+Under my lens there are two weaknesses. First, the two most protective things that were built (crisis
+protection, and 0 invented rulings in the tests) appear only as small on-screen text or in a 2 s card stack,
+so a viewer won't take them in. Second, one line promises more than the product can guarantee.
+
+EDITS (all figures are exact brief figures; nothing derived is spoken; net timing effect is about −1 s)
+
+1. beat 17: replace «وإن سأل عن أمرٍ يخصّه، فلا فتوى من آلة: يجيبه أخٌ من فريق أصول، أو أختٌ للأخوات.»
+   with «وإن سأل عن أمرٍ يخصّه، فلا فتوى من آلة: يجيبه أخٌ أو أختٌ من فريق أصول. وإن كانت حياته في خطر، فرقمُ الطوارئ في بلده أولًا.»
+   Sub: "If they ask about something personal, no machine gives a ruling: a brother or a sister from the Osoul team answers. And if their life is in danger, their country's emergency number comes first."
+   — Crisis protection is the most serious thing that was built, and right now the voice never says it.
+   It is also the line that makes a TV audience trust an AI. The current wording is also awkward
+   (a brother "from the team", a sister "for sisters"). +7 words, about +3.2 s; edits 2, 3 and 6 pay for it.
+   Re-time Beat 17 to about 11 s.
+
+2. beat 3: replace «وصلت إلى ذي إسلام دوت تشات. منذ أكتوبر ألفين وأربعة وعشرين، وهو يحاور غيرَ المسلمين، كتابةً وصوتًا.»
+   with «وصلت إلى ذي إسلام دوت تشات، وهو يحاور غيرَ المسلمين، كتابةً وصوتًا.»
+   — The date is already in the lower third ("since October 2024"). Spoken, it is the slowest phrase in
+   Part 1 and adds no scale. −5 words, about −2.3 s. Keep «كتابةً وصوتًا»: voice dialogue is what the witness
+   is praising. Take it off the cut list in WORD COUNT AND TIMING, and put «منذ أكتوبر…» there instead if it stays.
+
+3. beat 5: replace clip «[00:44–00:52] "…it is really amazing. And it's kind of blown my mind, actually."»
+   with clip «[01:26–01:33] "this is an incredible tool, not just for your website, but to be made available to the Muslims in general."»
+   — This is the scale clip: a known da'i saying the work belongs to the whole Ummah, not to one website.
+   That is the "greatness" claim, and an outside voice makes it, so we don't have to. It is also 7 s instead of 8
+   (−1 s). If the director keeps "blown my mind" for the hook value, this is the only edit here I would give up.
+
+4. beat 19: replace «اليوم، حين يكتب أحدُهم الشهادة، لا تكون آخرَ ما نسمعه منه. [stop] تكون أوّلَ درس.»
+   with «اليوم، حين يكتب أحدُهم الشهادة، لا تكون آخرَ المحادثة. [stop] تكون أوّلَ درس.»
+   Sub: "Today, when someone writes the Shahada, it is not the end of the conversation. / It is the first lesson."
+   Super: «Not the end of the conversation. The first lesson.»
+   — "Not the last thing we hear from them" can't be guaranteed: a learner can still close the page. What is
+   always true is that the card appears in the same conversation, and that Lesson 1 is literally "the meaning
+   of the two testimonies". So «تكون أوّلَ درس» stops being a metaphor and becomes a fact. That makes the ending
+   larger, not smaller. −2 words.
+
+5. beat 18: replace «Narration: —» with «Narration: وفي الاختبارات: صفرُ أحكامٍ مخترَعة.» (4 words, about 1.8 s, read over the cards)
+   Sub: "In the tests: zero invented rulings."
+   — "0 invented rulings" is the strongest proof in the film, and at 0.67 s per card nobody reads it. Spoken
+   over the existing 2.0 s of cards it costs no runtime. "0" is a brief-exact figure, and "in the tests" keeps it
+   honest (we never say "it cannot be wrong"). Keep the cards at 2.0 s; take "cards 2.0→1.5 s" off the cut list.
+
+6. beat 11: replace «ولم نكن نسمح لآلةٍ أن تعلّمهم العبادة من ذاكرتها؛ فالصلاة لا تُعلَّم بالتخمين.»
+   with «ولم نكن نسمح لآلةٍ أن تعلّمهم العبادة من ذاكرتها.»
+   — This only applies if the director needs the time back after edit 1 (it is already step 4 on v1's cut list).
+   The safeguard reads stronger when Beat 16 answers it ("every sentence has a page") than when Beat 11
+   explains it. −4 words, about −1.8 s.
+
+7. beat 6 OST: replace «166 declared the Shahada in the chat»
+   with «166 conversations: the Shahada declared in the chat»
+   — The brief counts conversations (where the assistant congratulated someone), not people. The narration
+   already says «في مئةٍ وستٍّ وستين محادثة». The super should match it so that no clip-sharer can turn it into
+   "166 converts".
+
+8. beat 16: replace «وما لا صفحةَ له يحذفه مدقّقٌ برمجيّ.»
+   with «وما لا صفحةَ له يحذفه مدقّقٌ برمجيّ قبل أن يصل.»
+   — "Before it reaches them" is the line that makes a viewer feel the safeguard. Without it, deleting sounds
+   like housekeeping. Only take this if edit 6 is taken (+3 words, about +1.4 s).
+
+9. beat 4 small line: replace «about 115,000 messages · platform export, Oct 2024 – Sep 2026»
+   with «about 115,000 messages · 57,614 from people · platform export, 17 Oct 2024 – 8 Sep 2026»
+   — The 57,614 messages people wrote themselves is the human scale behind the number, and it is exact in the
+   brief. It goes on screen only, so it costs no runtime.
+
+10. beat 15 OST: keep «10 language editions · answers explained in 20+ languages» at full size, not "small".
+   — The narration says «بلغته هو». Viewers from 52 languages need to see what that means exactly, and it is
+   one of the most impressive facts of the build. At "small" size it vanishes on phones.
+
+TIMING CHECK
+Edits 1–5: +3.2 −2.3 −1.0 −0.9 +0 = about −1.0 s against v1's ~119.3 s, so about 118.3 s.
+With 6 and 8 together: +1.4 −1.8 = −0.4 s more.
+All beat timecodes from Beat 3 onward need a re-time pass. The last frame stays at or before 01:59.5.

@@ -1,0 +1,85 @@
+REVIEW OF v1 — DIRECTOR / EDITOR LENS (pacing, timecodes, footage feasibility, sound, <=120 s)
+Reviewer: draft 5 (director)
+
+VERDICT: MUST-FIX
+SCORE: 7 / 10
+
+WHY
+The structure is right for TV: the same frame comes back three times, the silences are in the right
+places, every number is exact, and the sound rules are clean. But the timecodes do not survive a real
+voice read. The table claims "every slot >= words / 2.2", yet B3, B6, B12 and B19 have slots shorter
+than their own words plus the pauses written inside them. B4, B8, B10, B11, B14, B15 and B16 have no
+air at all. The runtime maths allows only ~2 s for breaths across ~25 line junctions; the real figure
+is at least 0.3 s each, about 7 s. On an honest read the cut lands near 124 s. The last 10 s is also
+unreadable: 3 test cards in 2 s and a 5-line end card in 2 s. About 6 s of narration has to go, and
+that time should go to the tests and the end card.
+
+Slot check (slot seconds vs words / 2.2 + written pauses):
+  B3  8.0 s vs 18 w = 8.2 s           OVER
+  B4  6.5 s vs 14 w = 6.4 s           0 air; long number words read slower than 2.2
+  B6  6.0 s voice vs 13 w + 0.5 pause = 6.4 s   OVER
+  B12 9.0 s voice vs 20 w + pause = 9.6 s       OVER
+  B16 10.5 s vs 23 w = 10.5 s         0 air
+  B19 7.0 s vs 14 w + 1.0 stop = 7.4 s          OVER
+  B18 2.0 s for 3 cards + footnote    UNREADABLE (needs >= 1 s per card)
+  B20 2.0 s for 5 lines incl. du'a    UNREADABLE (needs >= 3.5 s)
+
+EDITS (in order of importance)
+
+1. beat 3: take the date out of the voice. Read «وصلت إلى ذي إسلام دوت تشات، وهو يحاور غيرَ المسلمين،
+   كتابةً وصوتًا.» (12 w, 5.5 s). "since October 2024" is already in the lower third. Saves ~2.5 s.
+   Re-time B3 to 00:08.5–00:14.5 and slide everything after it up 2 s.
+
+2. beat 18 + beat 20: give the time saved to the close. Tests 3.0 s (1.0 s per card, hard cuts). Drop
+   the footnote: nobody can read 4 facts in 0.7 s. It belongs in the YouTube description, not in the
+   film. End card >= 3.5 s. Put the du'a on a card of its own for 1.5 s, or cut it. Five lines
+   in 2 s is a broadcast QC fail.
+
+3. beat 12: cut «لا نعرف اسمه،» (-3 w). Read «أحدُهم أغلق الصفحة بعد أن شهد. ولا نعرف إن صلّى في اليوم
+   التالي. [pause] والأمانةُ هنا علينا نحن.» That fits 9 s with the pause. Also remove "the browser tab
+   closes": it is a staged action presented as real. Dim the real crop to black instead.
+
+4. beat 6: move the Al-Qasas 28:56 super out of the voice section and into the 1.5 s silent hold at
+   00:37.0–00:38.5. Extend the hold to 2.0 s. Three supers while he speaks is too much text, and the ayah
+   deserves the silence. Voice slot 00:31.0–00:37.0 then needs 6.4 s: trim the half-second pause to 0.3 s.
+
+5. beat 16: "live and in real time (no speed-ramp)" is not feasible. The real ask panel takes several
+   seconds per stage, and then a verse and the wudu panel must follow, all in 10.5 s. Keep "no speed-ramp",
+   but allow straight JUMP CUTS between the three stages (each ~1.2 s, label legible). Cut «في الجواب»
+   (-2 w) for air. Split the subtitle into two events: as written it is ~130 characters and breaks the
+   42 x 2 rule.
+
+6. beat 17: the first cut (listen-and-repeat for Al-Fatiha) does not match the narration, which is about
+   personal questions and mentors. Move listen-and-repeat to the end of B15, after the "Al-Fatiha" choice,
+   where the word is spoken. Drop the 0.5 s sign-in/reminder inserts; they can't be read at that length.
+   B17 becomes three cuts of ~2.6 s each: question → handover, mentor inbox + crisis row + SLA timer,
+   reply arriving in the learning space.
+
+7. beat 15: too many shots and supers for 8.5 s (6 shots + a 1 s split + 3 supers). Cut «بلغته هو»
+   (-2 w; "10 language editions" is on screen). Drop the 1 s EN|AR split screen. Show one super at a time:
+   "Al-Wajeez · 4 units · 19 lessons" on the book, then "The path adapts" on the choice.
+
+8. beat 4: the number words read slow in TTS («ستةَ عشرَ ألفًا وستُّمئةٍ وثلاثٌ وخمسون»). Either give B4
+   7.5 s (from the B3 saving), or read «أكثرُ من ستةَ عشرَ ألفَ محادثة» while the graphic shows 16,653
+   exactly. "More than" is true and is not a derived number. My preference is 7.5 s with the full number,
+   because the graphic count-up lands better on the exact figure.
+
+9. beat 1 / beat 14 (feasibility): the export is text, so "a message types itself letter by letter" is a
+   replay of a real message in the UI, not a captured live moment. That is acceptable, but change the super
+   "Someone just declared the Shahada" to "Someone declared the Shahada…" ("just" implies live footage).
+   The B14 twist shot is recorded on the demo (shahada.theislam.chat). Before locking B1, confirm the demo
+   chat UI matches the production chat pixel for pixel (header, bubble style, phone width). If it doesn't,
+   the "exact Beat 1 crop" match-cut will visibly jump; in that case record B1 on the demo too.
+
+10. beat 3 / timing table: fix the subtitle length (the B3 sub is ~98 characters → two events). Also
+   rewrite the runtime maths with honest breaths (0.3 s x ~25 junctions = ~7.5 s, not 2 s). After edits
+   1, 3, 5 and 7 (about -9 words, about -6 s), the cut fits 119.5 s with the longer tests and end card.
+   Re-time every beat in the table from the first ElevenLabs read before the edit is locked. Conform to
+   the measured read, not to 2.2 w/s.
+
+KEEP AS IS (do not touch in the next round)
+- The 3 s silent cold open and the bookend in the same crop.
+- The hard cut to black + silence before the title (B12 → B13).
+- The 166 dot field, silent fade, no hit.
+- The hum rules, no instruments, nothing under any Qur'an content.
+- The final super "Not the last message. The first lesson." and the 1 s stop before «تكون أوّلَ درس».

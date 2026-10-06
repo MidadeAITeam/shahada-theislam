@@ -1,0 +1,71 @@
+REVIEW 6 — PROBLEM LENS (round 2) on script3/v1.txt
+Lens: is the problem FELT, magnified powerfully and honestly, so the solution lands as relief?
+
+VERDICT: MUST-FIX (one blocking edit, #1; the rest are word-neutral improvements)
+SCORE: 8/10
+
+WHAT WORKS (keep)
+- Part 2 is properly built: «ثمّ ماذا؟» + the cursor, the 166 dots going dark to 11, the dead-cursor silence
+  after 89, "What do I do now?" growing to fill the frame, the hard cut to black on «نحن». The numbers fall
+  one at a time and the silence does the work. Honest: no derived numbers, the restraint is framed as
+  design, and «والأمانةُ هنا علينا نحن» puts the weight on us and not on them.
+- I accept dropping my dramatized lonely man. Real footage is stronger and fits the adab lines.
+
+WHAT IS MISSING
+(a) The biggest wound in the data is "only 11 of 166 could be reached", but Part 3 never heals it. Sign-in and
+    the daily lesson e-mail are what fix it, and they appear only as a 0.5 s insert. The relief has to answer
+    the wound directly.
+(b) The 22 questions are asked but never answered on screen. The relief should say plainly: this is what
+    they asked, and this is the answer now.
+(c) The loneliness is told and not quite felt. One honest line can show that the chat was the only place
+    they asked, without staging and without pity.
+
+EDITS (all keep the total ≤ 120 s; word deltas noted)
+
+1. [BLOCKING] beat 17: OST — replace the 0.5 s sign-in / reminder insert with a 1.5 s held shot of the e-mail
+   sign-in and the daily-lesson e-mail, with the super «Now there is a way back to them. | صار لنا طريقٌ إليهم»
+   — why: it is the direct answer to Beat 8's «تركوا لنا طريقًا نصل به إليهم». Without it the 11/166 wound is
+   left open and the relief feels partial. Use the time from the four-cut montage (shorten the
+   listen-and-repeat cut to 1.0 s). 0 narration words.
+
+2. beat 11: replace «فالصلاة لا تُعلَّم بالتخمين» with «فبقي السؤال بلا درس» — why: the current line justifies
+   us. The new one makes the cost felt (the question stayed without a lesson), and it is still true by
+   design. Same 4 words, same slot. If the adab reviewer insists on keeping the guesswork line, keep both
+   and cut «كتابةً وصوتًا» (B3, −2) plus «بلغته هو» (B15, −2) to pay for it.
+
+3. beat 12: replace «أحدُهم أغلق الصفحة بعد أن شهد.» with «أحدُهم شهد… ثم غاب.» — why: the export proves
+   the conversation ended, not that a page was closed. "Bore witness… then was gone" is strictly true of
+   the 89 and hits harder in four words (−1 word, which buys breath before «لا نعرف اسمه»).
+
+4. beat 10: replace «واثنان وعشرون سألوا في الحال:» with «واثنان وعشرون سألوا النافذةَ نفسها:» — why:
+   it shows the loneliness honestly. The chat window where they bore witness was where they turned for
+   the next step. No staging, no claim about mosques or countries. Same word count (4).
+   Pair with: hold "What do I do now?" 0.5 s longer and take the time from Beat 13's breath-in.
+
+5. beat 15: OST — add on the choice screen: «What do I do now? → Wudu · Prayer · Al-Fatiha» replacing the
+   small «The path adapts to their choice» — why: it answers the 22 on screen in the exact words of the
+   question that filled the frame in Beat 10. That is the relief moment. 0 narration words.
+
+6. beat 14: OST — replace «The same conversation. Now it answers.» with «The same moment. This time, a next step.»
+   — why: "it answers" sounds like generic AI chat. The problem was "no next step", so the super should
+   name what was missing. 0 words.
+
+7. beat 9: OST — replace «89 ended within two messages» with «89 ended within two messages of the Shahada»
+   — why: without "of the Shahada" a muted viewer may read 89 as a general drop-off statistic, and the
+   pain comes from the timing. The brief's wording also includes it. Stays within 42 chars over two lines.
+
+8. beat 8: Visual — keep the 11 white dots on screen, dimmed to 15%, under Beats 9–12 and let them return
+   at full white behind the Beat 19 card — why: one visual thread from wound to relief that costs no
+   seconds. Do NOT relight all 166 (that would imply outcomes we cannot claim).
+
+9. beat 12: Voice — after «ولا نعرف إن صلّى في اليوم التالي» add a written 0.5 s pause before
+   «والأمانةُ هنا علينا نحن» (take it from the 2 s test cards → 1.5 s, cut order item 3 used early)
+   — why: the "did they pray" question needs half a second to land before we take responsibility.
+   At the moment the lines run together.
+
+10. beat 19: keep «لا تكون آخرَ ما نسمعه منه. تكون أوّلَ درس» exactly. Do not trade it for a slogan.
+    — why: it is the exact inverse of Beat 9/12. It is the strongest relief line in all eight drafts.
+
+TIMING CHECK
+Narration delta: #2 0, #3 −1, #4 0 → total 212 words (−1). #9 moves 0.5 s from the test cards. #1 re-cuts
+inside Beat 17. Runtime is unchanged at last frame 01:59.5.

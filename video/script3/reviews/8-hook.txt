@@ -1,0 +1,70 @@
+REVIEW 8 — HOOK LENS (first 3 s, pattern interrupts, muted readability, shareable line, CTA)
+Script reviewed: video/script3/v1.txt ("THE FIRST LESSON", showrunner merge of drafts 1-8)
+
+VERDICT: MUST-FIX (two blockers: the CTA is on screen for too short a time, and the test cards cannot be read)
+SCORE: 7/10
+
+WHAT WORKS (keep it)
+- The cold open: the typed Shahada and the super, with no voice, is the strongest scroll-stopper we have.
+- The same-crop loop (blessing → silence → answer) gives a pattern interrupt about every 5-8 s for most of the
+  film: "And then?", the 166-dot fade, the dead cursor, "What do I do now?" filling the frame, the black before
+  the title, the twist shot.
+- The shareable line, "Not the last message. The first lesson.", is short and quotable. It works muted and as a
+  thumbnail or caption.
+- The MUTED READ section tells the whole story. Most supers fit the 42-character rule.
+
+EDITS (every one keeps the last frame at or before 01:59.5)
+
+beat 1: Cut the 8-frame fade up from black. Frame 1 must already show the chat with the first typed letters,
+  because a black first frame loses the swipe on social. The super's first line must be on screen by 00:00.3,
+  not after the fade.
+
+beat 2: Add a super. From 00:03 to about 00:14 a muted viewer sees only a held bubble, an 11-second dead zone
+  right after the hook. Super: "Someone we have never met." (26 chars). Also put the Beat 3 hard cut to the
+  phone/voice view on «وصلت», at about 00:09, not on «وصوتًا». That moves the interrupt earlier.
+
+beat 4: Too many text layers for a phone: three counters, a small source line and 12 drifting language tags.
+  On 9:16 this reads as noise. Keep the three stacked numbers. Show the 12 language tags only as the four
+  1.5 s footage cuts (one script per cut). Move "about 115,000 messages · platform export…" to an end-of-film
+  sources card or the description, not under the counters.
+
+beat 11: The super "By design: no worship taught from a machine's memory." is 52 characters, which breaks the
+  film's own 42-character rule and will wrap to 3 lines in 9:16. Replace it with
+  "By design: AI never teaches worship." (36 chars), or "No worship taught from AI memory." (33 chars).
+
+beat 15: Four text items (title line plus three smalls) are layered over moving UI. Keep the one super
+  "Al-Wajeez · 4 units · 19 lessons". Show "10 language editions" only during the 1 s EN|AR split, as a label
+  on the split. Drop "The path adapts to their choice": the path re-ordering on screen already shows it.
+
+beat 16: Same problem. Keep the super "No page, no sentence." The stage labels "understanding → found on
+  pages → checking" are already visible in the zoomed UI, so don't repeat them as text. Keep at most one small
+  line: "Checked by code, not by AI". The Tanzil/QuranEnc and wudu lines go into the end sources card.
+
+beat 18 (BLOCKER): Three cards plus a four-item footnote in 2.0 s gives about 0.67 s per card, which nobody
+  can read, and the footnote is invisible. Make it ONE card for 2.0 s:
+  "84/84 · 0 invented rulings · 100% faithful to the book". Drop the footnote from the film (it goes in the
+  description and the submission). No timing change.
+
+beat 19: Timing of the shareable super. Land "Not the last message." with the first sentence and hold it.
+  Bring in "The first lesson." exactly on «تكون أوّلَ درس», after the one-second stop. If both lines show
+  together, muted viewers get the punchline before it is said. Also bring in the URL "shahada.theislam.chat"
+  as a small lower super from 01:55.0, so the CTA starts before the end card.
+
+beat 20 (BLOCKER): The CTA is too weak. The URL is on screen for only 2.0 s, never spoken, and has to compete
+  with five lines (title, URL, Osoul line, Track 03, du'a). The brief asks for a clear call to action; on
+  social it needs at least 3 s. Fix within the time we have:
+  (a) Start the URL at 01:55.0 in Beat 19 (see above), giving 4.5 s on screen in total.
+  (b) On the end card, make the URL the largest line, typed into a chat bubble like the hook, with the
+      chat's own input field around it, so the film ends on the same visual it opened with.
+  (c) Cut the end card to three lines: URL · "theislam.chat · an initiative of Osoul Association" · the du'a.
+      Move Track 03 to the description, or to a 0.5 s line under the title in Beat 13.
+  I accept the decision not to say "try it now" (it would sell the moment). A spoken alternative that does not
+  sell, if the showrunner wants one: «الدرسُ الأوّل مفتوح» / "The first lesson is open", 4 words (≈2 s), taken
+  out of the breath margin.
+
+DELIVERABLES MISSING FOR REACH (not blocking the master, but needed before release)
+- v1 has no vertical cut-down. Add the 30 s 9:16 cut from draft 8 (hook → 16,653/150/166 → "11 of 166" →
+  "What do I do now?" → card reveal → "Not the last message. The first lesson." + URL), plus a 6 s pre-roll:
+  typed Shahada → "11 of 166" → URL.
+- Thumbnail / first frame for YouTube: the typed Shahada bubble with the super
+  "Not the last message. The first lesson."

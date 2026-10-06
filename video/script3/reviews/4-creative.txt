@@ -1,0 +1,77 @@
+REVIEW OF v1: CREATIVE LENS (draft 4)
+Lens: is it unforgettable, is it gripping, is it TV-grade, and does it end on a line people repeat?
+
+VERDICT: MUST-FIX (two truthfulness fixes in the loop shots; everything else is polish)
+SCORE: 8/10 (9/10 once edits 1–3 are made)
+
+WHAT ALREADY WORKS
+- The "same screen three times" design survives, and the merge made it better. The opening frame stands
+  for a blessing, then silence, then an answer, and the film is built around that one image.
+- «ثمّ ماذا؟», the dead-cursor hold and «والأمانةُ هنا علينا نحن» are the strongest moments in all 8 drafts.
+- "No page, no sentence." is a great super. It explains the product in four words.
+- Keeping the first "answer" sound for the card is right.
+
+EDITS (each keeps the total at or under 120 s)
+
+1. beat 1 / 2 / 6: replace «Visual: … A message types itself letter by letter … (Real Shahada-moment footage, anonymised.)»
+   with «Visual: the REAL Shahada text taken from the export (anonymised) and shown in the chat UI, no
+   live-typing animation, small caption: "Real message from the platform export · re-rendered, anonymised"»
+   Why: the brief's "Shahada moment" footage is a product recording. If a demo recording runs under
+   «هذه الرسالة كتبها إنسانٌ لم نرَه قط», we are presenting a staged scene as real, and that breaks the
+   film's own rule. Either the words come from the export and carry a caption, or the narration must
+   change. Live typing would also be invented, because the export has sent messages, not keystrokes.
+   This one decides the verdict.
+
+2. beat 12: replace «أحدُهم أغلق الصفحة بعد أن شهد. لا نعرف اسمه، ولا نعرف إن صلّى في اليوم التالي.»
+   (and the visual "the browser tab closes")
+   with «لا نعرف أسماءهم. ولا نعرف إن صلّوا في اليوم التالي.» and use a plain slow fade to black, with no
+   tab-close animation.
+   Why: we have no data on anyone closing a page. "Ended within two messages" is not "closed the page
+   after bearing witness", and the tab-close is a staged UI event. The new version is also shorter
+   (−5 words, about −2.3 s), and the plural hits harder because it covers all of them, not one invented
+   person. Use the saved time in edit 5.
+
+3. beat 19 (the last line): replace «لا تكون آخرَ ما نسمعه منه. [stop] تكون أوّلَ درس.»
+   with «لا تكون آخرَ رسالة. [stop] بل أوّلَ درس.»
+   Why: the line people repeat must be short, even and literally true. «آخرَ ما نسمعه منه» promises we will
+   keep hearing from them, which we cannot guarantee. «آخرَ رسالة» is a plain fact, because the card always
+   comes after it. The new line also matches the English super word for word ("Not the last message. The
+   first lesson."), so the voice and the screen say the same line in two languages and it becomes the one
+   people share. «بل» gives the turn a sharper hinge than repeating «تكون». (−2 words.)
+
+4. beat 8 ↔ beats 9–11 (order): move "ONLY 11" (beat 8, with its 166-dot grid) to come right after
+   beat 11, just before the closing «لا نعرف أسماءهم…».
+   Why: a fall should go from big to bad to worst. Right now the 11 lands first and the 89 and 22 dilute it.
+   The new order is 89 ended → 22 asked → the machine could not teach → only 11 could be reached → we
+   don't know their names. Each number then sets up the next line, and the dots that dim to 11 cut
+   straight into the empty chat. Timing does not change.
+
+5. beat 9: replace «00:49.5–00:51.0: NO VOICE» with «00:49.5–00:52.0: NO VOICE» (use 1 s of what edit 2
+   saved)
+   Why: the dead cursor is the film's pattern interrupt, and 1.5 s is too short to feel uncomfortable on
+   TV. With 2.5 s the viewer starts to want someone to type, which is exactly the feeling the film is about.
+
+6. beat 18: replace the three cards and the footnote in 2.0 s with «two cards, 1.0 s each: "84/84 Shahada
+   conversations handled correctly" · "0 invented rulings"; the footnote moves to the end card in small type»
+   Why: three cards plus a four-item footnote in two seconds cannot be read and looks like a ticker. Two
+   readable numbers are worth more than five unread ones. "100% faithful" can go in the end card's small
+   line.
+
+7. beat 1 super: replace «Someone just declared the Shahada. / …in a chat window.»
+   with «Someone declared the Shahada / …in a chat window.»
+   Why: "just" suggests live footage. It is an archive message (see edit 1). Removing it costs nothing
+   and keeps the hook honest.
+
+8. beat 14: add a small corner caption «Product demo» over the continuous card take.
+   Why: this shot reuses the beat-1 crop on purpose so it looks like the same chat. If beat 1 is real (edit 1)
+   and beat 14 is a demo, the match cut must not suggest that a real person's chat got the card. One small
+   label keeps the twist and the honesty, and viewers still feel the cut.
+
+9. beat 13: replace «لهذا بنينا «ما بعدَ الشهادة».» with «لهذا… بنينا «ما بعدَ الشهادة».» (comma pause marked for TTS)
+   Why: this line comes straight out of the one second of black, and a held breath after «لهذا» makes it
+   land as a decision, not a transition. It costs about 0.3 s, which the edit-3 saving covers.
+
+TIMING AFTER EDITS
+Words: 213 − 5 (edit 2) − 2 (edit 3) = 206 → about 93.6 s of voice. Silences grow by +1.0 s (edit 5) and
++0.3 s (edit 9). The total comes to about 115 s, so the 01:59.5 last frame keeps about 4 s of headroom for
+the real ElevenLabs read.

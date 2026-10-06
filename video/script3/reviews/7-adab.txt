@@ -1,0 +1,40 @@
+REVIEW 7 — ADAB LENS (da'wah adab, Sharia accuracy, method of Ahl al-Sunnah)
+Script reviewed: video/script3/v1.txt ("THE FIRST LESSON | أوّلُ درس")
+
+VERDICT: MUST-FIX (small, wording-level; structure and spirit approved)
+SCORE: 8/10
+
+WHAT IS RIGHT (keep, do not touch)
+- Guidance is from Allah: «هذا من فضل الله وحده» after the 166, never "converted by us". The 166 super says "declared the Shahada in the chat".
+- The gap is framed as our trust: «والأمانةُ هنا علينا نحن». The new Muslims are not pitied or shown as deficient, and nothing is staged as real.
+- Qur'an appears as on-screen text only (Al-Qasas 28:56, Uthmani text copied from Tanzil). The synthetic voice never recites, and the recitation audio is muted. Clip [01:02–01:13] ("ignorant Muslims") is excluded.
+- «فلا فتوى من آلة», «لم نكن نسمح لآلةٍ أن تعلّمهم العبادة من ذاكرتها», the code checker and verses from their sources: no AI overclaim in the narration.
+- No instruments. Every number is exact. Nothing is derived.
+
+RED-LINE VIOLATIONS FOUND
+RL5 (accurate religious wording): «نطق صاحبُها بالشهادة» (B6), «حين ينطق بها» (B14) and «حين يكتب أحدُهم الشهادة» (B19) use the singular or a pronoun. The term is الشهادتان. The film's own B15 says «معنى الشهادتين», so the wording is inconsistent too.
+RL6 (no overclaims): B19 «اليوم، حين يكتب أحدُهم الشهادة، لا تكون آخرَ ما نسمعه منه» states as settled fact that the problem is solved today. The brief says the product is a demo (shahada.theislam.chat), and no one can promise we will hear from every person. A future promise without «بإذن الله» is also weak adab.
+RL7 (humans for personal matters; brother for brothers, sister for sisters): B17 «يجيبه أخٌ من فريق أصول، أو أختٌ للأخوات» makes the brother the default for everyone and the sister an exception. It also drops the word «مرشد».
+RL1 / RL2 (dignity; we do not judge their practice): the B12 super "We don't know if they prayed the next day." stands alone on screen. Read silently, it casts doubt on the person rather than on our failure to follow up.
+RL3 (honour the new Muslims): B8 fades 155 of the 166 dots to near-black. Visually, the people "disappear", and the image implies they were lost. Our ignorance of how they are doing is not their loss.
+RL4 (real footage only): the B1 Shahada "types itself letter by letter", and B12 has "the browser tab closes". If these are animated reconstructions rather than real recordings, they must not be presented as real. In addition, the typed Shahada is shown cut at "no god but Allah…". The full two testimonies must be legible on screen at least once (B1 freeze or B6 wide).
+Minor: the du'a sits only on a 2 s end card in small type, so it cannot be read. The test card "0 invented rulings" needs "in testing" to stay accurate.
+
+CONCRETE EDITS (10)
+1. beat 6: replace «وفي مئةٍ وستٍّ وستين محادثة، نطق صاحبُها بالشهادة.» with «وفي مئةٍ وستٍّ وستين محادثة، نطق صاحبُها بالشهادتين.» — الشهادتان is the correct term. Sub: "...declared the Shahada" can stay.
+2. beat 14: replace «حين ينطق بها، تظهر له بطاقةٌ…» with «حين ينطق بالشهادتين، تظهر له بطاقةٌ…» — same reason; after the 30-second gap from B6 the pronoun has no clear antecedent. (+1 word)
+3. beat 19: replace «اليوم، حين يكتب أحدُهم الشهادة، لا تكون آخرَ ما نسمعه منه.» with «وبإذن الله، حين ينطق أحدُهم بالشهادتين، لا تكون آخرَ ما نسمعه منه.» — removes the "already solved" overclaim on a demo, ties a future outcome to Allah's will, and fixes the term. Same word count. Sub: "God willing, when someone declares the Shahada, it will not be the last thing we hear from them."
+4. beat 17: replace «يجيبه أخٌ من فريق أصول، أو أختٌ للأخوات.» with «يجيبه مرشدٌ من فريق أصول: أخٌ للإخوة، وأختٌ للأخوات.» — makes brother-for-brothers and sister-for-sisters symmetrical, as the product works and as the Sharia requires (+1 word). Sub: "a mentor from the Osoul team answers: a brother for brothers, a sister for sisters."
+5. beat 12: replace «لا نعرف اسمه، ولا نعرف إن صلّى في اليوم التالي.» with «لا نعرف اسمه، ولا نعرف من علّمه الوضوء في اليوم التالي.» — keeps the ache, but the unknown becomes our absence rather than a doubt about the new Muslim's prayer. Super: replace "We don't know if they prayed the next day." with "We don't know who taught them wudu the next day."
+6. beat 8: replace "all but 11 fade to 15%" with "all 166 dots stay white; the 11 reachable ones turn the accent colour and the other 155 stay white but unconnected (no line to us)" — the dots represent people, and people should not visibly fade out. What is missing is our link to them, not the people.
+7. beat 1 / beat 6: replace the cropped "I bear witness that there is no god but Allah…" with the full real message showing both testimonies (…and that Muhammad is the Messenger of Allah), fully legible on the B6 wide shot — the Shahada must never appear as only its first half. If B1's letter-by-letter typing is an animation, label it in the edit notes as a reconstruction of real text, and do not use a fake cursor on real-looking UI.
+8. beat 12 visual: replace "the browser tab closes" with "the input field stays empty and the frame dims" — a closing tab is a staged act attributed to a real person. The dimming says the same thing without inventing an action.
+9. beat 18: replace "0 invented rulings | صفر أحكام مخترعة" with "0 invented rulings in testing | صفر أحكام مخترعة في الاختبارات" — the brief's figure is a test result, not a guarantee. Without the qualifier it becomes an AI overclaim.
+10. beat 20: replace the 2 s end card with the du'a as its own 1.5 s line before the logos (take 1 s from B19's push-in and 0.5 s from the test cards): «يا مقلّبَ القلوب، ثبّت قلوبنا وقلوبهم على دينك.» — the closing du'a is the film's adab seal. At small size in 2 s with logos and URLs, nobody can read it. Keep it unlabelled (adapted from al-Tirmidhi 2140, not verbatim).
+
+TIMING NOTE: edits 2 and 4 add 2 words in total (~0.9 s). Absorb them with the v1 cut list item 1 («كتابةً وصوتًا», −2 words). Edits 1, 3 and 5 are neutral or −1.
+
+RE-CHECK BEFORE LOCK
+- The tashkeel of «بالشهادتين» is read correctly by ElevenLabs (listen for "bish-shahādatayn").
+- The Tanzil text in B6 matches 28:56 character for character (يَهْدِى with dotless yā' as Tanzil renders it), with the citation [القصص: ٥٦].
+- No recitation audio under any hum or breath-hit. The listen-and-repeat shot stays muted.

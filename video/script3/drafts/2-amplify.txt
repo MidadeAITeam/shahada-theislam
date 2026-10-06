@@ -1,0 +1,135 @@
+SCRIPT DRAFT 2 — LENS: AMPLIFY (magnify the work, truthfully)
+Film: theislam.chat | After the Shahada (ما بعد الشهادة) — Track 03
+Target: 120 s maximum. Arabic narration (MSA, warm documentary voice), English subtitles.
+Sound bed throughout: soft ambient pads / human-voice nasheed hum, NO instruments.
+
+=====================================================================
+BEAT 1 — 00:00–00:07 — THE WORLD WRITES
+NARRATION: بالسواحيلية، باليابانية، بالتاغالوغية، بالفنلندية… يكتب إنسانٌ سؤالًا عن الإسلام.
+SUBTITLE: In Swahili, in Japanese, in Tagalog, in Finnish… someone types a question about Islam.
+ON-SCREEN: none (the languages themselves are the text)
+VISUAL: Black. Then real chat bubbles from the export (anonymised) appear one by one in their native scripts — Swahili, Japanese, Tagalog, Finnish — each on a phone in a different hand/light. Fast, intimate.
+SOUND: keyboard taps from silence; one low ambient swell on "الإسلام".
+
+BEAT 2 — 00:07–00:13 — WHO ANSWERS
+NARRATION: وفي الطرف الآخر، من يُجيبه بالكتابة وبالصوت: theislam.chat، من جمعية أصول.
+SUBTITLE: And on the other side, something answers, in text and in voice: theislam.chat, by Osoul Association.
+ON-SCREEN: theislam.chat — Osoul Association — live since October 2024
+VISUAL: The real chat replying; cut to the voice mode waveform answering. Logo lockup.
+SOUND: a soft voice reply from the product, ducked under narration.
+
+BEAT 3 — 00:13–00:24 — THE SCALE (by the grace of Allah)
+NARRATION: وبفضل الله وحده: ستة عشر ألفًا وستمئة وثلاث وخمسون محادثة. زوّارٌ من مئةٍ وخمسين دولة، واثنتان وخمسون لغة.
+SUBTITLE: By the grace of Allah alone: 16,653 conversations. Visitors from 150 countries. 52 languages.
+ON-SCREEN (counters roll up, then lock): 16,653 conversations · 150 countries · 52 languages · ~115,000 messages
+VISUAL: Pull back from a single chat into a dark globe; 150 points of light come on one by one (country markers only, no invented city data); the 12 top languages ripple across as typography (Arabic, English, Swahili, French, Japanese, Indonesian, Tagalog, Persian, Finnish, Spanish, Urdu, Somali).
+SOUND: ambient rises; each counter lock = soft breath-like "whoosh".
+
+BEAT 4 — 00:24–00:32 — THE MOMENT
+NARRATION: ومئةٌ وستٌّ وستون محادثة، كتب فيها إنسانٌ: أشهد أن لا إله إلا الله، وأشهد أن محمدًا رسول الله.
+SUBTITLE: And in 166 conversations, a person wrote: I bear witness that there is no god but Allah, and that Muhammad is the Messenger of Allah.
+ON-SCREEN: 166
+VISUAL: The real Shahada moment in the chat, typed letter by letter (anonymised). Hold on the sent bubble. Camera breathes in slowly.
+SOUND: everything drops to near-silence; only the typing. One second of stillness after "رسول الله".
+
+BEAT 5 — 00:32–00:39 — TESTIMONIAL (English, 7 s)
+NARRATION: none
+SUBTITLE (Arabic burned-in for Arabic audience; English is native): "...an incredible tool, not just for your website, but to be made available to the Muslims in general."
+ON-SCREEN lower third: Dr. Laurence B. Brown — author and da'i
+VISUAL: Lawrence Brown testimonial clip [01:26–01:33], vertical 480x720 framed centred on a soft blurred background of the chat.
+SOUND: his voice only.
+
+BEAT 6 — 00:39–00:41 — THE TURN
+NARRATION: ثم ماذا؟
+SUBTITLE: And then what?
+ON-SCREEN: none
+VISUAL: Back to the Shahada bubble. The cursor blinks. Nothing comes.
+SOUND: ambient cuts out. Silence.
+
+BEAT 7 — 00:41–00:56 — THE PROBLEM, MAGNIFIED
+NARRATION: اثنان وعشرون سألوا في الحال: كيف أتوضأ؟ كيف أصلّي؟ ماذا أفعل الآن؟ ولم يكن مسموحًا لآلةٍ أن تعلّم العبادة من ذاكرتها.
+SUBTITLE: 22 asked right away: How do I make wudu? How do I pray? What do I do now? And a machine was not allowed to teach worship from its memory.
+ON-SCREEN: 22 — "what do I do now?"
+VISUAL: The three real questions appear as chat bubbles in their original languages, stacked; each one hangs unanswered with the "typing" dots that stop.
+SOUND: a single low sustained tone (voice drone, no instruments).
+
+BEAT 8 — 00:56–01:07 — THE SILENCE AFTER
+NARRATION: تسعٌ وثمانون محادثة انتهت خلال رسالتين بعد الشهادة. ومن المئة والست والستين، أحد عشر فقط تركوا طريقًا للتواصل.
+SUBTITLE: 89 conversations ended within two messages of the Shahada. Of the 166, only 11 left any way to reach them.
+ON-SCREEN: 89 — ended within 2 messages · 11 of 166 reachable
+VISUAL: Data visual: 166 small lights (from Beat 4) — 155 of them slowly dim, 11 stay lit. Clean, honest, no drama graphics.
+SOUND: tone fades to nothing.
+
+BEAT 9 — 01:07–01:11 — THE HUMAN IMAGE
+NARRATION: مسلمٌ جديد، وحده، يبحث عن أول ركعة.
+SUBTITLE: A new Muslim, alone, searching for their first rak'ah.
+ON-SCREEN: none
+VISUAL: Phone on a prayer mat in a dim room; the screen shows a search bar, empty. (Staged b-roll, no face.)
+SOUND: room tone, a distant adhan-like human voice hum (no instruments).
+
+BEAT 10 — 01:11–01:20 — THE ANSWER ARRIVES
+NARRATION: فبنينا «ما بعد الشهادة». في اللحظة التي ينطق فيها بالشهادة، تظهر بطاقة في المحادثة نفسها، تفتح له مساحة تعلّمٍ كاملة.
+SUBTITLE: So we built "After the Shahada". The moment they say the Shahada, a card appears in the same conversation and opens a full learning space.
+ON-SCREEN: After the Shahada · ما بعد الشهادة
+VISUAL: Real footage: Shahada typed → the journey card slides into the same chat → tap → the learning space opens (path view). Light returns to the frame.
+SOUND: ambient returns, warmer, brighter.
+
+BEAT 11 — 01:20–01:30 — THE BOOK, IN THEIR LANGUAGE
+NARRATION: منهجها كتاب «الوجيز» من مركز أصول، تسعة عشر درسًا بلغته. يبدأ بمعنى الشهادتين، ثم يختار: الوضوء أو الصلاة أو الفاتحة، ويردّدها خلف المنشاوي.
+SUBTITLE: Its curriculum is Osoul Center's "Al-Wajeez": 19 lessons, in their own language. It starts with the meaning of the Shahada; then they choose wudu, prayer, or Al-Fatiha, repeating it after Al-Minshawi.
+ON-SCREEN: Al-Wajeez · 4 units · 19 lessons · 10 language editions
+VISUAL: Book reader turning real pages; lesson 1 screen; the three choices tapped; listen-and-repeat screen with Amiri-font verse highlighting. Phone views Arabic → English.
+SOUND: a short snippet of Al-Minshawi's teaching recitation of Al-Fatiha surfaces, narration pauses for it (~1 s).
+
+BEAT 12 — 01:30–01:43 — EVERY SENTENCE HAS A PAGE (the safeguard)
+NARRATION: وإذا سأل، فكل جملة في الجواب لها صفحة في الكتاب. وما لا صفحة له، يحذفه مدقّقٌ برمجي قبل أن يصل. والآيات تُنقل من مصادرها، لا يكتبها الذكاء الاصطناعي.
+SUBTITLE: And when they ask, every sentence of the answer has a page in the book. Any sentence without one is removed by a code checker before it arrives. Verses are taken from their sources, never typed by the AI.
+ON-SCREEN: understanding → found on pages → checking  |  "p. 42"-style page tags on each sentence (use the real page numbers from the footage)
+VISUAL: Real ask panel with the live stages; zoom on page references beside each sentence; one sentence visibly removed by the checker (real behaviour, if captured; otherwise skip the removal shot).
+SOUND: subtle click per stage.
+
+BEAT 13 — 01:43–01:48 — PROOF
+NARRATION: اختبرناه بأكثر من سبعمئة سؤالٍ جديد بعشر لغات: صفر أحكامٍ مختلقة.
+SUBTITLE: We tested it with more than 700 new questions in 10 languages: zero invented rulings.
+ON-SCREEN: 284 + 450 new questions · 10 languages · 0 invented rulings · 84/84 Shahada scenarios
+VISUAL: Clean typographic card over the eval results grid.
+SOUND: one held note of human hum; stop on "مختلقة".
+
+BEAT 14 — 01:48–01:56 — PEOPLE, NOT A MACHINE
+NARRATION: وإن كان السؤال عن زواج أو عمل أو أسرة، فلا فتوى من آلة: أخٌ للإخوة، وأختٌ للأخوات، من فريق أصول. وإن كانت حياته في خطر، فرقم الطوارئ في بلده أولًا.
+SUBTITLE: If the question is about marriage, work or family, no machine gives a ruling: a brother for brothers, a sister for sisters, from the Osoul team. And if a life is in danger, their country's emergency number comes first.
+ON-SCREEN: Human mentors · Emergency number first
+VISUAL: Mentor platform: cases inbox, crisis alert, a mentor's reply landing in the learner's space; then the emergency-number card on a phone.
+SOUND: ambient steady.
+
+BEAT 15 — 01:56–02:00 — CLOSE
+NARRATION: الباب مفتوحٌ في مئةٍ وخمسين دولة. واليوم، لا يقف أحدٌ بعده وحده.
+SUBTITLE: The door is open in 150 countries. And now, no one stands past it alone.
+ON-SCREEN: theislam.chat × ما بعد الشهادة — shahada.theislam.chat — Osoul Association · AI in the Service of Islamic Content Challenge 2026, Track 03
+VISUAL: The globe from Beat 3 returns; the 11 lit points multiply back toward all 166 as the card/learning space opens on each (symbolic of what the feature enables — not a claim of results). End card.
+SOUND: ambient resolves; last 0.5 s silence.
+
+=====================================================================
+NOTE ON TIMING: Beat 15 overruns if read slowly. If the voice runs long, cut "واليوم،" and drop the Beat 9 b-roll line (saves ~4 s). Beats 12–14 are the densest; the editor should let the voice breathe there before trimming anywhere else.
+NOTE ON BEAT 15 VISUAL: if the "166 lights return" image risks implying measured outcomes, simply fade the globe to the end card.
+
+NARRATION WORD COUNT (computed): 228 Arabic words -> ~104 s of voice + 7 s testimonial + ~5 s silences = ~116 s total.
+ESTIMATED DURATION: ~116 s (beat grid laid out to 120 s; silences in Beats 4, 6, 11).
+
+=====================================================================
+WHAT MUST BE MAGNIFIED — the 8 strongest claims, ranked
+1. 166 conversations where a person declared the Shahada in the chat. The emotional peak, and it must land in near-silence, not with a counter animation.
+2. Every sentence of an answer has a page in the book; a code checker (not the AI) removes anything without one; verses come from Tanzil/QuranEnc, never typed by the AI. This is the "scholar-grade" claim and the one that sets it apart from any chatbot.
+3. Reach: 16,653 conversations, visitors from 150 countries, 52 languages (about 115,000 messages). Say it once, big and plainly, and always "by the grace of Allah".
+4. The gap, said honestly: only 11 of 166 left a way to be contacted; 89 ended within two messages after the Shahada. Magnifying the problem is what makes the solution feel big.
+5. Human mentors when it gets personal (a brother for brothers, a sister for sisters), and the country's emergency number first when a life is at risk. The AI knows where it should stop.
+6. Tested: 0 invented rulings across 284 + 450 new questions in 10 languages; 84/84 Shahada scenarios; every self-harm message showed the emergency number first.
+7. Seamless at the most important moment: the card appears in the same conversation, the instant the Shahada is said, and opens a full curriculum (Al-Wajeez: 4 units, 19 lessons, 10 language editions, answers explained in 20+ languages).
+8. A respected outside voice: Dr. Laurence B. Brown calling it "an incredible tool". Proof that people outside the team see it the same way.
+
+TRUTH GUARDRAILS FOR THIS LENS
+- Say "166 conversations where a person declared the Shahada", never "166 converts" or "166 people embraced Islam because of us".
+- Say "visitors from 150 countries", never "used in 150 countries every day".
+- "Zero invented rulings" refers to the tests; do not say "it can never be wrong".
+- 700+ = 284 + 450 = 734 new questions; on screen show the real breakdown.
+- Do not attribute anyone's Islam to the tool; the narration keeps "بفضل الله وحده".

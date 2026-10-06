@@ -1,11 +1,57 @@
-# theislam.chat — After the Shahada · ما بعد الشهادة
+<div align="center">
 
-**Live:** https://shahada.theislam.chat — open [`/en?demo=shahada`](https://shahada.theislam.chat/en?demo=shahada) or [`/ar?demo=shahada`](https://shahada.theislam.chat/ar?demo=shahada) to start at the moment of the Shahada.
-**Track 03** — Interactive experiences and the learning journey · AI in the Service of Islamic Content Challenge 2026 · applicant: Osoul Association.
+<img src="docs/deck/logo-moon.png" width="96" alt="theislam.chat"/>
 
-> **عربي باختصار:** حين يعلن المستخدم إسلامه في محادثة theislam.chat، تبدأ في المحادثة نفسها رحلة تعليمية من كتاب «الوجيز: منهج تعليم صفي للمسلم الجديد» (مركز أصول) بلغته: درس أول عن معنى الشهادتين، ثم منهج يحفظ تقدمه، وجواب عن كل سؤال تُسند كل جملة فيه إلى صفحة من الكتاب، ويُدرج الكود الاقتباسات والآيات ولا يكتبها النموذج، ويُحال إلى مرشد أو مرشدة عند الفتوى الشخصية أو الأزمة أو الحاجة العملية.
+# theislam.chat — ما بعد الشهادة · After the Shahada
 
-> **Testimonial:** the da'i Laurence Brown praised the quality of the dialogue in theislam.chat and the level its AI voice dialogue has reached — [watch the recording](https://shahada.theislam.chat/testimonial) (filmed, 2 min).
+**When someone declares the Shahada in a chat, it should not be their last message — it should be their first lesson.**
+
+**[▶ Watch the 2-minute film](https://shahada.theislam.chat/video)** · **[Try it live](https://shahada.theislam.chat/ar?demo=shahada)** ([English](https://shahada.theislam.chat/en?demo=shahada)) · **[Presentation (PDF)](docs/deck/theislam-chat-after-shahada.pdf)** · **[Evaluation](docs/evaluation.md)** · **[Testimonial](https://shahada.theislam.chat/testimonial)**
+
+Track 03 — Interactive experiences and the learning journey · AI in the Service of Islamic Content Challenge 2026 · applicant: Osoul Association (جمعية أصول)
+
+</div>
+
+> **عربي باختصار:** حين يعلن إنسانٌ إسلامه في محادثة theislam.chat، تبدأ في المحادثة نفسها رحلة تعلّم من كتاب «الوجيز: منهج تعليم صفي للمسلم الجديد» (مركز أصول) بلغته: درسٌ أول في معنى الشهادتين، ثم مسارٌ يحفظ تقدمه، وجوابٌ عن كل سؤال تُسند كل جملة فيه إلى صفحة من الكتاب، والآيات والاقتباسات يُدرجها الكود من مصادرها ولا يكتبها الذكاء الاصطناعي. والفتوى الشخصية والأزمات تذهب إلى مرشد بشري: أخ للإخوة وأخت للأخوات، ومعها منصة متابعة لفريق المرشدين.
+
+## At a glance
+
+| | |
+|---|---|
+| **The platform** | theislam.chat (Osoul Association, since Oct 2024): 16,653 conversations · 150 countries · 52 languages |
+| **The gap** | 166 conversations ended with a Shahada; only 11 left a way to be reached, 89 ended within two messages, 22 asked "how do I pray?" |
+| **What we built** | A learning space that opens in the same chat: Al-Wajeez (4 units, 19 lessons, 10 language editions), sourced answers, verbatim worship steps, listen-and-repeat, the whole book, human mentors, a mentors' platform, sign-in and daily lessons |
+| **Reliability** | Every answer sentence cites a book passage; a code checker deletes any sentence without one; verses come from Tanzil/QuranEnc. In testing: 0 invented rulings; 100% faithful answers on the final never-seen set |
+| **Results** | 88.0% correct behaviour on 150 never-seen questions · 90.8% on 284 audit questions · 84/84 Shahada-moment scenarios · 100% verbatim quotes vs. 92.1% for the same model without the checker |
+| **Built** | 4–6 October 2026, open source, in this repository |
+
+## How an answer is made
+
+```mermaid
+flowchart LR
+  Q[Learner's question] --> R{Router<br/>book · personal · crisis}
+  R -- personal / crisis --> H[Human mentor<br/>brother or sister<br/>+ emergency number if life is at risk]
+  R -- book --> S[Hybrid search in Al-Wajeez<br/>BM25 + embeddings]
+  S --> G[Constrained generation<br/>each sentence names its passage]
+  G --> C[Code checker<br/>drops unsourced sentences,<br/>inserts quotes and verses from sources]
+  C --> A[Answer with page numbers]
+  C -- nothing left --> N["Not in the book" + offer a mentor]
+```
+
+## Repository map
+
+| Folder | What is inside |
+|---|---|
+| [`service/`](service/) | The service (TypeScript, Fastify, SQLite): answers, router, checker, lessons, accounts, mentors' platform API, tests |
+| [`web-module/`](web-module/) | The learning space shown inside theislam.chat (Vue 3) |
+| [`mentor-app/`](mentor-app/) | The mentors' follow-up platform (Vue 3), served at `/mentor` |
+| [`platform-patch/`](platform-patch/) | The small patch to the existing theislam.chat interface |
+| [`content/`](content/) | Curriculum structure, Sharia review log, fixed messages in 20+ languages, the da'wah prompt, passage manifests (ids + SHA-256, no book text) |
+| [`scripts/`](scripts/) | Book conversion (PDF → page-tagged text), chunking, indexing, Qur'an translations |
+| [`eval/`](eval/) | Locked and held-out question sets, Shahada scenarios, audit tools and judged results |
+| [`docs/`](docs/) | Presentation, evaluation report, API, film production notes, screenshots, submission texts |
+| [`video/`](video/) | The film pipeline (recording, voice, graphics, mix) |
+| [`stats/`](stats/) | Aggregate platform statistics (no conversation text) |
 
 ## The problem
 
@@ -28,7 +74,7 @@ In the platform's export of 8 Sept 2026, the assistant congratulated a user on e
 | Languages | 10 editions converted to text (ar, en, fr, es, id, pt, ru, bs, vi, th); other languages get a "machine-translated explanation — original attached" answer from the English/Arabic text | `scripts/extract_book.py`, `scripts/build_chunks.py` |
 | Evaluation | 200 locked questions + 100 dev + 120 simulated journeys, hashed before building; two systems (ours vs. the same model and passages without checker/router); independent judge | `eval/`, `service/tools/run_eval.ts`, `service/tools/run_journeys.ts`, `service/tools/score.ts` |
 
-Results: see [`docs/evaluation.md`](docs/evaluation.md) and the blind review in [`eval/human_review.md`](eval/human_review.md).
+Results: see [`docs/evaluation.md`](docs/evaluation.md) (locked set, the 6 October audit, and the never-seen set) and the blind review in [`eval/human_review.md`](eval/human_review.md).
 
 Since the locked run, also built (disclosed in the report): live answer stages, a 24-hour answer cache, listen-and-repeat recitation (Al-Minshawi's teaching Mushaf and Alafasy, mp3quran.net) for Al-Fatiha, the short surahs and prayer, interactive exercises from the book's own assessment questions, and a fallback that shows the book's verbatim steps for "how do I perform…" questions on wudu, ghusl and prayer.
 
@@ -36,9 +82,9 @@ Since the locked run, also built (disclosed in the report): live answer stages, 
 
 | Deliverable | Where |
 |---|---|
-| Live demo | https://shahada.theislam.chat (`/ar?demo=shahada`, `/en?demo=shahada`); follow-up platform at `/mentor` (demo accounts: supervisor@, brother@, sister@demo.theislam.chat) |
-| Presentation (challenge template) | [`docs/deck/`](docs/deck/) — PPTX + PDF, rebuilt by `docs/deck/build_deck.py` |
-| Video (≤ 2 min) | built by the pipeline in [`video/`](video/), documented in [`docs/video.md`](docs/video.md) |
+| Live demo | https://shahada.theislam.chat (`/ar?demo=shahada`, `/en?demo=shahada`); follow-up platform at `/mentor` (demo accounts: supervisor@, brother@, sister@demo.theislam.chat, password `6c014c6af52e`) |
+| Presentation (challenge template) | [`docs/deck/theislam-chat-after-shahada.pdf`](docs/deck/theislam-chat-after-shahada.pdf) (+ PPTX), rebuilt by `docs/deck/build_deck.py` |
+| Video (≤ 2 min) | [shahada.theislam.chat/video](https://shahada.theislam.chat/video) — built by the pipeline in [`video/`](video/), documented in [`docs/video.md`](docs/video.md) |
 | Evaluation | [`docs/evaluation.md`](docs/evaluation.md), raw rows in `eval/results/` |
 | Sources and licences | [`SOURCES.md`](SOURCES.md) |
 | Sharia review of lessons | `content/review.json` (who approved what, and how) |

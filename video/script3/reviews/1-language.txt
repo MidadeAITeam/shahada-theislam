@@ -1,0 +1,79 @@
+REVIEW OF v1 - LENS 1: ARABIC LANGUAGE, HUMAN VOICE, NO AI TELLS
+
+VERDICT: APPROVE (with the edits below; none of them changes structure or timing)
+SCORE: 8/10
+
+What works: the narration reads like a person speaking. It opens on a thing (the message), the numbers carry no
+adjectives, the silences do the emotional work, «ثمّ ماذا؟» and «فالصلاة لا تُعلَّم بالتخمين» land, «فلا فتوى من آلة»
+echoes «لآلةٍ» in Beat 11 on purpose, and the ending closes the loop instead of using a slogan. None of the banned
+vocabulary appears (رحلة، ثورة، في عالمٍ...), and the only list of three is the factual one.
+
+What keeps it from 9-10: one pronoun clash you can hear (Beat 15), one spoken number that is a tongue-twister and
+is missing a case ending (Beat 4), an abstract line where a short, concrete one would be stronger (Beat 12), and
+small repetitions (له... له). The edits, in order of importance:
+
+1. beat 15: replace «منهجُه كتاب «الوجيز» من مركز أصول، بلغته هو.» with «يقرأ فيه كتابَ «الوجيز» من مركز أصول، بلغته هو.»
+   - why: in the original, the هـ in «منهجُه» refers to the place (مكانًا), the هـ in «بلغته» refers to the
+     learner, and «يبدأ» follows with the learner as its subject. Heard aloud, that sounds like the place has a
+     language. The fix gives the learner a verb («يقرأ»), so every pronoun in the beat points at one person.
+     The word count does not change.
+
+2. beat 4: replace «ستةَ عشرَ ألفًا وستُّمئةٍ وثلاثٌ وخمسون محادثة،» with «أكثرُ من ستةَ عشرَ ألفَ محادثة،»
+   - why: seven words of case endings in one breath is where TTS stumbles and where a viewer stops listening.
+     "More than sixteen thousand" is literally true, and 16,653 is already the big super, counting up on this
+     exact word. This saves about 0.5 s.
+     If the showrunner insists on the full figure, at least fix the grammar: «...وثلاثٌ وخمسون محادثةً»
+     (the noun counted after a compound number takes the accusative: tanween fath). Otherwise ElevenLabs will
+     read it in the wrong case or flatten it.
+
+3. beat 12: replace «والأمانةُ هنا علينا نحن.» with «والأمانةُ أمانتُنا.»
+   - why: «هنا» is filler, and «علينا نحن» is heavy for the last words before the black. Two words, with the
+     key word repeated, hit harder and still say exactly what the adab draft wanted: the gap is our trust, not
+     their failure. Subtitle: "And the trust is ours." The hard cut to silence lands better on a short line.
+     This saves 2 words.
+
+4. beat 14: replace «حين ينطق بها، تظهر له بطاقةٌ في المحادثة نفسها، تفتح له مكانًا يتعلّم فيه.» with
+   «حين ينطق بها، تظهر بطاقةٌ في المحادثة نفسها، تفتح له مكانًا يتعلّم فيه.»
+   - why: «له... له» twice in one sentence is a written tic you can hear. The first one adds nothing, because
+     the card is visibly under his own message. This saves 1 word.
+
+5. beat 3: replace «منذ أكتوبر ألفين وأربعة وعشرين، وهو يحاور غيرَ المسلمين، كتابةً وصوتًا.» with
+   «موقعٌ يحاور غيرَ المسلمين منذ أكتوبر ألفين وأربعة وعشرين، كتابةً وصوتًا.»
+   - why: «وهو» has no clear antecedent, because «ذي إسلام دوت تشات» is a foreign name with no grammatical
+     gender, so the ear does not know what «هو» is. Naming it «موقعٌ» right after the name fixes that. It also
+     puts the date after the verb, the order a speaker would naturally use. The word count does not change.
+
+6. beat 15: replace «ثم يختار: الوضوء، أو الصلاة، أو الفاتحة.» with «ثم يختار ما يبدأ به: الوضوء، أو الصلاة، أو الفاتحة.»
+   - why: a bare «يختار:» followed by a list sounds like a menu being read out. «ما يبدأ به» tells the ear what
+     is being chosen and matches the super "The path adapts to their choice". If timing is tight, skip this
+     edit; it adds 3 words (about 1.4 s), and edits 2-4 save more than that.
+
+7. beat 8: replace «مِن هؤلاء، أحدَ عشرَ فقط» with «ومن هؤلاء جميعًا، أحدَ عشرَ فقط»
+   - why: after 1.5 s of silence, a 1 s silence, and «ثمّ ماذا؟», a bare «هؤلاء» feels detached. «جميعًا» points
+     back to the 166 and sets up the "only" contrast that the dot grid shows. It adds 1 word.
+
+8. beat 16: no wording change, but set the voice direction: a real comma pause after «في الكتاب»,
+   and say «يحذفه مدقّقٌ برمجيّ» slightly slower and drier.
+   - why: this is the one technical sentence in the film. Without the pause, ElevenLabs runs it together and it
+     sounds like a spec sheet. With the pause, it becomes a promise.
+
+9. beat 5 (Arabic caption of the testimonial): replace «إنه مدهشٌ حقًّا. لقد أذهلني، في الحقيقة.» with
+   «إنه مدهشٌ حقًّا، وقد أذهلني فعلًا.»
+   - why: «في الحقيقة» set off by commas is a word-for-word copy of the English "actually", and it reads as
+     machine translation. One line also reads more easily on screen.
+
+10. beat 20 (end card du'a): keep it, but write it as «يا مقلّبَ القلوب، ثبّت قلوبَنا وقلوبَهم على دينك.» (with case
+    endings on both)
+   - why: it is the last Arabic the viewer reads. Partial tashkeel on «مقلّبَ» alone looks inconsistent; either
+     vowel the whole phrase or none of it. Keeping it unlabelled is right, since it is adapted from the
+     Prophetic du'a, not quoted.
+
+TIMING EFFECT
+Edits 2, 3 and 4 save about 6 words (about 2.5 s). Edits 6 and 7 add 4 words (about 1.8 s). Edits 1 and 5 change
+nothing, and edits 8-10 are not spoken narration. Net: about 0.7 s shorter. Last frame 01:59.5 holds.
+
+RECHECKED AND KEPT AS WRITTEN (do not "improve" these)
+«هذه الرسالة كتبها إنسانٌ لم نرَه قط. كتبها بلغته، ثم أرسلها.» · «هذا من فضل الله وحده.» · «ثمّ ماذا؟» ·
+«تسعٌ وثمانون محادثةً انتهت بعد الشهادة برسالتين أو أقل.» · «فالصلاة لا تُعلَّم بالتخمين.» ·
+«لا نعرف اسمه، ولا نعرف إن صلّى في اليوم التالي.» · «لهذا بنينا «ما بعدَ الشهادة».» · «فلا فتوى من آلة» ·
+«لا تكون آخرَ ما نسمعه منه. [stop] تكون أوّلَ درس.»

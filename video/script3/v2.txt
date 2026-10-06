@@ -1,0 +1,468 @@
+=====================================================================================
+THE FIRST LESSON  |  «أوّلُ درس»
+theislam.chat | After the Shahada (ما بعد الشهادة) — 2-minute film, v2 (after round-3 reviews of v1)
+Runtime: first frame 00:00.0, last frame 01:59.5 (ceiling 120 s). 25 fps.
+Timed at 2.1 words/s plus real breath gaps (0.3–0.5 s per sentence junction), not at 2.2.
+=====================================================================================
+
+LOGLINE
+Someone types the two testimonies into a chat window. By the grace of Allah, that has happened in 166
+conversations on theislam.chat. Then, too often, the conversation goes quiet. The film shows that moment twice:
+the first time, the Shahada is the last message; the second time a card appears beneath it, and it becomes
+the first lesson.
+
+CONCEPT (the loop, unchanged from v1)
+One frame, the Shahada typed in the chat and the congratulation under it, appears three times: as a blessing
+(Beats 1–2, 6), as silence (Beats 7–8), and as an answer (Beat 14 the card slides in, in the same crop;
+Beat 18 the bookend).
+Owner's structure: PART 1 theislam.chat and what Allah has done through it (00:00–00:37.8) ·
+PART 2 the problem (00:37.8–01:13.4) · PART 3 the solution (01:13.4–01:59.5).
+
+BINDING RULES FOR THIS CUT
+- NO REAL USER CONVERSATION TEXT appears anywhere. Every chat shot is the product demo (shahada.theislam.chat
+  and the demo chat), recorded by the team, with a small fixed corner label on every such shot:
+  «مشهد من العرض التجريبي | Product demo». Numbers come from the export; the PICTURES never do. Nothing is
+  captioned "real message". No staged actions: no browser tab closing, no faces, no re-enacted "convert".
+  Record Beats 1, 6, 7, 8, 14 and 18 on the same demo screen, same crop, same phone width, so the match-cuts hold.
+- Wording: «الشهادتين / الشهادتان» for the act (the product name «ما بعد الشهادة» stays). Guidance is from Allah
+  alone. We say "declared the Shahada in the chat", never "converted" or "166 converts". No pity, no deficit
+  words: the gap is our trust. The full two testimonies are legible on screen at least once (Beat 1 freeze).
+- "0 invented rulings" is always written "in testing".
+- Qur'an: on-screen text only, Uthmani, copied from Tanzil character for character, with surah:ayah; never
+  voiced by the synthetic voice; the listen-and-repeat shot is shown with its audio muted.
+- Sound: narrator, room tone, keyboard taps, the product's message "pop", a hum of human voices (no lyrics),
+  breath textures, silence. NO musical instruments.
+- Numbers: only the brief's exact figures. No derived number in narration or on screen.
+- Muted-first: one super per shot, at most 2 lines of ≤ 42 characters, inside the 4:5 safe area. Subtitles longer
+  than 84 characters are split into two events.
+- Pronunciation: theislam.chat is written «ذي إسلام دوت تشات». Check that ElevenLabs reads «بالشهادتين» as
+  "bish-shahādatayn".
+
+=====================================================================================
+BEAT TABLE
+(Narration = exact Arabic read by the voice. Sub = English subtitle. OST = super / on-screen text.
+ Visual = available footage (product demo, learning space, mentor platform, book reader, phone AR/EN views,
+ testimonial) or "graphic". Sound = mix.)
+=====================================================================================
+
+-------------------------------------------------------------------------------------
+PART 1 — theislam.chat: what Allah has done through it            00:00.0 – 00:37.8
+-------------------------------------------------------------------------------------
+
+BEAT 1 | 00:00.0 – 00:03.0 | HOOK (no voice)
+  Narration: —
+  OST: (on screen from 00:00.3)  Someone declares the Shahada…
+       (from 00:02.0)            …in a chat window.
+       corner label (all chat shots): مشهد من العرض التجريبي | Product demo
+  Visual: NO fade from black: frame 1 already shows the demo chat (phone, English) with the first letters being
+          typed: "I bear witness that there is no god but Allah, and I bear witness that Muhammad is the
+          Messenger of Allah." Sent. The assistant's congratulation pops in. Freeze 6 frames with BOTH testimonies
+          fully legible. LOCK THIS CROP.
+  Sound: keyboard taps from frame 1 → message "pop" at 00:02.4 → one breath of humming voices on the freeze.
+
+BEAT 2 | 00:03.0 – 00:07.9 | A MESSAGE LIKE THIS
+  Narration: رسالةٌ كهذه كتبها إنسانٌ لم نرَه قَطّ، بلغته، ثم أرسلها.
+  Sub: A message like this was written by someone we have never seen, in their own language. Then they sent it.
+  OST: Words like these, from people we have never met.
+  Visual: hold the bubble, 2% push-in.
+  Sound: room tone; the voice is close to a whisper.
+
+BEAT 3 | 00:07.9 – 00:13.7 | THE NAME
+  Narration: وصلت إلى ذي إسلام دوت تشات، موقعٍ يحاور غيرَ المسلمين، كتابةً وصوتًا.
+  Sub: It reached theislam.chat, a site that talks with non-Muslims, in writing and by voice.
+  OST: theislam.chat
+       lower third: an initiative of Osoul Association | مبادرة من جمعية أصول · since October 2024
+  Visual: hard cut ON «وصلت» (about 00:08.0) from the bubble to the full chat on desktop (Arabic UI), then on
+          «وصوتًا» to the phone view (English) with voice dialogue active (mic / waveform).
+  Sound: voice hum enters at -30 dB under the narration.
+
+BEAT 4 | 00:13.7 – 00:20.9 | THE NUMBERS
+  Narration: ستةَ عشرَ ألفًا وستُّمئةٍ وثلاثٌ وخمسون محادثةً، من مئةٍ وخمسين دولة، باثنتين وخمسين لغة.
+  Sub: 16,653 conversations, from 150 countries, in 52 languages.
+  OST (graphic, one stack, each line synced to its spoken word):
+       16,653 conversations      (the only count-up, 0.6 s, landing on «محادثةً»)
+         small subline: about 115,000 messages
+       150 countries             (snaps on)
+       52 languages              (snaps on)
+  Visual: four 1.5 s cuts, each a product UI view (demo chat and learning space, Arabic and English phone views,
+          voice mode), each carrying ONE language name in its own script as a single tag:
+          Kiswahili · 日本語 · Suomi · العربية. No user conversations, no globe with invented data.
+  Sound: one soft breath-hit as each number lands.
+
+BEAT 5 | 00:20.9 – 00:29.2 | THE WITNESS (testimonial 8.0 s, clip 00:21.0–00:29.0)
+  Narration: — (his voice)
+  Clip: Lawrence Brown [00:44–00:52]: "Subhanallah brother, Mashallah tabarakallah, it is really amazing.
+        And it's kind of blown my mind, actually."
+  Sub: burned English caption of his words (for muted viewing) and, on one line, in Arabic:
+       سبحان الله يا أخي، ما شاء الله تبارك الله، إنه مدهشٌ حقًّا، وقد أذهلني فعلًا.
+  OST: Dr. Laurence B. Brown — physician, author and da'i · on theislam.chat's voice dialogue
+  Visual: vertical 480x720 clip, centred at no more than 1.5x inside a thin phone frame, over the same clip blurred
+          40 px and darkened 60% (full-frame in 9:16).
+  Sound: hum ducks to silence; clip cleaned; 6-frame fades.
+
+BEAT 6 | 00:29.2 – 00:37.8 | THE 166
+  Narration: وفي مئةٍ وستٍّ وستين محادثة، نطق صاحبُها بالشهادتين. [0.4 s] هذا من فضل الله وحده.
+  Sub: In 166 conversations, the person declared the Shahada. That is from the grace of Allah alone.
+  OST: 166 conversations:
+       the Shahada declared in the chat
+  Visual: back to the Beat 1 crop, wider: the demo Shahada message and the congratulation in full. "166" sits
+          large and still, centre-left, with no count-up.
+  00:35.8–00:37.8 NO VOICE (2.0 s). The 166 super clears; alone on the frame, in Uthmani copied from Tanzil:
+          ﴿وَلَٰكِنَّ ٱللَّهَ يَهْدِى مَن يَشَآءُ﴾  [القصص: ٥٦]
+          "…but Allah guides whom He wills." (Al-Qasas 28:56)
+  Sound: hum at its warmest under the narration; at 00:35.8 everything goes to room tone. Nothing sounds under the
+         ayah.
+
+-------------------------------------------------------------------------------------
+PART 2 — The problem                                              00:37.8 – 01:13.4
+-------------------------------------------------------------------------------------
+
+BEAT 7 | 00:37.8 – 00:39.8 | THE TURN
+  Narration: ثمّ ماذا؟   [1.0 s silence]
+  Sub: And then?
+  OST: And then?
+  Visual: hard cut to the SAME crop, empty below the congratulation, cursor blinking. Desaturate 30% over 1 s.
+  Sound: dry room, no hum.
+
+BEAT 8 | 00:39.8 – 00:45.6 | 89
+  Narration: تسعٌ وثمانون محادثةً انتهت برسالتين أو أقلّ بعد الشهادتين.
+  Sub: 89 conversations ended within two messages of the Shahada.
+  OST: 89 ended within two messages
+       of the Shahada
+  Visual: the same demo crop; the input field stays empty. 00:44.1–00:45.6 NO VOICE: the cursor blinks and nobody
+          types.
+  Sound: the cursor's faint tick only.
+
+BEAT 9 | 00:45.6 – 00:51.7 | THE QUESTION
+  Narration: واثنان وعشرون سألوا في الحال: كيف أتوضّأ؟ كيف أصلّي؟ ماذا أفعل الآن؟
+  Sub: 22 asked right away: How do I make wudu? How do I pray? What do I do now?
+  OST: What do I do now?   (above it, small: 22 asked right away)
+  Visual (graphic): the three questions as kinetic TYPOGRAPHY on black, not as chat bubbles and not taken from any
+          conversation. One question lands on each «كيف» / «ماذا». The last one, "What do I do now?", stays and grows
+          until it fills the frame.
+  Sound: one soft "pop" per question, nothing else.
+
+BEAT 10 | 00:51.7 – 00:58.3 | BY DESIGN
+  Narration: ولم نكن نسمح لآلةٍ أن تعلّمهم العبادة من ذاكرتها؛ فبقي السؤال بلا درس.
+  Sub: And we would not let a machine teach them worship from its memory. So the question stayed without a lesson.
+  OST: By design: no worship from AI memory.
+  Visual: "What do I do now?" holds full-frame and then slowly loses its contrast. Nothing answers it.
+  Sound: a low male hum, one step darker, enters at -32 dB.
+
+BEAT 11 | 00:58.3 – 01:04.9 | ONLY 11
+  Narration: ومن المئةِ والستّةِ والستّين، أحدَ عشرَ فقط تركوا لنا طريقًا نصل به إليهم.
+  Sub: Of the 166, only 11 left us any way to reach them.
+  OST: 11 of 166 could be contacted
+  Visual (graphic): a grid of 166 small white dots on black, and a single point at the bottom marked "Osoul".
+          On «أحدَ عشرَ», 11 dots turn the accent colour and a thin line joins each one to that point. The other
+          dots STAY WHITE and fully lit, but no line reaches them. The people do not fade; only our link to them is
+          missing.
+  Sound: no hit. Dark hum holds.
+
+BEAT 12 | 01:04.9 – 01:13.4 | WHAT WE DON'T KNOW
+  Narration: والباقون لا نعرف أسماءهم، ولا من علّمهم الوضوء في اليوم التالي.
+             [0.5 s]
+             والأمانةُ علينا نحن.
+  Sub: We do not know their names, or who taught them wudu the next day.
+       And the trust is ours.
+  OST: We don't know who taught them
+       wudu the next day.
+       (then, on the last line) The trust is ours.
+  Visual: the dot field holds; the whole frame dims evenly to black on «نحن». 01:12.4–01:13.4 BLACK, NO VOICE.
+  Sound: the hum cuts to silence on «نحن» (a hard stop, not a fade). One second of nothing.
+
+-------------------------------------------------------------------------------------
+PART 3 — The solution: After the Shahada                          01:13.4 – 01:59.5
+-------------------------------------------------------------------------------------
+
+BEAT 13 | 01:13.4 – 01:16.1 | TITLE
+  Narration: لهذا… بنينا «ما بعدَ الشهادة».
+  Sub: That is why we built After the Shahada.
+  OST: ما بعد الشهادة | After the Shahada
+       small, 0.8 s under it: Track 03 · AI in the Service of Islamic Content Challenge 2026
+  Visual: the title is typed letter by letter on black, the same way the Shahada was typed in Beat 1.
+  Sound: one breath in after «لهذا», then the hum returns, one step higher and warmer.
+
+BEAT 14 | 01:16.1 – 01:22.2 | THE SAME MOMENT, ANSWERED
+  Narration: حين ينطق بالشهادتين، تظهر بطاقةٌ في المحادثة نفسها، تفتح مكانًا يتعلّم فيه.
+  Sub: The moment they declare the Shahada, a card appears in the same conversation and opens a place to learn.
+  OST: (on the card)     The same moment. This time, a next step.
+       (on the sign-in)  Now there is a way back to them.
+                         small: sign in with Google or e-mail · daily lesson e-mail
+  Visual: THE TWIST SHOT, Beat 1's exact demo crop, one continuous recording: Shahada → congratulation → the
+          journey card slides in (on «بطاقةٌ») → tap → sign in with e-mail (1.5 s; the account menu with "Sign out"
+          is visible) → the learning space opens (on «مكانًا»).
+  Sound: a soft vocal "mm" rise as the card appears, the first "answer" sound in the film.
+
+BEAT 15 | 01:22.2 – 01:31.4 | THE BOOK, IN THEIR LANGUAGE
+  Narration: يقرأ فيه كتابَ «الوجيز»، بلغته. يبدأ بمعنى الشهادتين، ثم يختار: الوضوء، أو الصلاة، أو الفاتحة.
+  Sub: There they read the book Al-Wajeez, in their own language. They begin with the meaning of the two
+       testimonies, then choose: wudu, prayer, or Al-Fatiha.
+  OST (one at a time):
+       shot 1  Al-Wajeez by Osoul Center · 4 units · 19 lessons   (small: the whole book, page by page)
+       shot 2  10 language editions · answers in 20+ languages
+       shot 3  What do I do now? → Wudu · Prayer · Al-Fatiha
+       shot 4  small label: Listen & repeat (Al-Minshawi) · exercises from the book
+  Visual: shot 1 book reader, 3 real page flips (2.5 s) → shot 2 the path with Lesson 1 "The meaning of the two
+          testimonies", Arabic phone view (2.0 s) → shot 3 the three choices; a tap on Wudu and the path re-orders
+          (2.5 s) → shot 4 the listen-and-repeat screen for Al-Fatiha (1.0 s, audio MUTED, the verse appears only as
+          the UI's own text) and an exercise card answered (1.0 s).
+  Sound: a soft page-turn; hum low. No recitation audio.
+
+BEAT 16 | 01:31.4 – 01:40.4 | EVERY SENTENCE HAS A PAGE
+  Narration: كلُّ جملةٍ في الجواب لها صفحةٌ في الكتاب، [comma pause] وما لا صفحةَ له يُحذف. والآياتُ تُنقل من مصادرها.
+  Sub (two events): Every sentence of an answer has a page in the book. / Anything without a page is deleted,
+       and verses are taken from their sources.
+  OST: first half   No page, no sentence.   (small: checked by code, not by AI)
+       second half, ONE TEST CARD held 3.5 s (01:36.9–01:40.4), three lines:
+                    In testing: 0 invented rulings
+                    84/84 Shahada conversations handled correctly
+                    100% faithful to the book in the final checks
+  Visual: the ask panel; straight JUMP CUTS (no speed-ramp) across the real stage labels "understanding → found on
+          pages → checking", about 1.2 s each and legible → the answer with its page references lit → a verse in the
+          Amiri font inside a lesson (as rendered by the product, never retyped; small tag "Tanzil · QuranEnc") →
+          the wudu steps panel in the book's exact words, under the test card.
+  Sound: hum only; no ticks or beeps. Voice: a real comma pause after «في الكتاب»; «يُحذف» slightly slower and dry.
+
+BEAT 17 | 01:40.4 – 01:50.4 | A HUMAN, WHEN IT IS PERSONAL
+  Narration: وإن كان السؤالُ شخصيًّا، أجابه مرشدٌ: أخٌ للإِخْوة، وأختٌ للأخوات. وإن كانت حياتُه في خطر، فرقمُ الطوارئ في بلده أولًا.
+  Sub (two events): If the question is personal, a mentor answers: a brother for brothers, a sister for sisters. /
+       If a life is in danger, their country's emergency number comes first.
+  OST: cut 1  No AI ruling on personal questions.
+       cut 2  A mentor from the Osoul team
+       cut 3  Life at risk: emergency number first
+  Visual (three cuts, about 3.3 s each):
+          cut 1  the learner asks a personal question → the ask panel hands over to a mentor
+          cut 2  MENTOR PLATFORM: the case inbox with a crisis-alert row and an SLA timer (demo data) → the mentor's
+                 reply arriving in the learner's learning space
+          cut 3  a self-harm test message: the country's emergency-number banner appears first
+  Sound: warm hum at -28 dB; narrator softer on the second sentence.
+
+BEAT 18 | 01:50.4 – 01:56.3 | THE SAME MESSAGE, AGAIN (bookend)
+  Narration: وبإذن الله، لا تكون الشهادتان آخرَ رسالة… [0.8 s stop] بل أوّلَ درس.
+  Sub: God willing, the Shahada is not the last message… / …but the first lesson.
+  OST: "Not the last message." lands with the first clause and holds;
+       "The first lesson." comes in exactly on «بل أوّلَ درس», after the stop.
+       From 01:53.0: lower super  shahada.theislam.chat
+  Visual: back to the Beat 1 demo crop (phone, English): the same two testimonies, the same congratulation, and now
+          the journey card under them, with "Lesson 1 ✓" on the path behind. Slow push-in.
+  Sound: the hum resolves on one held voice note.
+
+BEAT 19 | 01:56.3 – 01:59.5 | END CARD (no voice, 3.2 s)
+  OST, three lines only:
+       shahada.theislam.chat   (LARGEST line, typed into a chat bubble with the chat's own input field around it,
+                                the same visual language as the hook)
+       theislam.chat · an initiative of Osoul Association | مبادرة من جمعية أصول
+       يا مقلّبَ القلوبِ، ثبّتْ قلوبَنا وقلوبَهم على دينِك.   (du'a; unlabelled, not cited as hadith)
+  URL on screen in total: 01:53.0 → 01:59.5 = 6.5 s (rule: ≥ 4.5 s).
+  Sound: the hum stops at 01:59.0; 0.5 s of silence; last frame at 01:59.5.
+
+MUTED READ (supers only)
+Someone declares the Shahada… in a chat window. → Words like these, from people we have never met. →
+theislam.chat → 16,653 conversations · 150 countries · 52 languages → [Dr. Brown, captioned] → 166 conversations:
+the Shahada declared in the chat → Al-Qasas 28:56 → And then? → 89 ended within two messages of the Shahada →
+What do I do now? → By design: no worship from AI memory. → 11 of 166 could be contacted → We don't know who
+taught them wudu the next day. The trust is ours. → After the Shahada → The same moment. This time, a next step.
+→ Now there is a way back to them. → Al-Wajeez · 4 units · 19 lessons → What do I do now? → Wudu · Prayer ·
+Al-Fatiha → No page, no sentence. → In testing: 0 invented rulings · 84/84 · 100% → No AI ruling on personal
+questions → Life at risk: emergency number first → Not the last message. The first lesson. → shahada.theislam.chat
+
+=====================================================================================
+NARRATION ONLY — exactly what the voice reads, in order (brackets are operator notes)
+=====================================================================================
+رسالةٌ كهذه كتبها إنسانٌ لم نرَه قَطّ، بلغته، ثم أرسلها.
+وصلت إلى ذي إسلام دوت تشات، موقعٍ يحاور غيرَ المسلمين، كتابةً وصوتًا.
+ستةَ عشرَ ألفًا وستُّمئةٍ وثلاثٌ وخمسون محادثةً، من مئةٍ وخمسين دولة، باثنتين وخمسين لغة.
+[testimonial, 8 s]
+وفي مئةٍ وستٍّ وستين محادثة، نطق صاحبُها بالشهادتين.
+هذا من فضل الله وحده.
+[2 s silence, ayah on screen]
+ثمّ ماذا؟
+[1 s silence]
+تسعٌ وثمانون محادثةً انتهت برسالتين أو أقلّ بعد الشهادتين.
+[1.5 s silence, cursor]
+واثنان وعشرون سألوا في الحال: كيف أتوضّأ؟ كيف أصلّي؟ ماذا أفعل الآن؟
+ولم نكن نسمح لآلةٍ أن تعلّمهم العبادة من ذاكرتها؛ فبقي السؤال بلا درس.
+ومن المئةِ والستّةِ والستّين، أحدَ عشرَ فقط تركوا لنا طريقًا نصل به إليهم.
+والباقون لا نعرف أسماءهم، ولا من علّمهم الوضوء في اليوم التالي.
+[0.5 s]
+والأمانةُ علينا نحن.
+[1 s silence, black]
+لهذا… بنينا «ما بعدَ الشهادة».
+حين ينطق بالشهادتين، تظهر بطاقةٌ في المحادثة نفسها، تفتح مكانًا يتعلّم فيه.
+يقرأ فيه كتابَ «الوجيز»، بلغته. يبدأ بمعنى الشهادتين، ثم يختار: الوضوء، أو الصلاة، أو الفاتحة.
+كلُّ جملةٍ في الجواب لها صفحةٌ في الكتاب، وما لا صفحةَ له يُحذف. والآياتُ تُنقل من مصادرها.
+وإن كان السؤالُ شخصيًّا، أجابه مرشدٌ: أخٌ للإِخْوة، وأختٌ للأخوات.
+وإن كانت حياتُه في خطر، فرقمُ الطوارئ في بلده أولًا.
+وبإذن الله، لا تكون الشهادتان آخرَ رسالة…
+[0.8 s stop]
+بل أوّلَ درس.
+
+Voice direction: Beat 2 is close to a whisper. Beats 3–6 are warm. Part 2 is flat and slow, with no acting: the
+numbers do the work. «ثمّ ماذا؟» is said almost to himself. In Part 3 the voice is warmer but never triumphant.
+Breathe after «لهذا…». Hold the full 0.8 s stop before «بل أوّلَ درس».
+Grammar notes: «محادثةً» takes the accusative after the compound number. «بل أوّلَ درس» is accusative, joined to
+the predicate of the negated «تكون». Tashkeel is written only where TTS could misread.
+
+=====================================================================================
+WORD COUNT AND TIMING (honest re-time)
+=====================================================================================
+Words per beat (whitespace split, «» removed; «ذي إسلام دوت تشات» = 4):
+  B2 10 · B3 12 · B4 14 · B6 13 · B7 2 · B8 9 · B9 12 · B10 13 · B11 13 · B12 14 ·
+  B13 5 · B14 12 · B15 15 · B16 17 · B17 20 · B18 10
+  TOTAL = 191 words → at 2.1 w/s = 91.0 s of voice (machine-counted from the narration block).
+Breath gaps between and inside lines (0.3–0.5 s at about 20 junctions, plus the written 0.4/0.5 pauses and the
+  0.3 s after «لهذا…»): ≈ 7.5 s.
+Non-voice: hook 3.0 + testimonial 8.3 (with fades) + ayah hold 2.0 + after «ثمّ ماذا؟» 1.0 + cursor 1.5 +
+  black 1.0 + listen-and-repeat / exercise tail 1.6 + stop 0.8 + end card 3.2 = 22.4 s.
+91.0 + 7.5 + 22.4 = 120.9 s if every breath were added on top of every slot. In the table some breaths sit
+  inside the slots and the test card and sign-in super run under the narration, so the beat-by-beat layout ends
+  at 01:59.5, with every voice slot ≥ words ÷ 2.1 + its written pauses. Slot check (s needed / s given):
+  B2 4.8/4.9 · B3 5.7/5.8 · B4 6.7/7.2 · B6 6.6+2.0/8.6 · B8 4.3+1.5/5.8 · B9 5.7/6.1 · B10 6.2/6.6 · B11 6.2/6.6 ·
+  B12 6.7+0.5+1.0/8.5 · B13 2.4+0.3/2.7 · B14 5.7/6.1 · B15 7.1+2.0/9.2 · B16 8.1+0.3/9.0 · B17 9.5+0.4/10.0 ·
+  B18 4.8+0.8/5.9.
+Headroom: under 1 s. The film is timed to the real read. Conform to the FIRST ElevenLabs read before the lock.
+IF THE READ RUNS LONG, cut in this order (each keeps meaning, numbers and adab):
+  1) «كتابةً وصوتًا» (B3, −2 words, ≈1.0 s; the voice-mode shot still shows it)
+  2) end card 3.2 → 2.7 s (the URL is still on screen ≥ 6 s)
+  3) cursor hold 1.5 → 1.0 s
+  4) «بلغته» (B15, −1 word; "10 language editions" stays on screen)
+  5) «فبقي السؤال بلا درس» (B10, −4 words, ≈2.0 s)
+  Never cut: a number, «هذا من فضل الله وحده», the ayah silence, «والأمانةُ علينا نحن», the black before the title,
+  the emergency-number line, or the last line.
+
+FACT CHECK
+Spoken: 16,653 (in full) · 150 countries · 52 languages · 166 · 89 within two messages of the Shahada · 22 asked
+right away (wudu / prayer / "what do I do now?") · by design no worship taught from a model's memory · 11 of the 166
+left a way to be contacted · mentors brother/sister · emergency number first.
+On screen: since October 2024 · about 115,000 messages · Al-Wajeez by Osoul Center, 4 units, 19 lessons · 10 language
+editions · answers in 20+ languages · in testing: 0 invented rulings, 84/84 Shahada conversations, 100% faithful in the
+final checks · sign-in with Google or e-mail, daily lesson e-mail · Tanzil, QuranEnc · Al-Minshawi · Track 03 ·
+shahada.theislam.chat. Nothing derived (no 155, 734, 700+). Moved to the YouTube description / submission (no room
+to read on screen): 57,614 messages from people · 20 kinds of Shahada conversation · ~470 end-user use cases · 284 + 450
+new questions in 10 languages · every self-harm message showed the emergency number first · export dates
+17 Oct 2024 – 8 Sep 2026 · the 12 top languages.
+
+=====================================================================================
+CONFLICTS AND HOW I DECIDED THEM
+=====================================================================================
+- The closing line. Problem (#10) and language want to keep «لا تكون آخرَ ما نسمعه منه»; amplify, creative and adab
+  call it an overclaim. Lead ruling: «وبإذن الله، لا تكون الشهادتان آخرَ رسالة… بل أوّلَ درس.» It is literally true
+  (the card always comes after the two testimonies), it ties the outcome to Allah, it uses the right term, and it
+  matches the English super word for word.
+- The opening line. Language asked to keep «هذه الرسالة كتبها إنسانٌ…», but the lead's ruling bans real user text,
+  and a demo message was written by us. «رسالةٌ كهذه» keeps the line's voice and is true of every one of the 166.
+- B4 number. Language and director prefer «أكثرُ من ستةَ عشرَ ألفَ». I kept the exact figure, because the owner's
+  rule is "exact numbers only from the brief", and gave it 7.6 s with the grammar fixed («محادثةً»).
+- B11 / B10 line. Language and director keep «فالصلاة لا تُعلَّم بالتخمين»; complete cuts it; problem replaces it.
+  I took problem's «فبقي السؤال بلا درس»: the owner asked for the problem to be magnified, and this line states a cost
+  instead of defending us. Same word count.
+- B12. Creative, director, adab and problem all reject «أحدُهم أغلق الصفحة» (no data shows anyone closing a page;
+  staged tab). Adab reframes the doubt about their prayer as our absence. I merged creative's plural with adab's
+  wudu line: «والباقون لا نعرف أسماءهم، ولا من علّمهم الوضوء في اليوم التالي.» Language's «والأمانةُ أمانتُنا» against
+  adab/problem's «علينا نحن»: I kept the meaning and the weight, and dropped only the filler «هنا».
+- Order of the problem numbers. Creative wants a crescendo that ends on 11; nobody objected. Adopted: 89 → 22 →
+  by design → 11 → "we don't know". The 11 now leads straight into the names we don't know, and into the
+  "way back to them" super in Beat 14.
+- Testimonial. Amplify wants [01:26–01:33]; four drafts and all the other reviewers keep [00:44–00:52], and the
+  director lists it under "keep". I kept [00:44–00:52]: it reacts to the voice dialogue shown just before it, and
+  "Subhanallah… Mashallah" carries warmth that a feature claim does not.
+- Test proof. Amplify wants «صفرُ أحكامٍ مخترَعة» spoken; there was no time. Every reviewer agreed the v1 cards were
+  unreadable. Lead ruling: one card held ≥ 3 s. It is now held for 3.5 s over the end of Beat 16, the beat about
+  being faithful to the book, so it costs no extra time. "In testing" comes first on the card.
+- Feature coverage against readability. Complete wants a new 3 s beat; director and hook want fewer layers. I
+  resolved it by placing each feature where its word is spoken: sign-in and the daily e-mail under the card reveal
+  (which also answers problem's blocker), listen-and-repeat and exercises after the word "Al-Fatiha", the book
+  reader with the book. One super per shot.
+
+=====================================================================================
+CHANGE LOG — every review item (A = adopted, AD = adapted, R = rejected)
+=====================================================================================
+1 LANGUAGE (APPROVE 8)
+  1 B15 pronoun «يقرأ فيه كتابَ…» ............................................ A
+  2 B4 «أكثرُ من ستةَ عشرَ ألفَ» ................................................ R: exact-number rule. Grammar fix «محادثةً» A
+  3 B12 «والأمانةُ أمانتُنا» ...................................................... AD: «والأمانةُ علينا نحن» (dropped «هنا»)
+  4 B14 drop «له» ................................................................. A (both «له» dropped; fits the slot)
+  5 B3 «وهو» has no antecedent → «موقعٍ يحاور…» .................................. A (the date moves to the lower third, per amplify/director)
+  6 B15 «ما يبدأ به» .............................................................. R: time; and «يبدأ… يبدأ» would repeat
+  7 B8 «جميعًا» ..................................................................... AD: after the reorder, «ومن المئةِ والستّةِ والستّين» names the antecedent
+  8 B16 comma pause and a dry «يُحذف» ................................................ A
+  9 testimonial Arabic caption on one line ........................................ A
+  10 full tashkeel on the du'a ...................................................... A
+2 AMPLIFY (MUST-FIX 8)
+  1 emergency number spoken; brother/sister as equals .............................. A (lead ruling), wording «أجابه مرشدٌ: أخٌ للإِخْوة، وأختٌ للأخوات»
+  2 B3 drop the spoken date ......................................................... A
+  3 clip [01:26–01:33] .............................................................. R: see conflicts
+  4 closing line overclaim .......................................................... A as the lead's wording
+  5 spoken "zero invented rulings in testing" ....................................... R for voice (time); A as a 3.5 s card with "in testing" first
+  6 cut «فالصلاة لا تُعلَّم بالتخمين» ............................................... AD: replaced with «فبقي السؤال بلا درس»
+  7 166 super = conversations ....................................................... A
+  8 «قبل أن يصل» .................................................................... R: time; "No page, no sentence." carries it
+  9 57,614 on screen ................................................................ R: muted readability; moved to description
+  10 10 editions / 20+ at full size ................................................. A (shot 2 super, alone)
+3 COMPLETE (MUST-FIX 7)
+  1 cut the guesswork clause ........................................................ AD (replaced; see conflicts)
+  2 shorten the silences ............................................................ AD: 166 hold is now 2.0 s (carries the ayah); cursor 1.5 s
+  3 cut «لا يكتبها الذكاءُ الاصطناعي» ............................................... A: "checked by code, not by AI" and "Tanzil · QuranEnc" on screen
+  4 whole-book reader label ......................................................... A (B15 shot 1, 3 page flips)
+  5 new 3 s feature beat 17a ........................................................ AD: features placed under their spoken words; no new beat
+  6 B17 mentors only, with supers ................................................... A (3 cuts, one super each)
+  7 readable tests card ............................................................. A (one card, 3.5 s); footnote → description
+  8 «أختٌ من الفريق» ................................................................ AD: «مرشدٌ» + super "A mentor from the Osoul team"
+  9 recount / retime ................................................................ A (2.1 w/s)
+  10 coverage claims honest ......................................................... A; sign-out shown in the account menu only, since it is not in the brief
+4 CREATIVE (MUST-FIX 8)
+  1 loop shots must not pose as real ................................................ A as the lead ruling: demo + "Product demo" label; B2 → «رسالةٌ كهذه»
+  2 no closed page / tab; plural ..................................................... A (merged with adab #5)
+  3 «آخرَ رسالة… بل أوّلَ درس» ...................................................... A (with «وبإذن الله», «الشهادتان»)
+  4 reorder 89 → 22 → 11 ............................................................. A
+  5 cursor hold 2.5 s ................................................................ AD: 1.5 s (runtime ceiling)
+  6 tests: two cards ................................................................. AD: one card, 3.5 s (lead ruling)
+  7 super without "just" ............................................................ A ("Someone declares the Shahada…")
+  8 "Product demo" on B14 ........................................................... A (on every chat shot)
+  9 «لهذا… بنينا» ..................................................................... A
+5 DIRECTOR (MUST-FIX 7)
+  1 date out of the voice ........................................................... A
+  2 time to the close; tests ≥ 3 s; end card ≥ 3.5 s ................................ A/AD: card 3.5 s; end card 3.2 s, with the URL on screen 6.5 s in total
+  3 B12 cut + no tab .................................................................. A (rewritten)
+  4 ayah into the silent hold, 2.0 s ................................................ A
+  5 jump cuts on the ask-panel stages; split subtitle; air ......................... A
+  6 listen-and-repeat out of B17; drop the 0.5 s inserts ........................... A (moved to B15)
+  7 B15 one super at a time; drop the EN|AR split ................................... A; «بلغته» kept (1 word)
+  8 B4 7.5 s with the full number .................................................... A (7.6 s)
+  9 "just"; record B1 on the demo so the crops match ................................ A
+  10 honest breath maths; conform to the first read .................................. A
+6 PROBLEM (MUST-FIX 8)
+  1 [BLOCKING] a held sign-in / daily e-mail shot: "Now there is a way back to them" .. A (B14, 1.5 s, under the reveal)
+  2 «فبقي السؤال بلا درس» ............................................................ A
+  3 «أحدُهم شهد… ثم غاب» ............................................................. R: replaced by the plural line (creative/adab)
+  4 «سألوا النافذةَ نفسها» ........................................................... R: «في الحال» is the brief's wording and needs no shot of real chats
+  5 "What do I do now? → Wudu · Prayer · Al-Fatiha" .................................. A
+  6 B14 super "The same moment. This time, a next step." ............................. A
+  7 "89 … of the Shahada" ........................................................... A
+  8 the 11 dots carried through to the end ........................................... R: the bookend frame stays clean; adab's dot design keeps the people visible
+  9 0.5 s pause before the trust line ................................................ A
+  10 keep «آخرَ ما نسمعه منه» ........................................................ R: lead ruling (it overclaims)
+7 ADAB (MUST-FIX 8)
+  1 «بالشهادتين» B6 ................................................................... A
+  2 «بالشهادتين» B14 .................................................................. A
+  3 «وبإذن الله» on the last line ..................................................... A (lead wording)
+  4 «مرشدٌ: أخٌ للإِخْوة، وأختٌ للأخوات» ................................................ A
+  5 «من علّمهم الوضوء» instead of «إن صلّى» ......................................... A (plural)
+  6 dots stay white; only the link is missing ........................................ A
+  7 full two testimonies legible; no fake typing presented as real .................. A (demo recording, labelled)
+  8 no tab closing; the frame dims ................................................... A
+  9 "in testing" ...................................................................... A
+  10 du'a readable .................................................................... A: one of only three end-card lines, 3.2 s, fully vowelled
+8 HOOK (MUST-FIX 7)
+  B1 no fade; super by 00:00.3 ...................................................... A
+  B2 super in the dead zone; the cut on «وصلت» ....................................... A
+  B4 fewer layers; one language tag per cut; 115,000 off ............................. A/AD: 115,000 kept as a single subline (owner asked for statistics)
+  B11 ≤ 42-character "by design" super .............................................. A ("By design: no worship from AI memory." — "AI never teaches worship" would contradict the product)
+  B15 one super .................................................................... A (one per shot)
+  B16 one super, sources line to description ....................................... A
+  B18 [BLOCKER] tests as one card ................................................... A (3.5 s)
+  B19 shareable super timing + URL from 01:55 ...................................... A, URL from 01:53.0
+  B20 [BLOCKER] URL largest, typed in a bubble, 3 lines ............................. A; Track 03 moved to the title beat
+  spoken «الدرسُ الأوّل مفتوح» ....................................................... R: no time; the URL on screen is the CTA
+  30 s vertical cut-down, 6 s pre-roll, thumbnail .................................. Deferred to the deliverables pass. Use draft 8's plan with v2 lines and demo-only footage.

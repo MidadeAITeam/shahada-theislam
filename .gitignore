@@ -15,3 +15,7 @@ web/platform/
 web/dist/
 secrets.local
 !eval/results/
+
+# book passages (never committed: the book text stays off the repo)
+eval/qa-audit/runs/*/retrieval.jsonl
+video/frames/
