@@ -538,6 +538,9 @@ def build(template):
 
     # 1 Cover ------------------------------------------------------------------------------------
     s = deck.slide(8)
+    # The template's humanoid figure is replaced by the theislam.chat mark (no image of a being).
+    s.drop(485)
+    s.add(picture(s.ids(), s.image((ROOT / "docs/deck/logo-moon.png").read_bytes()), 190, 300, 520, 520, name="theislam.chat mark", descr="theislam.chat"))
     s.move(486, 818, 330, 950, 200)
     s.text(486, [[("theislam.chat", {"color": TURQ})], "ما بعد الشهادة"], size=54)
     s.drop(487)

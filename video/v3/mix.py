@@ -31,9 +31,9 @@ sent = lambda b, k=0: BT[b]["sent"][k]
 for b in TL["beats"]:
     for s in b["sent"]: put(load(s["file"]), s["start"], 0)
 # testimonial (his voice), level-matched
-put(env(load("raw/brown.mp4", 44, 8.3, "highpass=f=80,loudnorm=I=-19:TP=-2"), 0.24, 0.3), S("b05"), 0)
+put(env(load("raw/brown.mp4", 44, 7.9, "highpass=f=80,loudnorm=I=-19:TP=-2"), 0.24, 0.6), S("b05"), 0)  # ends on "actually", fades before his next word
 
-room = load("sfx/room.mp3"); put(env(loop(room, TOT), 1.0, 0.6), 0, -14)
+# (owner: no background drone) room = load("sfx/room.mp3"); put(env(loop(room, TOT), 1.0, 0.6), 0, -14)
 put(load("sfx/keys.mp3")[: int(1.9 * SR)], 0.0, -8)
 put(load("sfx/pop.mp3"), 1.85, -6); put(load("sfx/pop.mp3"), 2.40, -4)
 put(load("sfx/breath.mp3"), 2.55, -12)
@@ -52,16 +52,16 @@ s9 = sent("b09")
 for f in [0.40, 0.60, 0.78]: put(load("sfx/pop.mp3"), s9["start"] + s9["dur"] * f - 0.1, -6)
 # hum beds (human voices, no instruments)
 hum = load("sfx/hum.mp3"); dark = load("sfx/humdark.mp3"); warm = load("sfx/hum.mp3", af="asetrate=44100*1.06,aresample=48000")
-put(env(loop(hum, S("b05") - S("b03") + 0.2), 1.2, 0.5), S("b03"), -28)
-put(env(loop(hum, S("b06q") - S("b06")), 0.6, 0.05), S("b06"), -24)
+# (owner: no background hum) put(env(loop(hum, S("b05") - S("b03") + 0.2), 1.2, 0.5), S("b03"), -28)
+# (owner: no background hum) put(env(loop(hum, S("b06q") - S("b06")), 0.6, 0.05), S("b06"), -24)
 nahnu = sent("b12", 1)["start"] + sent("b12", 1)["dur"]
-put(env(loop(dark, nahnu - S("b10")), 1.5, 0.02), S("b10"), -26)
+# (owner: no background hum) put(env(loop(dark, nahnu - S("b10")), 1.5, 0.02), S("b10"), -26)
 s13 = sent("b13"); put(load("sfx/breath.mp3"), s13["start"] + 0.55, -12)
-put(env(loop(warm, (TOT - 0.5) - (S("b13") + 1.0)), 1.5, 1.0), S("b13") + 1.0, -26)
+# (owner: no background hum) put(env(loop(warm, (TOT - 0.5) - (S("b13") + 1.0)), 1.5, 1.0), S("b13") + 1.0, -26)
 # the answer: riser + vocal "mm" on the card, page turn, test card hit, last line
 s14 = sent("b14"); card = s14["start"] + s14["dur"] * 0.38
 r = load("sfx/riser.mp3"); put(env(r, 0.5, 0.05), card - len(r) / SR, -14)
-put(load("sfx/mm.mp3"), card - 0.1, -10)
+# (owner: no background hum) put(load("sfx/mm.mp3"), card - 0.1, -10)
 put(load("sfx/page.mp3"), S("b15") + 0.1, -8)
 put(hit, E("b16") - 3.5, -10)
 put(boom, sent("b18", 1)["start"] - 0.05, -10)
