@@ -108,6 +108,23 @@ outside the book; a structured danger flag (overdose, threats to life); verse ma
 tables in the chat; server-side mentor sessions, rate limits, one thread per case that survives a reload, and a notice
 for a returning learner when a mentor has replied.
 
+
+**Second round (same day), measured on the live site.** After the audit fixes we worked towards a higher rate and checked
+that the gains carry over to questions the system had never seen. Two new sets were written for this, each label checked
+against the book text (`eval/heldout-2026-10-06/`, `eval/heldout-2026-10-06b/`). The first was used to find patterns
+(so it is no longer unseen); the second was run once, at the end, without looking at it before. Tools: `eval/qa-audit/`.
+
+| Set | Correct behaviour | Faithful to cited passages | Invented rulings | Emergency first |
+|---|---|---|---|---|
+| 284 audit questions (used for tuning) | 90.8% (258/284) | 161/162 | 0 | 15/15 |
+| 150 new questions, set K (seen once, then used to tune the router) | 83.3% before, 89.3% after | 91/91 | 0 | 6/6 |
+| 150 new questions, set M (never seen, final run) | **88.0% (132/150)** | 87/87 | 0 | 6/6 |
+
+On set M every referral, crisis, emergency, not-in-book and greeting case was handled correctly (51/51). The 18 misses are
+answerable or partial questions where the system declined (10), answered a nearby rule instead of the exact case (4), or
+gave the book's view without noting a scholarly difference (5 of 8 difference questions). We did not lower the bar to raise
+the number: the tutor still will not extend a general rule to a case the book does not name.
+
 ## Limits
 
 - The judge is a model. 60 answers were also reviewed blind by an independent AI reviewer following Ahl al-Sunnah methodology (`eval/human_review.md`): module 23 sound / 7 incomplete / 0 errors; same model without checker 14 / 15 / 1.
