@@ -7,6 +7,7 @@ import ErrorBox from "../components/ErrorBox.vue";
 import { t, errorText } from "../i18n.js";
 import { api } from "../api.js";
 import { langName, dateTime } from "../format.js";
+import { isSupervisor } from "../store.js";
 
 const STATUSES = ["new", "reviewing", "fixed", "not_an_error"];
 const reports = ref(null);
@@ -29,12 +30,14 @@ const counts = computed(() => Object.fromEntries(STATUSES.map((s) => [s, (report
 const shown = computed(() => (reports.value ?? []).filter((r) =>
   filter.value === "" || (filter.value === "open" ? ["new", "reviewing"].includes(r.status) : r.status === filter.value)));
 
+// What the report is about, in words: the lesson's title, or for an answer the reference the
+// learner's screen gave it (the question itself is not stored with the report).
 function target(r) {
   const [kind, ...rest] = String(r.target ?? "").split(":");
   const ref = rest.join(":");
-  if (kind === "lesson") return { icon: "book", kind: t("rLesson"), ref };
-  if (kind === "answer") return { icon: "message", kind: t("rAnswer"), ref };
-  return { icon: "flag", kind: t("rOther"), ref: r.target };
+  if (kind === "lesson") return { icon: "book", kind: t("rLesson"), title: r.lesson_title || t("rUnknownLesson"), ref };
+  if (kind === "answer") return { icon: "message", kind: t("rAnswer"), title: t("rAnswerTitle"), ref };
+  return { icon: "flag", kind: t("rOther"), title: "", ref: r.target };
 }
 
 async function setStatus(r, status) {
@@ -55,7 +58,7 @@ async function setStatus(r, status) {
   <header class="page-head">
     <div>
       <h1>{{ t("reportsTitle") }}</h1>
-      <p class="muted">{{ t("reportsLead") }}</p>
+      <p class="muted">{{ t("reportsLead") }}<template v-if="!isSupervisor"> {{ t("reportsSupervisorNote") }}</template></p>
     </div>
   </header>
 
@@ -72,13 +75,16 @@ async function setStatus(r, status) {
   <ul v-else class="report-list">
     <li v-for="r in shown" :key="r.id" class="card report">
       <div class="report-head">
-        <span class="report-target"><Icon :name="target(r).icon" :size="18" /><strong>{{ target(r).kind }}</strong><code dir="ltr">{{ target(r).ref }}</code></span>
+        <span class="report-target">
+          <Icon :name="target(r).icon" :size="18" /><strong>{{ target(r).kind }}<template v-if="target(r).title">: <bdi>{{ target(r).title }}</bdi></template></strong>
+          <code dir="ltr" :title="t('rRef')">{{ target(r).ref }}</code>
+        </span>
         <StatusPill :status="r.status" kind="report" />
       </div>
       <p class="report-note" dir="auto">{{ r.note || "—" }}</p>
       <div class="report-foot">
-        <span class="muted small">{{ langName(r.lang) }} · {{ dateTime(r.created_at) }}<template v-if="r.reviewer"> · {{ t("rReviewer", { n: r.reviewer }) }}</template></span>
-        <div class="field field-inline">
+        <span class="muted small">{{ langName(r.lang) }} · {{ dateTime(r.created_at) }}<template v-if="r.reviewer"> · <bdi>{{ t("rReviewer", { n: r.reviewer }) }}</bdi></template></span>
+        <div v-if="isSupervisor" class="field field-inline">
           <label :for="`rs-${r.id}`">{{ t("rStatus") }}</label>
           <select :id="`rs-${r.id}`" :value="r.status" :disabled="busy[r.id]" @change="setStatus(r, $event.target.value)">
             <option v-for="s in STATUSES" :key="s" :value="s">{{ t(`reportStatus.${s}`) }}</option>

@@ -1,6 +1,6 @@
 <template>
   <component :is="tag" class="shd-sentence" dir="auto">
-    <span>{{ text }}</span>
+    <InlineText :text="text" />
     <button
       v-for="id in sources"
       :key="id"
@@ -12,7 +12,7 @@
       @click="toggle(id, $event)"
     >{{ numberOf(id) }}</button>
     <div v-for="id in openIds" :key="`src-${id}`" class="shd-source">
-      <blockquote v-if="sourceOf(id)?.text" :lang="sourceOf(id).lang" :dir="isRtl(sourceOf(id).lang) ? 'rtl' : 'ltr'">{{ sourceOf(id).text }}</blockquote>
+      <PassageText v-if="sourceOf(id)?.text" tag="blockquote" :text="sourceOf(id).text" :lang="sourceOf(id).lang" :dir="isRtl(sourceOf(id).lang) ? 'rtl' : 'ltr'" />
       <cite>{{ tr('sourceRef', { book: tr('bookName'), page: pageOf(id) }) }}</cite>
     </div>
   </component>
@@ -22,6 +22,8 @@
 // One sentence of a summary, step or answer with its numbered source markers. A marker opens the
 // original passage from the book with its page, so every claim can be checked where it is made.
 import { computed, inject, reactive } from 'vue';
+import InlineText from './InlineText.vue';
+import PassageText from './PassageText.vue';
 import { isRtl, useT } from './i18n.js';
 
 const props = defineProps({

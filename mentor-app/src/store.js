@@ -1,4 +1,5 @@
-// Shared state: the signed-in mentor, the hash route, the case inbox (polled every 15 s) and crisis alerts.
+// Shared state: the signed-in mentor, the hash route, the case inbox (polled every 15 s) and the alerts
+// for new cases and new learner messages (crisis cases keep their own, stronger alert).
 import { reactive, ref, computed } from "vue";
 import { api, setUnauthorizedHandler } from "./api.js";
 
@@ -17,12 +18,15 @@ export function go(path) {
 }
 
 // ---------------------------------------------------------------- session
-export const session = reactive({ me: null, checked: false, mentors: [] });
+// `expired`: the server ended the session (idle or too old); the sign-in page says so.
+export const session = reactive({ me: null, checked: false, mentors: [], expired: false });
 export const isSupervisor = computed(() => session.me?.role === "supervisor");
 
 setUnauthorizedHandler(() => {
+  if (session.me) session.expired = true;
   session.me = null;
   stopPolling();
+  resetAlerts();
 });
 
 export async function restoreSession() {
@@ -38,6 +42,7 @@ export async function restoreSession() {
 
 export async function login(email, password) {
   session.me = await api.login(email, password);
+  session.expired = false;
   await afterLogin();
 }
 
@@ -46,7 +51,7 @@ export async function logout() {
   session.me = null;
   stopPolling();
   inbox.data = null;
-  seenCrisis = null;
+  resetAlerts();
 }
 
 async function afterLogin() {
@@ -57,8 +62,9 @@ async function afterLogin() {
 // ---------------------------------------------------------------- inbox + polling
 export const inbox = reactive({ data: null, error: null, loading: false, updatedAt: null });
 export const crisisAlerts = ref([]); // [{ id, case }]
+export const toasts = ref([]); // [{ key, id, kind: "case" | "message", case }]
 let timer = null;
-let seenCrisis = null; // Set of open crisis case ids already seen
+let seen = null; // Map case id -> last message id, as of the previous poll (null before the first one)
 
 export async function refreshInbox() {
   inbox.loading = true;
@@ -67,7 +73,7 @@ export async function refreshInbox() {
     inbox.data = data;
     inbox.error = null;
     inbox.updatedAt = new Date();
-    detectCrisis(data.cases);
+    detectNews(data.cases);
   } catch (e) {
     inbox.error = e.code ?? "generic";
   } finally {
@@ -75,22 +81,42 @@ export async function refreshInbox() {
   }
 }
 
-function detectCrisis(cases) {
-  const open = cases.filter((c) => c.reason === "crisis" && c.status !== "closed");
-  if (seenCrisis === null) {
-    seenCrisis = new Set(open.map((c) => c.id));
-    return;
-  }
-  const fresh = open.filter((c) => !seenCrisis.has(c.id));
-  fresh.forEach((c) => seenCrisis.add(c.id));
-  if (!fresh.length) return;
-  crisisAlerts.value = [...fresh.map((c) => ({ id: c.id, case: c })), ...crisisAlerts.value].slice(0, 3);
-  chime();
-  flashTitle();
+// Compare with the previous poll: a case we have not seen is new; a case whose last message is newer
+// and from the learner has a new message. Crisis cases get the red alert and the stronger chime.
+function detectNews(cases) {
+  const before = seen;
+  seen = new Map(cases.map((c) => [c.id, c.last_message_id ?? 0]));
+  if (before === null) return;
+  const isCrisis = (c) => c.reason === "crisis" && c.status !== "closed";
+  const fresh = cases.filter((c) => !before.has(c.id));
+  const crisis = fresh.filter(isCrisis);
+  const news = [
+    ...fresh.filter((c) => !isCrisis(c)).map((c) => ({ kind: "case", c })),
+    ...cases.filter((c) => before.has(c.id) && (c.last_message_id ?? 0) > before.get(c.id) && c.last_author === "learner").map((c) => ({ kind: "message", c })),
+  ];
+  if (crisis.length) crisisAlerts.value = [...crisis.map((c) => ({ id: c.id, case: c })), ...crisisAlerts.value].slice(0, 3);
+  news.forEach(({ kind, c }) => addToast(kind, c));
+  if (!crisis.length && !news.length) return;
+  chime(crisis.length ? "crisis" : "soft");
+  flashTitle(crisis.length ? "🔴" : "🔵");
+}
+
+function addToast(kind, c) {
+  const key = `${kind}:${c.id}:${c.last_message_id ?? 0}`;
+  toasts.value = [{ key, id: c.id, kind, case: c }, ...toasts.value.filter((x) => x.id !== c.id)].slice(0, 3);
+  setTimeout(() => dismissToast(key), 12000);
+}
+export function dismissToast(key) {
+  toasts.value = toasts.value.filter((x) => x.key !== key);
 }
 
 export function dismissAlert(id) {
   crisisAlerts.value = crisisAlerts.value.filter((a) => a.id !== id);
+}
+function resetAlerts() {
+  seen = null;
+  crisisAlerts.value = [];
+  toasts.value = [];
 }
 
 function startPolling() {
@@ -119,19 +145,22 @@ function arm() {
 window.addEventListener("pointerdown", arm, { once: true });
 window.addEventListener("keydown", arm, { once: true });
 
-function chime() {
+// "crisis": three high notes; "soft": two quieter ones for a new case or message.
+function chime(kind = "crisis") {
   if (!soundOn.value || !audio) return;
   try {
     if (audio.state === "suspended") audio.resume();
     const now = audio.currentTime;
-    [880, 660, 880].forEach((f, i) => {
+    const notes = kind === "crisis" ? [880, 660, 880] : [660, 880];
+    const peak = kind === "crisis" ? 0.18 : 0.08;
+    notes.forEach((f, i) => {
       const o = audio.createOscillator();
       const g = audio.createGain();
       o.type = "sine";
       o.frequency.value = f;
       const s = now + i * 0.22;
       g.gain.setValueAtTime(0.0001, s);
-      g.gain.exponentialRampToValueAtTime(0.18, s + 0.02);
+      g.gain.exponentialRampToValueAtTime(peak, s + 0.02);
       g.gain.exponentialRampToValueAtTime(0.0001, s + 0.2);
       o.connect(g).connect(audio.destination);
       o.start(s);
@@ -141,13 +170,13 @@ function chime() {
 }
 
 let titleTimer = null;
-function flashTitle() {
+function flashTitle(mark) {
   if (titleTimer || !document.hidden) return;
   const base = document.title;
   let on = false;
   titleTimer = setInterval(() => {
     on = !on;
-    document.title = on ? "🔴 " + base : base;
+    document.title = on ? `${mark} ${base}` : base;
   }, 1000);
   const stop = () => {
     if (document.hidden) return;

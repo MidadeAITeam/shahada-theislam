@@ -1,21 +1,25 @@
 <template>
-  <div class="shd-flow">
+  <div v-if="ready" class="shd-flow">
     <JourneyCard
       ref="card"
       :lang="lang"
       :started="summary.started"
-      :resume="mode === 'resume'"
+      :resume="spaceMode === 'resume'"
       :done="summary.done"
       :total="summary.total"
       :next-title="summary.nextTitle"
+      :mentor-unread="summary.mentorUnread"
+      :mentor-state="summary.mentorState"
+      :mentor-who="summary.mentorWho"
       @open="open = true"
+      @open-mentor="openMentor"
     />
     <LearningSpace
       ref="space"
       :open="open"
       :conversation="conversation"
       :lang="lang"
-      :mode="mode"
+      :mode="spaceMode"
       :lesson-id="lessonId"
       @close="close"
       @summary="(s) => Object.assign(summary, s)"
@@ -27,9 +31,10 @@
 // The after-Shahada module, rendered inside the chat right below the congratulation. In the chat
 // it is a single card; the journey itself happens in the learning space (space/), which opens
 // full-screen over the chat and closes back to it.
-import { nextTick, onMounted, reactive, ref } from 'vue';
+import { nextTick, onMounted, reactive, ref, watch } from 'vue';
 import JourneyCard from './space/JourneyCard.vue';
 import LearningSpace from './space/LearningSpace.vue';
+import { hasBegun, rememberReturning } from './returning.js';
 import './shahada.css';
 import './space/space.css';
 
@@ -39,7 +44,9 @@ const props = defineProps({
   // Interface locale of the host page.
   lang: { type: String, default: 'en' },
   // 'shahada': the moment itself, start card first. 'resume': a returning learner (e.g. the
-  // reminder email link, ?lesson=<id>); the space opens straight on their lesson.
+  // reminder email link, ?lesson=<id>); the space opens straight on their lesson. 'return': a
+  // returning learner on the home page; the card offers the way back (and any reply from the
+  // team) without opening the space by itself.
   mode: { type: String, default: 'shahada' },
   lessonId: { type: String, default: null },
 });
@@ -47,7 +54,10 @@ const props = defineProps({
 const open = ref(false);
 const card = ref(null);
 const space = ref(null);
-const summary = reactive({ started: false, done: 0, total: 19, nextTitle: '' });
+const summary = reactive({ started: false, done: 0, total: 19, nextTitle: '', mentorUnread: 0, mentorState: null, mentorWho: null, mentorCases: 0 });
+// A learner who already went through the start card never sees it again (e.g. the demo replayed).
+const ready = ref(props.mode !== 'shahada');
+const spaceMode = ref(props.mode === 'shahada' ? 'shahada' : 'resume');
 
 async function close() {
   open.value = false;
@@ -66,9 +76,29 @@ function openHandoff(opts) {
   space.value?.openHandoff(opts);
 }
 
-onMounted(() => {
+/** Into the space, at the conversation with the team's newest reply. */
+function openMentor() {
+  open.value = true;
+  space.value?.openMentor();
+}
+
+// Remembered in this browser so the host page offers the way back on the next visit.
+watch(
+  () => summary.started || summary.mentorCases > 0,
+  (back) => back && rememberReturning(),
+);
+
+onMounted(async () => {
+  if (props.mode === 'shahada') {
+    try {
+      if (await hasBegun()) spaceMode.value = 'resume';
+    } catch {
+      // Could not tell: start from the card, as before.
+    }
+    ready.value = true;
+  }
   if (props.mode === 'resume') open.value = true;
 });
 
-defineExpose({ ask, openHandoff });
+defineExpose({ ask, openHandoff, openMentor });
 </script>

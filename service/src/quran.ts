@@ -56,3 +56,19 @@ export function verses(ref: string, lang: string): Verse[] {
   }
   return out;
 }
+
+/**
+ * Replace the book's verse markers {{Q:S:A}} / {{Q:S:A-B}} with the verse text from Tanzil (and, outside
+ * Arabic, its published meaning in brackets), so no raw marker ever reaches the learner. Unknown markers go.
+ */
+export function expandVerseMarkers(text: string, lang: string): string {
+  return text.replace(/\{\{Q:([^}]*)\}\}/g, (_m, ref: string) => {
+    if (!/^\d{1,3}:\d{1,3}(-\d{1,3})?$/.test(ref.trim())) return "";
+    const vs = verses(ref.trim(), lang);
+    if (!vs.length) return "";
+    // Isolated (FSI…PDI) so the Arabic does not reorder the brackets and words around it in a left-to-right passage.
+    const arabic = `\u2068﴿${vs.map((v) => v.arabic).join(" ۝ ")}﴾\u2069`;
+    const meaning = lang === "ar" ? "" : vs.map((v) => v.meaning).filter(Boolean).join(" ");
+    return meaning ? `${arabic} (${meaning})` : arabic;
+  });
+}

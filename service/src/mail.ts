@@ -1,4 +1,4 @@
-// Sign-in links and next-lesson reminders. Provider by configuration: an existing SMTP server,
+// Sign-in links, next-lesson reminders and "the team replied to you" notices. Provider by configuration: an existing SMTP server,
 // Resend, Cloudflare Email Sending, or (development) the server log.
 import nodemailer from "nodemailer";
 import { config } from "./config.ts";
@@ -38,13 +38,16 @@ export async function sendMail(to: string, subject: string, html: string, text: 
   }
 }
 
-const T: Record<string, { signinSubject: string; signin: string; remindSubject: string; remind: string; open: string }> = {
+const T: Record<string, { signinSubject: string; signin: string; remindSubject: string; remind: string; open: string; replySubject: string; reply: string; openReply: string }> = {
   en: {
     signinSubject: "Your sign-in link — theislam.chat",
     signin: "Open this link to save your lessons and continue on any device:",
     remindSubject: "Your next lesson: {TITLE}",
     remind: "As-salamu alaykum. Your next lesson from Al-Wajeez is ready: {TITLE}. It takes a few minutes.",
     open: "Open the lesson",
+    replySubject: "The Osoul team replied to you — theislam.chat",
+    reply: "As-salamu alaykum. A mentor from the Osoul team has replied to your message. Open your learning space to read the reply and answer it:",
+    openReply: "Read the reply",
   },
   ar: {
     signinSubject: "رابط الدخول — theislam.chat",
@@ -52,6 +55,9 @@ const T: Record<string, { signinSubject: string; signin: string; remindSubject: 
     remindSubject: "درسك التالي: {TITLE}",
     remind: "السلام عليكم. درسك التالي من «الوجيز» جاهز: {TITLE}، ولا يستغرق إلا دقائق.",
     open: "افتح الدرس",
+    replySubject: "ردّ عليك فريق أصول — theislam.chat",
+    reply: "السلام عليكم. ردّ مرشد من فريق أصول على رسالتك. افتح مساحة التعلم لتقرأ الرد وتجيب عنه:",
+    openReply: "اقرأ الرد",
   },
 };
 export const mailText = (lang: string) => T[lang] ?? T.en;

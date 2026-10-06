@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive, watch } from "vue";
+import { computed, reactive, ref, watch } from "vue";
 import Icon from "../components/Icon.vue";
 import ReasonChip from "../components/ReasonChip.vue";
 import StatusPill from "../components/StatusPill.vue";
@@ -27,6 +27,9 @@ const cases = computed(() => all.value.filter((c) =>
   && (!f.lang || c.lang === f.lang)
   && (!f.mine || c.assigned_to === session.me?.id)));
 const filtered = computed(() => f.status !== "open" || f.reason || f.gender || f.lang || f.mine);
+const activeFilters = computed(() => [f.status !== "open", f.reason, f.gender, f.lang, f.mine].filter(Boolean).length);
+// On a phone the filters fold away so the first case is visible without scrolling.
+const filtersOpen = ref(false);
 const counts = computed(() => inbox.data?.counts ?? {});
 const crisisFree = computed(() => inbox.data?.crisis_unassigned ?? 0);
 
@@ -69,7 +72,10 @@ const isCrisis = (c) => c.reason === "crisis" && c.status !== "closed";
     </button>
   </section>
 
-  <section class="filters card" :aria-label="t('filters')">
+  <button type="button" class="btn btn-ghost btn-sm filters-toggle" :aria-expanded="filtersOpen" aria-controls="inbox-filters" @click="filtersOpen = !filtersOpen">
+    <Icon name="filter" :size="16" />{{ t("filters") }}<template v-if="activeFilters"> ({{ activeFilters }})</template>
+  </button>
+  <section id="inbox-filters" class="filters card" :class="{ open: filtersOpen }" :aria-label="t('filters')">
     <div class="field">
       <label for="f-status">{{ t("fStatus") }}</label>
       <select id="f-status" v-model="f.status">
@@ -126,8 +132,8 @@ const isCrisis = (c) => c.reason === "crisis" && c.status !== "closed";
             <div class="case-tags">
               <ReasonChip :reason="c.reason" />
               <StatusPill :status="c.status" />
-              <span v-if="c.last_author === 'learner' && c.first_reply_at && c.status !== 'closed'" class="unread" :title="t('learnerWrote')">
-                <span class="unread-dot" aria-hidden="true"></span>{{ t("learnerWrote") }}
+              <span v-if="c.awaiting_reply" class="unread" :class="{ awaiting: c.overdue }" :title="t('awaitingReply')">
+                <span class="unread-dot" aria-hidden="true"></span>{{ t("awaitingReply") }} · {{ ageShort(c.awaiting_minutes) }}
               </span>
             </div>
             <p class="case-text"><span v-if="c.last_author === 'mentor'" class="from-us">{{ t("mentorSide") }}: </span><bdi :dir="c.lang === 'ar' ? 'rtl' : 'auto'">{{ firstLine(c.last_message || c.question) }}</bdi></p>
@@ -143,7 +149,7 @@ const isCrisis = (c) => c.reason === "crisis" && c.status !== "closed";
               <span v-if="c.overdue" class="late-tag">{{ t("overdue") }}</span>
             </span>
             <span class="assignee" :class="{ none: !c.assigned_name }">
-              <span class="sr-only">{{ t("assignedTo") }}: </span>{{ c.assigned_name || t("unassigned") }}
+              <span class="sr-only">{{ t("assignedTo") }}: </span><bdi>{{ c.assigned_name || t("unassigned") }}</bdi>
             </span>
           </div>
         </a>

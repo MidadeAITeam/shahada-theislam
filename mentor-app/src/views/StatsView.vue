@@ -55,6 +55,8 @@ const statusBars = computed(() => bars(STATUSES.map((st) => ({ status: st, n: by
         <span v-if="closedPct != null" class="meter" aria-hidden="true"><span :style="{ width: closedPct + '%' }"></span></span>
       </div>
       <div class="kpi card"><span class="kpi-label">{{ t("sFirstReply") }}</span><span class="kpi-n">{{ duration(s.median_first_reply_minutes) ?? "—" }}</span><span v-if="s.median_first_reply_minutes == null" class="muted small">{{ t("sNoData") }}</span></div>
+      <div class="kpi card"><span class="kpi-label">{{ t("sCrisisFirstReply") }}</span><span class="kpi-n">{{ duration(s.crisis_median_first_reply_minutes) ?? "—" }}</span><span v-if="s.crisis_median_first_reply_minutes == null" class="muted small">{{ t("sNoData") }}</span></div>
+      <div class="kpi card" :class="{ 'kpi-bad': s.sla_breaches }"><span class="kpi-label">{{ t("sSlaBreaches") }}</span><span class="kpi-n">{{ fmt(s.sla_breaches) }}</span><span class="muted small">{{ t("sOverdueNow", { n: fmt(s.overdue_now) }) }} · {{ t("sAwaiting", { n: fmt(s.awaiting_reply) }) }}</span></div>
       <a href="#/reports" class="kpi card kpi-link"><span class="kpi-label">{{ t("sReportsOpen") }}</span><span class="kpi-n">{{ fmt(s.reports_open) }}</span></a>
     </section>
 
@@ -92,6 +94,25 @@ const statusBars = computed(() => bars(STATUSES.map((st) => ({ status: st, n: by
             <span class="bar-n">{{ fmt(b.n) }} <span class="muted">· {{ b.pct }}%</span></span>
           </li>
         </ul>
+      </section>
+
+      <section class="card workload-card" aria-labelledby="workload">
+        <h2 id="workload">{{ t("sWorkload") }}</h2>
+        <div class="table-scroll">
+          <table class="workload">
+            <thead>
+              <tr><th scope="col">{{ t("sMentor") }}</th><th scope="col">{{ t("sOpenCases") }}</th><th scope="col">{{ t("sReplies7d") }}</th><th scope="col">{{ t("sMedianFirst") }}</th></tr>
+            </thead>
+            <tbody>
+              <tr v-for="m in s.mentors" :key="m.id">
+                <th scope="row"><bdi>{{ m.name }}</bdi> <span class="muted small">· {{ m.role === "supervisor" ? t("roleSupervisor") : t(`group.${m.gender}`) }}</span></th>
+                <td class="num">{{ fmt(m.open_cases) }}</td>
+                <td class="num">{{ fmt(m.replies_7d) }}</td>
+                <td class="num">{{ duration(m.median_first_reply_minutes) ?? "—" }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section class="card" aria-labelledby="journey">

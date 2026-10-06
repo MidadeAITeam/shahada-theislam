@@ -27,6 +27,23 @@
       <p>{{ tr('journeyDone', { done, total }) }}<template v-if="nextTitle"> · {{ tr('journeyNext', { title: nextTitle }) }}</template></p>
     </div>
 
+    <!-- The team's reply, the first thing a returning learner sees; or where their request stands. -->
+    <button v-if="mentorUnread" type="button" class="lsp-journey__notice" @click="$emit('open-mentor')">
+      <span class="lsp-journey__notice-ic"><SpaceIcon name="users" :size="18" /><span class="lsp-journey__notice-dot">{{ mentorUnread }}</span></span>
+      <span class="lsp-journey__notice-text">
+        <strong>{{ tr(mentorWho === 'sister' ? 'replyNoticeSister' : 'replyNoticeBrother') }}</strong>
+        <span>{{ tr('replyNoticeOpen') }}</span>
+      </span>
+      <SpaceIcon name="next" :size="18" />
+    </button>
+    <div v-else-if="mentorState === 'sent'" class="lsp-journey__notice is-waiting" role="status">
+      <span class="lsp-journey__notice-ic"><SpaceIcon name="users" :size="18" /></span>
+      <span class="lsp-journey__notice-text">
+        <strong>{{ tr('queuedTitle') }}</strong>
+        <span>{{ tr(mentorWho === 'sister' ? 'queuedWhenSister' : 'queuedWhenBrother') }}</span>
+      </span>
+    </div>
+
     <button ref="btn" type="button" class="lsp-journey__btn" @click="$emit('open')">
       <span>{{ started ? tr('journeyContinue') : tr('journeyStart') }}</span>
       <SpaceIcon name="next" :size="20" />
@@ -52,8 +69,11 @@ const props = defineProps({
   done: { type: Number, default: 0 },
   total: { type: Number, default: 19 },
   nextTitle: { type: String, default: '' },
+  mentorUnread: { type: Number, default: 0 }, // replies from the team not read yet
+  mentorState: { type: String, default: null }, // 'sent' | 'replied' for the latest request
+  mentorWho: { type: String, default: null }, // 'brother' | 'sister'
 });
-defineEmits(['open']);
+defineEmits(['open', 'open-mentor']);
 
 const tr = useT(() => props.lang);
 const headId = `lsp-journey-${Math.random().toString(36).slice(2, 7)}`;

@@ -1,7 +1,7 @@
 {
  "lang": "ru",
  "page_offset": 0,
- "chunks": 231,
+ "chunks": 232,
  "items": [
   {
    "id": "wajeez:ru:p5:c1",
@@ -686,6 +686,12 @@
    "page": 62,
    "lesson_id": "u3l3",
    "sha256": "f5484b6534a878e2fc276ac8563ac77f4dc7f206caa6b1c04f24ebcff0aa1fa8"
+  },
+  {
+   "id": "wajeez:ru:p63:c1",
+   "page": 63,
+   "lesson_id": "u3l3",
+   "sha256": "3a4c7038be3a0501b3afa29ffb5891fe5082905f9bca60d38bf8736510b32b16"
   },
   {
    "id": "wajeez:ru:p64:c1",

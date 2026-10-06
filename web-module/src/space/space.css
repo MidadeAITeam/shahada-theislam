@@ -409,6 +409,17 @@ html.lsp-locked, html.lsp-locked body { overflow: hidden !important; }
 .lsp-stages li.done .lsp-stages__dot { background: var(--teal); color: var(--navy); box-shadow: none; }
 .lsp-stages li.on .lsp-stages__dot { box-shadow: none; }
 .lsp-stages .shd-spinner { width: 18px; height: 18px; border-color: var(--violet-50); border-top-color: var(--violet); }
+/* A conversation with the team (one per referral). */
+.lsp-case { align-self: stretch; display: flex; flex-direction: column; gap: 10px; padding: 12px; border-radius: 16px; background: var(--teal-50); }
+.lsp-case__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.lsp-case__title { color: var(--teal-ink); }
+.lsp-case__state { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 600; background: #fff; color: var(--muted); }
+.lsp-case__state.is-replied { background: var(--teal); color: var(--navy); }
+.lsp-case__state.is-sent { background: var(--amber-50); color: var(--amber-ink); }
+.lsp-bubble--mine { align-self: flex-end; background: var(--violet-50); color: var(--violet-ink); border-start-end-radius: 4px; }
+.lsp-case__wait { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; font-size: 0.85rem; color: var(--teal-ink); }
+.lsp-case .lsp-composer { background: #fff; }
+.lsp-linkbtn { padding: 0; border: 0; background: none; color: var(--violet-ink); font: inherit; font-size: 0.85rem; font-weight: 600; text-decoration: underline; cursor: pointer; }
 .lsp-sysmsg { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: 14px; background: var(--teal-50); color: var(--teal-ink); }
 .lsp-sysmsg__ic { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--teal); color: var(--navy); flex: none; }
 
@@ -496,6 +507,20 @@ html.lsp-locked, html.lsp-locked body { overflow: hidden !important; }
   cursor: pointer; box-shadow: 0 8px 22px rgba(46, 242, 194, 0.3); transition: transform 0.15s, background-color 0.15s;
 }
 .lsp-journey__btn:hover { background: #6ff6d5; transform: translateY(-1px); }
+/* A reply from the team waiting for the learner, right at the way back in. */
+.lsp-journey__notice {
+  appearance: none; display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 14px; border: 0; border-radius: 14px; cursor: pointer;
+  background: rgba(46, 242, 194, 0.14); box-shadow: inset 0 0 0 1px rgba(46, 242, 194, 0.5); color: #fff; font: inherit; text-align: start;
+}
+.lsp-journey__notice:hover { background: rgba(46, 242, 194, 0.22); }
+.lsp-journey__notice:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.lsp-journey__notice-ic { position: relative; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: #2ef2c2; color: #12183f; flex: none; }
+.lsp-journey__notice-dot { position: absolute; top: -4px; inset-inline-end: -4px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: #ff5a6e; color: #fff; font-size: 0.7rem; font-weight: 700; display: grid; place-items: center; }
+.lsp-journey__notice-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.lsp-journey__notice-text strong { font-size: 0.95rem; }
+.lsp-journey__notice-text span { font-size: 0.82rem; color: #d6d9f2; }
+.lsp-journey__notice.is-waiting { background: rgba(255, 255, 255, 0.06); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14); cursor: default; }
+.lsp-journey__notice.is-waiting .lsp-journey__notice-ic { background: rgba(255, 255, 255, 0.12); color: #2ef2c2; }
 .lsp-journey__btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 [dir='rtl'] .lsp-journey .lsp-flip { transform: scaleX(-1); }
 .lsp-journey__fine { display: flex; align-items: center; gap: 7px; font-size: 0.78rem; color: #b9bee0; }
@@ -582,3 +607,98 @@ html.lsp-locked, html.lsp-locked body { overflow: hidden !important; }
 }
 .lsp .shd-ex .shd-btn--quiet { background: var(--violet-50); color: var(--violet-ink); }
 .lsp .shd-ex .shd-btn--quiet:hover { background: var(--violet-100); }
+
+/* ------------------------------------------------------------------ learner audit fixes */
+/* A screen with nothing on the path (after "Delete my data"): the main column alone. */
+@media (min-width: 900px) {
+  .lsp--solo { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'main'; }
+  .lsp--solo .lsp-col--path { display: none; }
+}
+
+/* Book passages (PassageText): lists and headings, not raw Markdown. */
+.lsp .shd-ptext { white-space: normal; }
+.lsp-sheet__quote.shd-ptext { gap: 0.7em; }
+
+/* One numbering system: the path's number as the chip, the book's place quietly beside it. */
+.lsp-reader__crumbs .lsp-chip .lsp-icon { color: var(--violet); }
+.lsp-reader__unit { font-size: 0.82rem; }
+.lsp-note--info { background: var(--violet-50); color: #3b3399; }
+.lsp-note--info .lsp-icon { color: var(--violet); flex: none; margin-top: 3px; }
+.lsp-note .lsp-icon { flex: none; }
+
+/* Path: lessons shown in the book's own words (not reviewed in this language yet). */
+.lsp-tag--book { background: rgba(255, 196, 84, 0.16); color: #ffd384; font-weight: 500; }
+
+/* Check question: ✓ on the right answer, ✗ on a wrong pick, never a second filled dot. */
+.lsp-option__dot { display: grid; place-items: center; color: #fff; }
+.lsp-option.is-right .lsp-option__dot { background: #14a37f; box-shadow: none; }
+.lsp-option.is-wrong .lsp-option__dot { background: var(--red); box-shadow: none; }
+.lsp-option.is-right:not(.is-picked) { background: var(--teal-50); box-shadow: inset 0 0 0 2px #1fbf95; }
+.lsp-option:has(input:disabled) { cursor: default; }
+.lsp-option:has(input:disabled):hover { box-shadow: inset 0 0 0 1px var(--line); }
+.lsp-option.is-right:has(input:disabled):hover { box-shadow: inset 0 0 0 2px #1fbf95; }
+.lsp-option.is-wrong:has(input:disabled):hover { box-shadow: inset 0 0 0 2px var(--red); }
+.lsp-srcbtn {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 10px; margin-inline-start: auto;
+  border: 0; border-radius: 8px; background: rgba(255, 255, 255, 0.75); color: var(--violet-ink); font-size: 0.82rem; font-weight: 500; cursor: pointer;
+}
+.lsp-srcbtn:hover { background: #fff; box-shadow: 0 0 0 1px var(--violet-100); }
+
+/* Reviewing a lesson: going on and marking it done are separate. */
+.lsp-reviewed { display: flex; align-items: center; gap: 8px; color: var(--teal-ink); font-weight: 500; }
+.lsp-reader__pair { display: flex; flex-wrap: wrap; gap: 10px; }
+.lsp-reader__pair > * { flex: 1 1 220px; }
+.lsp-done--nav { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; }
+.lsp-save-err { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 12px; background: var(--red-50); color: var(--red-ink); font-weight: 500; }
+
+/* Listen and repeat (ListenRepeat). */
+.lsp-listen__opts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.lsp-seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: 12px; background: var(--slate-50); }
+.lsp-seg__btn {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 12px; border: 0; border-radius: 9px;
+  background: transparent; color: #3b4166; font-size: 0.84rem; font-weight: 500; cursor: pointer; white-space: nowrap;
+}
+.lsp-seg__btn[aria-pressed='true'] { background: #fff; color: var(--violet-ink); box-shadow: var(--shadow-sm); }
+.lsp-seg__btn--solo { background: var(--slate-50); min-height: 40px; border-radius: 12px; }
+.lsp-seg__btn--solo[aria-pressed='true'] { background: var(--violet-50); box-shadow: inset 0 0 0 1px var(--violet-100); }
+.lsp-listen__list { display: flex; flex-direction: column; gap: 8px; }
+.lsp-listen__item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border-radius: 14px; background: var(--soft); box-shadow: inset 0 0 0 1px var(--line); }
+.lsp-listen__item.is-playing { background: var(--violet-50); box-shadow: inset 0 0 0 1px var(--violet-100); }
+.lsp-listen__play {
+  width: 44px; height: 44px; flex: none; display: grid; place-items: center; border: 0; border-radius: 50%;
+  background: var(--violet); color: #fff; cursor: pointer; box-shadow: 0 2px 8px rgba(97, 80, 234, 0.25);
+}
+.lsp-listen__play:hover { background: var(--violet-ink); }
+.lsp-listen__body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; padding-top: 2px; }
+.lsp-listen__row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; min-height: 40px; align-content: center; }
+.lsp-listen__name { font-weight: 600; font-size: 1.02rem; }
+.lsp-listen__time { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.lsp-listen__seek { width: 100%; accent-color: var(--violet); margin: 0; }
+.lsp-listen__ar { font-family: 'Amiri', 'Amiri Quran', 'Traditional Arabic', serif; font-size: 1.45rem; line-height: 2; color: var(--navy); text-align: right; }
+.lsp-listen__ref { font-size: 0.9rem; color: var(--muted); }
+
+/* Finished: a summary, a person, and every lesson to review, in the normal three columns. */
+.lsp-finished { display: flex; flex-direction: column; gap: 18px; }
+.lsp-finished__ic--amber { background: var(--amber-50); color: var(--amber-ink); }
+.lsp-finished__mentor { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.lsp-finished__unit + .lsp-finished__unit { padding-top: 12px; border-top: 1px solid var(--line); }
+.lsp-finished__unit h3 { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; }
+.lsp-finished__n { width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; background: var(--teal); color: var(--navy); font-size: 0.78rem; flex: none; }
+.lsp-finished__unit ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px; }
+.lsp-finished__lesson {
+  width: 100%; display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 12px; border: 0; border-radius: 10px;
+  background: var(--soft); color: var(--ink); text-align: start; cursor: pointer; font-size: 0.9rem; line-height: 1.35;
+}
+.lsp-finished__lesson .lsp-icon { color: var(--teal-ink); }
+.lsp-finished__lesson:hover { background: var(--violet-50); color: var(--violet-ink); }
+.lsp-state h1:focus { outline: none; }
+
+@media (max-width: 899px) {
+  /* The AI note stays on one line on phones (the full sentence is its tooltip). */
+  .lsp-mtransparency { flex-wrap: nowrap; padding: 4px 12px; white-space: nowrap; }
+  .lsp-mtransparency > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .lsp-listen__ar { font-size: 1.3rem; }
+  .lsp-finished__mentor .lsp-btn { width: 100%; }
+}
+/* The sheet's backdrop also dims the navy path column: a navy veil over navy changed nothing. */
+.lsp-sheet-backdrop { background: rgba(5, 7, 22, 0.5); }

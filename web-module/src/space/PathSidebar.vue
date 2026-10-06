@@ -46,6 +46,8 @@
                 <span v-else-if="l.id === currentId" class="lsp-lesson-link__pulse"></span>
               </span>
               <span class="lsp-lesson-link__title">{{ label(l.title) }}</span>
+              <!-- Not reviewed yet in this language: the lesson shows the book's own words only. -->
+              <span v-if="l.reviewed === false && !l.done && l.id !== currentId" class="lsp-tag lsp-tag--book" :title="tr('unreviewedBadge')">{{ tr('bookTextTag') }}</span>
               <span v-if="l.id === currentId" class="lsp-tag lsp-tag--now">{{ tr('currentMark') }}</span>
               <span v-else-if="l.id === nextId" class="lsp-tag">{{ tr('nextMark') }}</span>
               <span v-if="l.done" class="lsp-sr">{{ tr('doneMark') }}</span>

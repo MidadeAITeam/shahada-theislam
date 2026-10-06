@@ -12,6 +12,8 @@ import { session, isSupervisor, refreshInbox } from "../store.js";
 
 const props = defineProps({ id: String });
 const STATUSES = ["new", "in_progress", "waiting_user", "closed"];
+const MAX_REPLY = 4000;
+const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 
 const data = ref(null);
 const loadError = ref(null);
@@ -30,7 +32,13 @@ async function load(silent = false) {
 }
 
 // ---------------------------------------------------------------- reply + canned replies
-const reply = ref("");
+// The draft is kept per case in this browser, so a lost session or a closed tab does not lose it.
+const draftKey = () => `mentor.draft.${props.id}`;
+const reply = ref((() => { try { return localStorage.getItem(draftKey()) ?? ""; } catch { return ""; } })());
+const draftRestored = ref(Boolean(reply.value));
+watch(reply, (v) => {
+  try { if (v.trim()) localStorage.setItem(draftKey(), v); else localStorage.removeItem(draftKey()); } catch { /* storage unavailable */ }
+});
 const replyBusy = ref(false);
 const replyMsg = ref({ kind: "", text: "" });
 const canned = ref([]);
@@ -38,11 +46,12 @@ const cannedOpen = ref(false);
 const replyBox = ref(null);
 const thread = ref(null);
 
-const cannedForCase = computed(() => {
-  const own = canned.value.filter((r) => r.lang === c.value?.lang);
-  return own.length ? own : canned.value.filter((r) => r.lang === "en");
+// Grouped by language: the case's own first, then English and Arabic, each with its name.
+const cannedGroups = computed(() => {
+  const order = [...new Set([c.value?.lang, "en", "ar"].filter(Boolean))];
+  return order.map((l) => ({ lang: l, label: langName(l), items: canned.value.filter((r) => r.lang === l) })).filter((g) => g.items.length);
 });
-const cannedLang = computed(() => langName(cannedForCase.value[0]?.lang ?? c.value?.lang));
+const cannedOwnMissing = computed(() => c.value && !canned.value.some((r) => r.lang === c.value.lang));
 
 async function loadCanned() {
   try { canned.value = await api.canned(c.value.lang); } catch { canned.value = []; }
@@ -59,6 +68,7 @@ async function sendReply() {
   try {
     await api.reply(props.id, reply.value.trim());
     reply.value = "";
+    draftRestored.value = false;
     replyMsg.value = { kind: "ok", text: t("sent") };
     await load(true);
     syncForm();
@@ -82,12 +92,12 @@ const assignTo = ref("");
 const assignBusy = ref(false);
 const assignMsg = ref({ kind: "", text: "" });
 const mineCase = computed(() => c.value?.assigned_to === session.me?.id);
+// A case stays in its group (brother/sister); the server refuses anything else.
 const mentorGroups = computed(() => {
   const g = c.value?.mentor;
   const ms = session.mentors;
   return [
     { label: t("sameGroup") + ` · ${t(`group.${g}`)}`, items: ms.filter((m) => m.role === "mentor" && m.gender === g) },
-    { label: t("otherGroup"), items: ms.filter((m) => m.role === "mentor" && m.gender !== g) },
     { label: t("supervisors"), items: ms.filter((m) => m.role === "supervisor") },
   ].filter((x) => x.items.length);
 });
@@ -223,13 +233,14 @@ watch(() => props.id, () => load());
         <div class="case-tags">
           <ReasonChip :reason="c.reason" />
           <StatusPill :status="c.status" />
+          <span v-if="c.awaiting_reply" class="unread" :class="{ awaiting: c.overdue }"><span class="unread-dot" aria-hidden="true"></span>{{ t("awaitingReply") }} · {{ ageShort(c.awaiting_minutes) }}</span>
           <span v-if="c.overdue" class="late-tag" :class="{ 'late-crisis': c.reason === 'crisis' }">{{ t("overdue") }}</span>
         </div>
         <h1>{{ t(`reason.${c.reason}`) }} <span class="case-id" dir="ltr">#{{ c.id.slice(-6) }}</span></h1>
       </div>
       <div class="case-head-side">
         <span><Icon name="clock" :size="16" />{{ ageShort(c.age_minutes) }}</span>
-        <span><Icon name="user" :size="16" />{{ c.assigned_name || t("unassigned") }}</span>
+        <span><Icon name="user" :size="16" /><bdi>{{ c.assigned_name || t("unassigned") }}</bdi></span>
       </div>
     </header>
 
@@ -259,7 +270,7 @@ watch(() => props.id, () => load());
         <ol ref="thread" class="thread" tabindex="0" :aria-label="t('conversation')">
           <li v-if="!data.messages.length" class="muted thread-empty">{{ t("noMessages") }}</li>
           <li v-for="m in data.messages" :key="m.id" class="bubble" :class="m.author === 'mentor' ? 'from-team' : 'from-learner'">
-            <span class="bubble-who">{{ m.author === "mentor" ? t("mentorSide") : t("learner") }}</span>
+            <span class="bubble-who">{{ m.author === "mentor" ? t("mentorSide") : t("learner") }}<template v-if="m.mentor_name"> · <bdi>{{ m.mentor_name }}</bdi></template></span>
             <p :dir="textDir">{{ m.text }}</p>
             <time :datetime="m.created_at">{{ dateTime(m.created_at) }}</time>
           </li>
@@ -273,20 +284,26 @@ watch(() => props.id, () => load());
             </button>
           </div>
           <div v-if="cannedOpen" id="canned-list" class="canned">
-            <p class="canned-head">{{ t("cannedFor", { l: cannedLang }) }}</p>
-            <p v-if="!cannedForCase.length" class="muted small">{{ t("cannedEmpty") }}</p>
-            <ul v-else>
-              <li v-for="r in cannedForCase" :key="r.id">
-                <button type="button" class="canned-item" @click="useCanned(r)">
-                  <strong :dir="r.lang === 'ar' ? 'rtl' : 'ltr'">{{ r.title }}</strong>
-                  <span :dir="r.lang === 'ar' ? 'rtl' : 'ltr'">{{ r.text }}</span>
-                </button>
-              </li>
-            </ul>
+            <p v-if="cannedOwnMissing" class="muted small">{{ t("cannedNone", { l: langName(c.lang) }) }}</p>
+            <p v-if="!cannedGroups.length" class="muted small">{{ t("cannedEmpty") }}</p>
+            <div v-for="g in cannedGroups" :key="g.lang" class="canned-group">
+              <p class="canned-head">{{ t("cannedFor", { l: g.label }) }}</p>
+              <ul>
+                <li v-for="r in g.items" :key="r.id">
+                  <button type="button" class="canned-item" @click="useCanned(r)">
+                    <strong :dir="r.lang === 'ar' ? 'rtl' : 'ltr'">{{ r.title }}</strong>
+                    <span :dir="r.lang === 'ar' ? 'rtl' : 'ltr'">{{ r.text }}</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
-          <textarea id="reply" ref="replyBox" v-model="reply" rows="4" :dir="textDir" :placeholder="t('replyPlaceholder')" aria-describedby="reply-hint reply-msg" @keydown="onReplyKey"></textarea>
+          <textarea id="reply" ref="replyBox" v-model="reply" rows="4" :maxlength="MAX_REPLY" :dir="textDir" :placeholder="t('replyPlaceholder')" aria-describedby="reply-hint reply-count reply-msg" @keydown="onReplyKey"></textarea>
           <div class="reply-foot">
-            <span id="reply-hint" class="muted small">{{ t("sendHint") }}</span>
+            <span id="reply-hint" class="muted small">
+              {{ t("sendHint", { k: isMac ? "⌘" : "Ctrl" }) }}<span v-if="draftRestored" class="draft-note"> · {{ t("draftRestored") }}</span>
+            </span>
+            <span id="reply-count" class="char-count" :class="{ near: reply.length > MAX_REPLY - 200 }">{{ t("charCount", { n: reply.length, max: MAX_REPLY }) }}</span>
             <button type="submit" class="btn btn-primary" :disabled="replyBusy">
               <Icon name="send" :size="18" />{{ replyBusy ? t("sending") : t("send") }}
             </button>
@@ -301,7 +318,7 @@ watch(() => props.id, () => load());
           <h2 id="as-h"><Icon name="user" />{{ t("assign") }}</h2>
           <p class="assignee-now" :class="{ none: !c.assigned_name }">
             <span class="avatar sm" aria-hidden="true">{{ initial(c.assigned_name || "?") }}</span>
-            {{ c.assigned_name || t("unassigned") }}
+            <bdi>{{ c.assigned_name || t("unassigned") }}</bdi>
             <span v-if="mineCase" class="you-tag">{{ t("assignedToYou") }}</span>
           </p>
           <form v-if="isSupervisor" class="inline-form" @submit.prevent="assign(assignTo)">
@@ -310,7 +327,7 @@ watch(() => props.id, () => load());
               <select id="assign-to" v-model="assignTo" dir="auto">
                 <option value="" disabled>—</option>
                 <optgroup v-for="g in mentorGroups" :key="g.label" :label="g.label">
-                  <option v-for="m in g.items" :key="m.id" :value="m.id">{{ m.name }}</option>
+                  <option v-for="m in g.items" :key="m.id" :value="m.id" dir="auto">{{ m.name }}</option>
                 </optgroup>
               </select>
             </div>
@@ -350,8 +367,8 @@ watch(() => props.id, () => load());
           <p class="muted small">{{ t("notesLead") }}</p>
           <ul v-if="data.notes.length" class="notes">
             <li v-for="n in data.notes" :key="n.id">
-              <p>{{ n.text }}</p>
-              <span class="muted small">{{ n.name }} · {{ dateTime(n.created_at) }}</span>
+              <p dir="auto">{{ n.text }}</p>
+              <span class="muted small"><bdi>{{ n.name }}</bdi> · {{ dateTime(n.created_at) }}</span>
             </li>
           </ul>
           <p v-else class="muted small">{{ t("noNotes") }}</p>
@@ -369,7 +386,7 @@ watch(() => props.id, () => load());
             <li v-for="(e, i) in [...data.events].reverse()" :key="i" :class="`ev-${e.type}`">
               <span class="tl-dot" aria-hidden="true"></span>
               <span class="tl-text">{{ eventText(e) }}</span>
-              <span class="muted small">{{ e.actor ? t("by", { a: e.actor }) : ["created", "learner_message"].includes(e.type) ? t("learner") : t("system") }} · <time :datetime="e.created_at" :title="dateTime(e.created_at)">{{ ageShort(ageSince(e.created_at)) }}</time></span>
+              <span class="muted small"><bdi>{{ e.actor ? t("by", { a: e.actor }) : ["created", "learner_message", "reopened"].includes(e.type) ? t("learner") : t("system") }}</bdi> · <time :datetime="e.created_at" :title="dateTime(e.created_at)">{{ ageShort(ageSince(e.created_at)) }}</time></span>
             </li>
           </ol>
         </section>

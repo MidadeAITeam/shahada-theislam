@@ -39,7 +39,7 @@
             <h3 class="shd-eyebrow">{{ tr('cardPreview') }}</h3>
             <dl class="shd-referral">
               <dt>{{ tr('cardLanguage') }}</dt><dd>{{ languageName }}</dd>
-              <dt>{{ tr('cardCountry') }}</dt><dd>{{ country?.label || country?.value || tr('none') }}</dd>
+              <dt>{{ tr('cardCountry') }}</dt><dd><template v-if="countryCode"><span aria-hidden="true">{{ countryFlag }}</span> </template>{{ countryName || tr('none') }}</dd>
               <dt>{{ tr('cardLesson') }}</dt><dd>{{ lesson?.title || tr('none') }}</dd>
               <dt>{{ tr('cardReason') }}</dt><dd>{{ tr(`reason_${reason}`) }}</dd>
               <dt>{{ tr('cardQuestion') }}</dt><dd>{{ text.trim() || tr('none') }}</dd>
@@ -60,11 +60,13 @@
           </div>
         </template>
 
+        <!-- Sent: when and where the answer will come, and how to get it on another device. -->
         <template v-else>
-          <p v-if="sent.message" role="status">{{ sent.message }}</p>
-          <p class="shd-muted">{{ tr('queuedNote') }}</p>
+          <p role="status">{{ tr(sentTo === 'sister' ? 'queuedWhenSister' : 'queuedWhenBrother') }}</p>
+          <p class="shd-muted">{{ tr('queuedWhere') }}<template v-if="!signedIn"> {{ tr('queuedSaveNote') }}</template></p>
           <div class="shd-actions">
             <button type="button" class="shd-btn shd-btn--primary" @click="close">{{ tr('close') }}</button>
+            <button v-if="!signedIn" type="button" class="shd-btn shd-btn--quiet" @click="emit('save')">{{ tr('queuedSave') }}</button>
           </div>
         </template>
       </div>
@@ -87,8 +89,9 @@ const props = defineProps({
   lesson: { type: Object, default: null }, // { id, title }
   country: { type: Object, default: null }, // the card's country, only if the user kept it
   learnerLang: { type: String, default: null }, // the language confirmed on the start card
+  signedIn: { type: Boolean, default: false }, // progress saved with an account (the reply then reaches any device)
 });
-const emit = defineEmits(['close', 'sent']);
+const emit = defineEmits(['close', 'sent', 'save']);
 
 const tr = useT(() => props.lang);
 const headId = `shd-handoff-${Math.random().toString(36).slice(2, 7)}`;
@@ -99,7 +102,23 @@ const consent = ref(false);
 const busy = ref(false);
 const error = ref(false);
 const sent = ref(null);
+const sentTo = ref(null);
 let returnFocus = null;
+
+// The country as a name in the page's language, with its flag (the card keeps the ISO code).
+const countryCode = computed(() => {
+  const v = props.country?.value || props.country?.code || '';
+  return /^[A-Za-z]{2}$/.test(v) ? v.toUpperCase() : '';
+});
+const countryName = computed(() => {
+  if (!countryCode.value) return props.country?.label || props.country?.value || '';
+  try {
+    return new Intl.DisplayNames([apiLang(props.lang)], { type: 'region' }).of(countryCode.value) || props.country?.label || countryCode.value;
+  } catch {
+    return props.country?.label || countryCode.value;
+  }
+});
+const countryFlag = computed(() => String.fromCodePoint(...[...countryCode.value].map((c) => 0x1f1a5 + c.charCodeAt(0))));
 
 const languageName = computed(() => {
   try {
@@ -158,7 +177,8 @@ async function send() {
       lang: props.learnerLang || apiLang(props.lang),
       consent: true,
     });
-    sent.value = res || { status: 'queued' };
+    sent.value = res || { status: 'new' };
+    sentTo.value = mentor.value;
     emit('sent', { ...sent.value, mentor: mentor.value, question: text.value.trim() });
   } catch {
     error.value = true;

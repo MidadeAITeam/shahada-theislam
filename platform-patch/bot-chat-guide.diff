@@ -1,6 +1,6 @@
 diff --git a/.env.demo b/.env.demo
 new file mode 100644
-index 0000000..b26e6b5
+index 0000000..f31e7fb
 --- /dev/null
 +++ b/.env.demo
 @@ -0,0 +1,6 @@
@@ -8,7 +8,7 @@ index 0000000..b26e6b5
 +# endpoints it calls, so everything is same-origin. No secrets here.
 +VITE_BASE_URL=
 +VITE_API_URL=/api/chat/no-auth
-+VITE_GOOGLE_CLIENT_ID=
++VITE_GOOGLE_CLIENT_ID=374199965414-039csbr98gli5ibslg6ja97ac5mv683s.apps.googleusercontent.com
 +VITE_DEMO_SHAHADA=1
 diff --git a/package.json b/package.json
 index c1b3de5..5bb1be3 100644
@@ -22,10 +22,134 @@ index c1b3de5..5bb1be3 100644
      "preview": "vite preview",
      "test:unit": "vitest",
      "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
+diff --git a/src/locales/ar.json b/src/locales/ar.json
+index 7f08bf1..1cbb36c 100644
+--- a/src/locales/ar.json
++++ b/src/locales/ar.json
+@@ -20,5 +20,9 @@
+   "humanSendFailed": "لم يتم إرسال رسالتك. برجاء المحاولة مرة أخرى.",
+   "talkToAI": "التحدث مع الذكاء الاصطناعي",
+   "aiHandbackNotice": "رجعت للمساعد الذكي. اضغط الزر مرة أخرى في أي وقت لو حابب تتكلم مع شخص.",
+-  "aiHandbackMarker": "— الزائر رجع للتحدث مع الذكاء الاصطناعي —"
+-}
++  "aiHandbackMarker": "— الزائر رجع للتحدث مع الذكاء الاصطناعي —",
++  "chatNewChat": "محادثة جديدة",
++  "chatShare": "مشاركة",
++  "chatShareTitle": "مشاركة هذا المحتوى",
++  "chatClose": "إغلاق"
++}
+\ No newline at end of file
+diff --git a/src/locales/en.json b/src/locales/en.json
+index c460f2b..53d02d0 100644
+--- a/src/locales/en.json
++++ b/src/locales/en.json
+@@ -20,5 +20,9 @@
+   "humanSendFailed": "Your message was not sent. Please try again.",
+   "talkToAI": "Talk to the AI",
+   "aiHandbackNotice": "You are back with the AI assistant. Press the button again whenever you want a person.",
+-  "aiHandbackMarker": "— the visitor switched back to the AI —"
+-}
++  "aiHandbackMarker": "— the visitor switched back to the AI —",
++  "chatNewChat": "Start a new chat",
++  "chatShare": "Share",
++  "chatShareTitle": "Share this content",
++  "chatClose": "Close"
++}
+\ No newline at end of file
+diff --git a/src/utils/StreamingMarkdown.vue b/src/utils/StreamingMarkdown.vue
+index 5b810b8..67080f3 100644
+--- a/src/utils/StreamingMarkdown.vue
++++ b/src/utils/StreamingMarkdown.vue
+@@ -41,8 +41,9 @@ export default {
+     },
+     watch: {
+         content(newVal) {
+-            // Anything arriving after the flush needs a parser again.
+-            if (this.ended) {
++            // Anything arriving after the flush needs a parser again, and so does text that is not an
++            // extension of what was already painted (a tag stripped mid-stream changes earlier text).
++            if (this.ended || !newVal.startsWith(this.lastContent)) {
+                 this.$refs.container.textContent = ''
+                 this.lastContent = ''
+                 this.ended = false
+@@ -104,5 +105,54 @@ export default {
+ </script>
+ 
+ <template>
+-    <div ref="container" :dir="$attrs.dir"></div>
++    <div ref="container" class="smd" :dir="$attrs.dir"></div>
+ </template>
++
++<style>
++/* Readable Markdown in chat answers: tables get borders, padding and their own horizontal scroll
++   on narrow screens (the page itself never scrolls sideways); words are not broken mid-word. */
++.smd table {
++    display: block;
++    max-width: 100%;
++    overflow-x: auto;
++    border-collapse: collapse;
++    margin: 0.75rem 0 1rem;
++    font-size: 0.95em;
++    line-height: 1.55;
++    -webkit-overflow-scrolling: touch;
++}
++.smd th,
++.smd td {
++    border: 1px solid #dfe3ec;
++    padding: 0.5rem 0.75rem;
++    vertical-align: top;
++    text-align: start;
++    min-width: 7.5rem;
++    word-break: normal;
++    overflow-wrap: normal;
++    hyphens: none;
++}
++.smd th,
++.smd table tr:first-child td {
++    background: #f3f5fa;
++    font-weight: 600;
++    white-space: nowrap;
++}
++.smd tr:nth-child(even) td { background: #fafbfd; }
++.smd th:first-child,
++.smd td:first-child { min-width: 6rem; font-weight: 600; }
++.smd blockquote {
++    margin: 0.75rem 0;
++    padding: 0.5rem 0.9rem;
++    border-inline-start: 3px solid #2ec4a6;
++    background: #f5fbf9;
++    border-radius: 6px;
++}
++.smd blockquote > :last-child { margin-bottom: 0; }
++.smd h1, .smd h2, .smd h3, .smd h4 { margin: 1rem 0 0.5rem; line-height: 1.35; }
++.smd ul, .smd ol { padding-inline-start: 1.4rem; margin: 0.4rem 0 0.8rem; }
++.smd li + li { margin-top: 0.25rem; }
++.smd p { margin: 0 0 0.75rem; }
++.smd hr { border: 0; border-top: 1px solid #e5e8ef; margin: 1rem 0; }
++.smd code { background: #f3f5fa; padding: 0.1em 0.35em; border-radius: 4px; }
++</style>
 diff --git a/src/views/AiChatView.vue b/src/views/AiChatView.vue
-index d9ead08..58c5ecb 100644
+index d9ead08..3031997 100644
 --- a/src/views/AiChatView.vue
 +++ b/src/views/AiChatView.vue
+@@ -17,7 +17,7 @@
+         <a href="/" class="mx-auto d-flex justify-content-center" @click.prevent="startNewChat">
+           <button class="btn">
+             <i class="fa-solid fa-plus"></i>
+-            <span> Start A New Chat </span>
++            <span> {{ $t("chatNewChat") }} </span>
+           </button>
+         </a>
+       </div>
+@@ -99,7 +99,7 @@
+               data-bs-target="#exampleModal">
+               <!-- icon -->
+               <i class="fa-solid fa-share"></i>
+-              Share
++              {{ $t("chatShare") }}
+             </a>
+ 
+             <div v-if="isAuthenticated" class="dropdown ms-1">
 @@ -123,7 +123,7 @@
                  </li>
                </ul>
@@ -35,6 +159,33 @@ index d9ead08..58c5ecb 100644
                :aria-label="authTranslations.login">
                <i class="fa-solid fa-user"></i>
              </button>
+@@ -137,7 +137,7 @@
+                 Chat &amp; Decide
+               </h5>
+             </div>
+-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
++            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" :aria-label="$t('chatClose')"></button>
+           </div>
+           <div class="offcanvas-body pb-0 mb-0">
+             <!-- new chat -->
+@@ -149,7 +149,7 @@
+                 @click.prevent="startNewChat">
+                 <button class="btn">
+                   <i class="fa-solid fa-plus"></i>
+-                  <span> Start A New Chat </span>
++                  <span> {{ $t("chatNewChat") }} </span>
+                 </button>
+               </a>
+             </div>
+@@ -224,7 +224,7 @@
+               <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                 <!-- icon -->
+                 <i class="fa-solid fa-share"></i>
+-                Share
++                {{ $t("chatShare") }}
+               </a>
+             </li>
+ 
 @@ -252,7 +252,7 @@
                  </ul>
                </div>
@@ -52,6 +203,15 @@ index d9ead08..58c5ecb 100644
        </div>
        <div class="mb-5 d-flex flex-column gap-2 text-center" v-if="isLoadingMessages">
          <div class="d-flex m-auto">
+@@ -287,7 +288,7 @@
+         v-if="!isLoadingMessages && messages.length > 0">
+         <ul class="list-unstyled no-margin gap-2 d-flex flex-column">
+           <li v-for="(message, index) in sanitizedMessageText" :key="message.id" :class="message.author != 'AI'
+-            ? 'user-message p-1 pb-0 rounded-pill w-auto px-3'
++            ? `user-message p-1 pb-0 w-auto px-3 ${(message.text || '').length > 80 ? 'rounded-4 py-2' : 'rounded-pill'}`
+             : 'ai-message mt-3 p-3 rounded-3'
+             ">
+             <div class="gap-1 align-items-start">
 @@ -332,6 +333,11 @@
                    {{ question }}
                  </button>
@@ -64,18 +224,30 @@ index d9ead08..58c5ecb 100644
              </div>
            </li>
            <li class="p-1 pb-0 rounded-pill px-3" dir="rtl" v-if="isLoadingMessage">
-@@ -489,6 +495,10 @@ import DOMPurify from 'dompurify';
+@@ -462,8 +468,8 @@
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header d-flex justify-content-between">
+-            <h1 class="modal-title fs-5" id="exampleModalLabel">Share this content</h1>
+-            <button type="button" class="btn-close m-inheirt" data-bs-dismiss="modal" aria-label="Close"></button>
++            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $t("chatShareTitle") }}</h1>
++            <button type="button" class="btn-close m-inheirt" data-bs-dismiss="modal" :aria-label="$t('chatClose')"></button>
+           </div>
+           <div class="modal-body text-center">
+             <div id="share"></div>
+@@ -489,6 +495,11 @@ import DOMPurify from 'dompurify';
  import { useI18n } from 'vue-i18n';
  import * as Sentry from "@sentry/vue";
  import debounce from 'lodash/debounce';
 +import ShahadaFlow from "@shahada/ShahadaFlow.vue";
 +import DemoButton from "@shahada/DemoButton.vue";
 +import { playDemo } from "@shahada/demo.js";
++import { returningLearner } from "@shahada/returning.js";
 +import { t as shahadaT } from "@shahada/i18n.js";
  
  
  export default {
-@@ -501,7 +511,7 @@ export default {
+@@ -501,7 +512,7 @@ export default {
      };
    },
    name: "AiChatView",
@@ -84,7 +256,7 @@ index d9ead08..58c5ecb 100644
    props: {
      lang: {
        type: String,
-@@ -515,6 +525,8 @@ export default {
+@@ -515,6 +526,8 @@ export default {
    },
    data() {
      return {
@@ -93,7 +265,7 @@ index d9ead08..58c5ecb 100644
        localGeneralId: this.general_id,
        msg_title: "",
        msg_lang: "",
-@@ -787,6 +799,9 @@ export default {
+@@ -787,6 +800,9 @@ export default {
       * have already said so the operator reads the thread from its start.
       */
      async talkToHuman() {
@@ -103,7 +275,7 @@ index d9ead08..58c5ecb 100644
        if (this.humanMode || this.isHandingOff) return;
        this.isHandingOff = true;
  
-@@ -1052,6 +1067,14 @@ export default {
+@@ -1052,10 +1068,19 @@ export default {
          return;
        }
  
@@ -118,7 +290,29 @@ index d9ead08..58c5ecb 100644
        // The message store rejects anything shorter than four characters, so
        // the composer says so itself rather than letting the message look sent
        // and then throwing a server error over the conversation.
-@@ -1326,7 +1349,9 @@ export default {
+-      if (this.messageText.trim().length < 4) {
++      // (The demo has no message store, so "yes" or "ok" go through there.)
++      if (this.messageText.trim().length < (this.demoShahada ? 1 : 4)) {
+         this.showShortMessageHint();
+         return;
+       }
+@@ -1137,6 +1162,15 @@ export default {
+             // Handle the abort error
+           } else {
+             Sentry.captureException(error);
++            // Nothing came back: give the words back to the composer and say so, rather than
++            // leaving a message that looks sent and will never be answered.
++            const last = this.messages[this.messages.length - 1];
++            if (last && last.author !== 'AI') this.messages.pop();
++            else if (last && last.author === 'AI' && !last.text) this.messages.splice(-2, 2);
++            if (!this.messageText) this.messageText = payload.text;
++            toastMsg.errorToast(this.locale === 'ar'
++              ? 'تعذّر إرسال رسالتك. تحقّق من الاتصال ثم أعد المحاولة.'
++              : 'Your message could not be sent. Check your connection and try again.');
+           }
+         } finally {
+           this.isLoading = false;
+@@ -1326,7 +1360,9 @@ export default {
        try {
          const parsed = JSON.parse(jsonStr);
          const wasAtBottom = this.isScrolledToBottom();
@@ -129,7 +323,7 @@ index d9ead08..58c5ecb 100644
          if (wasAtBottom) {
            this.$nextTick(() => this.scrollToBottom('auto'));
          }
-@@ -1487,6 +1512,29 @@ export default {
+@@ -1487,6 +1523,29 @@ export default {
          this.loadingInterval = null;
        }
      },
@@ -159,12 +353,13 @@ index d9ead08..58c5ecb 100644
      askSuggestedQuestion(question) {
        this.messageText = question;
        this.$nextTick(() => this.sendMessage());
-@@ -1624,6 +1672,16 @@ export default {
+@@ -1624,6 +1683,23 @@ export default {
  
      this.resumeHumanChat();
  
 +    // ?demo=shahada plays the scripted conversation; ?lesson=<id> (the reminder email) brings a
-+    // returning learner straight back to their lesson.
++    // returning learner straight back to their lesson; on a plain visit, a learner who already
++    // began (or wrote to a mentor) finds the module again, with any reply waiting for them.
 +    const query = new URLSearchParams(window.location.search);
 +    if (query.get('demo') === 'shahada') {
 +      this.startShahadaDemo();
@@ -172,6 +367,12 @@ index d9ead08..58c5ecb 100644
 +      const text = shahadaT(this.locale, 'welcomeBack');
 +      this.messages.push({ author: 'AI', text, fullText: text, isTypingComplete: true, shahada: true,
 +        shahadaMode: 'resume', shahadaLesson: query.get('lesson') });
++    } else if (!this.localGeneralId) {
++      returningLearner().then((back) => {
++        if (!back || this.messages.length) return;
++        const text = shahadaT(this.locale, 'welcomeBack');
++        this.messages.push({ author: 'AI', text, fullText: text, isTypingComplete: true, shahada: true, shahadaMode: 'return' });
++      });
 +    }
    },
    beforeUnmount() {

@@ -10,7 +10,7 @@ import ReportsView from "./views/ReportsView.vue";
 import StatsView from "./views/StatsView.vue";
 import { t, toggleLang } from "./i18n.js";
 import { langName, firstLine, initial } from "./format.js";
-import { session, isSupervisor, route, restoreSession, logout, inbox, crisisAlerts, dismissAlert, soundOn, toggleSound, go } from "./store.js";
+import { session, isSupervisor, route, restoreSession, logout, inbox, crisisAlerts, dismissAlert, toasts, dismissToast, soundOn, toggleSound, go } from "./store.js";
 
 restoreSession();
 
@@ -48,6 +48,10 @@ function openAlert(a) {
   dismissAlert(a.id);
   go(`/cases/${a.id}`);
 }
+function openToast(x) {
+  dismissToast(x.key);
+  go(`/cases/${x.id}`);
+}
 </script>
 
 <template>
@@ -80,7 +84,7 @@ function openAlert(a) {
         <div class="me">
           <span class="avatar" aria-hidden="true">{{ initials }}</span>
           <span class="me-text">
-            <span class="me-name">{{ session.me.name }}</span>
+            <span class="me-name"><bdi>{{ session.me.name }}</bdi></span>
             <span class="me-role">{{ roleLabel }}</span>
           </span>
         </div>
@@ -99,6 +103,7 @@ function openAlert(a) {
     </aside>
 
     <div class="content">
+      <!-- Bottom corner, so an alert never covers the page's own header and buttons. -->
       <div class="alerts" aria-live="assertive">
         <div v-for="a in crisisAlerts" :key="a.id" class="crisis-toast" role="alert">
           <span class="crisis-toast-icon"><Icon name="alert" :size="22" /></span>
@@ -110,6 +115,18 @@ function openAlert(a) {
           <div class="crisis-toast-actions">
             <button type="button" class="btn btn-danger btn-sm" @click="openAlert(a)">{{ t("newCrisisOpen") }}</button>
             <button type="button" class="icon-btn" :aria-label="t('dismiss')" @click="dismissAlert(a.id)"><Icon name="x" :size="18" /></button>
+          </div>
+        </div>
+        <div v-for="x in toasts" :key="x.key" class="toast" role="status">
+          <span class="toast-icon"><Icon :name="x.kind === 'case' ? 'inbox' : 'message'" :size="20" /></span>
+          <div class="crisis-toast-body">
+            <strong>{{ x.kind === "case" ? t("newCaseTitle") : t("newMessageTitle") }}</strong>
+            <span class="crisis-toast-meta"><ReasonChip :reason="x.case.reason" /> {{ langName(x.case.lang) }} · {{ t(`group.${x.case.mentor}`) }}</span>
+            <span class="crisis-toast-text" :dir="x.case.lang === 'ar' ? 'rtl' : 'auto'">{{ firstLine(x.case.last_message || x.case.question, 100) }}</span>
+          </div>
+          <div class="crisis-toast-actions">
+            <button type="button" class="btn btn-primary btn-sm" @click="openToast(x)">{{ t("newCrisisOpen") }}</button>
+            <button type="button" class="icon-btn" :aria-label="t('dismiss')" @click="dismissToast(x.key)"><Icon name="x" :size="18" /></button>
           </div>
         </div>
       </div>

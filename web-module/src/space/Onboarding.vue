@@ -60,7 +60,8 @@
           <template v-else>
             <span class="lsp-fact__value">{{ display(key) }}</span>
             <span v-if="state[key].deleted" class="lsp-muted lsp-small">{{ tr('deletedNote') }}</span>
-            <blockquote v-else-if="state[key].original.evidence" class="lsp-fact__quote" dir="auto">
+            <!-- The quote backs the value we inferred; once the learner changed it, it no longer applies. -->
+            <blockquote v-else-if="state[key].original.evidence && !state[key].edited" class="lsp-fact__quote" dir="auto">
               <span class="lsp-fact__said">{{ tr('youSaid') }}</span> {{ tr('quoted', { q: state[key].original.evidence }) }}
             </blockquote>
           </template>
@@ -143,7 +144,7 @@ const background = ref(true);
 const state = reactive({});
 
 function reset(card) {
-  for (const k of FIELDS) state[k] = { original: card?.[k] || null, current: card?.[k] ? { ...card[k] } : null, deleted: false, editing: false, draft: '' };
+  for (const k of FIELDS) state[k] = { original: card?.[k] || null, current: card?.[k] ? { ...card[k] } : null, deleted: false, editing: false, edited: false, draft: '' };
 }
 reset(props.card);
 watch(() => props.card, reset);
@@ -172,8 +173,11 @@ function commitEdit(key) {
   if (!draft) return;
   const f = state[key].current;
   // An edited country has no code any more; the service falls back to the general emergency number.
-  state[key].current = key === 'language' ? { ...f, value: draft } : { ...f, value: draft, label: draft, edited: true };
+  const same = key === 'language' ? draft === f.value : draft === (f.label || f.value);
   state[key].editing = false;
+  if (same) return;
+  state[key].current = key === 'language' ? { ...f, value: draft } : { ...f, value: draft, label: draft, edited: true };
+  state[key].edited = true;
 }
 const result = (all) => Object.fromEntries(FIELDS.map((k) => [k, all && !state[k].deleted ? state[k].current : null]));
 function submit() {

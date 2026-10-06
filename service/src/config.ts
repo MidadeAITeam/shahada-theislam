@@ -41,6 +41,8 @@ export const config = {
 
   // Mentor panel (demo account)
   mentorPassword: env("MENTOR_PASSWORD", "mentor-demo"),
+  // Synthetic demo cases in the follow-up inbox, their times refreshed on every start (0 = off).
+  demoCases: env("DEMO_CASES", "1") !== "0",
 };
 
 /** Editions converted to text. Others are answered from these with a "machine-translated explanation" label. */

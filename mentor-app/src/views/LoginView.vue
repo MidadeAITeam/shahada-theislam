@@ -3,7 +3,7 @@ import { ref } from "vue";
 import Logo from "../components/Logo.vue";
 import Icon from "../components/Icon.vue";
 import { t, errorText, toggleLang } from "../i18n.js";
-import { login } from "../store.js";
+import { login, session } from "../store.js";
 
 const email = ref("");
 const password = ref("");
@@ -35,6 +35,7 @@ async function submit() {
       <Logo />
       <h1>{{ t("loginTitle") }}</h1>
       <p class="muted">{{ t("loginLead") }}</p>
+      <p v-if="session.expired" class="login-expired" role="status"><Icon name="clock" :size="18" />{{ t("sessionExpired") }}</p>
       <form novalidate @submit.prevent="submit">
         <div class="field">
           <label for="email">{{ t("email") }}</label>

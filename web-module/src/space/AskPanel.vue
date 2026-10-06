@@ -55,15 +55,36 @@
           </div>
         </div>
 
-        <article v-else-if="item.type === 'mentor'" class="lsp-bubble lsp-bubble--mentor">
-          <span class="lsp-bubble__who"><SpaceIcon name="users" :size="14" />{{ tr('mentorReply') }}<template v-if="item.name"> · {{ item.name }}</template></span>
-          <p dir="auto">{{ item.text }}</p>
-          <p v-for="(s, i) in item.replies" :key="i" class="lsp-bubble__reply" dir="auto">{{ s }}</p>
-          <form v-if="item.handoffId" class="lsp-composer lsp-composer--inline" @submit.prevent="$emit('reply', item)">
-            <label :for="`${uid}-r-${item.key}`" class="lsp-sr">{{ tr('writeMentor') }}</label>
-            <input :id="`${uid}-r-${item.key}`" v-model="item.draft" type="text" maxlength="2000" :placeholder="tr('writeMentor')" />
-            <button type="submit" class="lsp-send" :disabled="!item.draft?.trim()" :aria-label="tr('send')"><SpaceIcon name="send" :size="18" /></button>
+        <!-- A conversation with the team: the whole thread from the service, one box to answer in. -->
+        <article v-else-if="item.type === 'case'" class="lsp-case" :data-case="item.case.id" :aria-labelledby="`${uid}-c-${item.case.id}`">
+          <header class="lsp-case__head">
+            <span :id="`${uid}-c-${item.case.id}`" class="lsp-bubble__who lsp-case__title">
+              <SpaceIcon name="users" :size="14" />{{ tr(item.case.mentor === 'sister' ? 'caseWithSister' : 'caseWithBrother') }}
+            </span>
+            <span class="lsp-case__state" :class="`is-${caseState(item.case)}`">
+              <SpaceIcon v-if="caseState(item.case) === 'replied'" name="check" :size="12" />{{ tr(`caseState_${caseState(item.case)}`) }}
+            </span>
+          </header>
+          <template v-for="m in item.case.messages" :key="m.id">
+            <div v-if="m.author === 'mentor'" class="lsp-bubble lsp-bubble--mentor">
+              <span class="lsp-bubble__who"><SpaceIcon name="users" :size="14" /><span>{{ tr('mentorReply') }}<template v-if="m.mentor_name"> · <bdi>{{ m.mentor_name }}</bdi></template></span></span>
+              <p dir="auto">{{ m.text }}</p>
+            </div>
+            <div v-else class="lsp-bubble lsp-bubble--mine">
+              <span class="lsp-bubble__who">{{ tr('you') }}</span>
+              <p dir="auto">{{ m.text }}</p>
+            </div>
+          </template>
+          <div v-if="caseState(item.case) === 'sent'" class="lsp-case__wait">
+            <p>{{ tr(item.case.mentor === 'sister' ? 'queuedWhenSister' : 'queuedWhenBrother') }} {{ tr('queuedWhere') }}</p>
+            <button v-if="!signedIn" type="button" class="lsp-linkbtn" @click="$emit('save')">{{ tr('queuedSave') }}</button>
+          </div>
+          <form class="lsp-composer lsp-composer--inline" @submit.prevent="$emit('reply', item.case)">
+            <label :for="`${uid}-r-${item.case.id}`" class="lsp-sr">{{ tr('writeMentor') }}</label>
+            <input :id="`${uid}-r-${item.case.id}`" v-model="item.case.draft" type="text" maxlength="2000" :placeholder="tr('writeMentor')" />
+            <button type="submit" class="lsp-send" :disabled="!item.case.draft?.trim() || item.case.sending" :aria-label="tr('send')"><SpaceIcon name="send" :size="18" /></button>
           </form>
+          <p v-if="item.case.failed" class="shd-error" role="alert">{{ tr('errorGeneric') }}</p>
         </article>
       </template>
     </div>
@@ -113,8 +134,9 @@ const props = defineProps({
   scope: { type: String, default: 'book' },
   lessonTitle: { type: String, default: '' },
   wide: { type: Boolean, default: false },
+  signedIn: { type: Boolean, default: false },
 });
-const emit = defineEmits(['ask', 'retry', 'handoff', 'open-lesson', 'reply', 'update:scope', 'toggle-wide']);
+const emit = defineEmits(['ask', 'retry', 'handoff', 'open-lesson', 'reply', 'save', 'update:scope', 'toggle-wide']);
 
 const STAGES = ['stage1', 'stage2', 'stage3'];
 const tr = useT(() => props.lang);
@@ -122,6 +144,12 @@ const uid = `lsp-ask-${Math.random().toString(36).slice(2, 7)}`;
 const draft = ref('');
 const input = ref(null);
 const scroller = ref(null);
+
+// Sent (waiting for the team) -> Replied; a closed conversation still takes a new message.
+function caseState(c) {
+  if (c.status === 'closed') return 'closed';
+  return c.messages.some((m) => m.author === 'mentor') ? 'replied' : 'sent';
+}
 
 function grow() {
   const el = input.value;

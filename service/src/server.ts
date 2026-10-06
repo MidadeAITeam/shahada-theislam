@@ -13,7 +13,8 @@ import { db, event, id } from "./db.ts";
 import { getLesson, lessonIndex, lessonTitle } from "./lessons.ts";
 import { layout, mailText, sendMail } from "./mail.ts";
 import { startCard } from "./profile.ts";
-import { caseEvent, registerMentorRoutes } from "./mentor.ts";
+import { createHandoff, learnerMessage, registerMentorRoutes } from "./mentor.ts";
+import { clientIp, limiter, tooMany } from "./ratelimit.ts";
 
 const app = Fastify({ logger: { level: "info" }, trustProxy: true, bodyLimit: 512 * 1024 });
 await app.register(cookie, { secret: config.sessionSecret });
@@ -104,15 +105,16 @@ app.post("/api/shahada/lessons/:id/complete", async (req, reply) => {
 const answerCache = new Map<string, { at: number; r: AnswerResult }>();
 const cacheKey = (q: string, lg: string, lesson: string | null) => `${lg}|${lesson ?? ""}|${normalize(q)}`;
 
-async function answerFor(l: Learner, b: { question?: string; lang?: string; lesson_id?: string | null }, onStage?: (s: Stage) => void) {
+async function answerFor(l: Learner, b: { question?: string; lang?: string; lesson_id?: string | null; history?: string }, onStage?: (s: Stage) => void) {
   const question = (b.question ?? "").trim().slice(0, 2000);
   const lg = lang(b.lang, l);
-  const key = cacheKey(question, lg, b.lesson_id ?? null);
+  const history = typeof b.history === "string" ? b.history.slice(-1500) : "";
+  const key = cacheKey(question + (history ? `\u0000${history}` : ""), lg, b.lesson_id ?? null);
   const hit = answerCache.get(key);
   let r: AnswerResult;
   if (hit && Date.now() - hit.at < 24 * 3600 * 1000) r = hit.r;
   else {
-    r = await ask({ question, lang: lg, lessonId: b.lesson_id ?? null, country: l.country }, onStage);
+    r = await ask({ question, lang: lg, lessonId: b.lesson_id ?? null, history: history || undefined, country: l.country }, onStage);
     if (r.status === "answered" || r.status === "not_in_book") {
       if (answerCache.size > 2000) answerCache.delete(answerCache.keys().next().value!);
       answerCache.set(key, { at: Date.now(), r });
@@ -126,7 +128,7 @@ async function answerFor(l: Learner, b: { question?: string; lang?: string; less
 
 app.post("/api/shahada/ask", async (req, reply) => {
   const l = learner(req, reply);
-  const b = req.body as { question?: string; lang?: string; lesson_id?: string | null };
+  const b = req.body as { question?: string; lang?: string; lesson_id?: string | null; history?: string };
   if (!(b.question ?? "").trim()) return reply.code(400).send({ error: "empty" });
   return answerFor(l, b);
 });
@@ -135,7 +137,7 @@ app.post("/api/shahada/ask", async (req, reply) => {
 // sees progress while the checker works; the answer itself is still sent only once it passed.
 app.post("/api/shahada/ask/stream", async (req, reply) => {
   const l = learner(req, reply);
-  const b = req.body as { question?: string; lang?: string; lesson_id?: string | null };
+  const b = req.body as { question?: string; lang?: string; lesson_id?: string | null; history?: string };
   if (!(b.question ?? "").trim()) return reply.code(400).send({ error: "empty" });
   reply.raw.writeHead(200, { "Content-Type": "text/event-stream; charset=utf-8", "Cache-Control": "no-cache", "X-Accel-Buffering": "no", ...(reply.getHeader("set-cookie") ? { "Set-Cookie": reply.getHeader("set-cookie") as string } : {}) });
   const send = (o: unknown) => reply.raw.write(`data: ${JSON.stringify(o)}\n\n`);
@@ -147,10 +149,23 @@ app.post("/api/shahada/ask/stream", async (req, reply) => {
   reply.raw.end();
 });
 
+// Anonymous intake is rate limited per learner and per address (the cookie alone is easy to drop).
+const limits = {
+  report: limiter(20, 60 * 60 * 1000),
+  handoff: limiter(5, 60 * 60 * 1000),
+  message: limiter(30, 10 * 60 * 1000),
+};
+const limitKeys = (req: FastifyRequest, l: Learner) => [`l:${l.id}`, `ip:${clientIp(req)}`];
+
 app.post("/api/shahada/report", async (req, reply) => {
   const l = learner(req, reply);
-  const b = req.body as { target?: string; note?: string; lang?: string };
-  db.prepare("INSERT INTO reports (learner_id, target, note, lang) VALUES (?, ?, ?, ?)").run(l.id, String(b.target ?? "").slice(0, 200), String(b.note ?? "").slice(0, 2000), lang(b.lang, l));
+  const b = (req.body ?? {}) as { target?: string; note?: string; lang?: string };
+  const target = String(b.target ?? "").trim().slice(0, 200);
+  const note = String(b.note ?? "").trim().slice(0, 2000);
+  if (!target || !note) return reply.code(400).send({ error: "empty" });
+  const lim = limits.report.take(limitKeys(req, l));
+  if (!lim.ok) return tooMany(reply, lim.retryAfter);
+  db.prepare("INSERT INTO reports (learner_id, target, note, lang) VALUES (?, ?, ?, ?)").run(l.id, target, note, lang(b.lang, l));
   return { ok: true };
 });
 
@@ -158,39 +173,48 @@ app.post("/api/shahada/report", async (req, reply) => {
 const REASONS = ["fatwa_personal", "crisis", "practical_need", "not_in_book", "user_request", "unsure", "failed"];
 app.post("/api/shahada/handoff", async (req, reply) => {
   const l = learner(req, reply);
-  const b = req.body as { reason?: string; mentor?: string; question?: string; lesson_id?: string; lang?: string; consent?: boolean };
+  const b = (req.body ?? {}) as { reason?: string; mentor?: string; question?: string; lesson_id?: string; lang?: string; consent?: boolean };
   if (!b.consent) return reply.code(400).send({ error: "consent_required" });
-  const hid = id("h");
-  db.prepare("INSERT INTO handoffs (id, learner_id, mentor, reason, lang, country, lesson_id, question) VALUES (?, ?, ?, ?, ?, ?, ?, ?)").run(
-    hid, l.id, b.mentor === "sister" ? "sister" : "brother", REASONS.includes(b.reason ?? "") ? b.reason : "user_request",
-    lang(b.lang, l), l.country, b.lesson_id ?? null, String(b.question ?? "").slice(0, 2000),
-  );
-  if (b.question) db.prepare("INSERT INTO handoff_messages (handoff_id, author, text) VALUES (?, 'learner', ?)").run(hid, String(b.question).slice(0, 2000));
-  db.prepare("UPDATE handoffs SET status = 'new' WHERE id = ?").run(hid);
-  caseEvent(hid, null, "created", b.reason);
-  event(l.id, "handoff", b.reason);
+  const lim = limits.handoff.take(limitKeys(req, l));
+  if (!lim.ok) return tooMany(reply, lim.retryAfter);
+  const reason = REASONS.includes(b.reason ?? "") ? b.reason! : "user_request";
+  const hid = createHandoff({
+    learnerId: l.id, mentor: b.mentor === "sister" ? "sister" : "brother", reason, lang: lang(b.lang, l), country: l.country,
+    lessonId: b.lesson_id ?? null, question: String(b.question ?? "").trim().slice(0, 2000),
+  });
+  event(l.id, "handoff", reason);
   return { id: hid, status: "new" };
 });
 
+// A signed-in learner's cases follow their account to any device (each device has its own learner id).
+const MY_CASES = "h.learner_id IN (SELECT id FROM learners WHERE id = @lid OR (account_id IS NOT NULL AND account_id = @acct))";
+const mine = (l: Learner) => ({ lid: l.id, acct: l.account_id ?? "" });
+
+// The learner's conversations with the team: every case with its whole thread (both sides).
+// `after` is the last message id the page has, so polling never misses two messages in one second.
 app.get("/api/shahada/handoff/messages", async (req, reply) => {
   const l = learner(req, reply);
-  const since = (req.query as { since?: string }).since ?? "1970-01-01";
+  const after = Math.max(0, Math.floor(Number((req.query as { after?: string }).after ?? 0)) || 0);
   return {
-    handoffs: db.prepare("SELECT id, mentor, reason, status, created_at FROM handoffs WHERE learner_id = ? ORDER BY created_at").all(l.id),
-    messages: db.prepare(`SELECT m.id, m.handoff_id, m.author, m.text, m.created_at FROM handoff_messages m JOIN handoffs h ON h.id = m.handoff_id
-                          WHERE h.learner_id = ? AND m.created_at > ? ORDER BY m.id`).all(l.id, since),
+    handoffs: db.prepare(`SELECT h.id, h.mentor, h.reason, h.status, h.created_at, h.first_reply_at,
+        (SELECT max(id) FROM handoff_messages WHERE handoff_id = h.id) AS last_message_id
+      FROM handoffs h WHERE ${MY_CASES} ORDER BY h.created_at`).all(mine(l)),
+    messages: db.prepare(`SELECT m.id, m.handoff_id, m.author, m.text, m.created_at, CASE m.author WHEN 'mentor' THEN mt.name END AS mentor_name
+                          FROM handoff_messages m JOIN handoffs h ON h.id = m.handoff_id LEFT JOIN mentors mt ON mt.id = m.mentor_id
+                          WHERE ${MY_CASES} AND m.id > @after ORDER BY m.id`).all({ ...mine(l), after }),
   };
 });
 
 app.post("/api/shahada/handoff/:id/messages", async (req, reply) => {
   const l = learner(req, reply);
   const hid = (req.params as { id: string }).id;
-  const h = db.prepare("SELECT id FROM handoffs WHERE id = ? AND learner_id = ?").get(hid, l.id);
+  const h = db.prepare(`SELECT h.id FROM handoffs h WHERE h.id = @hid AND ${MY_CASES}`).get({ hid, ...mine(l) });
   if (!h) return reply.code(404).send({ error: "not_found" });
-  db.prepare("INSERT INTO handoff_messages (handoff_id, author, text) VALUES (?, 'learner', ?)").run(hid, String((req.body as { text?: string }).text ?? "").slice(0, 2000));
-  db.prepare("UPDATE handoffs SET status = 'in_progress' WHERE id = ? AND status IN ('waiting_user', 'closed')").run(hid);
-  caseEvent(hid, null, "learner_message");
-  return { ok: true };
+  const text = String((req.body as { text?: string } | null)?.text ?? "").trim().slice(0, 2000);
+  if (!text) return reply.code(400).send({ error: "empty" });
+  const lim = limits.message.take(limitKeys(req, l));
+  if (!lim.ok) return tooMany(reply, lim.retryAfter);
+  return { ok: true, id: learnerMessage(hid, text) };
 });
 
 // ---------------------------------------------------------------- account and reminders
@@ -265,7 +289,12 @@ app.post("/api/shahada/reminder", async (req, reply) => {
 app.post("/api/shahada/forget", async (req, reply) => {
   const l = learner(req, reply);
   db.prepare("DELETE FROM progress WHERE owner IN (?, ?)").run(l.id, l.account_id ?? "-");
-  db.prepare("DELETE FROM handoffs WHERE learner_id = ?").run(l.id);
+  // The conversations with the team go too (from every device of the account): messages, internal
+  // notes and the case timeline.
+  const cases = `SELECT h.id FROM handoffs h WHERE ${MY_CASES}`;
+  for (const t of ["handoff_messages", "handoff_notes", "handoff_events"])
+    db.prepare(`DELETE FROM ${t} WHERE handoff_id IN (${cases})`).run(mine(l));
+  db.prepare(`DELETE FROM handoffs WHERE id IN (${cases})`).run(mine(l));
   if (l.account_id) {
     db.prepare("UPDATE learners SET account_id = NULL WHERE account_id = ?").run(l.account_id);
     db.prepare("DELETE FROM accounts WHERE id = ?").run(l.account_id);
@@ -315,31 +344,59 @@ app.get("/api/stats", async () => ({
 // ---------------------------------------------------------------- platform compatibility (demo tenant)
 const tenant = JSON.parse(fs.readFileSync(path.join(ROOT, "content/tenant.json"), "utf8"));
 app.get("/general/tenants/tenant-data", async () => tenant);
+// The platform saves each chat message as multipart form data; the demo keeps no chat store, so
+// the body is accepted and dropped (without this parser Fastify answers 415 on every turn).
+app.addContentTypeParser("multipart/form-data", (_req, payload, done) => {
+  payload.resume();
+  payload.on("end", () => done(null, {}));
+});
 app.post("/general/chats", async () => ({ ok: true }));
 app.post("/general/chats/messages", async () => ({ ok: true }));
 app.get("/general/chats", async () => ({ data: [] }));
 app.get("/general/auth/me", async (_req, reply) => reply.code(401).send({ message: "Unauthenticated" }));
 app.post("/api/chat/no-auth", async (req, reply) => streamChat(req.body as { text: string; previous_response_id?: string }, reply));
-// The platform's own "talk to a human" button is mapped onto the same mentor queue.
+// The platform's own "talk to a human" button is mapped onto the same mentor queue. It has no
+// mentor choice of its own, so a visitor who asked for a sister in their words is routed to sisters.
+const SISTER = /\b(sisters?|wom[ae]n|female|lady|soeur|hermana|mujer|femme|mulher|wanita|perempuan)\b|sœur|irmã|сестр|женщин|(?<![\u0621-\u064A])(?:ال)?(?:أخت|اخت|امرأة|إمرأة|مرشدة)(?:ي|ك|نا)?(?![\u0621-\u064A])/i;
+const platformLang = (v: unknown) => {
+  const code = typeof v === "string" ? v.toLowerCase().split(/[-_]/)[0] : "";
+  const mapped = ({ po: "pt", fil: "tl" } as Record<string, string>)[code] ?? code;
+  try {
+    return /^[a-z]{2,3}$/.test(mapped) && new Intl.DisplayNames(["en"], { type: "language", fallback: "none" }).of(mapped) ? mapped : "en";
+  } catch {
+    return "en";
+  }
+};
 app.post("/general/site-chat/handoff", async (req, reply) => {
   const l = learner(req, reply);
-  const b = req.body as { locale?: string; history?: { role: string; text: string }[] };
-  const hid = id("h");
-  db.prepare("INSERT INTO handoffs (id, learner_id, mentor, reason, lang, country, question) VALUES (?, ?, 'brother', 'user_request', ?, ?, ?)").run(hid, l.id, b.locale ?? "en", l.country, (b.history ?? []).filter((m) => m.role === "visitor").slice(-1)[0]?.text ?? "");
-  db.prepare("UPDATE handoffs SET status = 'new' WHERE id = ?").run(hid);
-  caseEvent(hid, null, "created", "user_request");
-  return { message_id: 0, handoff_id: hid };
+  const b = (req.body ?? {}) as { locale?: string; history?: { role: string; text: string }[] };
+  const lim = limits.handoff.take(limitKeys(req, l));
+  if (!lim.ok) return tooMany(reply, lim.retryAfter);
+  const said = (Array.isArray(b.history) ? b.history : []).filter((m) => m?.role === "visitor" && typeof m.text === "string").map((m) => m.text.trim()).filter(Boolean);
+  const hid = createHandoff({
+    learnerId: l.id, mentor: said.some((t) => SISTER.test(t)) ? "sister" : "brother", reason: "user_request",
+    lang: platformLang(b.locale), country: l.country, lessonId: null, question: (said[said.length - 1] ?? "").slice(0, 2000),
+  });
+  event(l.id, "handoff", "user_request");
+  // The platform polls from this id on; the visitor's own first message is already on their screen.
+  const last = db.prepare("SELECT max(id) n FROM handoff_messages WHERE handoff_id = ?").get(hid) as { n: number | null };
+  return { message_id: last.n ?? 0, handoff_id: hid };
 });
 app.post("/general/site-chat/send", async (req, reply) => {
   const l = learner(req, reply);
+  const text = String((req.body as { message?: string } | null)?.message ?? "").trim().slice(0, 2000);
+  if (!text) return reply.code(400).send({ error: "empty" });
   const h = db.prepare("SELECT id FROM handoffs WHERE learner_id = ? ORDER BY created_at DESC").get(l.id) as { id: string } | undefined;
-  if (h) db.prepare("INSERT INTO handoff_messages (handoff_id, author, text) VALUES (?, 'learner', ?)").run(h.id, String((req.body as { message?: string }).message ?? "").slice(0, 2000));
-  return { ok: true };
+  if (!h) return reply.code(404).send({ error: "not_found" });
+  const lim = limits.message.take(limitKeys(req, l));
+  if (!lim.ok) return tooMany(reply, lim.retryAfter);
+  return { ok: true, message_id: learnerMessage(h.id, text) };
 });
 app.get("/general/site-chat/poll", async (req, reply) => {
   const l = learner(req, reply);
   const after = Number((req.query as { after?: string }).after ?? 0);
-  const rows = db.prepare(`SELECT m.id, m.text message, CASE m.author WHEN 'mentor' THEN 'agent' ELSE 'visitor' END direction, 1 is_human
+  const rows = db.prepare(`SELECT m.id, m.text message, CASE m.author WHEN 'mentor' THEN 'agent' ELSE 'visitor' END direction, 1 is_human,
+                           CASE m.author WHEN 'mentor' THEN 'human' END author, replace(m.created_at, ' ', 'T') || 'Z' created_time
                            FROM handoff_messages m JOIN handoffs h ON h.id = m.handoff_id WHERE h.learner_id = ? AND m.id > ? ORDER BY m.id`).all(l.id, after);
   return { messages: rows };
 });

@@ -1,47 +1,736 @@
 {
-  "book_id": "wajeez",
-  "title": {"ar": "الوجيز: منهج تعليم صفي للمسلم الجديد", "en": "Al-Wajeez: A Classroom Curriculum for New Muslims"},
-  "publisher": "Osoul Center (مركز أصول)",
-  "source_url": "https://islamicfiqh.net/wageez/",
-  "note": "Page numbers are the printed pages of the Arabic edition (PDF page index == printed page). Other editions are mapped by scripts/build_structure.py.",
-  "units": [
-    {"id": "u1", "title": {"ar": "دين الإسلام", "en": "The Religion of Islam"}, "lessons": [
-      {"id": "u1l1", "title": {"ar": "الإسلام والأسئلة الكبرى", "en": "Islam and the Big Questions"}, "pages_ar": [16, 19]},
-      {"id": "u1l2", "title": {"ar": "دين الإسلام", "en": "The Religion of Islam"}, "pages_ar": [20, 25]},
-      {"id": "u1l3", "title": {"ar": "كيف أسلم؟ (معنى الشهادتين)", "en": "How Do I Become Muslim? (The Two Testimonies)"}, "pages_ar": [26, 29]},
-      {"id": "u1l4", "title": {"ar": "الإيمان", "en": "Faith (Iman)"}, "pages_ar": [30, 35]}
-    ]},
-    {"id": "u2", "title": {"ar": "القرآن الكريم", "en": "The Noble Qur'an"}, "lessons": [
-      {"id": "u2l1", "title": {"ar": "القرآن الكريم", "en": "The Noble Qur'an"}, "pages_ar": [38, 43]},
-      {"id": "u2l2", "title": {"ar": "تفسير قصار السور (ومنها الفاتحة)", "en": "Short Surahs Explained (incl. Al-Fatiha)"}, "pages_ar": [44, 51]}
-    ]},
-    {"id": "u3", "title": {"ar": "العبادات", "en": "Acts of Worship"}, "lessons": [
-      {"id": "u3l1", "title": {"ar": "العبادة", "en": "Worship"}, "pages_ar": [54, 57]},
-      {"id": "u3l2", "title": {"ar": "الطهارة", "en": "Purification"}, "pages_ar": [58, 61], "critical": true},
-      {"id": "u3l3", "title": {"ar": "الوضوء", "en": "Ablution (Wudu)"}, "pages_ar": [62, 67], "critical": true},
-      {"id": "u3l4", "title": {"ar": "الغسل", "en": "Ritual Bath (Ghusl)"}, "pages_ar": [68, 71], "critical": true},
-      {"id": "u3l5", "title": {"ar": "أحكام تخص المرأة المسلمة", "en": "Rulings Specific to Muslim Women"}, "pages_ar": [72, 75]},
-      {"id": "u3l6", "title": {"ar": "الصلاة", "en": "Prayer (Salah)"}, "pages_ar": [76, 83], "critical": true},
-      {"id": "u3l7", "title": {"ar": "الزكاة", "en": "Zakat"}, "pages_ar": [84, 87]},
-      {"id": "u3l8", "title": {"ar": "الصوم", "en": "Fasting"}, "pages_ar": [88, 91]},
-      {"id": "u3l9", "title": {"ar": "الحج", "en": "Hajj"}, "pages_ar": [92, 97]}
-    ]},
-    {"id": "u4", "title": {"ar": "أحكام إسلامية", "en": "Islamic Rulings"}, "lessons": [
-      {"id": "u4l1", "title": {"ar": "اللباس", "en": "Clothing"}, "pages_ar": [100, 103]},
-      {"id": "u4l2", "title": {"ar": "الطعام والشراب", "en": "Food and Drink"}, "pages_ar": [104, 107]},
-      {"id": "u4l3", "title": {"ar": "المعاملات المالية", "en": "Financial Dealings"}, "pages_ar": [108, 111]},
-      {"id": "u4l4", "title": {"ar": "الأخلاق", "en": "Character and Manners"}, "pages_ar": [112, 121]}
-    ]}
-  ],
-  "path_rules": {
-    "first": "u1l3",
-    "choices": {
-      "wudu": ["u3l2", "u3l3"],
-      "prayer": ["u3l2", "u3l3", "u3l6"],
-      "fatiha": ["u2l2", "u3l2", "u3l3", "u3l6"],
-      "unsure": ["u3l2", "u3l3", "u3l6"]
+ "book_id": "wajeez",
+ "title": {
+  "ar": "الوجيز: منهج تعليم صفي للمسلم الجديد",
+  "en": "Al-Wajeez: A Classroom Curriculum for New Muslims"
+ },
+ "publisher": "Osoul Center (مركز أصول)",
+ "source_url": "https://islamicfiqh.net/wageez/",
+ "note": "Page numbers are the printed pages of the Arabic edition (PDF page index == printed page). Other editions are mapped by scripts/build_structure.py.",
+ "units": [
+  {
+   "id": "u1",
+   "title": {
+    "ar": "دين الإسلام",
+    "en": "The Religion of Islam",
+    "pt": "A Religião do Islam",
+    "fr": "La religion de l'Islam",
+    "es": "La religión del Islam",
+    "ru": "Религия Ислам",
+    "bn": "ইসলাম ধর্ম",
+    "vi": "Tôn giáo Islam",
+    "fa": "دین اسلام",
+    "ur": "دینِ اسلام",
+    "tl": "Ang Relihiyong Islam",
+    "id": "Agama Islam",
+    "tr": "İslam Dini",
+    "de": "Die Religion des Islam",
+    "zh": "伊斯兰教",
+    "ja": "イスラームという宗教",
+    "ko": "이슬람 종교",
+    "hi": "इस्लाम धर्म",
+    "th": "ศาสนาอิสลาม",
+    "sw": "Dini ya Uislamu",
+    "bs": "Vjera islam"
+   },
+   "lessons": [
+    {
+     "id": "u1l1",
+     "title": {
+      "ar": "الإسلام والأسئلة الكبرى",
+      "en": "Islam and the Big Questions",
+      "pt": "O Islam e as Grandes Questões",
+      "fr": "L'Islam et les grandes questions",
+      "es": "El Islam y las grandes preguntas",
+      "ru": "Ислам и главные вопросы",
+      "bn": "ইসলাম ও বড় প্রশ্নসমূহ",
+      "vi": "Islam và Những Câu Hỏi Lớn",
+      "fa": "اسلام و پرسش‌های بزرگ",
+      "ur": "اسلام اور بڑے سوالات",
+      "tl": "Ang Islam at ang mga Malalaking Katanungan",
+      "id": "Islam dan Pertanyaan-Pertanyaan Besar",
+      "tr": "İslam ve Büyük Sorular",
+      "de": "Der Islam und die großen Fragen",
+      "zh": "伊斯兰与人生重大问题",
+      "ja": "イスラームと大きな問い",
+      "ko": "이슬람과 중요한 질문들",
+      "hi": "इस्लाम और बड़े सवाल",
+      "th": "อิสลามและคำถามที่ยิ่งใหญ่",
+      "sw": "Uislamu na Maswali Makubwa",
+      "bs": "Islam i velika pitanja"
+     },
+     "pages_ar": [
+      16,
+      19
+     ]
     },
-    "then": "remaining lessons in book order, one per day",
-    "prerequisites": {"u3l6": ["u3l2", "u3l3"], "u3l3": ["u3l2"], "u3l4": ["u3l2"]}
+    {
+     "id": "u1l2",
+     "title": {
+      "ar": "دين الإسلام",
+      "en": "The Religion of Islam",
+      "pt": "A Religião do Islam",
+      "fr": "La religion de l'Islam",
+      "es": "La religión del Islam",
+      "ru": "Религия Ислам",
+      "bn": "ইসলাম ধর্ম",
+      "vi": "Tôn giáo Islam",
+      "fa": "دین اسلام",
+      "ur": "دینِ اسلام",
+      "tl": "Ang Relihiyong Islam",
+      "id": "Agama Islam",
+      "tr": "İslam Dini",
+      "de": "Die Religion des Islam",
+      "zh": "伊斯兰教",
+      "ja": "イスラームという宗教",
+      "ko": "이슬람 종교",
+      "hi": "इस्लाम धर्म",
+      "th": "ศาสนาอิสลาม",
+      "sw": "Dini ya Uislamu",
+      "bs": "Vjera islam"
+     },
+     "pages_ar": [
+      20,
+      25
+     ]
+    },
+    {
+     "id": "u1l3",
+     "title": {
+      "ar": "كيف أسلم؟ (معنى الشهادتين)",
+      "en": "How Do I Become Muslim? (The Two Testimonies)",
+      "pt": "Como Me Torno Muçulmano? (Os Dois Testemunhos)",
+      "fr": "Comment devenir musulman ? (Les deux attestations)",
+      "es": "¿Cómo me hago musulmán? (Los dos testimonios)",
+      "ru": "Как мне стать мусульманином? (Два свидетельства)",
+      "bn": "আমি কীভাবে মুসলিম হবো? (দুটি সাক্ষ্য)",
+      "vi": "Làm thế nào để trở thành người Muslim? (Hai Lời Chứng)",
+      "fa": "چگونه مسلمان شوم؟ (شهادتین)",
+      "ur": "میں مسلمان کیسے بنوں؟ (شہادتین)",
+      "tl": "Paano Ako Magiging Muslim? (Ang Dalawang Pagpapatotoo)",
+      "id": "Bagaimana Cara Saya Menjadi Muslim? (Dua Kalimat Syahadat)",
+      "tr": "Nasıl Müslüman Olurum? (Kelime-i Şehadet)",
+      "de": "Wie werde ich Muslim? (Die beiden Glaubensbekenntnisse)",
+      "zh": "我如何成为穆斯林？（两大作证言）",
+      "ja": "どうすればムスリムになれるのでしょうか？（二つの信仰告白）",
+      "ko": "어떻게 무슬림이 될 수 있나요? (두 가지 증언)",
+      "hi": "मैं मुसलमान कैसे बनूँ? (दो गवाहियाँ)",
+      "th": "ฉันจะมาเป็นมุสลิมได้อย่างไร? (คำปฏิญาณตนสองประการ)",
+      "sw": "Ninakuwaje Muislamu? (Shahada Mbili)",
+      "bs": "Kako da postanem musliman? (Dva svjedočenja)"
+     },
+     "pages_ar": [
+      26,
+      29
+     ]
+    },
+    {
+     "id": "u1l4",
+     "title": {
+      "ar": "الإيمان",
+      "en": "Faith (Iman)",
+      "pt": "A Fé (Iman)",
+      "fr": "La foi (Iman)",
+      "es": "La fe (Iman)",
+      "ru": "Вера (Иман)",
+      "bn": "বিশ্বাস (ঈমান)",
+      "vi": "Đức tin (Iman)",
+      "fa": "ایمان",
+      "ur": "ایمان",
+      "tl": "Pananampalataya (Iman)",
+      "id": "Keimanan (Iman)",
+      "tr": "İnanç (İman)",
+      "de": "Der Glaube (Iman)",
+      "zh": "信仰（伊玛尼）",
+      "ja": "信仰（イーマーン）",
+      "ko": "믿음 (이만)",
+      "hi": "ईमान (आस्था)",
+      "th": "ความศรัทธา (อีมาน)",
+      "sw": "Imani",
+      "bs": "Vjerovanje (Iman)"
+     },
+     "pages_ar": [
+      30,
+      35
+     ]
+    }
+   ]
+  },
+  {
+   "id": "u2",
+   "title": {
+    "ar": "القرآن الكريم",
+    "en": "The Noble Qur'an",
+    "pt": "O Nobre Alcorão",
+    "fr": "Le Noble Coran",
+    "es": "El Noble Corán",
+    "ru": "Благородный Коран",
+    "bn": "পবিত্র কুরআন",
+    "vi": "Kinh Qur'an Cao Quý",
+    "fa": "قرآن کریم",
+    "ur": "قرآنِ مجید",
+    "tl": "Ang Marangal na Qur'an",
+    "id": "Al-Qur'an yang Mulia",
+    "tr": "Kur'an-ı Kerim",
+    "de": "Der edle Qur'an",
+    "zh": "尊贵的《古兰经》",
+    "ja": "聖なるクルアーン",
+    "ko": "성스러운 꾸란",
+    "hi": "पवित्र क़ुरआन",
+    "th": "คัมภีร์อัลกุรอานอันทรงเกียรติ",
+    "sw": "Qur'ani Tukufu",
+    "bs": "Plemeniti Kur'an"
+   },
+   "lessons": [
+    {
+     "id": "u2l1",
+     "title": {
+      "ar": "القرآن الكريم",
+      "en": "The Noble Qur'an",
+      "pt": "O Nobre Alcorão",
+      "fr": "Le Noble Coran",
+      "es": "El Noble Corán",
+      "ru": "Благородный Коран",
+      "bn": "পবিত্র কুরআন",
+      "vi": "Kinh Qur'an Cao Quý",
+      "fa": "قرآن کریم",
+      "ur": "قرآنِ مجید",
+      "tl": "Ang Marangal na Qur'an",
+      "id": "Al-Qur'an yang Mulia",
+      "tr": "Kur'an-ı Kerim",
+      "de": "Der edle Qur'an",
+      "zh": "尊贵的《古兰经》",
+      "ja": "聖なるクルアーン",
+      "ko": "성스러운 꾸란",
+      "hi": "पवित्र क़ुरआन",
+      "th": "คัมภีร์อัลกุรอานอันทรงเกียรติ",
+      "sw": "Qur'ani Tukufu",
+      "bs": "Plemeniti Kur'an"
+     },
+     "pages_ar": [
+      38,
+      43
+     ]
+    },
+    {
+     "id": "u2l2",
+     "title": {
+      "ar": "تفسير قصار السور (ومنها الفاتحة)",
+      "en": "Short Surahs Explained (incl. Al-Fatiha)",
+      "pt": "Suratas Curtas Explicadas (incl. Al-Fatiha)",
+      "fr": "Explication des petites sourates (incluant Al-Fatiha)",
+      "es": "Explicación de suras cortas (incluyendo Al-Fatiha)",
+      "ru": "Объяснение коротких сур (включая Аль-Фатиху)",
+      "bn": "ছোট সূরাগুলোর ব্যাখ্যা (সূরা আল-ফাতিহাসহ)",
+      "vi": "Giải thích các Surah ngắn (bao gồm Al-Fatiha)",
+      "fa": "تفسیر سوره‌های کوتاه (شامل سوره فاتحه)",
+      "ur": "چھوٹی سورتوں کی تفسیر (بشمول سورۃ الفاتحہ)",
+      "tl": "Paliwanag sa mga Maiikling Surah (kasama ang Al-Fatiha)",
+      "id": "Penjelasan Surah-Surah Pendek (termasuk Al-Fatihah)",
+      "tr": "Kısa Surelerin Açıklaması (Fatiha Suresi dahil)",
+      "de": "Kurze Suren erklärt (inkl. Al-Fatiha)",
+      "zh": "短篇章节解析（含《开端章》）",
+      "ja": "短いスーラの解説（アル・ファーティハを含む）",
+      "ko": "짧은 수라 해설 (알 파티하 포함)",
+      "hi": "छोटी सूरतों की व्याख्या (अल-फ़ातिहा सहित)",
+      "th": "คำอธิบายซูเราะฮ์สั้นๆ (รวมถึงอัล-ฟาติฮะฮ์)",
+      "sw": "Ufafanuzi wa Sura Fupi (ikiwemo Al-Fatiha)",
+      "bs": "Objašnjenje kratkih sura (uključujući El-Fatihu)"
+     },
+     "pages_ar": [
+      44,
+      51
+     ]
+    }
+   ]
+  },
+  {
+   "id": "u3",
+   "title": {
+    "ar": "العبادات",
+    "en": "Acts of Worship",
+    "pt": "Atos de Adoração",
+    "fr": "Les actes d'adoration",
+    "es": "Los actos de adoración",
+    "ru": "Виды поклонения",
+    "bn": "ইবাদতসমূহ",
+    "vi": "Các hành động thờ phượng",
+    "fa": "عبادات",
+    "ur": "عبادات",
+    "tl": "Mga Gawaing Pagsamba",
+    "id": "Amal Ibadah",
+    "tr": "İbadetler",
+    "de": "Gottesdienste",
+    "zh": "功修",
+    "ja": "崇拝行為",
+    "ko": "예배 행위",
+    "hi": "इबादत के कार्य",
+    "th": "การปฏิบัติศาสนกิจ (อิบาดะฮ์)",
+    "sw": "Matendo ya Ibada",
+    "bs": "Ibadeti"
+   },
+   "lessons": [
+    {
+     "id": "u3l1",
+     "title": {
+      "ar": "العبادة",
+      "en": "Worship",
+      "pt": "A Adoração",
+      "fr": "L'adoration",
+      "es": "La adoración",
+      "ru": "Поклонение",
+      "bn": "ইবাদত",
+      "vi": "Thờ phượng",
+      "fa": "عبادت",
+      "ur": "عبادت",
+      "tl": "Pagsamba",
+      "id": "Ibadah",
+      "tr": "İbadet",
+      "de": "Gottesdienst",
+      "zh": "功修",
+      "ja": "崇拝行為",
+      "ko": "예배",
+      "hi": "इबादत",
+      "th": "การเคารพภักดี (อิบาดะฮ์)",
+      "sw": "Ibada",
+      "bs": "Ibadet"
+     },
+     "pages_ar": [
+      54,
+      57
+     ]
+    },
+    {
+     "id": "u3l2",
+     "title": {
+      "ar": "الطهارة",
+      "en": "Purification",
+      "pt": "A Purificação",
+      "fr": "La purification",
+      "es": "La purificación",
+      "ru": "Очищение",
+      "bn": "পবিত্রতা",
+      "vi": "Thanh tẩy",
+      "fa": "طهارت",
+      "ur": "طہارت",
+      "tl": "Pagdadalisay",
+      "id": "Bersuci",
+      "tr": "Temizlik (Taharet)",
+      "de": "Reinigung",
+      "zh": "洁净",
+      "ja": "清浄",
+      "ko": "정결",
+      "hi": "पाकी (पवित्रता)",
+      "th": "การทำความสะอาด (เฏาะฮาเราะฮ์)",
+      "sw": "Tahara (Usafi)",
+      "bs": "Čišćenje"
+     },
+     "pages_ar": [
+      58,
+      61
+     ],
+     "critical": true
+    },
+    {
+     "id": "u3l3",
+     "title": {
+      "ar": "الوضوء",
+      "en": "Ablution (Wudu)",
+      "pt": "A Ablução (Wudu)",
+      "fr": "Les ablutions (Wudu)",
+      "es": "La ablución (Wudu)",
+      "ru": "Омовение (Вуду)",
+      "bn": "ওজু",
+      "vi": "Tẩy rửa (Wudu)",
+      "fa": "وضو",
+      "ur": "وضو",
+      "tl": "Paghuhugas (Wudu)",
+      "id": "Wudu",
+      "tr": "Abdest",
+      "de": "Die Gebetswaschung (Wudu)",
+      "zh": "小净",
+      "ja": "小浄（ウドゥ）",
+      "ko": "세정 (우두)",
+      "hi": "वज़ू",
+      "th": "การอาบน้ำละหมาด (วูดู)",
+      "sw": "Udhu",
+      "bs": "Abdest"
+     },
+     "pages_ar": [
+      62,
+      67
+     ],
+     "critical": true
+    },
+    {
+     "id": "u3l4",
+     "title": {
+      "ar": "الغسل",
+      "en": "Ritual Bath (Ghusl)",
+      "pt": "O Banho Ritual (Ghusl)",
+      "fr": "Le bain rituel (Ghusl)",
+      "es": "El baño ritual (Ghusl)",
+      "ru": "Полное омовение (Гусль)",
+      "bn": "গোসল",
+      "vi": "Tắm toàn thân (Ghusl)",
+      "fa": "غسل",
+      "ur": "غسل",
+      "tl": "Ritwal na Paligo (Ghusl)",
+      "id": "Mandi Wajib (Ghusl)",
+      "tr": "Boy Abdesti (Gusül)",
+      "de": "Die rituelle Ganzwaschung (Ghusl)",
+      "zh": "大净",
+      "ja": "大浄（グスル）",
+      "ko": "전신 세정 (구슬)",
+      "hi": "ग़ुस्ल",
+      "th": "การอาบน้ำยกฮะดัษ (ฆุสลฺ)",
+      "sw": "Ghusl (Kuoga)",
+      "bs": "Gusul"
+     },
+     "pages_ar": [
+      68,
+      71
+     ],
+     "critical": true
+    },
+    {
+     "id": "u3l5",
+     "title": {
+      "ar": "أحكام تخص المرأة المسلمة",
+      "en": "Rulings Specific to Muslim Women",
+      "pt": "Regras Específicas para as Mulheres Muçulmanas",
+      "fr": "Les règles spécifiques à la femme musulmane",
+      "es": "Reglas específicas para la mujer musulmana",
+      "ru": "Особые положения для мусульманок",
+      "bn": "মুসলিম নারীদের জন্য বিশেষ বিধান",
+      "vi": "Các giáo luật dành riêng cho phụ nữ Muslim",
+      "fa": "احکام ویژه زنان مسلمان",
+      "ur": "مسلمان خواتین کے مخصوص احکام",
+      "tl": "Mga Tuntunin na Tiyak para sa mga Babaeng Muslim",
+      "id": "Hukum-Hukum Khusus bagi Muslimah",
+      "tr": "Müslüman Kadınlara Özel Hükümler",
+      "de": "Besondere Regeln für muslimische Frauen",
+      "zh": "穆斯林妇女的特殊规定",
+      "ja": "ムスリム女性特有の規定",
+      "ko": "무슬림 여성을 위한 특별 규정",
+      "hi": "मुस्लिम महिलाओं के लिए विशेष नियम",
+      "th": "บทบัญญัติเฉพาะสำหรับสตรีมุสลิม",
+      "sw": "Hukumu Maalum kwa Wanawake wa Kiislamu",
+      "bs": "Propisi specifični za muslimanke"
+     },
+     "pages_ar": [
+      72,
+      75
+     ]
+    },
+    {
+     "id": "u3l6",
+     "title": {
+      "ar": "الصلاة",
+      "en": "Prayer (Salah)",
+      "pt": "A Oração (Salah)",
+      "fr": "La prière (Salah)",
+      "es": "La oración (Salah)",
+      "ru": "Молитва (Намаз)",
+      "bn": "সালাত (নামাজ)",
+      "vi": "Cầu nguyện (Salah)",
+      "fa": "نماز",
+      "ur": "نماز (صلوٰۃ)",
+      "tl": "Pagdarasal (Salah)",
+      "id": "Salat",
+      "tr": "Namaz",
+      "de": "Das Gebet (Salah)",
+      "zh": "礼拜",
+      "ja": "礼拝（サラー）",
+      "ko": "예배 (살라)",
+      "hi": "सलाह (नमाज़)",
+      "th": "การละหมาด (ซะลาฮฺ)",
+      "sw": "Swala",
+      "bs": "Namaz"
+     },
+     "pages_ar": [
+      76,
+      83
+     ],
+     "critical": true
+    },
+    {
+     "id": "u3l7",
+     "title": {
+      "ar": "الزكاة",
+      "en": "Zakat",
+      "pt": "Zakat",
+      "fr": "La Zakat",
+      "es": "Zakat",
+      "ru": "Закят",
+      "bn": "জাকাত",
+      "vi": "Zakat",
+      "fa": "زکات",
+      "ur": "زکوٰۃ",
+      "tl": "Zakat",
+      "id": "Zakat",
+      "tr": "Zekat",
+      "de": "Zakat",
+      "zh": "天课",
+      "ja": "ザカート",
+      "ko": "자카트",
+      "hi": "ज़कात",
+      "th": "ซะกาต",
+      "sw": "Zaka",
+      "bs": "Zekat"
+     },
+     "pages_ar": [
+      84,
+      87
+     ]
+    },
+    {
+     "id": "u3l8",
+     "title": {
+      "ar": "الصوم",
+      "en": "Fasting",
+      "pt": "O Jejum",
+      "fr": "Le jeûne",
+      "es": "El ayuno",
+      "ru": "Пост",
+      "bn": "রোজা (সিয়াম)",
+      "vi": "Nhịn chay",
+      "fa": "روزه",
+      "ur": "روزہ",
+      "tl": "Pag-aayuno",
+      "id": "Puasa",
+      "tr": "Oruç",
+      "de": "Das Fasten",
+      "zh": "斋戒",
+      "ja": "断食",
+      "ko": "단식",
+      "hi": "रोज़ा",
+      "th": "การถือศีลอด",
+      "sw": "Funga (Saumu)",
+      "bs": "Post"
+     },
+     "pages_ar": [
+      88,
+      91
+     ]
+    },
+    {
+     "id": "u3l9",
+     "title": {
+      "ar": "الحج",
+      "en": "Hajj",
+      "pt": "Hajj",
+      "fr": "Le Hajj",
+      "es": "Hajj",
+      "ru": "Хадж",
+      "bn": "হজ",
+      "vi": "Hajj",
+      "fa": "حج",
+      "ur": "حج",
+      "tl": "Hajj",
+      "id": "Haji",
+      "tr": "Hac",
+      "de": "Hajj",
+      "zh": "朝觐",
+      "ja": "ハッジ",
+      "ko": "하즈",
+      "hi": "हज",
+      "th": "ฮัจญ์",
+      "sw": "Hija",
+      "bs": "Hadždž"
+     },
+     "pages_ar": [
+      92,
+      97
+     ]
+    }
+   ]
+  },
+  {
+   "id": "u4",
+   "title": {
+    "ar": "أحكام إسلامية",
+    "en": "Islamic Rulings",
+    "pt": "Regras Islâmicas",
+    "fr": "Les règles islamiques",
+    "es": "Las reglas islámicas",
+    "ru": "Исламские положения",
+    "bn": "ইসলামি বিধানসমূহ",
+    "vi": "Các giáo luật Islam",
+    "fa": "احکام اسلامی",
+    "ur": "اسلامی احکام",
+    "tl": "Mga Tuntuning Islamiko",
+    "id": "Hukum-Hukum Islam",
+    "tr": "İslami Hükümler",
+    "de": "Islamische Regeln",
+    "zh": "伊斯兰教法规定",
+    "ja": "イスラームの規定",
+    "ko": "이슬람 규정",
+    "hi": "इस्लामी नियम",
+    "th": "บทบัญญัติทางศาสนาอิสลาม",
+    "sw": "Hukumu za Kiislamu",
+    "bs": "Islamski propisi"
+   },
+   "lessons": [
+    {
+     "id": "u4l1",
+     "title": {
+      "ar": "اللباس",
+      "en": "Clothing",
+      "pt": "A Vestimenta",
+      "fr": "Les vêtements",
+      "es": "La vestimenta",
+      "ru": "Одежда",
+      "bn": "পোশাক-পরিচ্ছদ",
+      "vi": "Trang phục",
+      "fa": "پوشش و لباس",
+      "ur": "لباس",
+      "tl": "Pananamit",
+      "id": "Pakaian",
+      "tr": "Giyim",
+      "de": "Kleidung",
+      "zh": "着装",
+      "ja": "服装",
+      "ko": "옷차림",
+      "hi": "पहनावा (लिबास)",
+      "th": "การแต่งกาย",
+      "sw": "Mavazi",
+      "bs": "Odjeća"
+     },
+     "pages_ar": [
+      100,
+      103
+     ]
+    },
+    {
+     "id": "u4l2",
+     "title": {
+      "ar": "الطعام والشراب",
+      "en": "Food and Drink",
+      "pt": "Comida e Bebida",
+      "fr": "La nourriture et la boisson",
+      "es": "La comida y la bebida",
+      "ru": "Еда и напитки",
+      "bn": "খাবার ও পানীয়",
+      "vi": "Thức ăn và Đồ uống",
+      "fa": "خوردنی‌ها و نوشیدنی‌ها",
+      "ur": "کھانا اور پینا",
+      "tl": "Pagkain at Inumin",
+      "id": "Makanan dan Minuman",
+      "tr": "Yiyecek ve İçecek",
+      "de": "Essen und Trinken",
+      "zh": "饮食",
+      "ja": "食べ物と飲み物",
+      "ko": "음식과 음료",
+      "hi": "खान-पान",
+      "th": "อาหารและเครื่องดื่ม",
+      "sw": "Chakula na Vinywaji",
+      "bs": "Hrana i piće"
+     },
+     "pages_ar": [
+      104,
+      107
+     ]
+    },
+    {
+     "id": "u4l3",
+     "title": {
+      "ar": "المعاملات المالية",
+      "en": "Financial Dealings",
+      "pt": "Transações Financeiras",
+      "fr": "Les transactions financières",
+      "es": "Las transacciones financieras",
+      "ru": "Финансовые отношения",
+      "bn": "আর্থিক লেনদেন",
+      "vi": "Giao dịch tài chính",
+      "fa": "معاملات مالی",
+      "ur": "مالی معاملات",
+      "tl": "Mga Transaksyong Pinansyal",
+      "id": "Muamalah Keuangan",
+      "tr": "Mali İşlemler",
+      "de": "Finanzielle Angelegenheiten",
+      "zh": "财务交易",
+      "ja": "金銭の取引",
+      "ko": "금전 거래",
+      "hi": "आर्थिक लेन-देन",
+      "th": "การทำธุรกรรมทางการเงิน",
+      "sw": "Miamala ya Kifedha",
+      "bs": "Finansijsko poslovanje"
+     },
+     "pages_ar": [
+      108,
+      111
+     ]
+    },
+    {
+     "id": "u4l4",
+     "title": {
+      "ar": "الأخلاق",
+      "en": "Character and Manners",
+      "pt": "Caráter e Boas Maneiras",
+      "fr": "Le comportement et les bonnes manières",
+      "es": "El carácter y los modales",
+      "ru": "Нравственность и этикет",
+      "bn": "চরিত্র ও শিষ্টাচার",
+      "vi": "Nhân cách và Đạo đức",
+      "fa": "اخلاق و آداب",
+      "ur": "اخلاق اور آداب",
+      "tl": "Pag-uugali at Kagandahang-asal",
+      "id": "Akhlak dan Adab",
+      "tr": "Ahlak ve Edep",
+      "de": "Charakter und Benehmen",
+      "zh": "品格与礼仪",
+      "ja": "人格とマナー",
+      "ko": "인성과 예절",
+      "hi": "चरित्र और शिष्टाचार",
+      "th": "อุปนิสัยและมารยาท",
+      "sw": "Tabia na Adabu",
+      "bs": "Ahlak i ponašanje"
+     },
+     "pages_ar": [
+      112,
+      121
+     ]
+    }
+   ]
   }
+ ],
+ "path_rules": {
+  "first": "u1l3",
+  "choices": {
+   "wudu": [
+    "u3l2",
+    "u3l3"
+   ],
+   "prayer": [
+    "u3l2",
+    "u3l3",
+    "u3l6"
+   ],
+   "fatiha": [
+    "u2l2",
+    "u3l2",
+    "u3l3",
+    "u3l6"
+   ],
+   "unsure": [
+    "u3l2",
+    "u3l3",
+    "u3l6"
+   ]
+  },
+  "then": "remaining lessons in book order, one per day",
+  "prerequisites": {
+   "u3l6": [
+    "u3l2",
+    "u3l3"
+   ],
+   "u3l3": [
+    "u3l2"
+   ],
+   "u3l4": [
+    "u3l2"
+   ]
+  }
+ }
 }

@@ -1,7 +1,7 @@
 // Fixed texts (not generated). The emergency message is shown before anything else when a
 // message signals danger to the person's life; it carries the emergency number of the country
 // the user stated (never inferred from IP).
-type Key = "partial" | "fatwa_personal" | "crisis" | "practical_need" | "unsure" | "not_in_book" | "failed" | "social" | "emergency";
+type Key = "partial" | "fatwa_personal" | "crisis" | "practical_need" | "unsure" | "not_in_book" | "failed" | "social" | "thanks" | "off_topic" | "emergency";
 
 import translated from "../../content/messages.json" with { type: "json" };
 
@@ -15,6 +15,8 @@ const T: Record<string, Record<Key, string>> = {
     not_in_book: "I could not find the answer to this in the book Al-Wajeez, and I will not answer from outside it. A mentor from our team can help — would you like to talk to one?",
     failed: "I'm sorry, I could not prepare an answer I can fully trace to the book. A mentor from our team can help — would you like to talk to one?",
     social: "Wa alaykum as-salam and welcome. Ask me anything about your lesson, or continue to the next one when you are ready.",
+    thanks: "May Allah bless you. Ask me anything about your lesson, or continue to the next one when you are ready.",
+    off_topic: "I am a tutor for your first steps as a Muslim, and I answer only from the book Al-Wajeez. Ask me about your lesson, your prayer, your wudu or anything in your new faith.",
     emergency: "If you are thinking about hurting yourself or you are in danger, please call {NUMBER} (or your local emergency number) now, or go to the nearest emergency service. You are not alone, and your life is precious.",
   },
   ar: {
@@ -26,6 +28,8 @@ const T: Record<string, Record<Key, string>> = {
     not_in_book: "لم أجد جواب هذا السؤال في كتاب «الوجيز»، ولا أجيب من خارجه. يستطيع مرشد من فريقنا أن يساعدك، هل تريد التحدث إليه؟",
     failed: "عذراً، لم أستطع إعداد جواب أستطيع إسناده كله إلى الكتاب. يستطيع مرشد من فريقنا أن يساعدك، هل تريد التحدث إليه؟",
     social: "وعليكم السلام ومرحباً بك. اسألني عما تشاء في درسك، أو انتقل إلى الدرس التالي متى شئت.",
+    thanks: "بارك الله فيك. اسألني عما تشاء في درسك، أو انتقل إلى الدرس التالي متى شئت.",
+    off_topic: "أنا معلّم لخطواتك الأولى في الإسلام، وأجيب من كتاب «الوجيز» وحده. اسألني عن درسك أو صلاتك أو وضوئك أو أي شيء في دينك الجديد.",
     emergency: "إن كنت تفكر في إيذاء نفسك أو كنت في خطر، فاتصل الآن بالرقم {NUMBER} (أو برقم الطوارئ في بلدك)، أو توجّه إلى أقرب جهة طوارئ. لست وحدك، وحياتك غالية.",
   },
 };
@@ -57,10 +61,10 @@ export const STEPS_INTRO: Record<string, string> = {
 
 // Emergency numbers for countries users state most often (public numbers; 112 where it is the general number).
 export const EMERGENCY: Record<string, string> = {
-  US: "988 (or 911)", CA: "988 (or 911)", GB: "999 (Samaritans: 116 123)", IE: "112", IN: "112 (Tele-MANAS: 14416)",
-  PH: "911", SE: "112", DE: "112", FR: "112 (3114)", ES: "112 (024)", NL: "112", BE: "112", IT: "112", AU: "000 (Lifeline: 13 11 14)",
-  NZ: "111", KE: "999 (or 112)", NG: "112", ZA: "10111", GH: "112", TZ: "112", UG: "999", BR: "188 (or 192)", MX: "911",
-  ID: "112 (or 119)", MY: "999", SG: "995 (SOS: 1767)", TH: "1669 (1323)", VN: "115", JP: "119", KR: "109 (or 119)",
+  US: "988 / 911", CA: "988 / 911", GB: "999 / 116 123", IE: "112", IN: "112 / 14416",
+  PH: "911", SE: "112", DE: "112", FR: "112 / 3114", ES: "112 / 024", NL: "112", BE: "112", IT: "112", AU: "000 / 13 11 14",
+  NZ: "111", KE: "999 / 112", NG: "112", ZA: "10111", GH: "112", TZ: "112", UG: "999", BR: "188 / 192", MX: "911",
+  ID: "112 / 119", MY: "999", SG: "995 / 1767", TH: "1669 / 1323", VN: "115", JP: "119", KR: "109 / 119",
   CN: "120", RU: "112", BA: "112", PK: "1122", BD: "999", LK: "1990", NP: "112", SA: "911", AE: "999", EG: "123", BH: "999",
   KW: "112", QA: "999", JO: "911", MA: "15", DZ: "14", TN: "190", TR: "112",
 };
@@ -68,6 +72,22 @@ export const EMERGENCY: Record<string, string> = {
 export const EMERGENCY_FALLBACK = "112";
 export function emergencyNumber(country?: string | null): string {
   return (country && EMERGENCY[country.toUpperCase()]) || EMERGENCY_FALLBACK;
+}
+
+/** The lead-in above the book's verbatim steps, in the learner's language. */
+export function stepsIntro(lang: string, title: string): string {
+  const t = STEPS_INTRO[lang] ?? (translated as Record<string, Record<string, string>>)[lang]?.steps_intro ?? STEPS_INTRO.en;
+  return t.replace("{TITLE}", title);
+}
+
+/** A greeting gets "wa alaykum as-salam"; thanks and small talk get a blessing. */
+export function socialText(message: string, lang: string): string {
+  return referralText(/sala+m|سلام|selam|салам|салям|สลาม/i.test(message) ? "social" : "thanks", lang, false);
+}
+
+export function offTopicText(lang: string): string {
+  const t = (T[lang] ?? (translated as Record<string, Record<string, string>>)[lang] ?? T.en) as Record<string, string>;
+  return t.off_topic ?? T.en.off_topic;
 }
 
 export function referralText(key: Key | string, lang: string, emergency: boolean, country?: string | null): string {

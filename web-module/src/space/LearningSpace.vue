@@ -4,7 +4,7 @@
       v-show="open"
       ref="root"
       class="shd lsp"
-      :class="[`lsp--tab-${tab}`, { 'lsp--onb': phase !== 'learn', 'lsp--wide': wide }]"
+      :class="[`lsp--tab-${tab}`, { 'lsp--onb': phase !== 'learn' && phase !== 'done', 'lsp--solo': phase === 'forgotten', 'lsp--wide': wide }]"
       role="dialog"
       aria-modal="true"
       :aria-label="`${tr('spaceTitle')} · ${tr('spaceSub')}`"
@@ -22,7 +22,7 @@
         </div>
         <span class="lsp-mhead__count" :aria-label="tr('ringLabel', { done, total })">{{ done }}/{{ total }}</span>
       </header>
-      <p class="lsp-mtransparency"><SpaceIcon name="book" :size="13" />{{ tr('transparency') }}</p>
+      <p class="lsp-mtransparency" :title="tr('transparency')"><SpaceIcon name="book" :size="13" /><span>{{ tr('transparencyShort') }}</span></p>
 
       <aside class="lsp-col lsp-col--path">
         <PathSidebar
@@ -31,7 +31,7 @@
           :progress="progress"
           :current-id="phase === 'learn' ? lesson?.id || null : null"
           :account="accountName"
-          :disabled="phase !== 'learn'"
+          :disabled="phase !== 'learn' && phase !== 'done' && phase !== 'badlink'"
           @open="openLesson"
           @save="openSave"
           @handoff="openHandoff()"
@@ -64,14 +64,57 @@
             <button type="button" class="lsp-btn lsp-btn--primary" @click="retry?.()">{{ tr('retry') }}</button>
           </div>
 
-          <div v-else-if="phase === 'done'" class="lsp-card lsp-state lsp-finished">
-            <span class="lsp-finished__ic"><SpaceIcon name="sparkle" :size="34" /></span>
-            <h1>{{ tr('doneTitle') }}</h1>
-            <p class="lsp-muted">{{ tr('doneBody') }}</p>
-            <div class="lsp-row">
+          <!-- The whole path is done: what was learned, a person for what comes next, every lesson to review. -->
+          <div v-else-if="phase === 'done'" class="lsp-finished">
+            <section class="lsp-card lsp-state">
+              <span class="lsp-finished__ic"><SpaceIcon name="sparkle" :size="34" /></span>
+              <h1 tabindex="-1">{{ tr('doneTitle') }}</h1>
+              <p class="lsp-muted">{{ tr('finishedSummary', { total, units: finishedUnits.length || 4 }) }}</p>
+              <p class="lsp-muted">{{ tr('doneBody') }}</p>
+            </section>
+            <section class="lsp-card lsp-finished__mentor">
+              <span class="lsp-callout__ic"><SpaceIcon name="users" :size="22" /></span>
+              <div class="lsp-callout__body">
+                <strong>{{ tr('mentorTitle') }}</strong>
+                <span>{{ tr('finishedMentor') }}</span>
+              </div>
               <button type="button" class="lsp-btn lsp-btn--primary" @click="openHandoff()">{{ tr('talkHuman') }}</button>
-              <button type="button" class="lsp-btn lsp-btn--secondary" @click="tab = 'path'">{{ tr('openPath') }}</button>
+            </section>
+            <section v-if="finishedUnits.length" class="lsp-card lsp-sec" :aria-labelledby="`${uid}-units`">
+              <div class="lsp-sec__head">
+                <h2 :id="`${uid}-units`"><SpaceIcon name="path" />{{ tr('finishedUnits') }}</h2>
+                <p class="lsp-muted lsp-small">{{ tr('finishedReview') }}</p>
+              </div>
+              <div v-for="u in finishedUnits" :key="u.id" class="lsp-finished__unit">
+                <h3><span class="lsp-finished__n">{{ u.index }}</span><span dir="auto">{{ u.title }}</span></h3>
+                <ul>
+                  <li v-for="l in u.lessons" :key="l.id">
+                    <button type="button" class="lsp-finished__lesson" @click="openLesson(l.id)">
+                      <SpaceIcon :name="l.done ? 'check' : 'bookOpen'" :size="16" /><span dir="auto">{{ l.title }}</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </div>
+
+          <!-- After "Delete my data": nothing left to show, and two calm ways on. -->
+          <div v-else-if="phase === 'forgotten'" class="lsp-card lsp-state">
+            <span class="lsp-finished__ic"><SpaceIcon name="trash" :size="30" /></span>
+            <h1 tabindex="-1">{{ tr('forgottenTitle') }}</h1>
+            <p class="lsp-muted">{{ tr('forgottenBody') }}</p>
+            <div class="lsp-row">
+              <button type="button" class="lsp-btn lsp-btn--primary" @click="startAgain">{{ tr('startAgain') }}</button>
+              <button type="button" class="lsp-btn lsp-btn--ghost" @click="requestClose">{{ tr('backToChat') }}</button>
             </div>
+          </div>
+
+          <!-- A ?lesson= link that names no lesson: say so, and offer the way back onto the path. -->
+          <div v-else-if="phase === 'badlink'" class="lsp-card lsp-state">
+            <span class="lsp-finished__ic lsp-finished__ic--amber"><SpaceIcon name="flag" :size="30" /></span>
+            <h1 tabindex="-1">{{ tr('badLinkTitle') }}</h1>
+            <p class="lsp-muted">{{ tr('badLinkBody') }}</p>
+            <button type="button" class="lsp-btn lsp-btn--primary" @click="goToNext">{{ progress?.next ? tr('goNext') : tr('openPath') }}</button>
           </div>
 
           <template v-else-if="phase === 'learn'">
@@ -90,8 +133,14 @@
                 :lang="lang"
                 :completing="completing"
                 :is-next="lesson.id === progress?.next?.id"
+                :is-done="(progress?.completed || []).includes(lesson.id)"
+                :has-next="!!progress?.next"
+                :save-error="saveError"
+                :first-note="firstNote"
                 :save-hint="saveHint"
                 @next="completeLesson"
+                @mark-done="(a) => completeLesson(a, { stay: true })"
+                @go-next="goToNext"
                 @ask="askAboutLesson"
                 @handoff="openHandoff()"
                 @save="openSave"
@@ -113,6 +162,7 @@
           v-model:scope="askScope"
           :lang="lang"
           :thread="thread"
+          :signed-in="!!accountName"
           :lesson-title="lesson?.title || ''"
           :wide="wide"
           @ask="ask"
@@ -120,6 +170,7 @@
           @handoff="openHandoff"
           @open-lesson="openLesson"
           @reply="replyToMentor"
+          @save="openSave"
           @toggle-wide="wide = !wide"
         />
       </aside>
@@ -142,18 +193,20 @@
             <template v-if="sheet.type === 'source'">
               <div class="lsp-sheet__head">
                 <div>
-                  <span class="lsp-chip lsp-chip--violet">{{ tr('sourceNumber', { n: sheet.number }) }}</span>
+                  <span v-if="sheet.number" class="lsp-chip lsp-chip--violet">{{ tr('sourceNumber', { n: sheet.number }) }}</span>
                   <h2 :id="`${uid}-sheet`">{{ tr('sourceTitle') }}</h2>
                 </div>
                 <button type="button" class="lsp-icon-btn" :aria-label="tr('close')" @click="closeSheet"><SpaceIcon name="x" /></button>
               </div>
               <p v-if="sheet.source?.heading" class="lsp-sheet__heading" dir="auto">{{ sheet.source.heading }}</p>
-              <blockquote
+              <PassageText
                 v-if="sheet.source?.text"
+                tag="blockquote"
                 class="lsp-sheet__quote"
+                :text="sheet.source.text"
                 :lang="sheet.source.lang"
                 :dir="isRtl(sheet.source.lang) ? 'rtl' : 'ltr'"
-              >{{ plain(sheet.source.text) }}</blockquote>
+              />
               <p class="lsp-sheet__cite"><SpaceIcon name="book" :size="16" />{{ tr('sourceRef', { book: tr('bookName'), page: sheet.page }) }}</p>
             </template>
             <template v-else-if="sheet.type === 'save'">
@@ -196,8 +249,10 @@
     :lesson="lesson ? { id: lesson.id, title: lesson.title } : null"
     :country="confirmedCard?.country || null"
     :learner-lang="learnerLang"
+    :signed-in="!!accountName"
     @close="handoff.open = false"
     @sent="onHandoffSent"
+    @save="handoff.open = false; openSave()"
   />
 </template>
 
@@ -214,6 +269,7 @@ import Onboarding from './Onboarding.vue';
 import SpaceIcon from './SpaceIcon.vue';
 import HandoffDialog from '../HandoffDialog.vue';
 import SaveProgress from '../SaveProgress.vue';
+import PassageText from '../PassageText.vue';
 import { api } from '../api.js';
 import { apiLang, isRtl, useT } from '../i18n.js';
 import '../shahada.css';
@@ -245,7 +301,7 @@ const askPanel = ref(null);
 const sheetEl = ref(null);
 
 // Journey state
-const phase = ref('loading'); // loading | card | choice | learn | done | error
+const phase = ref('loading'); // loading | card | choice | learn | done | error | badlink | forgotten
 const retry = ref(null);
 const busy = ref(false);
 const card = ref(null);
@@ -258,6 +314,7 @@ const lesson = ref(null);
 const lessonNonce = ref(0);
 const lessonLoading = ref(false);
 const completing = ref('');
+const saveError = ref(false);
 const saveHintDismissed = ref(false);
 const celebrate = ref(null);
 
@@ -267,7 +324,6 @@ const wide = ref(false);
 const sheet = ref(null);
 const askScope = ref('book');
 const thread = ref([]);
-const unread = ref(0);
 const handoff = reactive({ open: false, reason: 'user_request', question: '' });
 let seq = 0;
 
@@ -278,7 +334,20 @@ const pct = computed(() => Math.round((100 * done.value) / (total.value || 1)));
 const accountName = computed(() => progress.value?.account?.email || progress.value?.account?.name || '');
 const saveHint = computed(() => !saveHintDismissed.value && !accountName.value && done.value >= 1 && done.value <= 3);
 
-const plain = (t) => (t || '').replace(/\*\*?|__/g, '').replace(/^>\s?/gm, '').replace(/\n{2,}/g, '\n').trim();
+// The Shahada lesson always comes first; a learner who picked something else is told why, and
+// whether their choice is the very next lesson or comes a little later (prayer follows purification).
+const CHOICE_LESSON = { wudu: 'u3l3', prayer: 'u3l6', fatiha: 'u2l2' };
+const firstNote = computed(() => {
+  const c = progress.value?.choice || choice.value;
+  if (!lesson.value || lesson.value.id !== 'u1l3' || !CHOICE_LESSON[c] || (progress.value?.completed || []).includes('u1l3')) return '';
+  const path = progress.value?.path || index.value?.path || [];
+  return tr(path[1] === CHOICE_LESSON[c] ? 'firstNoteNext' : 'firstNoteLater', { choice: tr(`choice_${c}`) });
+});
+// The finished screen lists the units and their lessons (titles as the service sends them, translated).
+const label = (x) => (x && typeof x === 'object' ? x[apiLang(props.lang)] || x.en || Object.values(x)[0] : x);
+const finishedUnits = computed(() =>
+  (index.value?.units || []).map((u) => ({ ...u, title: label(u.title), lessons: (u.lessons || []).map((l) => ({ ...l, title: label(l.title) })) })),
+);
 
 // What the chat's journey card shows.
 watch(
@@ -375,12 +444,19 @@ async function loadIndex() {
 async function loadLesson(id) {
   lessonLoading.value = true;
   tab.value = 'lesson';
+  saveError.value = false;
   try {
     const background = backgroundPassages.value ? confirmedCard.value?.previous_religion?.value ?? null : null;
     lesson.value = await api.lesson(id, learnerLang.value, background);
     lessonNonce.value++;
     if (phase.value !== 'learn') phase.value = 'learn';
-  } catch {
+  } catch (e) {
+    // No such lesson (an old or mistyped ?lesson= link): trying again would only fail again.
+    if (e?.status === 404) {
+      lesson.value = null;
+      phase.value = 'badlink';
+      return;
+    }
     retry.value = () => {
       phase.value = 'learn';
       loadLesson(id);
@@ -401,38 +477,62 @@ function openLesson(id) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, reduceMotion.value ? 0 : ms));
 
-async function completeLesson(checkAnswer) {
+// `stay`: an earlier lesson marked done while reviewing it; the learner stays on it.
+async function completeLesson(checkAnswer, { stay = false } = {}) {
   const L = lesson.value;
   if (!L || completing.value) return;
   const unitId = L.unit?.id;
   const unitBefore = index.value?.units?.find((u) => u.id === unitId);
   const wasComplete = unitBefore ? unitBefore.lessons.every((l) => l.done) : true;
   completing.value = 'saving';
+  saveError.value = false;
+  let res;
   try {
-    const [res] = await Promise.all([api.complete(L.id, learnerLang.value, checkAnswer), sleep(700)]);
+    [res] = await Promise.all([api.complete(L.id, learnerLang.value, checkAnswer), sleep(700)]);
+  } catch {
+    // Keep the learner on the lesson and say so beside the button, which is ready to try again.
+    completing.value = '';
+    saveError.value = true;
+    return;
+  }
+  try {
     progress.value = res;
     completing.value = 'done';
-    await Promise.all([loadIndex(), sleep(650)]);
+    await Promise.all([loadIndex(), sleep(stay ? 0 : 650)]);
     const unitAfter = index.value?.units?.find((u) => u.id === unitId);
     if (!wasComplete && unitAfter?.lessons?.every((l) => l.done)) {
-      celebrate.value = { index: unitAfter.index, title: unitAfter.title };
+      celebrate.value = { index: unitAfter.index, title: label(unitAfter.title) };
       setTimeout(() => (celebrate.value = null), reduceMotion.value ? 2500 : 3200);
     }
-    const next = progress.value?.next;
-    if (next?.id) await loadLesson(next.id);
-    else phase.value = 'done';
-  } catch {
-    // Keep the learner on the lesson; the button is ready to try again.
+    if (stay) return;
+    await goToNext();
   } finally {
     completing.value = '';
   }
 }
 
+/** On to the learner's next lesson on the path, or the finished screen when there is none. */
+async function goToNext() {
+  const next = progress.value?.next;
+  if (next?.id) return loadLesson(next.id);
+  phase.value = 'done';
+  tab.value = 'lesson';
+  await nextTick();
+  main.value?.scrollTo({ top: 0 });
+  root.value?.querySelector('.lsp-finished h1')?.focus({ preventScroll: true });
+}
+
 // ------------------------------------------------------------------ questions
 function ask(question, { lessonBound } = {}) {
   const useLesson = lessonBound ?? (askScope.value === 'lesson' && !!lesson.value);
+  // The last two exchanges go with the question, so "why?" or "and for women?" is understood.
+  const history = thread.value
+    .filter((t) => t.type === 'a' && t.answer)
+    .slice(-2)
+    .map((t) => `Learner: ${t.question}\nTutor: ${(t.answer.text || '').slice(0, 500)}`)
+    .join('\n');
   thread.value.push(reactive({ key: `t${++seq}`, type: 'q', question, lessonTitle: useLesson ? lesson.value?.title : '' }));
-  const item = reactive({ key: `t${++seq}`, type: 'a', question, lessonId: useLesson ? lesson.value?.id : null, answer: null, loading: true, error: false, stageIdx: 0, pages: [] });
+  const item = reactive({ key: `t${++seq}`, type: 'a', question, history, lessonId: useLesson ? lesson.value?.id : null, answer: null, loading: true, error: false, stageIdx: 0, pages: [] });
   thread.value.push(item);
   if (tab.value !== 'ask' && isPhone()) tab.value = 'ask';
   runAsk(item);
@@ -444,7 +544,7 @@ async function runAsk(item) {
   item.stageIdx = 0;
   item.pages = [];
   try {
-    item.answer = await api.askStream(item.question, learnerLang.value, item.lessonId, (st) => {
+    item.answer = await api.askStream(item.question, learnerLang.value, item.lessonId, item.history, (st) => {
       if (st.stage === 'routing') item.stageIdx = 0;
       else if (st.stage === 'found') {
         item.stageIdx = 1;
@@ -472,46 +572,128 @@ function openHandoff({ reason = 'user_request', question = '' } = {}) {
   handoff.open = true;
 }
 
-function onHandoffSent(res) {
-  thread.value.push({ key: `t${++seq}`, type: 'handoff', message: res.message });
-  startPolling();
+// The learner's conversations with the team: one per referral, rebuilt from the service with both
+// sides, so a reload (or another device signed in to the same account) shows the whole thread, and
+// one box per conversation to answer in. Polled by message id, which only grows, so two replies sent
+// in the same second are never missed. Replies already read are remembered in this browser.
+const SEEN_KEY = 'shd.mentorSeen';
+const cases = reactive({}); // handoff id -> { id, mentor, status, created_at, messages, draft, sending, failed }
+const caseList = computed(() => Object.values(cases).sort((a, b) => String(a.created_at).localeCompare(String(b.created_at))));
+const seenMentorId = ref(readSeen());
+const mentorIds = () => caseList.value.flatMap((c) => c.messages.filter((m) => m.author === 'mentor').map((m) => m.id));
+const unread = computed(() => mentorIds().filter((id) => id > seenMentorId.value).length);
+let lastMessageId = 0;
+let pollTimer = null;
+let polling = false;
+
+function readSeen() {
+  try {
+    return Number(localStorage.getItem(SEEN_KEY)) || 0;
+  } catch {
+    return 0;
+  }
 }
 
-let pollTimer = null;
-let lastMentorAt = null;
-const seenMentor = new Set();
+// What the chat's journey card shows about the team: unread replies, and whether the latest request
+// is still waiting ("sent") or has an answer ("replied").
+watch(
+  () => {
+    const last = caseList.value[caseList.value.length - 1];
+    return {
+      mentorUnread: unread.value,
+      mentorCases: caseList.value.length,
+      mentorState: last ? (last.messages.some((m) => m.author === 'mentor') ? 'replied' : 'sent') : null,
+      mentorWho: last?.mentor || null,
+    };
+  },
+  (s) => emit('summary', s),
+  { immediate: true },
+);
+
+function caseFor(h) {
+  if (!cases[h.id]) {
+    cases[h.id] = { id: h.id, mentor: h.mentor, status: h.status, created_at: h.created_at, messages: [], draft: '', sending: false, failed: false };
+    thread.value.push(reactive({ key: `case-${h.id}`, type: 'case', case: cases[h.id] }));
+  }
+  return cases[h.id];
+}
+
+function onHandoffSent(res) {
+  if (res?.id) caseFor({ id: res.id, mentor: res.mentor, status: 'new', created_at: new Date().toISOString().replace('T', ' ') });
+  pollMentor();
+}
+
 async function pollMentor() {
+  if (polling || (pollTimer && document.hidden)) return;
+  polling = true;
   try {
-    const res = await api.handoffMessages(lastMentorAt || undefined);
-    const list = Array.isArray(res) ? res : res?.messages || [];
-    for (const m of list) {
-      const id = m.id ?? `${m.handoff_id}:${m.created_at}`;
-      if (seenMentor.has(id)) continue;
-      seenMentor.add(id);
-      if (m.created_at && (!lastMentorAt || m.created_at > lastMentorAt)) lastMentorAt = m.created_at;
-      // The thread also holds the learner's own words (the referral question, their replies).
-      if (m.author && m.author !== 'mentor') continue;
-      thread.value.push(reactive({ key: `t${++seq}`, type: 'mentor', text: m.text, name: m.mentor_name || '', handoffId: m.handoff_id || null, replies: [], draft: '' }));
-      if (tab.value !== 'ask') unread.value++;
+    const res = await api.handoffMessages(lastMessageId);
+    for (const h of res?.handoffs || []) Object.assign(caseFor(h), { status: h.status, mentor: h.mentor, created_at: h.created_at });
+    for (const m of res?.messages || []) {
+      lastMessageId = Math.max(lastMessageId, m.id);
+      const c = cases[m.handoff_id];
+      if (c && !c.messages.some((x) => x.id === m.id)) c.messages.push(m);
     }
-    if (list.length) startPolling();
+    if (caseList.value.length) startPolling();
   } catch {
     // Best effort: a failed poll must not interrupt a lesson.
+  } finally {
+    polling = false;
   }
 }
 function startPolling() {
   if (!pollTimer) pollTimer = setInterval(pollMentor, 15000);
 }
-async function replyToMentor(item) {
-  const text = item.draft.trim();
-  if (!text) return;
-  item.draft = '';
+
+async function replyToMentor(c) {
+  const text = c.draft.trim();
+  if (!text || c.sending) return;
+  c.sending = true;
+  c.failed = false;
   try {
-    await api.handoffSend(item.handoffId, text);
-    item.replies.push(text);
+    const res = await api.handoffSend(c.id, text);
+    c.draft = '';
+    if (res?.id && !c.messages.some((m) => m.id === res.id)) c.messages.push({ id: res.id, handoff_id: c.id, author: 'learner', text, created_at: new Date().toISOString() });
+    if (c.status !== 'new') c.status = 'in_progress';
   } catch {
-    item.draft = text;
+    c.failed = true;
+  } finally {
+    c.sending = false;
   }
+}
+
+// A reply counts as read once the conversation is on screen (on a phone: the Ask tab).
+watch(
+  () => [props.open, tab.value, phase.value, unread.value],
+  () => {
+    if (!unread.value || !props.open || !(phase.value === 'learn' || phase.value === 'done')) return;
+    if (isPhone() && tab.value !== 'ask') return;
+    seenMentorId.value = Math.max(seenMentorId.value, ...mentorIds());
+    try {
+      localStorage.setItem(SEEN_KEY, String(seenMentorId.value));
+    } catch {
+      // Storage unavailable: the badge only lives for this visit.
+    }
+  },
+);
+
+/** Show the conversation with the newest reply (from the journey card's "read the reply"). */
+async function openMentor() {
+  const target = caseList.value.find((c) => c.messages.some((m) => m.author === 'mentor' && m.id > seenMentorId.value)) || caseList.value[caseList.value.length - 1];
+  const ready = () => phase.value === 'learn' || phase.value === 'done';
+  // A returning learner's space may still be loading their lesson; the conversation shows once it is in.
+  if (!ready()) {
+    await new Promise((resolve) => {
+      const stop = watch(phase, () => {
+        if (!ready()) return;
+        stop();
+        resolve();
+      });
+    });
+  }
+  tab.value = 'ask';
+  await nextTick();
+  if (target) root.value?.querySelector(`[data-case="${target.id}"]`)?.scrollIntoView({ block: 'start', behavior: reduceMotion.value ? 'auto' : 'smooth' });
 }
 
 function onForgotten() {
@@ -521,6 +703,20 @@ function onForgotten() {
   lesson.value = null;
   index.value = null;
   thread.value = [];
+  for (const k of Object.keys(cases)) delete cases[k];
+  lastMessageId = 0;
+  // A calm screen of its own instead of an empty lesson and a path that never loads.
+  choice.value = null;
+  card.value = null;
+  sheet.value = null;
+  phase.value = 'forgotten';
+  nextTick(() => root.value?.querySelector('.lsp-main h1')?.focus({ preventScroll: true }));
+}
+
+function startAgain() {
+  saveHintDismissed.value = false;
+  backgroundPassages.value = false;
+  start();
 }
 
 // ------------------------------------------------------------------ screen
@@ -529,7 +725,6 @@ const isPhone = () => window.matchMedia?.('(max-width: 899px)').matches;
 function selectTab(id) {
   if (id === 'mentor') return openHandoff();
   tab.value = id;
-  if (id === 'ask') unread.value = 0;
 }
 
 let sheetReturn = null;
@@ -604,5 +799,5 @@ onBeforeUnmount(() => {
   clearInterval(pollTimer);
 });
 
-defineExpose({ ask, openHandoff });
+defineExpose({ ask, openHandoff, openMentor });
 </script>

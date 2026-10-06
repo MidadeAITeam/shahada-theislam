@@ -45,12 +45,12 @@ export const api = {
   progress: () => request('GET', '/progress'),
   ask: (question, lang, lessonId) => request('POST', '/ask', { question, lang, lesson_id: lessonId ?? null }),
   // Same as ask, but reports live stages (understanding → found on pages → checking) through onStage.
-  askStream: async (question, lang, lessonId, onStage) => {
+  askStream: async (question, lang, lessonId, history, onStage) => {
     const res = await fetch(`${BASE}/ask/stream`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
-      body: JSON.stringify({ question, lang, lesson_id: lessonId ?? null }),
+      body: JSON.stringify({ question, lang, lesson_id: lessonId ?? null, history: history || undefined }),
     });
     if (!res.ok || !res.body) throw new ApiError(res.status, null);
     const reader = res.body.getReader();
@@ -74,7 +74,8 @@ export const api = {
     throw new ApiError(500, null);
   },
   handoff: (body) => request('POST', '/handoff', body),
-  handoffMessages: (since) => request('GET', `/handoff/messages${q({ since })}`),
+  // Every case of this learner with its messages (both sides) whose id is above `after` (0 = all).
+  handoffMessages: (after) => request('GET', `/handoff/messages${q({ after: after || 0 })}`),
   handoffSend: (id, text) => request('POST', `/handoff/${encodeURIComponent(id)}/messages`, { text }),
   authGoogle: (credential) => request('POST', '/auth/google', { credential }),
   authEmail: (email, lang) => request('POST', '/auth/email', { email, lang }),

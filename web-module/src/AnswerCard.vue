@@ -35,10 +35,19 @@
           <p v-if="!(answer.sentences || []).length">{{ answer.text }}</p>
         </div>
 
-        <figure v-for="(qt, i) in answer.quotes || []" :key="`q${i}`" class="shd-quote">
-          <blockquote style="margin: 0; white-space: pre-line">“{{ plain(qt.text) }}”</blockquote>
-          <cite>{{ tr('sourceRef', { book: tr('bookName'), page: qt.page }) }}</cite>
+        <!-- The book's own steps (wudu, ghusl, prayer): one numbered list, word for word. -->
+        <figure v-if="answer.steps" class="shd-quote shd-steps-quote">
+          <div class="shd-steps-list">
+            <p v-for="(qt, i) in answer.quotes || []" :key="`s${i}`">{{ plain(qt.text) }}</p>
+          </div>
+          <cite>{{ tr('sourceRef', { book: tr('bookName'), page: stepPages }) }}</cite>
         </figure>
+        <template v-else>
+          <figure v-for="(qt, i) in answer.quotes || []" :key="`q${i}`" class="shd-quote">
+            <blockquote style="margin: 0; white-space: pre-line">“{{ plain(qt.text) }}”</blockquote>
+            <cite>{{ tr('sourceRef', { book: tr('bookName'), page: qt.page }) }}</cite>
+          </figure>
+        </template>
 
         <VerseList :verses="answer.verses || []" :lang="lang" />
 
@@ -49,12 +58,26 @@
           </button>
         </p>
 
+        <!-- Fixed notes (code text): room for scholarly difference, or a part the book does not cover. -->
+        <div v-if="answer.difference_note || answer.partial_note" class="shd-note">
+          <p>{{ answer.difference_note || answer.partial_note }}</p>
+          <button type="button" class="shd-btn shd-btn--small" @click="$emit('handoff', { reason: answer.partial_note ? 'not_in_book' : 'user_request', question })">
+            {{ tr('talkHuman') }}
+          </button>
+        </div>
+
         <ReportMistake :target="`answer:${answerId}`" :lang="lang" />
       </template>
 
       <!-- Fixed texts (not generated): nothing to cite, so the way forward is a person. -->
       <template v-else>
         <p style="white-space: pre-line">{{ mainText }}</p>
+        <p v-if="answer.status === 'not_in_book' && answer.lesson" class="shd-from-lesson">
+          {{ tr('nearLesson', { title: answer.lesson.title }) }}
+          <button type="button" class="shd-btn shd-btn--small" @click="$emit('open-lesson', answer.lesson.id)">
+            {{ tr('open') }} <span aria-hidden="true">{{ arrow }}</span>
+          </button>
+        </p>
         <div v-if="answer.status !== 'social'" class="shd-actions">
           <button type="button" class="shd-btn shd-btn--primary" @click="$emit('handoff', { reason, question })">
             {{ tr('talkHuman') }}
@@ -95,7 +118,16 @@ const stageText = computed(() => {
   return tr('stageChecking');
 });
 // Quotes are the book's words; only Markdown emphasis marks are dropped for display.
-const plain = (t) => (t || '').replace(/\*\*?|__/g, '');
+const plain = (t) => (t || '')
+  .replace(/\*\*?|__/g, '')
+  .replace(/<\/?(u|b|i|em|strong|sup|sub)>/gi, '')
+  .replace(/^\s{0,3}#{1,6}\s+/gm, '')
+  .replace(/^\s*[-*]\s+\[[ xX]?\]\s*/gm, '')
+  .replace(/\{\{Q:[^}]*\}\}/g, '');
+const stepPages = computed(() => {
+  const ps = [...new Set((props.answer?.quotes || []).map((q) => q.page))].sort((a, b) => a - b);
+  return ps.length > 1 ? `${ps[0]}–${ps[ps.length - 1]}` : String(ps[0] ?? '');
+});
 const arrow = computed(() => (isRtl(props.lang) ? '←' : '→'));
 
 const sourceMap = computed(() => Object.fromEntries((props.answer?.sources || []).map((s) => [s.id, s])));
@@ -135,5 +167,9 @@ const answerId = computed(() => {
 </script>
 
 <style scoped>
+.shd-steps-list { display: grid; gap: 0.6rem; line-height: 1.75; }
+.shd-steps-list p { margin: 0; white-space: pre-line; }
+.shd-note { display: grid; gap: 0.5rem; justify-items: start; padding: 0.75rem 0.9rem; border-radius: 12px; background: var(--shd-soft, #f3f2ff); font-size: 14px; }
+.shd-note p { margin: 0; }
 .shd-from-lesson { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 14px; color: var(--shd-muted); }
 </style>

@@ -19,6 +19,7 @@ export interface DraftAnswer {
   quotes: string[]; // "<chunk id>#s<n>" — the code inserts the sentence text
   verses: string[]; // "S:A" — only allowed when a cited passage cites it
   lesson_id?: string | null;
+  unanswered_parts?: string[]; // parts of the question the passages do not answer
 }
 
 export interface CheckedSentence {
@@ -42,4 +43,5 @@ export type RouteLabel =
   | "practical_need"
   | "social"
   | "difference"
+  | "off_topic"
   | "unsure";

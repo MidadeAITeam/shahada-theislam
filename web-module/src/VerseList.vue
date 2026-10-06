@@ -7,7 +7,7 @@
       <p v-if="v.meaning" class="shd-verse__meaning" :lang="v.meaningLang || undefined" :dir="isRtl(v.meaningLang) ? 'rtl' : 'ltr'">
         <strong>{{ tr('verseMeaning') }}:</strong> {{ v.meaning }}
       </p>
-      <figcaption class="shd-verse__ref">{{ v.ref }}<template v-if="v.source"> · {{ v.source }}</template></figcaption>
+      <figcaption class="shd-verse__ref">{{ v.ref }}<template v-if="v.source"> · {{ tr('sourceLabel', { src: v.source }) }}</template></figcaption>
     </figure>
   </section>
 </template>

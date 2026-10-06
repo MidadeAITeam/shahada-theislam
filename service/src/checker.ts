@@ -16,6 +16,9 @@ import type { CheckResult, Chunk, DraftAnswer } from "./types.ts";
 
 export const MAX_DROP_RATIO = 1 / 3;
 
+// Sentences about the retrieval itself ("the provided text does not mention…") are not teaching.
+const META = /\b(provided|given|these|the) (text|passages?|excerpts?|sources?)\b|\bpassages?\b|texte fourni|passages fournis|texto proporcionado|pasajes|teks yang (tersedia|diberikan)|bagian teks|предоставленн|приведённ\S* текст|приведенн\S* текст|sağlanan metin|verilen metin|النص(وص)? المقدم|المقاطع|الفقرات المقدمة|bereitgestellte[nr]? text|texto fornecido|trechos fornecidos/i;
+
 function verseCovered(ref: string, cited: Chunk[]): boolean {
   const [s, a] = ref.split(":").map((x) => parseInt(x, 10));
   return cited.some((c) =>
@@ -39,6 +42,10 @@ export function check(draft: DraftAnswer, retrieved: Chunk[]): CheckResult {
     const ids = (s.sources ?? []).filter((id) => byId.has(id));
     if (ids.length === 0) {
       dropped.push({ text, reason: (s.sources ?? []).length ? "unknown_source_id" : "no_source_id" });
+      continue;
+    }
+    if (META.test(text)) {
+      dropped.push({ text, reason: "meta_sentence" });
       continue;
     }
     const cited = ids.map((id) => byId.get(id)!);

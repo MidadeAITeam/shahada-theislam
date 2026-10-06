@@ -59,7 +59,9 @@ export async function streamChat(body: { text: string; previous_response_id?: st
         if (d.type === "response.created") responseId = d.response.id;
         if (d.type === "response.output_text.delta") {
           text += d.delta;
-          send({ text: text.replace(/<suggested_questions>[\s\S]*/, "").replace("<shahada/>", "").trimEnd(), final: false });
+          // Visible text only, and never a half-written tag at the end ("<sugg…"): the client renders
+          // each update as an extension of the previous one, so what it receives must only grow.
+          send({ text: text.replace(/<suggested_questions>[\s\S]*/, "").replace("<shahada/>", "").replace(/<[^>\n]*$/, "").trimEnd(), final: false });
         }
       }
     }

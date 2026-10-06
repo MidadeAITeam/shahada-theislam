@@ -6,7 +6,7 @@ import path from "node:path";
 import { chunkById, edition, lessonChunks, sourceLang } from "./book.ts";
 import { config, ROOT } from "./config.ts";
 import { LESSONS, lessonById, nextLesson, plannedPath, progressOf, type Choice } from "./curriculum.ts";
-import { verses } from "./quran.ts";
+import { expandVerseMarkers, verses } from "./quran.ts";
 import type { Chunk } from "./types.ts";
 import structure from "../../content/structure.json" with { type: "json" };
 import backgrounds from "../../content/backgrounds.json" with { type: "json" };
@@ -51,7 +51,7 @@ const EXERCISE = /(assessment|exercise|discuss|diary|self-evaluation|my notes|أ
 export const isExercise = (c: Chunk) => EXERCISE.test(c.heading);
 
 function ref(c: Chunk) {
-  return { id: c.id, page: c.page, lang: c.lang, lesson_id: c.lesson_id, heading: c.heading, text: c.text };
+  return { id: c.id, page: c.page, lang: c.lang, lesson_id: c.lesson_id, heading: c.heading, text: expandVerseMarkers(c.text, c.lang) };
 }
 
 function pagePassage(lang: string, page: number): Chunk | undefined {
@@ -99,7 +99,7 @@ export function getLesson(lang: string, lessonId: string, opts: { choice: Choice
     review,
     translated_explanation: src.translated,
     summary: review && b ? b.summary : [],
-    steps: b?.steps ?? null, // verbatim book text, safe to show even before review
+    steps: b?.steps?.map((x) => ({ ...x, text: expandVerseMarkers(x.text, src.lang) })) ?? null, // verbatim book text, safe to show even before review
     book_text: review && b ? null : passages.map(ref), // unreviewed: the book itself, with pages
     background_note,
     check_question: review && b?.check_question ? b.check_question : null,

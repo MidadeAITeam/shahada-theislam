@@ -13,9 +13,10 @@
       <!-- Sign in -->
       <p v-if="signedInAs" class="shd-success" role="status">{{ tr('signedIn', { who: signedInAs }) }}</p>
       <template v-else>
-        <div v-if="googleClientId" ref="gsiButton" class="shd-gsi"></div>
+        <!-- The Google button's space is held while it loads, so nothing jumps; "Or …" only follows it. -->
+        <div v-if="googleClientId && !gsiFailed" ref="gsiButton" class="shd-gsi"></div>
         <form class="shd-save__email" @submit.prevent="sendLink">
-          <label :for="`${headId}-email`" class="shd-field__label">{{ tr('emailLabel') }}</label>
+          <label :for="`${headId}-email`" class="shd-field__label">{{ tr(googleClientId && !gsiFailed ? 'emailLabel' : 'emailLabelOnly') }}</label>
           <div class="shd-row">
             <input :id="`${headId}-email`" v-model="email" class="shd-input" type="email" autocomplete="email" :placeholder="tr('emailPlaceholder')" required />
             <button type="submit" class="shd-btn" :disabled="busy.email || !email.includes('@')">{{ tr('sendLink') }}</button>
@@ -31,16 +32,18 @@
         <h4 class="shd-eyebrow">{{ tr('reminderTitle') }}</h4>
         <div class="shd-row" style="flex-wrap: wrap; align-items: center">
           <label class="shd-check" style="align-items: center">
-            <input v-model="reminderOn" type="checkbox" />
+            <input v-model="reminderOn" type="checkbox" :disabled="!signedInAs" :aria-describedby="signedInAs ? undefined : `${headId}-remhint`" />
             <span>{{ tr('reminderEnabled') }}</span>
           </label>
           <label :for="`${headId}-hour`" class="shd-muted">{{ tr('reminderAt') }}</label>
           <select :id="`${headId}-hour`" v-model.number="hour" class="shd-select" :disabled="!reminderOn">
             <option v-for="h in 24" :key="h - 1" :value="h - 1">{{ hourLabel(h - 1) }}</option>
           </select>
-          <button type="submit" class="shd-btn shd-btn--small" :disabled="busy.reminder">{{ tr('reminderSave') }}</button>
+          <button type="submit" class="shd-btn shd-btn--small" :disabled="busy.reminder || !signedInAs">{{ tr('reminderSave') }}</button>
         </div>
-        <p class="shd-muted">{{ tz }}</p>
+        <!-- A reminder needs somewhere to go: it is sent to the account's email. -->
+        <p v-if="!signedInAs" :id="`${headId}-remhint`" class="shd-muted">{{ tr('reminderNeedsAccount') }}</p>
+        <p class="shd-muted" :title="tz">{{ tr('timeZone', { tz: tzName }) }}</p>
         <p v-if="reminderSaved" class="shd-success" role="status">{{ tr('reminderSaved') }}</p>
       </form>
 
@@ -65,6 +68,7 @@
 // account the learner's progress lives only behind the anonymous cookie in this browser.
 import { computed, nextTick, onMounted, reactive, ref } from 'vue';
 import { api } from './api.js';
+import { forgetReturning } from './returning.js';
 import { apiLang, useT } from './i18n.js';
 
 const props = defineProps({
@@ -88,7 +92,23 @@ const error = ref(false);
 
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
 const hour = ref(props.reminder?.hour ?? 20);
-const reminderOn = ref(true);
+// Off until the learner turns it on (or already has one saved).
+const reminderOn = ref(Boolean(props.reminder));
+const gsiFailed = ref(false);
+// "Asia/Amman" as people say it: the zone's long name in the learner's language, e.g.
+// "Eastern European Summer Time" / "توقيت شرق أوروبا الصيفي".
+const city = (tz.split('/').pop() || tz).replaceAll('_', ' ');
+const tzName = computed(() => {
+  try {
+    const part = new Intl.DateTimeFormat(props.lang, { timeZone: tz, timeZoneName: 'long' }).formatToParts(new Date()).find((p) => p.type === 'timeZoneName');
+    // Zones without a name of their own come back as an offset ("GMT+03:00", "غرينتش+03:00"): add the city.
+    if (part?.value && !/\d/.test(part.value)) return part.value;
+    if (part?.value) return `${city} (${part.value})`;
+  } catch {
+    // fall through to the city
+  }
+  return city;
+});
 const reminderSaved = ref(false);
 const confirmDelete = ref(false);
 const forgotten = ref(false);
@@ -129,6 +149,7 @@ const saveReminder = () =>
 const forget = () =>
   run('forget', async () => {
     await api.forget();
+    forgetReturning();
     forgotten.value = true;
     account.value = null;
     emit('forgotten');
@@ -176,10 +197,12 @@ onMounted(async () => {
     });
   } catch {
     // Without Google the email link still works; nothing to tell the learner.
+    gsiFailed.value = true;
   }
 });
 </script>
 
 <style scoped>
 .shd-save__email, .shd-save__reminder { display: flex; flex-direction: column; gap: 0.4rem; }
+.shd-gsi { min-height: 44px; }
 </style>

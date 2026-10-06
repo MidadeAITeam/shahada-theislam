@@ -8,7 +8,10 @@
   "not_in_book": "Je n'ai pas trouvé la réponse à cette question dans le livre Al-Wajeez, et je ne donnerai pas de réponse provenant d'une autre source. Un mentor de notre équipe peut vous aider — aimeriez-vous parler à l'un d'entre eux ?",
   "failed": "Je suis désolé, je n'ai pas réussi à formuler une réponse entièrement basée sur le livre. Un mentor de notre équipe peut vous aider — aimeriez-vous parler à l'un d'entre eux ?",
   "social": "Wa alaykum as-salam et bienvenue. Posez-moi toutes vos questions sur votre leçon, ou passez à la suivante quand vous serez prêt.",
-  "emergency": "Si vous pensez à vous faire du mal ou si vous êtes en danger, veuillez appeler le {NUMBER} (ou votre numéro d'urgence local) immédiatement, ou rendez-vous aux urgences les plus proches. Vous n'êtes pas seul, et votre vie est précieuse."
+  "emergency": "Si vous pensez à vous faire du mal ou si vous êtes en danger, veuillez appeler le {NUMBER} (ou votre numéro d'urgence local) immédiatement, ou rendez-vous aux urgences les plus proches. Vous n'êtes pas seul, et votre vie est précieuse.",
+  "steps_intro": "Voici les étapes exactement comme le livre Al-Wajeez les donne, tirées de la leçon \"{TITLE}\" :",
+  "thanks": "Qu'Allah vous bénisse. Posez-moi toutes vos questions sur votre leçon, ou passez à la suivante quand vous serez prêt.",
+  "off_topic": "Je suis là pour t'accompagner dans tes premiers pas de musulman, et je réponds uniquement à partir du livre Al-Wajeez. Pose-moi tes questions sur ta leçon, ta prière, tes ablutions ou tout ce qui touche à ta nouvelle foi."
  },
  "es": {
   "fatwa_personal": "Esta es una pregunta sobre tu situación personal, y merece a una persona real que pueda entender todos sus detalles. ¿Te gustaría hablar con un mentor? Puedes elegir a un hermano o a una hermana.",
@@ -19,7 +22,10 @@
   "not_in_book": "No pude encontrar la respuesta a esto en el libro Al-Wajeez, y no responderé con información fuera de él. Un mentor de nuestro equipo puede ayudarte. ¿Te gustaría hablar con uno?",
   "failed": "Lo siento, no pude preparar una respuesta que pueda basar completamente en el libro. Un mentor de nuestro equipo puede ayudarte. ¿Te gustaría hablar con uno?",
   "social": "Wa alaykum as-salam y bienvenido. Pregúntame cualquier cosa sobre tu lección, o continúa con la siguiente cuando estés listo.",
-  "emergency": "Si estás pensando en hacerte daño o estás en peligro, por favor llama al {NUMBER} (o a tu número de emergencias local) ahora, o ve al servicio de emergencias más cercano. No estás solo, y tu vida es muy valiosa."
+  "emergency": "Si estás pensando en hacerte daño o estás en peligro, por favor llama al {NUMBER} (o a tu número de emergencias local) ahora, o ve al servicio de emergencias más cercano. No estás solo, y tu vida es muy valiosa.",
+  "steps_intro": "Aquí tienes los pasos exactamente como los presenta el libro Al-Wajeez, de la lección \"{TITLE}\":",
+  "thanks": "Que Allah te bendiga. Pregúntame cualquier cosa sobre tu lección, o continúa con la siguiente cuando estés listo.",
+  "off_topic": "Soy tu tutor en tus primeros pasos como musulmán, y respondo únicamente desde el libro Al-Wajeez. Pregúntame sobre tu lección, tu oración, tu ablución o cualquier cosa sobre tu nueva fe."
  },
  "de": {
   "fatwa_personal": "Dies ist eine Frage zu deiner persönlichen Situation, und sie verdient einen echten Menschen, der alle Details verstehen kann. Möchtest du mit einem Mentor sprechen? Du kannst einen Bruder oder eine Schwester wählen.",
@@ -30,7 +36,10 @@
   "not_in_book": "Ich konnte die Antwort darauf im Buch Al-Wajeez nicht finden, und ich werde keine Antworten aus anderen Quellen geben. Ein Mentor aus unserem Team kann dir helfen – möchtest du mit einem sprechen?",
   "failed": "Es tut mir leid, ich konnte keine Antwort formulieren, die sich vollständig auf das Buch stützt. Ein Mentor aus unserem Team kann dir helfen – möchtest du mit einem sprechen?",
   "social": "Wa alaykum as-salam und herzlich willkommen. Frag mich alles zu deiner Lektion, oder mache mit der nächsten weiter, wenn du bereit bist.",
-  "emergency": "Wenn du daran denkst, dir etwas anzutun, oder in Gefahr bist, rufe bitte jetzt die {NUMBER} (oder deine örtliche Notrufnummer) an oder gehe zur nächsten Notaufnahme. Du bist nicht allein, und dein Leben ist kostbar."
+  "emergency": "Wenn du daran denkst, dir etwas anzutun, oder in Gefahr bist, rufe bitte jetzt die {NUMBER} (oder deine örtliche Notrufnummer) an oder gehe zur nächsten Notaufnahme. Du bist nicht allein, und dein Leben ist kostbar.",
+  "steps_intro": "Hier sind die Schritte genau so, wie sie im Buch Al-Wajeez stehen, aus der Lektion \"{TITLE}\":",
+  "thanks": "Möge Allah dich segnen. Frag mich alles zu deiner Lektion oder fahre mit der nächsten fort, wenn du bereit bist.",
+  "off_topic": "Ich bin dein Lehrer für deine ersten Schritte als Muslim und antworte dir ausschließlich aus dem Buch Al-Wajeez. Frag mich gerne nach deiner Lektion, deinem Gebet, deiner Gebetswaschung oder allem anderen rund um deinen neuen Glauben."
  },
  "id": {
   "fatwa_personal": "Ini adalah pertanyaan tentang situasi pribadimu, dan sebaiknya dibicarakan dengan seseorang yang bisa memahami semua detailnya. Apakah kamu ingin berbicara dengan seorang mentor? Kamu bisa memilih mentor laki-laki atau perempuan.",
@@ -41,7 +50,10 @@
   "not_in_book": "Aku tidak bisa menemukan jawaban untuk pertanyaan ini di dalam kitab Al-Wajeez, dan aku tidak akan menjawab dari luar kitab tersebut. Seorang mentor dari tim kami bisa membantu — apakah kamu ingin berbicara dengan seorang mentor?",
   "failed": "Maaf, aku tidak bisa menyiapkan jawaban yang sepenuhnya bersumber dari kitab tersebut. Seorang mentor dari tim kami bisa membantu — apakah kamu ingin berbicara dengan seorang mentor?",
   "social": "Wa'alaikumussalam dan selamat datang. Tanyakan apa saja kepadaku tentang pelajaranmu, atau lanjutkan ke pelajaran berikutnya kapan pun kamu siap.",
-  "emergency": "Jika kamu berpikir untuk menyakiti diri sendiri atau sedang dalam bahaya, tolong hubungi {NUMBER} (atau nomor darurat lokalmu) sekarang, atau pergi ke layanan darurat terdekat. Kamu tidak sendirian, dan nyawamu sangat berharga."
+  "emergency": "Jika kamu berpikir untuk menyakiti diri sendiri atau sedang dalam bahaya, tolong hubungi {NUMBER} (atau nomor darurat lokalmu) sekarang, atau pergi ke layanan darurat terdekat. Kamu tidak sendirian, dan nyawamu sangat berharga.",
+  "steps_intro": "Berikut adalah langkah-langkah persis seperti yang diberikan dalam buku Al-Wajeez, dari pelajaran \"{TITLE}\":",
+  "thanks": "Semoga Allah memberkahimu. Tanyakan apa saja tentang pelajaranmu, atau lanjutkan ke pelajaran berikutnya jika kamu sudah siap.",
+  "off_topic": "Saya adalah pembimbing untuk langkah pertama Anda sebagai seorang Muslim, dan saya hanya menjawab dari buku Al-Wajeez. Silakan tanyakan kepada saya tentang pelajaran Anda, salat Anda, wudu Anda, atau apa pun tentang keyakinan baru Anda."
  },
  "pt": {
   "fatwa_personal": "Esta é uma pergunta sobre a sua situação pessoal e merece a atenção de alguém que possa entender todos os detalhes. Gostaria de conversar com um mentor? Você pode escolher um irmão ou uma irmã.",
@@ -52,7 +64,10 @@
   "not_in_book": "Não consegui encontrar a resposta para isso no livro Al-Wajeez, e não responderei usando outras fontes. Um mentor da nossa equipe pode te ajudar — gostaria de conversar com um?",
   "failed": "Sinto muito, não consegui preparar uma resposta baseada totalmente no livro. Um mentor da nossa equipe pode te ajudar — gostaria de conversar com um?",
   "social": "Wa alaykum as-salam e boas-vindas. Pergunte-me qualquer coisa sobre a sua lição, ou avance para a próxima quando estiver pronto.",
-  "emergency": "Se você está pensando em se machucar ou se está em perigo, por favor, ligue para {NUMBER} (ou para o número de emergência local) agora mesmo, ou vá ao serviço de emergência mais próximo. Você não está sozinho, e a sua vida é preciosa."
+  "emergency": "Se você está pensando em se machucar ou se está em perigo, por favor, ligue para {NUMBER} (ou para o número de emergência local) agora mesmo, ou vá ao serviço de emergência mais próximo. Você não está sozinho, e a sua vida é preciosa.",
+  "steps_intro": "Aqui estão os passos exatamente como o livro Al-Wajeez os apresenta, da lição \"{TITLE}\":",
+  "thanks": "Que Allah o abençoe. Pergunte-me qualquer coisa sobre a sua lição, ou continue para a próxima quando estiver pronto.",
+  "off_topic": "Sou o seu tutor nos seus primeiros passos como muçulmano, e respondo apenas com base no livro Al-Wajeez. Pode me perguntar sobre a sua lição, a sua oração, a sua ablução ou qualquer outra coisa sobre a sua nova fé."
  },
  "ru": {
   "fatwa_personal": "Это вопрос о вашей личной ситуации, и он заслуживает внимания живого человека, который сможет понять все детали. Хотите поговорить с наставником? Вы можете выбрать брата или сестру.",
@@ -63,7 +78,10 @@
   "not_in_book": "Я не смог найти ответ на этот вопрос в книге «Аль-Ваджиз», а отвечать из других источников я не буду. Наставник из нашей команды может помочь — хотите поговорить с ним?",
   "failed": "Извините, я не смог подготовить ответ, который полностью опирается на книгу. Наставник из нашей команды может помочь — хотите поговорить с ним?",
   "social": "Ва алейкум ассалям, добро пожаловать. Спрашивайте меня о чем угодно по вашему уроку или переходите к следующему, когда будете готовы.",
-  "emergency": "Если вы думаете о том, чтобы причинить себе вред, или находитесь в опасности, пожалуйста, позвоните по номеру {NUMBER} (или в местную службу экстренной помощи) прямо сейчас, либо обратитесь в ближайшее отделение скорой помощи. Вы не одни, и ваша жизнь очень ценна."
+  "emergency": "Если вы думаете о том, чтобы причинить себе вред, или находитесь в опасности, пожалуйста, позвоните по номеру {NUMBER} (или в местную службу экстренной помощи) прямо сейчас, либо обратитесь в ближайшее отделение скорой помощи. Вы не одни, и ваша жизнь очень ценна.",
+  "steps_intro": "Вот шаги точно так, как они описаны в книге «Аль-Ваджиз», из урока «{TITLE}»:",
+  "thanks": "Да благословит вас Аллах. Спрашивайте меня о чем угодно по вашему уроку или переходите к следующему, когда будете готовы.",
+  "off_topic": "Я твой наставник на твоих первых шагах в исламе, и я отвечаю только по книге «Аль-Ваджиз». Спрашивай меня о своих уроках, молитве, омовении или о чем угодно в твоей новой вере."
  },
  "bs": {
   "fatwa_personal": "Ovo je pitanje o tvojoj ličnoj situaciji i zaslužuje stvarnu osobu koja može razumjeti sve njene detalje. Da li želiš razgovarati sa mentorom? Možeš odabrati brata ili sestru.",
@@ -74,7 +92,10 @@
   "not_in_book": "Nisam mogao pronaći odgovor na ovo u knjizi Al-Wajeez, a neću davati odgovore izvan nje. Mentor iz našeg tima ti može pomoći — da li želiš razgovarati sa mentorom?",
   "failed": "Žao mi je, nisam mogao pripremiti odgovor koji u potpunosti mogu pronaći u knjizi. Mentor iz našeg tima ti može pomoći — da li želiš razgovarati sa mentorom?",
   "social": "Ve alejkumus-selam i dobrodošli. Pitaj me bilo šta o svojoj lekciji, ili pređi na sljedeću kada budeš spreman/na.",
-  "emergency": "Ako razmišljaš o tome da povrijediš sebe ili si u opasnosti, molim te odmah nazovi {NUMBER} (ili svoj lokalni broj za hitne slučajeve), ili idi u najbližu hitnu pomoć. Nisi sam/a, i tvoj život je dragocjen."
+  "emergency": "Ako razmišljaš o tome da povrijediš sebe ili si u opasnosti, molim te odmah nazovi {NUMBER} (ili svoj lokalni broj za hitne slučajeve), ili idi u najbližu hitnu pomoć. Nisi sam/a, i tvoj život je dragocjen.",
+  "steps_intro": "Evo koraka tačno onako kako ih navodi knjiga Al-Wajeez, iz lekcije \"{TITLE}\":",
+  "thanks": "Neka te Allah blagoslovi. Pitaj me bilo šta o svojoj lekciji ili pređi na sljedeću kada budeš spreman.",
+  "off_topic": "Ja sam tvoj učitelj za tvoje prve korake kao muslimana, i odgovaram samo iz knjige Al-Wajeez. Pitaj me o svojoj lekciji, namazu, abdestu ili bilo čemu u tvojoj novoj vjeri."
  },
  "vi": {
   "fatwa_personal": "Đây là câu hỏi về hoàn cảnh cá nhân của bạn, và bạn cần một người thật sự có thể lắng nghe và hiểu rõ mọi chi tiết. Bạn có muốn trò chuyện với một người hướng dẫn không? Bạn có thể chọn một người anh em hoặc một người chị em.",
@@ -85,7 +106,10 @@
   "not_in_book": "Mình không thể tìm thấy câu trả lời cho điều này trong sách Al-Wajeez, và mình sẽ không trả lời ngoài nội dung sách. Một người hướng dẫn từ đội ngũ của chúng mình có thể giúp bạn — bạn có muốn trò chuyện với họ không?",
   "failed": "Mình xin lỗi, mình không thể chuẩn bị một câu trả lời hoàn toàn dựa trên sách. Một người hướng dẫn từ đội ngũ của chúng mình có thể giúp bạn — bạn có muốn trò chuyện với họ không?",
   "social": "Wa alaykum as-salam và chào mừng bạn. Hãy hỏi mình bất cứ điều gì về bài học của bạn, hoặc tiếp tục bài tiếp theo khi bạn đã sẵn sàng.",
-  "emergency": "Nếu bạn đang có ý định làm hại bản thân hoặc đang gặp nguy hiểm, xin hãy gọi {NUMBER} (hoặc số khẩn cấp tại địa phương của bạn) ngay bây giờ, hoặc đến cơ sở y tế khẩn cấp gần nhất. Bạn không hề đơn độc, và mạng sống của bạn rất quý giá."
+  "emergency": "Nếu bạn đang có ý định làm hại bản thân hoặc đang gặp nguy hiểm, xin hãy gọi {NUMBER} (hoặc số khẩn cấp tại địa phương của bạn) ngay bây giờ, hoặc đến cơ sở y tế khẩn cấp gần nhất. Bạn không hề đơn độc, và mạng sống của bạn rất quý giá.",
+  "steps_intro": "Đây là các bước chính xác theo cuốn sách Al-Wajeez, trích từ bài học \"{TITLE}\":",
+  "thanks": "Cầu xin Allah ban phước lành cho bạn. Hãy hỏi tôi bất cứ điều gì về bài học, hoặc tiếp tục sang bài tiếp theo khi bạn đã sẵn sàng nhé.",
+  "off_topic": "Tôi là người hướng dẫn cho những bước đi đầu tiên của bạn khi trở thành một người Muslim, và tôi chỉ trả lời dựa trên cuốn sách Al-Wajeez. Hãy hỏi tôi về bài học của bạn, về việc cầu nguyện, cách lấy nước wudu, hay bất cứ điều gì trong đức tin mới của bạn nhé."
  },
  "th": {
   "fatwa_personal": "นี่เป็นคำถามเกี่ยวกับสถานการณ์ส่วนตัวของคุณ ซึ่งควรได้รับคำแนะนำจากคนจริงๆ ที่เข้าใจรายละเอียดทั้งหมด คุณอยากคุยกับพี่เลี้ยงไหม? คุณสามารถเลือกพี่เลี้ยงผู้ชายหรือผู้หญิงได้นะ",
@@ -96,7 +120,10 @@
   "not_in_book": "ฉันไม่พบคำตอบสำหรับเรื่องนี้ในหนังสืออัล-วะญีซ และฉันจะไม่ตอบข้อมูลที่อยู่นอกเหนือจากหนังสือเล่มนี้ พี่เลี้ยงจากทีมของเราสามารถช่วยได้ — คุณอยากคุยกับพี่เลี้ยงไหม?",
   "failed": "ขออภัยด้วยนะ ฉันไม่สามารถเตรียมคำตอบที่อ้างอิงจากหนังสือได้อย่างครบถ้วน พี่เลี้ยงจากทีมของเราสามารถช่วยได้ — คุณอยากคุยกับพี่เลี้ยงไหม?",
   "social": "วะอะลัยกุมุสสลาม ยินดีต้อนรับนะ ถามฉันได้ทุกเรื่องเกี่ยวกับบทเรียนของคุณ หรือจะเรียนบทต่อไปเมื่อคุณพร้อมก็ได้เลย",
-  "emergency": "หากคุณกำลังคิดที่จะทำร้ายตัวเองหรือกำลังตกอยู่ในอันตราย โปรดโทร {NUMBER} (หรือเบอร์ฉุกเฉินในพื้นที่ของคุณ) ตอนนี้เลย หรือไปที่หน่วยบริการฉุกเฉินที่ใกล้ที่สุด คุณไม่ได้อยู่คนเดียวนะ และชีวิตของคุณมีค่ามาก"
+  "emergency": "หากคุณกำลังคิดที่จะทำร้ายตัวเองหรือกำลังตกอยู่ในอันตราย โปรดโทร {NUMBER} (หรือเบอร์ฉุกเฉินในพื้นที่ของคุณ) ตอนนี้เลย หรือไปที่หน่วยบริการฉุกเฉินที่ใกล้ที่สุด คุณไม่ได้อยู่คนเดียวนะ และชีวิตของคุณมีค่ามาก",
+  "steps_intro": "นี่คือขั้นตอนต่างๆ ตามที่หนังสืออัล-วะญีซได้ระบุไว้ จากบทเรียนเรื่อง \"{TITLE}\":",
+  "thanks": "ขออัลลอฮ์ทรงประทานความจำเริญแก่คุณ คุณสามารถสอบถามเกี่ยวกับบทเรียนได้ทุกเรื่อง หรือจะเรียนบทต่อไปเมื่อคุณพร้อมก็ได้เลย",
+  "off_topic": "ฉันคือครูผู้ช่วยสำหรับก้าวแรกของคุณในฐานะมุสลิม และฉันจะตอบคำถามจากหนังสือ 'อัล-วะญีซ' เท่านั้น ถามฉันเกี่ยวกับบทเรียน การละหมาด การอาบน้ำละหมาด หรือเรื่องใดๆ ในความศรัทธาใหม่ของคุณได้เลยนะ"
  },
  "tl": {
   "fatwa_personal": "Ito ay isang tanong tungkol sa iyong sariling sitwasyon, at nararapat itong sagutin ng isang totoong tao na makakaunawa sa lahat ng detalye nito. Gusto mo bang makausap ang isang mentor? Maaari kang pumili ng brother o sister.",
@@ -107,7 +134,10 @@
   "not_in_book": "Hindi ko mahanap ang sagot dito sa aklat na Al-Wajeez, at hindi ako sasagot mula sa labas nito. Makakatulong ang isang mentor mula sa aming team — gusto mo bang makausap ang isa sa kanila?",
   "failed": "Pasensya na, hindi ako nakapaghanda ng sagot na ganap kong matutukoy mula sa aklat. Makakatulong ang isang mentor mula sa aming team — gusto mo bang makausap ang isa sa kanila?",
   "social": "Wa alaykum as-salam at welcome. Magtanong ka sa akin ng kahit ano tungkol sa iyong aralin, o magpatuloy sa susunod kapag handa ka na.",
-  "emergency": "Kung naiisip mong saktan ang iyong sarili o nasa panganib ka, mangyaring tumawag sa {NUMBER} (o sa iyong lokal na emergency number) ngayon, o pumunta sa pinakamalapit na emergency service. Hindi ka nag-iisa, at mahalaga ang iyong buhay."
+  "emergency": "Kung naiisip mong saktan ang iyong sarili o nasa panganib ka, mangyaring tumawag sa {NUMBER} (o sa iyong lokal na emergency number) ngayon, o pumunta sa pinakamalapit na emergency service. Hindi ka nag-iisa, at mahalaga ang iyong buhay.",
+  "steps_intro": "Narito ang mga hakbang na eksaktong ibinigay ng aklat na Al-Wajeez, mula sa araling \"{TITLE}\":",
+  "thanks": "Pagpalain ka nawa ni Allah. Maaari kang magtanong sa akin ng kahit ano tungkol sa iyong aralin, o magpatuloy sa susunod kapag handa ka na.",
+  "off_topic": "Ako ang iyong tagapagturo sa iyong mga unang hakbang bilang isang Muslim, at sumasagot lamang ako mula sa aklat na Al-Wajeez. Maaari kang magtanong sa akin tungkol sa iyong aralin, pagdarasal, wudu, o anumang bagay sa iyong bagong pananampalataya."
  },
  "hi": {
   "fatwa_personal": "यह आपकी निजी स्थिति से जुड़ा सवाल है, और इसके लिए किसी ऐसे इंसान से बात करना बेहतर होगा जो आपकी पूरी बात समझ सके। क्या आप हमारे किसी मेंटर से बात करना चाहेंगे? आप किसी भाई या बहन को चुन सकते हैं।",
@@ -118,7 +148,10 @@
   "not_in_book": "मुझे 'अल-वजीज़' किताब में इसका जवाब नहीं मिला, और मैं इसके बाहर से जवाब नहीं देता। हमारी टीम के एक मेंटर आपकी मदद कर सकते हैं — क्या आप उनसे बात करना चाहेंगे?",
   "failed": "माफ़ कीजिएगा, मैं ऐसा जवाब तैयार नहीं कर सका जो पूरी तरह से किताब पर आधारित हो। हमारी टीम के एक मेंटर आपकी मदद कर सकते हैं — क्या आप उनसे बात करना चाहेंगे?",
   "social": "वालेकुम अस्सलाम और आपका इस्तकबाल है। आप मुझसे अपने सबक के बारे में कुछ भी पूछ सकते हैं, या जब आप तैयार हों तो अगले सबक पर आगे बढ़ सकते हैं।",
-  "emergency": "अगर आप खुद को नुकसान पहुँचाने के बारे में सोच रहे हैं या आप किसी खतरे में हैं, तो कृपया अभी {NUMBER} (या अपने स्थानीय इमरजेंसी नंबर) पर कॉल करें, या नज़दीकी इमरजेंसी सर्विस के पास जाएँ। आप अकेले नहीं हैं, और आपकी ज़िंदगी बहुत कीमती है।"
+  "emergency": "अगर आप खुद को नुकसान पहुँचाने के बारे में सोच रहे हैं या आप किसी खतरे में हैं, तो कृपया अभी {NUMBER} (या अपने स्थानीय इमरजेंसी नंबर) पर कॉल करें, या नज़दीकी इमरजेंसी सर्विस के पास जाएँ। आप अकेले नहीं हैं, और आपकी ज़िंदगी बहुत कीमती है।",
+  "steps_intro": "यहाँ वे कदम बिल्कुल वैसे ही दिए गए हैं जैसे 'अल-वजीज़' किताब में पाठ \"{TITLE}\" में बताए गए हैं:",
+  "thanks": "अल्लाह आपको बरकत दे। आप अपने पाठ के बारे में मुझसे कुछ भी पूछ सकते हैं, या जब आप तैयार हों तो अगले पाठ पर आगे बढ़ सकते हैं।",
+  "off_topic": "एक मुसलमान के रूप में आपके शुरुआती कदमों के लिए मैं आपका मार्गदर्शक हूँ, और मैं केवल 'अल-वजीज़' किताब से ही जवाब देता हूँ। मुझसे अपने पाठ, अपनी नमाज़, अपने वज़ू या अपने नए दीन के बारे में कुछ भी पूछें।"
  },
  "ur": {
   "fatwa_personal": "یہ آپ کے ذاتی حالات سے متعلق سوال ہے، اور اس کے لیے کسی ایسے شخص کی ضرورت ہے جو اس کی تمام تفصیلات کو اچھی طرح سمجھ سکے۔ کیا آپ کسی مینٹور سے بات کرنا پسند کریں گے؟ آپ کسی بھائی یا بہن کا انتخاب کر سکتے ہیں۔",
@@ -129,7 +162,10 @@
   "not_in_book": "مجھے کتاب 'الوجیز' میں اس کا جواب نہیں مل سکا، اور میں اس کے باہر سے جواب نہیں دوں گا۔ ہماری ٹیم کے ایک مینٹور آپ کی مدد کر سکتے ہیں — کیا آپ ان سے بات کرنا پسند کریں گے؟",
   "failed": "معذرت خواہ ہوں، میں ایسا جواب تیار نہیں کر سکا جس کا مکمل حوالہ میں کتاب سے دے سکوں۔ ہماری ٹیم کے ایک مینٹور آپ کی مدد کر سکتے ہیں — کیا آپ ان سے بات کرنا پسند کریں گے؟",
   "social": "وعلیکم السلام اور خوش آمدید۔ مجھ سے اپنے سبق کے بارے میں کچھ بھی پوچھیں، یا جب آپ تیار ہوں تو اگلے سبق کی طرف آگے بڑھیں۔",
-  "emergency": "اگر آپ خود کو نقصان پہنچانے کے بارے میں سوچ رہے ہیں یا آپ خطرے میں ہیں، تو براہ کرم ابھی {NUMBER} (یا اپنے مقامی ایمرجنسی نمبر) پر کال کریں، یا قریبی ایمرجنسی سروس سے رجوع کریں۔ آپ اکیلے نہیں ہیں، اور آپ کی زندگی بہت قیمتی ہے۔"
+  "emergency": "اگر آپ خود کو نقصان پہنچانے کے بارے میں سوچ رہے ہیں یا آپ خطرے میں ہیں، تو براہ کرم ابھی {NUMBER} (یا اپنے مقامی ایمرجنسی نمبر) پر کال کریں، یا قریبی ایمرجنسی سروس سے رجوع کریں۔ آپ اکیلے نہیں ہیں، اور آپ کی زندگی بہت قیمتی ہے۔",
+  "steps_intro": "یہ رہے وہ اقدامات بالکل اسی طرح جیسے کتاب 'الوجیز' کے سبق \"{TITLE}\" میں دیے گئے ہیں:",
+  "thanks": "اللہ آپ کو برکت دے۔ اپنے سبق کے بارے میں مجھ سے کچھ بھی پوچھیں، یا جب آپ تیار ہوں تو اگلے سبق کی طرف بڑھیں۔",
+  "off_topic": "میں اسلام میں آپ کے ابتدائی سفر کے لیے آپ کا استاد ہوں، اور میں صرف 'الوجیز' نامی کتاب سے جواب دیتا ہوں۔ آپ مجھ سے اپنے سبق، نماز، وضو یا اپنے نئے دین کے بارے میں کچھ بھی پوچھ سکتے ہیں۔"
  },
  "tr": {
   "fatwa_personal": "Bu sizin özel durumunuzla ilgili bir soru ve tüm detayları anlayabilecek gerçek bir insanla konuşmayı hak ediyor. Bir mentor ile görüşmek ister misiniz? Bir erkek veya hanım kardeşimizle konuşmayı seçebilirsiniz.",
@@ -140,7 +176,10 @@
   "not_in_book": "Bunun cevabını Al-Wajeez kitabında bulamadım ve kitabın dışından bir cevap vermek istemiyorum. Ekibimizden bir mentor size yardımcı olabilir — bir mentor ile konuşmak ister misiniz?",
   "failed": "Üzgünüm, tamamen kitaba dayandırabileceğim bir cevap hazırlayamadım. Ekibimizden bir mentor size yardımcı olabilir — bir mentor ile konuşmak ister misiniz?",
   "social": "Ve aleyküm selam, hoş geldiniz. Bana dersinizle ilgili istediğiniz her şeyi sorabilir veya hazır olduğunuzda bir sonraki derse geçebilirsiniz.",
-  "emergency": "Kendinize zarar vermeyi düşünüyorsanız veya tehlikedeyseniz, lütfen hemen {NUMBER} numarasını (veya yerel acil durum numaranızı) arayın ya da en yakın acil servise gidin. Yalnız değilsiniz ve hayatınız çok değerli."
+  "emergency": "Kendinize zarar vermeyi düşünüyorsanız veya tehlikedeyseniz, lütfen hemen {NUMBER} numarasını (veya yerel acil durum numaranızı) arayın ya da en yakın acil servise gidin. Yalnız değilsiniz ve hayatınız çok değerli.",
+  "steps_intro": "İşte Al-Wajeez kitabında yer aldığı şekliyle \"{TITLE}\" dersindeki adımlar:",
+  "thanks": "Allah senden razı olsun. Dersinle ilgili bana istediğini sorabilir veya hazır olduğunda bir sonraki derse geçebilirsin.",
+  "off_topic": "Ben, bir Müslüman olarak attığın ilk adımlarda senin rehberinim ve sadece Al-Wajeez kitabından cevaplar veriyorum. Bana dersin, namazın, abdestin veya yeni inancınla ilgili her şeyi sorabilirsin."
  },
  "sw": {
   "fatwa_personal": "Hili ni swali kuhusu hali yako binafsi, na linahitaji mtu halisi anayeweza kuelewa undani wake wote. Je, ungependa kuzungumza na mshauri? Unaweza kuchagua ndugu wa kiume au wa kike.",
@@ -151,7 +190,10 @@
   "not_in_book": "Sikuweza kupata jibu la hili katika kitabu cha Al-Wajeez, na sitajibu kutoka nje ya kitabu hicho. Mshauri kutoka kwenye timu yetu anaweza kusaidia — je, ungependa kuzungumza naye?",
   "failed": "Samahani, sikuweza kuandaa jibu ninaloweza kulithibitisha kikamilifu kutoka kwenye kitabu. Mshauri kutoka kwenye timu yetu anaweza kusaidia — je, ungependa kuzungumza naye?",
   "social": "Wa alaykum as-salam na karibu. Niulize chochote kuhusu somo lako, au endelea na somo linalofuata utakapokuwa tayari.",
-  "emergency": "Kama unafikiria kujiumiza au uko hatarini, tafadhali piga {NUMBER} (au namba ya dharura ya eneo lako) sasa, au nenda kwenye kituo cha huduma za dharura kilicho karibu nawe. Haupo peke yako, na maisha yako ni ya thamani sana."
+  "emergency": "Kama unafikiria kujiumiza au uko hatarini, tafadhali piga {NUMBER} (au namba ya dharura ya eneo lako) sasa, au nenda kwenye kituo cha huduma za dharura kilicho karibu nawe. Haupo peke yako, na maisha yako ni ya thamani sana.",
+  "steps_intro": "Hizi hapa ni hatua kama kitabu cha Al-Wajeez kinavyoeleza, kutoka kwenye somo la \"{TITLE}\":",
+  "thanks": "Allah akubariki. Niulize chochote kuhusu somo lako, au endelea na somo linalofuata utakapokuwa tayari.",
+  "off_topic": "Mimi ni mwalimu wako kwa hatua zako za kwanza kama Muislamu, na ninajibu tu kutoka kwenye kitabu cha Al-Wajeez. Niulize kuhusu somo lako, swala yako, udhu wako au chochote katika imani yako mpya."
  },
  "zh": {
   "fatwa_personal": "这是一个关于你个人情况的问题，最好由一位能充分了解具体细节的真人来解答。你想和导师聊聊吗？你可以选择兄弟或姐妹。",
@@ -162,7 +204,10 @@
   "not_in_book": "我在《瓦吉兹》这本书中没有找到这个问题的答案，我也不会在书本之外作答。我们团队的导师可以帮助你——你想和导师聊聊吗？",
   "failed": "抱歉，我无法准备一个完全能从书本中找到依据的答案。我们团队的导师可以帮助你——你想和导师聊聊吗？",
   "social": "瓦阿莱库姆色兰，欢迎你。你可以问我任何关于课程的问题，或者准备好后继续学习下一课。",
-  "emergency": "如果你有伤害自己的想法或者正处于危险之中，请立即拨打 {NUMBER}（或你当地的紧急求救电话），或者前往最近的急救中心。你并不孤单，你的生命非常宝贵。"
+  "emergency": "如果你有伤害自己的想法或者正处于危险之中，请立即拨打 {NUMBER}（或你当地的紧急求救电话），或者前往最近的急救中心。你并不孤单，你的生命非常宝贵。",
+  "steps_intro": "以下是《瓦吉兹》一书中关于“{TITLE}”这一课的具体步骤：",
+  "thanks": "愿真主赐福于你。你可以随时问我关于这节课的任何问题，或者在你准备好时继续下一课。",
+  "off_topic": "我是你初为穆斯林的辅导老师，我只根据《瓦吉兹》这本书来为你解答。你可以问我关于你的课程、礼拜、小净，或者你新信仰里的任何问题。"
  },
  "fa": {
   "fatwa_personal": "این سوال درباره شرایط خاص شماست و بهتر است با یک شخص واقعی که تمام جزئیات آن را درک می‌کند صحبت کنید. آیا مایلید با یک راهنما صحبت کنید؟ می‌توانید یک برادر یا خواهر را انتخاب کنید.",
@@ -173,7 +218,10 @@
   "not_in_book": "من نتوانستم پاسخ این سوال را در کتاب الوجیز پیدا کنم و از منابع خارج از آن نیز پاسخی نمی‌دهم. یک راهنما از تیم ما می‌تواند به شما کمک کند — آیا مایلید با یک راهنما صحبت کنید؟",
   "failed": "متأسفم، نتوانستم پاسخی آماده کنم که کاملاً مستند به کتاب باشد. یک راهنما از تیم ما می‌تواند به شما کمک کند — آیا مایلید با یک راهنما صحبت کنید؟",
   "social": "و علیکم السلام و خوش آمدید. هر سوالی درباره درس خود دارید بپرسید، یا هر زمان که آماده بودید به درس بعدی بروید.",
-  "emergency": "اگر به فکر آسیب رساندن به خود هستید یا در خطر قرار دارید، لطفاً همین الان با {NUMBER} (یا شماره اورژانس محلی خود) تماس بگیرید، یا به نزدیک‌ترین مرکز اورژانس مراجعه کنید. شما تنها نیستید و جان شما بسیار ارزشمند است."
+  "emergency": "اگر به فکر آسیب رساندن به خود هستید یا در خطر قرار دارید، لطفاً همین الان با {NUMBER} (یا شماره اورژانس محلی خود) تماس بگیرید، یا به نزدیک‌ترین مرکز اورژانس مراجعه کنید. شما تنها نیستید و جان شما بسیار ارزشمند است.",
+  "steps_intro": "اینها مراحلی هستند که دقیقاً در کتاب الوجیز، از درس \"{TITLE}\" آمده است:",
+  "thanks": "خداوند به شما برکت دهد. هر سؤالی درباره درس خود دارید بپرسید، یا هر زمان که آماده بودید به درس بعدی بروید.",
+  "off_topic": "من راهنمای شما در اولین قدم‌های مسلمانی‌تان هستم و فقط از کتاب «الوجیز» پاسخ می‌دهم. می‌توانید درباره درس‌ها، نماز، وضو یا هر موضوع دیگری در دین جدیدتان از من بپرسید."
  },
  "bn": {
   "fatwa_personal": "এটি আপনার ব্যক্তিগত পরিস্থিতি নিয়ে একটি প্রশ্ন, তাই এমন একজন মানুষের সাথে কথা বলা ভালো যিনি এর সব বিস্তারিত বুঝতে পারবেন। আপনি কি একজন মেন্টরের সাথে কথা বলতে চান? আপনি চাইলে একজন ভাই বা বোনকে বেছে নিতে পারেন।",
@@ -184,7 +232,10 @@
   "not_in_book": "আমি আল-ওয়াজিজ বইটিতে এর উত্তর খুঁজে পাইনি, আর আমি এই বইয়ের বাইরে থেকে কোনো উত্তর দেব না। আমাদের টিমের একজন মেন্টর আপনাকে সাহায্য করতে পারেন — আপনি কি একজন মেন্টরের সাথে কথা বলতে চান?",
   "failed": "আমি দুঃখিত, আমি এমন কোনো উত্তর তৈরি করতে পারিনি যা পুরোপুরি বইটির সাথে মিলে যায়। আমাদের টিমের একজন মেন্টর আপনাকে সাহায্য করতে পারেন — আপনি কি একজন মেন্টরের সাথে কথা বলতে চান?",
   "social": "ওয়া আলাইকুমুস সালাম এবং স্বাগতম। আপনার লেসন সম্পর্কে আমাকে যেকোনো কিছু জিজ্ঞেস করতে পারেন, অথবা আপনি প্রস্তুত হলে পরের লেসনে চলে যেতে পারেন।",
-  "emergency": "আপনি যদি নিজের কোনো ক্ষতি করার কথা ভেবে থাকেন বা কোনো বিপদে থাকেন, তবে অনুগ্রহ করে এখনই {NUMBER} (বা আপনার স্থানীয় ইমার্জেন্সি নম্বরে) কল করুন, অথবা কাছের কোনো জরুরি সেবাকেন্দ্রে যান। আপনি একা নন, এবং আপনার জীবন অনেক মূল্যবান।"
+  "emergency": "আপনি যদি নিজের কোনো ক্ষতি করার কথা ভেবে থাকেন বা কোনো বিপদে থাকেন, তবে অনুগ্রহ করে এখনই {NUMBER} (বা আপনার স্থানীয় ইমার্জেন্সি নম্বরে) কল করুন, অথবা কাছের কোনো জরুরি সেবাকেন্দ্রে যান। আপনি একা নন, এবং আপনার জীবন অনেক মূল্যবান।",
+  "steps_intro": "এখানে \"{TITLE}\" পাঠ থেকে 'আল-ওয়াজিজ' বইয়ের দেওয়া ধাপগুলো হুবহু তুলে ধরা হলো:",
+  "thanks": "আল্লাহ আপনার ওপর রহমত বর্ষণ করুন। আপনার পাঠ সম্পর্কে আমাকে যেকোনো কিছু জিজ্ঞেস করতে পারেন, অথবা প্রস্তুত হলে পরের পাঠে যেতে পারেন।",
+  "off_topic": "একজন মুসলিম হিসেবে আপনার প্রথম পথচলায় আমি আপনার শিক্ষক, এবং আমি শুধুমাত্র 'আল-ওয়াজিজ' বইটি থেকে উত্তর দিই। আপনার পাঠ, নামাজ, অজু অথবা আপনার নতুন ধর্মবিশ্বাসের যেকোনো বিষয় সম্পর্কে আমাকে জিজ্ঞাসা করতে পারেন।"
  },
  "ja": {
   "fatwa_personal": "これはあなたご自身の状況についての質問ですね。詳しい事情をしっかり理解できる人が直接お答えする方が良いと思います。メンターとお話ししてみませんか？ブラザー（男性）かシスター（女性）を選ぶことができますよ。",
@@ -195,7 +246,10 @@
   "not_in_book": "書籍『アル・ワジーズ』の中にこの質問の答えを見つけることができませんでした。また、この本以外の情報からはお答えしないようにしています。私たちのチームのメンターがお手伝いできますので、お話ししてみませんか？",
   "failed": "申し訳ありません。この本の内容に完全に基づいた答えを用意することができませんでした。私たちのチームのメンターがお手伝いできますので、お話ししてみませんか？",
   "social": "ワ・アライクム・ッサラーム、ようこそ。レッスンについて何でも質問してくださいね。準備ができたら次のレッスンに進みましょう。",
-  "emergency": "もし自分を傷つけようと考えていたり、危険な状態にある場合は、今すぐ {NUMBER} （または地域の緊急通報番号）に電話するか、最寄りの救急窓口に行ってください。あなたは一人ではありません。あなたの命はとても大切です。"
+  "emergency": "もし自分を傷つけようと考えていたり、危険な状態にある場合は、今すぐ {NUMBER} （または地域の緊急通報番号）に電話するか、最寄りの救急窓口に行ってください。あなたは一人ではありません。あなたの命はとても大切です。",
+  "steps_intro": "「{TITLE}」のレッスンから、本「アル・ワジーズ」に書かれている通りの手順をご紹介します。",
+  "thanks": "アッラーの祝福がありますように。レッスンについて何でも質問してくださいね。準備ができたら次のレッスンに進みましょう。",
+  "off_topic": "私はムスリムとしての第一歩を歩むあなたのための先生です。ご質問には『アル・ワジーズ』という本からのみお答えします。レッスンや礼拝、ウドゥー、そしてあなたの新しい信仰について、何でも気軽に聞いてくださいね。"
  },
  "ko": {
   "fatwa_personal": "이것은 개인적인 상황에 대한 질문이네요. 모든 세부 사항을 잘 이해할 수 있는 분과 직접 이야기 나누는 것이 좋겠습니다. 멘토와 이야기해 보시겠어요? 형제님이나 자매님 중에서 선택하실 수 있습니다.",
@@ -206,6 +260,9 @@
   "not_in_book": "'알 와지즈' 책에서 이 질문에 대한 답을 찾지 못했습니다. 저는 이 책에 없는 내용은 답변하지 않습니다. 대신 저희 팀의 멘토가 도와드릴 수 있습니다. 멘토와 이야기해 보시겠어요?",
   "failed": "죄송합니다. 책의 내용만으로는 충분한 답변을 준비하지 못했습니다. 저희 팀의 멘토가 도와드릴 수 있습니다. 멘토와 이야기해 보시겠어요?",
   "social": "와 알라이쿰 앗살람, 환영합니다. 수업에 대해 무엇이든 물어보시거나, 준비가 되시면 다음 수업으로 계속 진행해 주세요.",
-  "emergency": "자신을 해칠 생각이 들거나 위험에 처해 있다면, 지금 바로 {NUMBER} (또는 해당 지역의 응급 번호)로 전화하시거나 가장 가까운 응급 센터로 가주세요. 당신은 혼자가 아니며, 당신의 생명은 정말 소중합니다."
+  "emergency": "자신을 해칠 생각이 들거나 위험에 처해 있다면, 지금 바로 {NUMBER} (또는 해당 지역의 응급 번호)로 전화하시거나 가장 가까운 응급 센터로 가주세요. 당신은 혼자가 아니며, 당신의 생명은 정말 소중합니다.",
+  "steps_intro": "알 와지즈(Al-Wajeez) 책의 \"{TITLE}\" 단원에 설명된 단계들은 다음과 같습니다:",
+  "thanks": "알라의 축복이 함께하시기를 빕니다. 이번 수업에 대해 궁금한 점이 있다면 편하게 물어보시고, 준비가 되셨다면 다음 수업으로 넘어가 주세요.",
+  "off_topic": "저는 무슬림으로서 첫걸음을 내딛는 분들을 위한 안내자입니다. 저는 오직 '알와지즈'라는 책을 바탕으로만 답변해 드립니다. 수업 내용, 예배, 우두, 혹은 새로운 신앙에 대해 궁금한 점이 있다면 무엇이든 편하게 물어보세요."
  }
 }
