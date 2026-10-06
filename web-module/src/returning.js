@@ -46,3 +46,18 @@ export async function hasBegun() {
   const progress = await api.progress();
   return Boolean(progress?.choice) || (progress?.completed?.length || 0) > 0;
 }
+
+// Signing in or out anywhere on the page (the learning space, the host's header) is announced, so
+// every place that shows the account follows. `account` is { email, name } or null after signing out.
+const ACCOUNT_EVENT = 'shd-account';
+
+export function announceAccount(account) {
+  window.dispatchEvent(new CustomEvent(ACCOUNT_EVENT, { detail: { account: account || null } }));
+}
+
+/** Calls fn(account) on every sign-in or sign-out; returns the function that stops listening. */
+export function onAccount(fn) {
+  const handler = (e) => fn(e.detail?.account || null);
+  window.addEventListener(ACCOUNT_EVENT, handler);
+  return () => window.removeEventListener(ACCOUNT_EVENT, handler);
+}

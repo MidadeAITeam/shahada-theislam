@@ -583,7 +583,7 @@ html.lsp-locked, html.lsp-locked body { overflow: hidden !important; }
   .lsp-audio__pair { grid-template-columns: minmax(0, 1fr); }
   .lsp-done { min-height: 60px; font-size: 1.04rem; }
   .lsp-tabs {
-    grid-area: tabs; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-area: tabs; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
     padding: 4px 6px calc(4px + env(safe-area-inset-bottom)); background: #fff; box-shadow: 0 -1px 0 var(--line), 0 -6px 20px rgba(18, 24, 63, 0.05);
   }
   .lsp-tab { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 56px; border: 0; background: none; color: var(--muted); font-size: 0.74rem; font-weight: 500; cursor: pointer; border-radius: 12px; }
@@ -702,3 +702,7 @@ html.lsp-locked, html.lsp-locked body { overflow: hidden !important; }
 }
 /* The sheet's backdrop also dims the navy path column: a navy veil over navy changed nothing. */
 .lsp-sheet-backdrop { background: rgba(5, 7, 22, 0.5); }
+
+/* The account (AccountMenu) at the end of the top bar; "open in the book" under a source. */
+.lsp-top .lsp-transparency { margin-inline-start: auto; }
+.lsp-sheet__open { align-self: flex-start; gap: 8px; }

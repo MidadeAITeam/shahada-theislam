@@ -55,6 +55,14 @@ Returns `<Progress>`.
 
 `GET /api/shahada/progress` → `{ "lang", "choice", "completed": [...], "next": {...}|null, "position": {...}, "account": {"email"?, "name"?}|null, "reminder": {"hour": 20, "tz": "Europe/London"}|null }`
 
+## The book
+
+The whole book to browse, in the learner's edition (their own if converted, else English with `"translated": true`). No learner is needed.
+
+`GET /api/shahada/book?lang=ar` → `{ "lang", "translated", "title", "intro": [5, ...], "end": [123], "units": [{ "id", "index", "title", "title_page": 15, "pages": [15, 35], "lessons": [{ "id", "title", "pages": [16, 19] }] }], "pages": [5, 6, ...] }`
+
+`GET /api/shahada/book/page/77?lang=ar` → `{ "page", "lang", "translated", "lesson": { "id", "title", "unit": { "id", "index", "title" } } | null, "prev", "next", "first", "last", "passages": [{ "id", "heading", "text", "exercise": false }] }` (verse markers expanded; exercises and assessment questions marked). 404 for a page the edition does not have.
+
 ## Questions
 
 `POST /api/shahada/ask` `{ "question": "...", "lang": "en", "lesson_id": "u3l3" | null }` → `<Answer>` (see
@@ -83,6 +91,9 @@ Limits (per learner cookie and per address, `429` with `Retry-After`): 5 referra
 
 `POST /api/shahada/auth/google` `{ "credential": "<Google ID token>" }`
 `POST /api/shahada/auth/email` `{ "email": "...", "lang": "en" }` → sends a sign-in link (`/api/shahada/auth/verify?token=...`).
+Signing in on another device with the same Google account or email brings that account's progress, choice and language to this browser; the email link lands on the next lesson (`/<lang>?lesson=<id>`).
+`GET /api/shahada/account` → `{ "signed_in", "email", "name", "begun" }` — who is signed in on this browser (never creates a learner).
+`POST /api/shahada/auth/logout` → `<Progress>` of a new anonymous learner on this browser (language kept); the account and its progress stay for the next sign-in.
 `POST /api/shahada/reminder` `{ "hour": 20, "tz": "Asia/Manila", "enabled": true }`
 `POST /api/shahada/forget` — deletes the account, progress and referral cards with their messages, internal notes and timelines.
 

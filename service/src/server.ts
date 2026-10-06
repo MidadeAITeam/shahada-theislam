@@ -11,6 +11,7 @@ import { config, ROOT } from "./config.ts";
 import { CHOICES, nextLesson, plannedPath, progressOf, type Choice } from "./curriculum.ts";
 import { db, event, id } from "./db.ts";
 import { getLesson, lessonIndex, lessonTitle } from "./lessons.ts";
+import { bookContents, bookPage } from "./bookview.ts";
 import { layout, mailText, sendMail } from "./mail.ts";
 import { startCard } from "./profile.ts";
 import { createHandoff, learnerMessage, registerMentorRoutes } from "./mentor.ts";
@@ -22,16 +23,21 @@ await app.register(cookie, { secret: config.sessionSecret });
 // ---------------------------------------------------------------- learner identity
 interface Learner { id: string; account_id: string | null; lang: string | null; choice: Choice | null; country: string | null }
 
-function learner(req: FastifyRequest, reply: FastifyReply): Learner {
+/** The learner behind this browser's cookie, without creating one (for reads that need no identity). */
+function peekLearner(req: FastifyRequest): Learner | undefined {
   const raw = req.cookies.learner ? req.unsignCookie(req.cookies.learner) : null;
-  let row = raw?.valid ? (db.prepare("SELECT * FROM learners WHERE id = ?").get(raw.value) as Learner | undefined) : undefined;
-  if (!row) {
-    const lid = id("l");
-    db.prepare("INSERT INTO learners (id) VALUES (?)").run(lid);
-    row = { id: lid, account_id: null, lang: null, choice: null, country: null };
-    reply.setCookie("learner", lid, { path: "/", httpOnly: true, sameSite: "lax", secure: config.publicUrl.startsWith("https"), signed: true, maxAge: 60 * 60 * 24 * 365 });
-  }
-  return row;
+  return raw?.valid ? (db.prepare("SELECT * FROM learners WHERE id = ?").get(raw.value) as Learner | undefined) : undefined;
+}
+
+function newLearner(reply: FastifyReply, lg: string | null = null): Learner {
+  const lid = id("l");
+  db.prepare("INSERT INTO learners (id, lang) VALUES (?, ?)").run(lid, lg);
+  reply.setCookie("learner", lid, { path: "/", httpOnly: true, sameSite: "lax", secure: config.publicUrl.startsWith("https"), signed: true, maxAge: 60 * 60 * 24 * 365 });
+  return { id: lid, account_id: null, lang: lg, choice: null, country: null };
+}
+
+function learner(req: FastifyRequest, reply: FastifyReply): Learner {
+  return peekLearner(req) ?? newLearner(reply);
 }
 const owner = (l: Learner) => l.account_id ?? l.id;
 const completedOf = (l: Learner) => (db.prepare("SELECT lesson_id FROM progress WHERE owner = ? ORDER BY completed_at").all(owner(l)) as { lesson_id: string }[]).map((r) => r.lesson_id);
@@ -78,6 +84,15 @@ app.get("/api/shahada/lessons", async (req, reply) => {
   const l = learner(req, reply);
   const q = req.query as { lang?: string };
   return lessonIndex(lang(q.lang, l), l.choice, completedOf(l));
+});
+
+// The whole book to browse (contents, then one printed page at a time). Reading needs no learner.
+app.get("/api/shahada/book", async (req) => bookContents(lang((req.query as { lang?: string }).lang, peekLearner(req))));
+
+app.get("/api/shahada/book/page/:n", async (req, reply) => {
+  const page = bookPage(lang((req.query as { lang?: string }).lang, peekLearner(req)), Number((req.params as { n: string }).n));
+  if (!page) return reply.code(404).send({ error: "not_found" });
+  return page;
 });
 
 app.get("/api/shahada/lessons/:id", async (req, reply) => {
@@ -227,6 +242,8 @@ function attachAccount(l: Learner, accountId: string) {
   if (prev && !l.choice) db.prepare("UPDATE learners SET lang = coalesce(lang, ?), choice = ?, country = coalesce(country, ?) WHERE id = ?").run(prev.lang, prev.choice, prev.country, l.id);
 }
 
+const reloadLearner = (l: Learner) => (db.prepare("SELECT * FROM learners WHERE id = ?").get(l.id) as Learner | undefined) ?? l;
+
 const google = new OAuth2Client();
 app.post("/api/shahada/auth/google", async (req, reply) => {
   const l = learner(req, reply);
@@ -239,7 +256,7 @@ app.post("/api/shahada/auth/google", async (req, reply) => {
       db.prepare("INSERT INTO accounts (id, email, google_sub, name) VALUES (?, ?, ?, ?)").run(acct.id, p.email, p.sub, p.name ?? null);
     } else db.prepare("UPDATE accounts SET google_sub = ? WHERE id = ?").run(p.sub, acct.id);
     attachAccount(l, acct.id);
-    return progress({ ...l, account_id: acct.id });
+    return progress(reloadLearner(l));
   } catch {
     return reply.code(401).send({ error: "invalid_google_token" });
   }
@@ -272,7 +289,26 @@ app.get("/api/shahada/auth/verify", async (req, reply) => {
   attachAccount(l, acct.id);
   const from = db.prepare("SELECT * FROM learners WHERE id = ?").get(row.learner_id) as Learner | undefined;
   if (from && from.id !== l.id) attachAccount(from, acct.id);
-  return reply.redirect(`/${l.lang ?? "en"}?lesson=${nextLesson(l.choice, completedOf(l)) ?? "u1l3"}`);
+  // Read again: signing in may have brought this browser the account's language, choice and lessons.
+  const now = reloadLearner(l);
+  return reply.redirect(`/${now.lang ?? "en"}?lesson=${nextLesson(now.choice, completedOf(now)) ?? "u1l3"}`);
+});
+
+// Sign out on this browser only. The account and its progress stay as they are and come back on
+// the next sign-in (here or on any device); this browser goes on as a new anonymous learner that
+// keeps only the language.
+app.post("/api/shahada/auth/logout", async (req, reply) => {
+  const l = peekLearner(req);
+  if (!l?.account_id) return progress(l ?? newLearner(reply));
+  event(l.id, "logout");
+  return progress(newLearner(reply, l.lang));
+});
+
+/** Who is signed in on this browser, if anyone. Never creates a learner (the host page asks on every visit). */
+app.get("/api/shahada/account", async (req) => {
+  const l = peekLearner(req);
+  const a = l?.account_id ? (db.prepare("SELECT email, name FROM accounts WHERE id = ?").get(l.account_id) as { email: string | null; name: string | null } | undefined) : undefined;
+  return { signed_in: Boolean(a), email: a?.email ?? null, name: a?.name ?? null, begun: Boolean(l?.choice) };
 });
 
 app.post("/api/shahada/reminder", async (req, reply) => {

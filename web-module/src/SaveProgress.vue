@@ -1,7 +1,7 @@
 <template>
   <section class="shd-card" :aria-labelledby="headId">
     <div class="shd-dialog__head">
-      <h3 :id="headId">{{ tr('saveTitle') }}</h3>
+      <h3 :id="headId">{{ tr(signedInAs ? 'saveTitle' : 'signInTitle') }}</h3>
       <button type="button" class="shd-icon-btn" :aria-label="tr('close')" @click="$emit('dismiss')">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
       </button>
@@ -11,8 +11,13 @@
 
     <template v-else>
       <!-- Sign in -->
-      <p v-if="signedInAs" class="shd-success" role="status">{{ tr('signedIn', { who: signedInAs }) }}</p>
+      <div v-if="signedInAs" class="shd-row" style="flex-wrap: wrap; align-items: center; justify-content: space-between">
+        <p class="shd-success" role="status">{{ tr('signedIn', { who: signedInAs }) }}</p>
+        <button type="button" class="shd-btn shd-btn--quiet shd-btn--small" :disabled="busy.logout" @click="signOut">{{ tr('signOut') }}</button>
+      </div>
       <template v-else>
+        <!-- One sheet for both: saving progress for the first time, and coming back to an account. -->
+        <p class="shd-muted">{{ tr('signInIntro') }}</p>
         <!-- The Google button's space is held while it loads, so nothing jumps; "Or …" only follows it. -->
         <div v-if="googleClientId && !gsiFailed" ref="gsiButton" class="shd-gsi"></div>
         <form class="shd-save__email" @submit.prevent="sendLink">
@@ -64,11 +69,12 @@
 </template>
 
 <script setup>
-// Save progress (Google or an email link), the daily reminder, and "delete my data". Without an
-// account the learner's progress lives only behind the anonymous cookie in this browser.
+// Save progress or sign in again (Google or an email link), sign out, the daily reminder, and
+// "delete my data". Without an account the learner's progress lives only behind the anonymous
+// cookie in this browser.
 import { computed, nextTick, onMounted, reactive, ref } from 'vue';
 import { api } from './api.js';
-import { forgetReturning } from './returning.js';
+import { announceAccount, forgetReturning } from './returning.js';
 import { apiLang, useT } from './i18n.js';
 
 const props = defineProps({
@@ -76,7 +82,7 @@ const props = defineProps({
   account: { type: Object, default: null }, // { email?, name? } from /progress
   reminder: { type: Object, default: null }, // { hour, tz } from /progress
 });
-const emit = defineEmits(['dismiss', 'signed-in', 'forgotten']);
+const emit = defineEmits(['dismiss', 'signed-in', 'signed-out', 'forgotten']);
 
 const tr = useT(() => props.lang);
 const headId = `shd-save-${Math.random().toString(36).slice(2, 7)}`;
@@ -87,7 +93,7 @@ const account = ref(props.account);
 const signedInAs = computed(() => account.value?.email || account.value?.name || '');
 const email = ref('');
 const linkSent = ref(false);
-const busy = reactive({ email: false, reminder: false, forget: false });
+const busy = reactive({ email: false, reminder: false, forget: false, logout: false });
 const error = ref(false);
 
 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
@@ -153,6 +159,17 @@ const forget = () =>
     forgotten.value = true;
     account.value = null;
     emit('forgotten');
+    announceAccount(null);
+  });
+
+// Signing out keeps the account and its progress for the next sign-in; this browser starts afresh.
+const signOut = () =>
+  run('logout', async () => {
+    await api.logout();
+    forgetReturning();
+    account.value = null;
+    emit('signed-out');
+    announceAccount(null);
   });
 
 // Google Identity Services, loaded only when a client id is configured and only once per page.
@@ -178,6 +195,7 @@ async function onGoogleCredential({ credential }) {
     const res = await api.authGoogle(credential);
     account.value = res?.account || res || { email: '' };
     emit('signed-in', account.value);
+    announceAccount(account.value);
   });
 }
 

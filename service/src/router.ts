@@ -67,8 +67,7 @@ Labels:
   NOT fatwa_personal (these are curriculum): general questions even when phrased with "I" or "my", e.g. "Will Allah forgive
   the sins I did before Islam?", "Can I eat meat slaughtered by a Christian?", "Is taking a loan with interest allowed?",
   "How do I wash my face in wudu?".
-  Also fatwa_personal: their own existing loan or debt with interest, their own irregular or prolonged bleeding or
-  health condition, and worries about their own Islam or Shahada ("am I still Muslim?", whispers/doubts about whether it
+  Also fatwa_personal: their own existing loan or debt with interest, their own irregular or prolonged bleeding, and worries about their own Islam or Shahada ("am I still Muslim?", whispers/doubts about whether it
   counted, many missed prayers they want to make up), and family relations around their conversion that are not dangerous
   ("my mother cried", "should I tell my parents or keep it secret?", "can I go to Christmas dinner with my family?").
 - crisis: real danger only: abuse, violence or threats, being thrown out or homeless, self-harm, overdose, or despair.
@@ -83,7 +82,8 @@ Labels:
 - unsure: none of the above fits well.
 Return JSON {"label": <label>, "confidence": 0..1, "reason": "<5 words>", "danger_to_life": true|false,
  "steps_of": "wudu"|"ghusl"|"prayer"|null, "about_lesson": true|false, "standalone": "<the message as a complete question>"}.
-- danger_to_life: true only if someone's life or body is at risk now (self-harm, overdose, threats to kill or burn, violence).
+- danger_to_life: true only for self-harm or suicide, an overdose, or a threat to kill, burn or seriously injure them.
+  Being locked in, thrown out, homeless or having documents taken is crisis but NOT danger_to_life.
 - steps_of: set only when the message's whole request is HOW to perform the whole act (step by step, "teach me",
   "how do I make wudu/pray/do ghusl"). null when it asks whether it is required or when it is due, what breaks it, about one
   detail or part ("how many times", "what do I say in ruku"), about another prayer (Eid, funeral, Friday, travel, combining),

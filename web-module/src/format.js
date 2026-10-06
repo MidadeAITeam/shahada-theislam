@@ -25,10 +25,14 @@ export function segments(t) {
     .map((s) => ({ text: s, saw: s === 'ﷺ' }));
 }
 
-/** A passage as blocks: { type: 'p' | 'h', text } and { type: 'ul' | 'ol', items: [{ n?, text }] }. */
+/**
+ * A passage as blocks: { type: 'p' | 'h', text }, { type: 'ul' | 'ol', items: [{ n?, text }] } and
+ * { type: 'table', head: [cell] | null, rows: [[cell]] } for the book's Markdown tables (prayer times,
+ * the study plan), whose cells may hold line breaks.
+ */
 export function blocks(t) {
   const out = [];
-  const src = String(t || '').replace(MARKER, '').replace(/<br\s*\/?>/gi, '\n').replace(TAGS, '');
+  const src = String(t || '').replace(MARKER, '').replace(TAGS, '');
   let para = null;
   const push = (b) => {
     para = null;
@@ -40,10 +44,21 @@ export function blocks(t) {
     if (last?.type === type) last.items.push(it);
     else out.push({ type, items: [it] });
   };
-  for (const raw of src.split('\n')) {
+  const cells = (line) => line.replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => clean(c).trim());
+  // A table row stays one line (its <br>s are line breaks inside a cell); elsewhere <br> ends a line.
+  const lines = src.split('\n').flatMap((raw) => (/^\s*\|.*\|\s*$/.test(raw) ? [raw] : raw.split(/<br\s*\/?>/i)));
+  for (const raw of lines) {
     const line = raw.trim();
     let m;
-    if (!line) para = null;
+    if (/^\|.*\|$/.test(line)) {
+      const row = cells(line);
+      let table = out.at(-1)?.type === 'table' && !para ? out.at(-1) : null;
+      if (!table) push((table = { type: 'table', head: null, rows: [] }));
+      // The |---|---| line under the first row makes that row the header.
+      if (row.every((c) => /^:?-{2,}:?$/.test(c))) {
+        if (!table.head && table.rows.length === 1) table.head = table.rows.pop();
+      } else table.rows.push(row);
+    } else if (!line) para = null;
     else if ((m = /^#{1,6}\s+(.*)$/.exec(line))) push({ type: 'h', text: clean(m[1]) });
     else if ((m = /^[-*•]\s+(.*)$/.exec(line))) item('ul', { text: clean(m[1]) });
     else if ((m = /^([0-9٠-٩]{1,3})[.)]\s+(.*)$/.exec(line))) item('ol', { n: m[1], text: clean(m[2]) });
@@ -54,7 +69,7 @@ export function blocks(t) {
       else out.push((para = { type: 'p', text }));
     }
   }
-  return out.filter((b) => (b.items ? b.items.some((i) => i.text.trim()) : b.text.trim()));
+  return out.filter((b) => (b.type === 'table' ? b.rows.length || b.head : b.items ? b.items.some((i) => i.text.trim()) : b.text.trim()));
 }
 
 /** Every word a passage shows, for reading time. */

@@ -128,7 +128,7 @@ index 5b810b8..d79763e 100644
 +.smd code { background: #f3f5fa; padding: 0.1em 0.35em; border-radius: 4px; }
 +</style>
 diff --git a/src/views/AiChatView.vue b/src/views/AiChatView.vue
-index d9ead08..1db5c8f 100644
+index d9ead08..f19724a 100644
 --- a/src/views/AiChatView.vue
 +++ b/src/views/AiChatView.vue
 @@ -17,7 +17,7 @@
@@ -149,7 +149,7 @@ index d9ead08..1db5c8f 100644
              </a>
  
              <div v-if="isAuthenticated" class="dropdown ms-1">
-@@ -123,7 +123,7 @@
+@@ -123,10 +123,12 @@
                  </li>
                </ul>
              </div>
@@ -158,7 +158,12 @@ index d9ead08..1db5c8f 100644
                :aria-label="authTranslations.login">
                <i class="fa-solid fa-user"></i>
              </button>
-@@ -137,7 +137,7 @@
++            <!-- Demo: the after-Shahada learner's own sign-in (the platform's accounts are off). -->
++            <AccountEntry v-else class="ms-1" compact :lang="locale" @open-lessons="openShahadaLessons" />
+           </div>
+         </div>
+         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+@@ -137,7 +139,7 @@
                  Chat &amp; Decide
                </h5>
              </div>
@@ -167,7 +172,7 @@ index d9ead08..1db5c8f 100644
            </div>
            <div class="offcanvas-body pb-0 mb-0">
              <!-- new chat -->
-@@ -149,7 +149,7 @@
+@@ -149,7 +151,7 @@
                  @click.prevent="startNewChat">
                  <button class="btn">
                    <i class="fa-solid fa-plus"></i>
@@ -176,7 +181,7 @@ index d9ead08..1db5c8f 100644
                  </button>
                </a>
              </div>
-@@ -224,7 +224,7 @@
+@@ -224,7 +226,7 @@
                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
                  <!-- icon -->
                  <i class="fa-solid fa-share"></i>
@@ -185,7 +190,7 @@ index d9ead08..1db5c8f 100644
                </a>
              </li>
  
-@@ -252,7 +252,7 @@
+@@ -252,10 +254,11 @@
                  </ul>
                </div>
  
@@ -194,7 +199,11 @@ index d9ead08..1db5c8f 100644
                  <i class="fa-solid fa-user"></i>
                  <span>{{ authTranslations.login }}</span>
                </button>
-@@ -271,6 +271,7 @@
++              <AccountEntry v-else :lang="locale" @open-lessons="openShahadaLessons" />
+             </li>
+           </ul>
+         </div>
+@@ -271,6 +274,7 @@
          <div class="card simple-text full-page-center" v-html="sanitizedMsgDescription">
  
          </div>
@@ -202,7 +211,7 @@ index d9ead08..1db5c8f 100644
        </div>
        <div class="mb-5 d-flex flex-column gap-2 text-center" v-if="isLoadingMessages">
          <div class="d-flex m-auto">
-@@ -287,7 +288,7 @@
+@@ -287,7 +291,7 @@
          v-if="!isLoadingMessages && messages.length > 0">
          <ul class="list-unstyled no-margin gap-2 d-flex flex-column">
            <li v-for="(message, index) in sanitizedMessageText" :key="message.id" :class="message.author != 'AI'
@@ -211,7 +220,7 @@ index d9ead08..1db5c8f 100644
              : 'ai-message mt-3 p-3 rounded-3'
              ">
              <div class="gap-1 align-items-start">
-@@ -332,6 +333,11 @@
+@@ -332,6 +336,11 @@
                    {{ question }}
                  </button>
                </div>
@@ -223,7 +232,7 @@ index d9ead08..1db5c8f 100644
              </div>
            </li>
            <li class="p-1 pb-0 rounded-pill px-3" dir="rtl" v-if="isLoadingMessage">
-@@ -462,8 +468,8 @@
+@@ -462,8 +471,8 @@
        <div class="modal-dialog">
          <div class="modal-content">
            <div class="modal-header d-flex justify-content-between">
@@ -234,28 +243,29 @@ index d9ead08..1db5c8f 100644
            </div>
            <div class="modal-body text-center">
              <div id="share"></div>
-@@ -489,6 +495,11 @@ import DOMPurify from 'dompurify';
+@@ -489,6 +498,12 @@ import DOMPurify from 'dompurify';
  import { useI18n } from 'vue-i18n';
  import * as Sentry from "@sentry/vue";
  import debounce from 'lodash/debounce';
 +import ShahadaFlow from "@shahada/ShahadaFlow.vue";
 +import DemoButton from "@shahada/DemoButton.vue";
++import AccountEntry from "@shahada/AccountEntry.vue";
 +import { playDemo } from "@shahada/demo.js";
 +import { returningLearner } from "@shahada/returning.js";
 +import { t as shahadaT } from "@shahada/i18n.js";
  
  
  export default {
-@@ -501,7 +512,7 @@ export default {
+@@ -501,7 +516,7 @@ export default {
      };
    },
    name: "AiChatView",
 -  components: { StreamingMarkdown, VoiceChat, AuthModal },
-+  components: { StreamingMarkdown, VoiceChat, AuthModal, ShahadaFlow, DemoButton },
++  components: { StreamingMarkdown, VoiceChat, AuthModal, ShahadaFlow, DemoButton, AccountEntry },
    props: {
      lang: {
        type: String,
-@@ -515,6 +526,8 @@ export default {
+@@ -515,6 +530,8 @@ export default {
    },
    data() {
      return {
@@ -264,7 +274,7 @@ index d9ead08..1db5c8f 100644
        localGeneralId: this.general_id,
        msg_title: "",
        msg_lang: "",
-@@ -787,6 +800,9 @@ export default {
+@@ -787,6 +804,9 @@ export default {
       * have already said so the operator reads the thread from its start.
       */
      async talkToHuman() {
@@ -274,7 +284,7 @@ index d9ead08..1db5c8f 100644
        if (this.humanMode || this.isHandingOff) return;
        this.isHandingOff = true;
  
-@@ -1052,10 +1068,19 @@ export default {
+@@ -1052,10 +1072,19 @@ export default {
          return;
        }
  
@@ -295,7 +305,7 @@ index d9ead08..1db5c8f 100644
          this.showShortMessageHint();
          return;
        }
-@@ -1137,6 +1162,18 @@ export default {
+@@ -1137,6 +1166,18 @@ export default {
              // Handle the abort error
            } else {
              Sentry.captureException(error);
@@ -314,7 +324,7 @@ index d9ead08..1db5c8f 100644
            }
          } finally {
            this.isLoading = false;
-@@ -1326,7 +1363,9 @@ export default {
+@@ -1326,7 +1367,9 @@ export default {
        try {
          const parsed = JSON.parse(jsonStr);
          const wasAtBottom = this.isScrolledToBottom();
@@ -325,7 +335,7 @@ index d9ead08..1db5c8f 100644
          if (wasAtBottom) {
            this.$nextTick(() => this.scrollToBottom('auto'));
          }
-@@ -1487,6 +1526,29 @@ export default {
+@@ -1487,6 +1530,37 @@ export default {
          this.loadingInterval = null;
        }
      },
@@ -342,6 +352,14 @@ index d9ead08..1db5c8f 100644
 +        }))
 +        .filter((t) => t.text);
 +    },
++    // The learner's lessons from the header's account menu (or right after signing in there): the
++    // module already on screen opens its space; otherwise it comes in as for a returning learner.
++    openShahadaLessons() {
++      const flow = this.shahadaFlow();
++      if (flow) return flow.openLessons();
++      const text = shahadaT(this.locale, 'welcomeBack');
++      this.messages.push({ author: 'AI', text, fullText: text, isTypingComplete: true, shahada: true, shahadaMode: 'resume' });
++    },
 +    // A scripted pre-Shahada conversation, so the module can be tried without holding one.
 +    async startShahadaDemo() {
 +      this.messages = [];
@@ -355,7 +373,7 @@ index d9ead08..1db5c8f 100644
      askSuggestedQuestion(question) {
        this.messageText = question;
        this.$nextTick(() => this.sendMessage());
-@@ -1624,6 +1686,23 @@ export default {
+@@ -1624,6 +1698,23 @@ export default {
  
      this.resumeHumanChat();
  

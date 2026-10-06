@@ -4,7 +4,7 @@
       v-show="open"
       ref="root"
       class="shd lsp"
-      :class="[`lsp--tab-${tab}`, { 'lsp--onb': phase !== 'learn' && phase !== 'done', 'lsp--solo': phase === 'forgotten', 'lsp--wide': wide }]"
+      :class="[`lsp--tab-${tab}`, { 'lsp--onb': phase !== 'learn' && phase !== 'done', 'lsp--solo': phase === 'forgotten' || phase === 'signedout', 'lsp--wide': wide }]"
       role="dialog"
       aria-modal="true"
       :aria-label="`${tr('spaceTitle')} · ${tr('spaceSub')}`"
@@ -17,10 +17,11 @@
           <SpaceIcon name="back" :size="22" />
         </button>
         <div class="lsp-mhead__mid">
-          <span class="lsp-mhead__title">{{ phase === 'learn' && lesson ? lesson.title : tr('spaceTitle') }}</span>
+          <span class="lsp-mhead__title">{{ bookOpen && tab === 'book' ? tr('tabBook') : phase === 'learn' && lesson ? lesson.title : tr('spaceTitle') }}</span>
           <span class="lsp-mhead__bar" aria-hidden="true"><span :style="{ width: `${pct}%` }"></span></span>
         </div>
         <span class="lsp-mhead__count" :aria-label="tr('ringLabel', { done, total })">{{ done }}/{{ total }}</span>
+        <AccountMenu :lang="lang" :account="progress?.account || null" @sign-in="openSave" />
       </header>
       <p class="lsp-mtransparency" :title="tr('transparency')"><SpaceIcon name="book" :size="13" /><span>{{ tr('transparencyShort') }}</span></p>
 
@@ -34,6 +35,7 @@
           :disabled="phase !== 'learn' && phase !== 'done' && phase !== 'badlink'"
           @open="openLesson"
           @save="openSave"
+          @book="openBook()"
           @handoff="openHandoff()"
         />
       </aside>
@@ -45,11 +47,24 @@
             <kbd class="lsp-kbd" aria-hidden="true">Esc</kbd>
           </button>
           <p class="lsp-transparency"><SpaceIcon name="book" :size="15" />{{ tr('transparency') }}</p>
+          <AccountMenu :lang="lang" :account="progress?.account || null" @sign-in="openSave" />
         </div>
 
         <div class="lsp-main">
+          <BookReader
+            v-if="bookOpen && (phase === 'learn' || phase === 'done')"
+            ref="bookReader"
+            v-model:page="bookPage"
+            :lang="lang"
+            :book-lang="learnerLang"
+            :current-lesson-id="phase === 'learn' ? lesson?.id || null : null"
+            :can-back="phase === 'learn' && !!lesson"
+            @open-lesson="openLesson"
+            @close="closeBook"
+          />
+
           <Onboarding
-            v-if="phase === 'card' || phase === 'choice'"
+            v-else-if="phase === 'card' || phase === 'choice'"
             :lang="lang"
             :card="card"
             :step="phase"
@@ -106,6 +121,17 @@
             <div class="lsp-row">
               <button type="button" class="lsp-btn lsp-btn--primary" @click="startAgain">{{ tr('startAgain') }}</button>
               <button type="button" class="lsp-btn lsp-btn--ghost" @click="requestClose">{{ tr('backToChat') }}</button>
+            </div>
+          </div>
+
+          <!-- Signed out on this browser: the progress waits in the account, one tap from coming back. -->
+          <div v-else-if="phase === 'signedout'" class="lsp-card lsp-state">
+            <span class="lsp-finished__ic"><SpaceIcon name="user" :size="30" /></span>
+            <h1 tabindex="-1">{{ tr('signedOutTitle') }}</h1>
+            <p class="lsp-muted">{{ tr('signedOutBody') }}</p>
+            <div class="lsp-row">
+              <button type="button" class="lsp-btn lsp-btn--primary" @click="openSave">{{ tr('signInAgain') }}</button>
+              <button type="button" class="lsp-btn lsp-btn--ghost" @click="startAgain">{{ tr('startAgain') }}</button>
             </div>
           </div>
 
@@ -208,15 +234,17 @@
                 :dir="isRtl(sheet.source.lang) ? 'rtl' : 'ltr'"
               />
               <p class="lsp-sheet__cite"><SpaceIcon name="book" :size="16" />{{ tr('sourceRef', { book: tr('bookName'), page: sheet.page }) }}</p>
+              <button v-if="Number(sheet.page) && (phase === 'learn' || phase === 'done')" type="button" class="lsp-btn lsp-btn--secondary lsp-sheet__open" @click="openBook(Number(sheet.page))">
+                <SpaceIcon name="bookOpen" :size="18" />{{ tr('bookOpenAt') }}
+              </button>
             </template>
             <template v-else-if="sheet.type === 'save'">
-              <h2 :id="`${uid}-sheet`" class="lsp-sr">{{ tr('saveTitle') }}</h2>
+              <h2 :id="`${uid}-sheet`" class="lsp-sr">{{ tr(progress?.account ? 'saveTitle' : 'signInTitle') }}</h2>
               <SaveProgress
                 :lang="lang"
                 :account="progress?.account || null"
                 :reminder="progress?.reminder || null"
                 @dismiss="closeSheet"
-                @signed-in="(a) => progress && (progress.account = a)"
                 @forgotten="onForgotten"
               />
             </template>
@@ -267,10 +295,13 @@ import LessonReader from './LessonReader.vue';
 import AskPanel from './AskPanel.vue';
 import Onboarding from './Onboarding.vue';
 import SpaceIcon from './SpaceIcon.vue';
+import BookReader from './BookReader.vue';
+import AccountMenu from './AccountMenu.vue';
 import HandoffDialog from '../HandoffDialog.vue';
 import SaveProgress from '../SaveProgress.vue';
 import PassageText from '../PassageText.vue';
 import { api } from '../api.js';
+import { onAccount } from '../returning.js';
 import { apiLang, isRtl, useT } from '../i18n.js';
 import '../shahada.css';
 import './space.css';
@@ -288,6 +319,7 @@ const tr = useT(() => props.lang);
 const uid = `lsp-${Math.random().toString(36).slice(2, 7)}`;
 const TABS = [
   { id: 'lesson', icon: 'bookOpen', label: 'tabLesson' },
+  { id: 'book', icon: 'book', label: 'tabBook' },
   { id: 'ask', icon: 'message', label: 'tabAsk' },
   { id: 'path', icon: 'path', label: 'tabPath' },
   { id: 'mentor', icon: 'users', label: 'tabMentor' },
@@ -299,9 +331,10 @@ const main = ref(null);
 const reader = ref(null);
 const askPanel = ref(null);
 const sheetEl = ref(null);
+const bookReader = ref(null);
 
 // Journey state
-const phase = ref('loading'); // loading | card | choice | learn | done | error | badlink | forgotten
+const phase = ref('loading'); // loading | card | choice | learn | done | error | badlink | forgotten | signedout
 const retry = ref(null);
 const busy = ref(false);
 const card = ref(null);
@@ -323,6 +356,9 @@ const tab = ref('lesson');
 const wide = ref(false);
 const sheet = ref(null);
 const askScope = ref('book');
+// The whole book, over the lesson (on a phone: its own tab). The page is kept while it is closed.
+const bookOpen = ref(false);
+const bookPage = ref(null);
 const thread = ref([]);
 const handoff = reactive({ open: false, reason: 'user_request', question: '' });
 let seq = 0;
@@ -444,6 +480,7 @@ async function loadIndex() {
 async function loadLesson(id) {
   lessonLoading.value = true;
   tab.value = 'lesson';
+  bookOpen.value = false;
   saveError.value = false;
   try {
     const background = backgroundPassages.value ? confirmedCard.value?.previous_religion?.value ?? null : null;
@@ -713,6 +750,32 @@ function onForgotten() {
   nextTick(() => root.value?.querySelector('.lsp-main h1')?.focus({ preventScroll: true }));
 }
 
+// Signing in or out (here, or in the host page's header) is announced; the space follows it.
+async function onSignedIn() {
+  try {
+    const p = await api.progress();
+    // Signed in on the first screen (or after signing out): back to the account's own lessons.
+    const begun = Boolean(p?.choice || p?.completed?.length);
+    if (phase.value === 'signedout' || (begun && phase.value !== 'learn' && phase.value !== 'done')) {
+      sheet.value = null;
+      phase.value = 'loading';
+      return begun ? resume() : start();
+    }
+    progress.value = p;
+    loadIndex();
+  } catch {
+    // The account is saved; the screen catches up on the next load.
+  }
+}
+
+function onSignedOut() {
+  if (phase.value === 'forgotten') return;
+  // This browser is a new anonymous learner: nothing of the account stays on screen.
+  onForgotten();
+  bookOpen.value = false;
+  phase.value = 'signedout';
+}
+
 function startAgain() {
   saveHintDismissed.value = false;
   backgroundPassages.value = false;
@@ -724,7 +787,27 @@ const isPhone = () => window.matchMedia?.('(max-width: 899px)').matches;
 
 function selectTab(id) {
   if (id === 'mentor') return openHandoff();
+  if (id === 'book') return openBook(bookPage.value);
+  if (id === 'lesson') bookOpen.value = false;
   tab.value = id;
+}
+
+// ------------------------------------------------------------------ the book
+/** Open the book at a page (from a source's "p. N"), or where the learner left it (null: the contents). */
+async function openBook(page = bookPage.value) {
+  if (sheet.value) sheet.value = null;
+  bookPage.value = page || null;
+  bookOpen.value = true;
+  tab.value = 'book';
+  await nextTick();
+  main.value?.scrollTo({ top: 0 });
+  bookReader.value?.focus();
+}
+async function closeBook() {
+  bookOpen.value = false;
+  tab.value = 'lesson';
+  await nextTick();
+  reader.value?.focus();
 }
 
 let sheetReturn = null;
@@ -784,7 +867,9 @@ function loadFonts() {
   document.head.appendChild(link);
 }
 
+let stopAccount = null;
 onMounted(() => {
+  stopAccount = onAccount((a) => (a ? onSignedIn() : onSignedOut()));
   loadFonts();
   window.addEventListener('keydown', onKey);
   document.addEventListener('focusin', onFocusIn);
@@ -793,11 +878,12 @@ onMounted(() => {
   pollMentor();
 });
 onBeforeUnmount(() => {
+  stopAccount?.();
   window.removeEventListener('keydown', onKey);
   document.removeEventListener('focusin', onFocusIn);
   document.documentElement.classList.remove('lsp-locked');
   clearInterval(pollTimer);
 });
 
-defineExpose({ ask, openHandoff, openMentor });
+defineExpose({ ask, openHandoff, openMentor, openBook });
 </script>

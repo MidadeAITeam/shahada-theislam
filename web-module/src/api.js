@@ -43,6 +43,9 @@ export const api = {
   complete: (id, lang, checkAnswer) =>
     request('POST', `/lessons/${encodeURIComponent(id)}/complete`, { lang, check_answer: checkAnswer ?? null }),
   progress: () => request('GET', '/progress'),
+  // The whole book: contents (units -> lessons -> pages) and one printed page at a time.
+  book: (lang) => request('GET', `/book${q({ lang })}`),
+  bookPage: (page, lang) => request('GET', `/book/page/${encodeURIComponent(page)}${q({ lang })}`),
   ask: (question, lang, lessonId) => request('POST', '/ask', { question, lang, lesson_id: lessonId ?? null }),
   // Same as ask, but reports live stages (understanding → found on pages → checking) through onStage.
   askStream: async (question, lang, lessonId, history, onStage) => {
@@ -79,6 +82,10 @@ export const api = {
   handoffSend: (id, text) => request('POST', `/handoff/${encodeURIComponent(id)}/messages`, { text }),
   authGoogle: (credential) => request('POST', '/auth/google', { credential }),
   authEmail: (email, lang) => request('POST', '/auth/email', { email, lang }),
+  // Who is signed in on this browser ({ signed_in, email, name }); signing out keeps the account's
+  // progress for the next sign-in and gives this browser a new anonymous learner.
+  account: () => request('GET', '/account'),
+  logout: () => request('POST', '/auth/logout', {}),
   reminder: (hour, tz, enabled) => request('POST', '/reminder', { hour, tz, enabled }),
   forget: () => request('POST', '/forget', {}),
   report: (target, note, lang) => request('POST', '/report', { target, note, lang }),

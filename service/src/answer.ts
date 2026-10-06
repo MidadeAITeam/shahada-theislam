@@ -46,10 +46,13 @@ Rules:
 - Speak to the learner about the topic. Never talk about "the passages", "the text provided" or what is or is not mentioned.
 - Answer the question actually asked, including its specific case ("by mistake", "while travelling", "sitting down",
   "an English copy", "laughing in prayer"). A general rule is not an answer to a specific case the passages do not mention:
-  never let it imply an answer. If the general rule could be read as settling the specific case (e.g. "eating and
+  never let it imply an answer. A general principle (such as "all transactions are permissible unless forbidden") never
+  settles a specific product, situation or case the passages do not name. If the general rule could be read as settling the specific case (e.g. "eating and
   drinking break the fast" for "I drank by mistake"), return no sentences at all. Otherwise you may give the general rule
   only if it truly helps, and then you MUST list the specific case in "unanswered_parts".
 - If the passages answer only part of the question, answer that part and list the other parts, briefly, in "unanswered_parts".
+- If the message asks several questions, handle every one: answer it from the passages or list it in "unanswered_parts".
+  Never skip a part silently.
 - Do not put any text in quotation marks. To quote the book, add "<passage id>#s<n>" to "quotes" (n = sentence number shown
   in the passage); the exact words will be inserted from the book. Quote at most 2 sentences.
 - For steps of an act of worship (wudu, ghusl, prayer), list ALL the steps given in the passages, in order, without shortening.
@@ -155,11 +158,14 @@ export async function ask(input: AskInput, onStage: (s: Stage) => void = () => {
     return base("not_in_book", r, { text: referralText("not_in_book", input.lang, false), trace: { retrieved, dropped: [], attempts: 0, costUsd: cost, ms: Date.now() - t0 } });
   }
 
+  const scopeHint = r.label === "out_of_book"
+    ? "This question goes beyond a beginner book. Answer only if a passage answers it directly and specifically; a general principle or a passing mention is not an answer, so then return no sentences.\n"
+    : "";
   const differenceHint = r.label === "difference"
     ? "The learner mentions a different practice or opinion. Explain what the book says on this point (with its passages), without judging the other practice and without saying which person is right.\n"
     : "";
   onStage({ stage: "found", pages: [...new Set(relevant.slice(0, 4).map((h) => h.chunk.page))].sort((a, b) => a - b) });
-  const prompt = `${differenceHint}${input.lessonId ? `The learner is studying the lesson "${lessonTitle(input.lessonId)}". Answer only from it.\n` : ""}${
+  const prompt = `${scopeHint}${differenceHint}${input.lessonId ? `The learner is studying the lesson "${lessonTitle(input.lessonId)}". Answer only from it.\n` : ""}${
     input.history ? `Earlier in this conversation:\n${input.history}\n` : ""}Question (${langName(input.lang)}): """${input.question}"""\n\nPassages:\n${passageBlock(relevant)}`;
   const system = SYSTEM.replaceAll("{LANG}", langName(input.lang));
 
@@ -206,7 +212,7 @@ export async function ask(input: AskInput, onStage: (s: Stage) => void = () => {
   // mentor when the question goes beyond what the book covers.
   const differenceNote = r.label === "difference" ? DIFFERENCE_NOTE[input.lang] ?? DIFFERENCE_NOTE.en : null;
   const unanswered = (draft?.unanswered_parts ?? []).filter((x) => typeof x === "string" && x.trim());
-  const partialNote = !differenceNote && (r.label === "out_of_book" || unanswered.length > 0) ? referralText("partial", input.lang, false) : null;
+  const partialNote = !differenceNote && unanswered.length > 0 ? referralText("partial", input.lang, false) : null;
   const note = differenceNote ?? partialNote;
   return {
     status: "answered",

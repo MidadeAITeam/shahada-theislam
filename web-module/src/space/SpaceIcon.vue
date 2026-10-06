@@ -31,6 +31,7 @@ const P = {
   shrink: 'M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7',
   pin: 'M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11zm0-8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
   heart: 'M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z',
+  logout: 'M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M9 16l-4-4 4-4M5 12h11',
   phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z',
 };
 </script>
@@ -38,7 +39,7 @@ const P = {
 <template>
   <svg
     :width="size" :height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-    stroke-linecap="round" stroke-linejoin="round" :class="['lsp-icon', { 'lsp-flip': name === 'back' || name === 'next' || name === 'send' }]"
+    stroke-linecap="round" stroke-linejoin="round" :class="['lsp-icon', { 'lsp-flip': name === 'back' || name === 'next' || name === 'send' || name === 'logout' }]"
     :role="label ? 'img' : undefined" :aria-label="label" :aria-hidden="label ? undefined : 'true'" focusable="false"
   ><path :d="P[name]" /></svg>
 </template>

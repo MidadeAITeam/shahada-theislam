@@ -165,7 +165,11 @@ export function withNeighbours(lang: string, hits: Hit[], top = 3, span = 3): Hi
   if (!e) return hits;
   const out = [...hits];
   const have = new Set(hits.map((h) => h.chunk.id));
-  for (const h of hits.slice(0, top)) {
+  // The top hits by rank, plus any of the first eight that is about as close in meaning as the best one
+  // (a section heading like "How do we pray?" can rank fifth and still lead into the steps).
+  const best = Math.max(0, ...hits.map((h) => h.semantic));
+  const seeds = hits.filter((h, i) => i < top || (i < 8 && h.semantic >= best - 0.06));
+  for (const h of seeds) {
     const i = e.chunks.findIndex((c) => c.id === h.chunk.id);
     for (let j = Math.max(0, i - 1); j <= Math.min(e.chunks.length - 1, i + span); j++) {
       const c = e.chunks[j];

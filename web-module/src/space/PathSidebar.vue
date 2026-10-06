@@ -58,6 +58,9 @@
     </div>
 
     <div class="lsp-path__foot">
+      <button type="button" class="lsp-tool" :disabled="disabled" @click="$emit('book')">
+        <SpaceIcon name="book" :size="18" /><span>{{ tr('bookBrowse') }}</span>
+      </button>
       <button type="button" class="lsp-tool" :disabled="disabled" @click="$emit('save')">
         <SpaceIcon name="save" :size="18" /><span>{{ account ? tr('signedIn', { who: account }) : tr('saveProgress') }}</span>
       </button>
@@ -70,7 +73,7 @@
 
 <script setup>
 // The journey at a glance: a progress ring, the book's units with their lessons (done, now, next),
-// and the two ways out of the lesson: save progress, and a person.
+// the whole book, and the two ways out of the lesson: save progress, and a person.
 import { computed } from 'vue';
 import SpaceIcon from './SpaceIcon.vue';
 import { apiLang, useT } from '../i18n.js';
@@ -83,7 +86,7 @@ const props = defineProps({
   account: { type: String, default: '' },
   disabled: { type: Boolean, default: false },
 });
-defineEmits(['open', 'save', 'handoff']);
+defineEmits(['open', 'save', 'book', 'handoff']);
 
 const tr = useT(() => props.lang);
 const C = 2 * Math.PI * 50;

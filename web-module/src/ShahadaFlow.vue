@@ -82,6 +82,12 @@ function openMentor() {
   space.value?.openMentor();
 }
 
+/** Into the space, on the learner's lessons (the host header's "My lessons", or after signing in there). */
+function openLessons() {
+  ready.value = true;
+  open.value = true;
+}
+
 // Remembered in this browser so the host page offers the way back on the next visit.
 watch(
   () => summary.started || summary.mentorCases > 0,
@@ -100,5 +106,5 @@ onMounted(async () => {
   if (props.mode === 'resume') open.value = true;
 });
 
-defineExpose({ ask, openHandoff, openMentor });
+defineExpose({ ask, openHandoff, openMentor, openLessons });
 </script>
