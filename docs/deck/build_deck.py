@@ -104,11 +104,11 @@ DATA = {
 
 # Team: names are filled in by the team lead (the roles are those of the idea file).
 TEAM = [
-    ("اسم العضو", "قائد الفريق", "العرض والتنسيق والتسليم"),
-    ("اسم العضو", "مهندس الذكاء الاصطناعي", "الاسترجاع والتوليد المقيّد والفاحص والتقييم"),
-    ("اسم العضو", "مطوّر الخلفية", "الخدمة والحساب والإحالة ولوحة المرشد"),
-    ("اسم العضو", "مطوّر الواجهات", "الوحدة داخل واجهة theislam.chat"),
-    ("اسم العضو", "المختص الشرعي", "مراجعة الدروس والحالات الحرجة والبلاغات"),
+    ("", "قائد الفريق", "العرض والتنسيق والتسليم"),
+    ("", "مهندس الذكاء الاصطناعي", "الاسترجاع والتوليد المقيّد والفاحص والتقييم"),
+    ("", "مطوّر الخلفية", "الخدمة والحساب والإحالة ولوحة المرشد"),
+    ("", "مطوّر الواجهات", "الوحدة داخل واجهة theislam.chat"),
+    ("", "المختص الشرعي", "مراجعة الدروس والحالات الحرجة والبلاغات"),
 ]
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -1047,9 +1047,8 @@ def build(template):
         s.add(shape(s.ids(), x + (w - 150) / 2, 425, 150, 150, [para(run(f"0{i + 1}", 34, TURQ, True), algn="ctr")],
                     fill=VIOLET, alpha=35, line=TURQ, line_alpha=60, line_w=1.5, geom="ellipse", anchor="ctr"))
         s.add(shape(s.ids(), x + 20, 600, w - 40, 300, [
-            para(run("الاسم", 15, MUTED), algn="ctr"),
-            para(run(name, 23, LIGHT, True), algn="ctr", before=2),
-            para(run(role, 19, TURQ, True), algn="ctr", before=16, ln=110),
+            *([para(run("الاسم", 15, MUTED), algn="ctr"), para(run(name, 23, LIGHT, True), algn="ctr", before=2)] if name else []),
+            para(run(role, 23 if not name else 19, TURQ, True), algn="ctr", before=16 if name else 4, ln=110),
             para(run(does, 16, SOFT), algn="ctr", before=8, ln=120),
         ]))
     s.notes = "(10 ث) الفريق: قائد، ومهندس ذكاء اصطناعي، ومطوّر خلفية، ومطوّر واجهات، ومختص شرعي."
