@@ -8,7 +8,7 @@
 |---|---|
 | رابط التجربة الحية (Live Demo) | https://shahada.theislam.chat/ar?demo=shahada |
 | النسخة الإنجليزية | https://shahada.theislam.chat/en?demo=shahada |
-| منصة فريق المتابعة | https://shahada.theislam.chat/mentor (حساب المشرف التجريبي: `supervisor@demo.theislam.chat`، وكلمة المرور تُكتب في خانة الملاحظات أو تُرسل للجنة عند الطلب) |
+| منصة فريق المتابعة | https://shahada.theislam.chat/mentor (حساب المشرف التجريبي: `supervisor@demo.theislam.chat`، وكلمة المرور `6c014c6af52e`. وحسابا المرشدين التجريبيين `brother@demo.theislam.chat` و`sister@demo.theislam.chat` بكلمة المرور نفسها) |
 | مستودع GitHub (عام) | https://github.com/MidadeAITeam/shahada-theislam |
 | العرض التقديمي (PDF / PPTX) | `docs/deck/theislam-chat-after-shahada.pdf` و`.pptx` في المستودع |
 | الفيديو (دقيقتان) | `video/out/after-the-shahada-v3.mp4` (يُرفع ملفاً) |
@@ -71,4 +71,4 @@
 2. أكمل الدرس الأول، ثم اسأل: «كيف أتوضأ؟» ثم «ما نواقض الوضوء؟». لاحظ أرقام الصفحات.
 3. اسأل سؤالاً شخصياً، مثل «زوجتي مسيحية، هل زواجي صحيح؟»، وانظر الإحالة إلى مرشد.
 4. افتح «اقرأ الكتاب كاملاً».
-5. ادخل منصة المتابعة `/mentor` بحساب المشرف، وافتح حالة.
+5. ادخل منصة المتابعة `/mentor` بحساب المشرف (`supervisor@demo.theislam.chat` / `6c014c6af52e`)، وافتح حالة.
